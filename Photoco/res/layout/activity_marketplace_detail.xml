@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ccc" >
+
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="223dp"
+            android:src="@drawable/watermark" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true" >
+
+            <RelativeLayout
+                android:id="@+id/layout_marketplace_photo_detail_location"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/tip" >
+
+                <ImageView
+                    android:id="@+id/iv_marketplace_photo_detail_location"
+                    android:layout_width="21dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/gps2_ic" />
+
+                <TextView
+                    android:id="@+id/tv_marketplace_photo_detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_marketplace_photo_detail_location"
+                    android:alpha="0.8"
+                    android:text="Newyork, USA"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/bt_marketplace_photo_detail_location"
+                    android:layout_width="10dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/allow_white_ic" />
+            </RelativeLayout>
+            <!-- 맨밑 -->
+
+            <LinearLayout
+                android:id="@+id/layout_marketplace_photo_detail_choice"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="15dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bt_sign_in"
+                    android:text="Add to cart"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/tip"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_above="@id/layout_marketplace_photo_detail_choice"
+                android:layout_marginTop="5dp"
+                android:background="#bab0c8" />
+
+            <RelativeLayout
+                android:id="@+id/layout_marketplace_photo_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_above="@id/layout_marketplace_photo_detail_location" >
+
+                <Button
+                    android:id="@+id/bt_marketplace_photo_detail_info"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/size_big"
+                    android:text="L"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_marketplace_photo_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/bt_marketplace_photo_detail_info"
+                    android:text="25"
+                    android:textColor="#fff"
+                    android:textSize="39sp" />
+
+                <TextView
+                    android:id="@+id/tv_marketplace_photo_detail_price_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_marketplace_photo_detail_price"
+                    android:text="$"
+                    android:textColor="#fff"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_marketplace_photo_detail_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="17dp"
+                    android:text="1280 x 720 px"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

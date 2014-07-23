@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccc" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="223dp"
+            android:src="@drawable/watermark" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_alignParentBottom="true" >
+
+            <LinearLayout
+                android:id="@+id/layout_cart_detail_choice"
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/ib_cart_detail_remove"
+                    android:layout_width="96dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bt_job_detail_hide"
+                    android:src="@drawable/remove_btn_default"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/bt_cart_detail_buy"
+                    android:layout_width="219dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bt_job_detail_participate"
+                    android:text="Buy"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/tip"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_above="@id/layout_cart_detail_choice"
+                android:background="#bab0c8" />
+
+            <RelativeLayout
+                android:id="@+id/layout_cart_detail_location"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@id/tip" >
+
+                <ImageView
+                    android:id="@+id/iv_cart_detail_location"
+                    android:layout_width="21dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/gps2_ic" />
+
+                <TextView
+                    android:id="@+id/tv_cart_detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_cart_detail_location"
+                    android:alpha="0.8"
+                    android:text="Newyork, USA"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/bt_cart_detail_location"
+                    android:layout_width="10dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/allow_white_ic" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_cart_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_above="@id/layout_cart_detail_location" >
+
+                <Button
+                    android:id="@+id/bt_cart_detail_info"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/size_big"
+                    android:text="L"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_cart_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/bt_cart_detail_info"
+                    android:text="25"
+                    android:textColor="#fff"
+                    android:textSize="39sp" />
+
+                <TextView
+                    android:id="@+id/tv_cart_detail_price_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_cart_detail_price"
+                    android:text="$"
+                    android:textColor="#fff"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_cart_detail_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="17dp"
+                    android:text="1280 x 720 px"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

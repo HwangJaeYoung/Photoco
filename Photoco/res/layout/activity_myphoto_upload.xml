@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="#24282d" >
+
+        <ImageView
+            android:id="@+id/iv_myphoto_upload_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/iv_myphoto_upload_size_xl"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/size_small"
+            android:text="XL"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_upload_size_l"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_upload_size_xl"
+            android:background="@drawable/size_small"
+            android:text="L"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_upload_size_m"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_upload_size_l"
+            android:background="@drawable/size_small"
+            android:text="M"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_upload_size_s"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_upload_size_m"
+            android:background="@drawable/size_small"
+            android:text="S"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_upload_tag"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_upload_tag"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/tag_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_upload_tag"
+                android:text="Tag"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_upload_tag"
+            android:background="#dde6f2" />
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_upload_category"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@id/layout_myphoto_upload_tag"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_upload_category"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/category_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_upload_category"
+                android:text="Category"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_myphoto_upload_category_arrow"
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_category_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_myphoto_upload_category_arrow"
+                android:hint="Select Category"
+                android:textColor="#b0bac8"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_upload_category"
+            android:background="#dde6f2" />
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_upload_location"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@id/layout_myphoto_upload_category"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_upload_location"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/gps_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_upload_location"
+                android:text="Location"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_myphoto_upload_location_arrow"
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_location_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_myphoto_upload_location_arrow"
+                android:hint="Country, City"
+                android:textColor="#b0bac8"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_upload_location"
+            android:background="#dde6f2" />
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_agree"
+            android:layout_width="360dp"
+            android:layout_height="49dp"
+            android:layout_below="@id/layout_myphoto_upload_location"
+            android:layout_marginTop="0.5dp"
+            android:background="#fff"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_myphoto_upload_agree"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="Agree to terms and conditions"
+                android:textColor="@drawable/tv_signup_agree"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/cb_myphoto_upload_agree"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_myphoto_upload"
+            android:layout_width="330dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="11dp"
+            android:background="@drawable/bt_job_detail_participate"
+            android:text="Upload"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="147dp"
+        android:layout_height="147dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo2" />
+
+    <TextView
+        android:id="@+id/tv_photoco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:text="Welcome to Photoco!"
+        android:textColor="#5f6773"
+        android:textSize="31sp" />
+
+    <TextView
+        android:id="@+id/tv_photoco_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:text="@string/photoco_detail"
+        android:textColor="#bcc6d6"
+        android:textSize="16sp" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="41dp"
+        android:background="#fff"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/email_ic" />
+
+        <EditText
+            android:id="@+id/et_login_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:background="#fff"
+            android:gravity="left|center"
+            android:hint="User Name"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColor="#323a45"
+            android:textColorHint="#b0bac8"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="330dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:background="#dde6f2" />
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="49dp"
+        android:background="#fff"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock_ic" />
+
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:background="#fff"
+            android:gravity="left|center"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="#323a45"
+            android:textColorHint="#b0bac8"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:background="#62caf7"
+        android:gravity="center" >
+
+        <com.continueing.photoco.reuse.widget.SubmitButton
+            android:id="@+id/bt_sign_in"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bt_sign_in"
+            android:enabled="false"
+            android:text="Sign in"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/pg_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_create_ac"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bt_create_account"
+        android:text="Create Account"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bt_forgot_pw"
+        android:layout_width="235dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="9dp"
+        android:background="#fff"
+        android:text="Forgot Password"
+        android:textColor="@drawable/tv_forgot_pw"
+        android:textSize="18sp" />
+
+</LinearLayout>

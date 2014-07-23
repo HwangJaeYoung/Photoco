@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <!-- 리스트 유동적인부분 -->
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="105dp"
+        android:gravity="center"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/iv_list_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/urgent_ic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_list_cart_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="9dp"
+            android:text="Landscape"
+            android:textColor="#323a45"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/iv_list_cart_name"
+                android:layout_width="11dp"
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/name_small_ic" />
+
+            <TextView
+                android:id="@+id/tv_list_cart_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="100dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/iv_list_cart_name"
+                android:textColor="#bab0c8"
+                android:text="Namgu&apos;s Request" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/bt_list_cart_tag_first"
+                android:layout_width="69dp"
+                android:layout_height="21dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/tag_bg" />
+
+            <ImageView
+                android:id="@+id/bt_list_cart_tag_second"
+                android:layout_width="69dp"
+                android:layout_height="21dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/tag_bg" />
+
+            <ImageView
+                android:id="@+id/bt_list_cart_tag_third"
+                android:layout_width="69dp"
+                android:layout_height="21dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/tag_bg" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="#24282d" >
+
+        <ImageView
+            android:id="@+id/iv_myphoto_bought_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/iv_myphoto_bought_size_xl"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/size_small"
+            android:text="XL"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_bought_size_l"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_bought_size_xl"
+            android:background="@drawable/size_small"
+            android:text="L"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_bought_size_m"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_bought_size_l"
+            android:background="@drawable/size_small"
+            android:text="M"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/iv_myphoto_bought_size_s"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="4.5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_myphoto_bought_size_m"
+            android:background="@drawable/size_small"
+            android:text="S"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:background="#fff">
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_bought_tag"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_bought_tag"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/tag_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_bought_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_bought_tag"
+                android:text="Tag"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_bought_tag"
+            android:background="#dde6f2" />
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_bought_category"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@id/layout_myphoto_bought_tag"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_bought_category"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/category_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_bought_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_bought_category"
+                android:text="Category"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_bought_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:text="Select Category"
+                android:textColor="#323a45"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_bought_category"
+            android:background="#dde6f2" />
+
+        <RelativeLayout
+            android:id="@+id/layout_myphoto_bought_location"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@id/layout_myphoto_bought_category"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/iv_myphoto_bought_location"
+                android:layout_width="18dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/gps_ic" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_bought_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_myphoto_bought_location"
+                android:text="Country, City"
+                android:textColor="#808a99"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_myphoto_bought_location_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:text="Newyourk,USA"
+                android:textColor="#323a45"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/bt_myphoto_remove"
+            android:layout_width="330dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="11dp"
+            android:background="@drawable/bt_job_detail_hide"
+            android:src="@drawable/remove_btn_pressed" />
+    </RelativeLayout>
+
+</LinearLayout>

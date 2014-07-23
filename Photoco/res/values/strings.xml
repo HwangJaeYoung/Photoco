@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Photoco</string>
+    <string name="photoco_detail">you can buy<![CDATA[&]]>sell Photo in Photoco.</string>
+    <string name="title_section1"> Finding &#160; Job </string>
+    <string name="title_section2"> My &#160; Request </string>
+    <string name="title_section3"> Job &#160; List </string>
+    <string name="title_section4"> My &#160; Photo </string>
+    <string name="title_section5"> Marketplace </string>
+    <string name="title_section6"> Cart </string>
+    <string name="title_section7"> My &#160; account </string>
+
+</resources>

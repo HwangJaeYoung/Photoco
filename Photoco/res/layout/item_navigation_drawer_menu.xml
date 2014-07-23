@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#24282d" >
+
+    <RelativeLayout
+        android:id="@+id/layout_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginBottom="1dp"
+        android:background="#323a45" >
+
+        <ImageView
+            android:id="@+id/iv_list_item_left"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:src="@drawable/request_ic" />
+
+        <TextView
+            android:id="@+id/tv_list_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="130dp"
+            android:layout_toRightOf="@id/iv_list_item_left"
+            android:text="My Photo"
+            android:textColor="#b5bdc8"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_list_item_right"
+            android:layout_width="32dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/badge_ic" />
+    </RelativeLayout>
+
+</RelativeLayout>

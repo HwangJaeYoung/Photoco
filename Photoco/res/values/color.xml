@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="layout_list_drawer_default">#323a45</color>
+    <color name="layout_list_drawer_pressed">#4b5563</color>
+    
+    <color name="bt_signin_disabled">#dde6f2</color>
+    <color name="bt_signin_default">#62caf7</color>
+    <color name="bt_signin_pressed">#3aaada</color>
+    <color name="bt_create_account_default">#62caf7</color>
+    <color name="bt_create_account_pressed">#3aaada</color>
+    <color name="tv_forgot_pw_default">#808a99</color>
+    <color name="tv_forgot_pw_pressed">#5f6773</color>
+    <color name="bt_signup_confirm_default">#ffffff</color>
+    <color name="bt_signup_confirm_pressed">#e8eef6</color>
+    <color name="tv_signup_agree_default">#323a45</color>
+    <color name="tv_signup_agree_pressed">#000000</color>
+    
+
+    <color name="bt_job_detail_hide_default">#f65454</color>
+    <color name="bt_job_detail_hide_preesed">#d23f3f</color>
+    <color name="bt_job_detail_participate_default">#62caf7</color>
+    <color name="bt_job_detail_participate_pressed">#3aaada</color>
+    <color name="layout_request_tag_default">#fff</color>
+	<color name="layout_request_tag_pressed">#e8eef6</color>
+</resources>
