@@ -14,6 +14,7 @@ public class MyRequestDetailActivity extends ActionBarActivity implements ViewFo
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		view = new ViewForMyRequestDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
+		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
 	}
 }
