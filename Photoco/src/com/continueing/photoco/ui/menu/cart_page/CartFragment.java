@@ -9,9 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.continueing.photoco.ui.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.cart_page.cart_detail_page.CartDetailActivity;
 import com.continueing.photoco.ui.menu.cart_page.listview.ViewForCartListViewItem.ICartItem;
 

@@ -1,7 +1,6 @@
 package com.continueing.photoco.ui.account_page;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +18,6 @@ import com.continueing.photoco.reuse.widget.SubmitButton;
 
 public class ViewForAccountActivity extends AbstractViewForActivity {
 	private Controller controller;
-	private TextView tv_signUp;
-	private TextView tv_signUpDetail;
 	private TextView tv_signUpAgree;
 	private EditText et_signUpUserName;
 	private EditText et_signEmail;
@@ -44,8 +41,6 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 
 	@Override
 	protected void initViews() {		
-		tv_signUp = (TextView)findViewById(R.id.tv_signup);
-		tv_signUpDetail = (TextView)findViewById(R.id.tv_signup_detail);
 		tv_signUpAgree = (TextView)findViewById(R.id.tv_signup_agree);
 		et_signUpUserName = (EditText)findViewById(R.id.et_signup_username);
 		et_signEmail = (EditText)findViewById(R.id.et_signup_email);
@@ -55,18 +50,6 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 		tv_signUpLocation = (TextView)findViewById(R.id.tv_signup_location);
 		cb_singnUpAgree = (CheckBox)findViewById(R.id.cb_signup_agree);
 		bt_submit = (SubmitButton)findViewById(R.id.bt_create_ac);
-		
-		Typeface type = Typeface.createFromAsset(getContext().getAssets(), "BreeSerif_Reg.otf");
-		
-		tv_signUp.setTypeface(type);
-		tv_signUpDetail.setTypeface(type);
-		tv_signUpAgree.setTypeface(type);
-		et_signUpUserName.setTypeface(type);
-		et_signEmail.setTypeface(type);
-		et_signUpPassword.setTypeface(type);
-		et_signUpConfirmPassword.setTypeface(type);
-		tv_signUpLocation.setTypeface(type);
-		bt_submit.setTypeface(type);	
 		
 		bt_submit.init((ProgressBar)findViewById(R.id.pg_sign_up));
 		bt_submit.addViewToHold(et_signUpUserName);

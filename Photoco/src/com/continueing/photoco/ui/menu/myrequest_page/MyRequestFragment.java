@@ -1,7 +1,5 @@
 package com.continueing.photoco.ui.menu.myrequest_page;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.MyNewRequestActivity;
 
 public class MyRequestFragment extends Fragment implements ViewForMyRequestFragment.Controller{

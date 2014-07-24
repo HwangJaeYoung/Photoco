@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -42,11 +41,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewLocationDetail = (TextView)findViewById(R.id.tv_request_new_location_detail);
 		bt_imageView = (ImageView)findViewById(R.id.bt_image_view);
 		
-		Typeface type = Typeface.createFromAsset(getContext().getAssets(), "BreeSerif_Reg.otf");
-		
 		rl_requestLocation = (RelativeLayout)findViewById(R.id.rl_request_location);
-		bt_requestNewSubmit.setTypeface(type);
-		tv_requestNewLocationDetail.setTypeface(type);
 		rl_selectDuration = (RelativeLayout)findViewById(R.id.rl_select_duration);
 		tv_requestNewDurationDetailDay = (TextView)findViewById(R.id.tv_request_new_duration_detail_day);
 		tv_requestNewDurationDetailCalendar = (TextView)findViewById(R.id.tv_request_new_duration_detail_calendar);

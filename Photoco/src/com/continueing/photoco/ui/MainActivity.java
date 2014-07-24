@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.continueing.photoco.R;
@@ -28,8 +27,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		backPressCloseHandler = new BackPressCloseHandler(this);
 		setContentView(R.layout.activity_main);
 		// 정적으로 정의된 프래그먼트이므로 여기서는 라이프사이클을 수행한 프래그먼트가 넘어오게 된다.

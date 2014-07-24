@@ -2,7 +2,6 @@ package com.continueing.photoco.ui.login_page;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
@@ -39,23 +37,11 @@ public class ViewForLoginActivity extends AbstractViewForActivity {
 
 	@Override
 	protected void initViews() {
-		TextView tv_photoco = (TextView)findViewById(R.id.tv_photoco);
-		TextView tv_photocoDetail = (TextView)findViewById(R.id.tv_photoco_detail);
 		et_username = (EditText)findViewById(R.id.et_login_username);
 		et_password = (EditText)findViewById(R.id.et_login_password);
 		bt_signIn = (SubmitButton)findViewById(R.id.bt_sign_in);
 		bt_createAccount = (Button)findViewById(R.id.bt_create_ac);
 		bt_forgotPassword = (Button)findViewById(R.id.bt_forgot_pw);
-		
-		Typeface type = Typeface.createFromAsset(getContext().getAssets(), "BreeSerif_Reg.otf");
-		
-		tv_photoco.setTypeface(type);
-		tv_photocoDetail.setTypeface(type);
-		et_username.setTypeface(type);
-		et_password.setTypeface(type);
-		bt_signIn.setTypeface(type);
-		bt_createAccount.setTypeface(type);
-		bt_forgotPassword.setTypeface(type);
 		
 		bt_signIn.init((ProgressBar)findViewById(R.id.pg_sign_up));
 		bt_signIn.addViewToHold(et_username);
