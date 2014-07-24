@@ -12,6 +12,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.continueing.photoco.domain.Location;
 import com.continueing.photoco.reuse.network.HttpRequester;
@@ -28,6 +30,7 @@ public class LocationActivity extends ActionBarActivity implements ViewForLocati
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		view = new ViewForLocationActivity(getApplicationContext(), this);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());

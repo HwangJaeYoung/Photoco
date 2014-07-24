@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class SettingActivity extends ActionBarActivity implements ViewForSettingActivity.Controller{
@@ -18,6 +20,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		view = new ViewForSettingActivity(getApplicationContext( ),this);
 		setContentView(view.getRoot());

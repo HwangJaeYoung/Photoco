@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.WindowManager;
 
 public class MyPhotoDetailActivity extends ActionBarActivity implements ViewForMyPhotoDetailActivity.Controller{
 	
@@ -12,6 +13,7 @@ public class MyPhotoDetailActivity extends ActionBarActivity implements ViewForM
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		view = new ViewForMyPhotoDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
