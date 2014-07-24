@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -94,7 +96,8 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	public void addActionBarTab(FragmentActivity activity) {
 			acb = ((ActionBarActivity) activity).getSupportActionBar();
 			acb.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+			acb.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
+			
 			for(int i = 0; i < 3; i++)
 			{
 				tab = acb.newTab();
