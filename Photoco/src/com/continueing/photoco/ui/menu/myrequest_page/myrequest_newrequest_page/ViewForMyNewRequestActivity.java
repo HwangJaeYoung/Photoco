@@ -22,8 +22,10 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private RelativeLayout rl_requestLocation;
 	private TextView tv_requestNewLocationDetail;
 	private RelativeLayout rl_selectDuration;
+	private RelativeLayout rl_selectCategory;
 	private TextView tv_requestNewDurationDetailDay;
 	private TextView tv_requestNewDurationDetailCalendar;
+	private TextView tv_requestNewCategoryDetail;
 	
 	public ViewForMyNewRequestActivity(Context context, Controller aController) {
 		super(context);
@@ -41,10 +43,13 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewLocationDetail = (TextView)findViewById(R.id.tv_request_new_location_detail);
 		bt_imageView = (ImageView)findViewById(R.id.bt_image_view);
 		
+		rl_selectCategory = (RelativeLayout)findViewById(R.id.rl_request_cateory);
 		rl_requestLocation = (RelativeLayout)findViewById(R.id.rl_request_location);
 		rl_selectDuration = (RelativeLayout)findViewById(R.id.rl_select_duration);
+		
 		tv_requestNewDurationDetailDay = (TextView)findViewById(R.id.tv_request_new_duration_detail_day);
 		tv_requestNewDurationDetailCalendar = (TextView)findViewById(R.id.tv_request_new_duration_detail_calendar);
+		tv_requestNewCategoryDetail = (TextView)findViewById(R.id.tv_request_new_category_detail);
 	}
 
 	@Override
@@ -76,6 +81,13 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 				controller.onSelectDuration();				
 			}
 		});
+		
+		rl_selectCategory.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				controller.onSelectCategory();
+			}
+		});
 	}
 	
 	public void selectedLocation(String aLocation)
@@ -83,24 +95,20 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewLocationDetail.setText(aLocation);
 	}
 	
+	public void selectedCategory(String aCategory)
+	{
+		tv_requestNewCategoryDetail.setText(aCategory);
+	}
+	
 	public void selectedImage(Bitmap aBitmap)
 	{
 		bt_imageView.setImageBitmap(aBitmap);
 	}
 	
-	public void selectedDuration(int aDuration)
+	public void selectedDuration(String aDuration, String aEndDate)
 	{
-		if(aDuration == 12)
-			tv_requestNewDurationDetailDay.setText(aDuration + "Hours");
-		else
-			tv_requestNewDurationDetailDay.setText(aDuration + "Day");
-		
-		Calendar currentDate = Calendar.getInstance();
-		int year = currentDate.get(Calendar.YEAR);
-		int month = currentDate.get(Calendar.MONTH) + 1;
-		int date = currentDate.get(Calendar.DATE);
-		
-		tv_requestNewDurationDetailCalendar.setText(year+"/"+month+"/"+date);
+		tv_requestNewDurationDetailDay.setText(aDuration);		
+		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	
 	public static interface Controller
@@ -108,6 +116,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		public void onSubmit( );
 		public void onLocationSelect( );
 		public void onSelectGallery( );
+		public void onSelectCategory( );
 		public void onSelectDuration();
 	}
 }

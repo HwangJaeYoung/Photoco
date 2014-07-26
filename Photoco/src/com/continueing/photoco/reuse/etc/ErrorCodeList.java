@@ -16,6 +16,6 @@ public interface ErrorCodeList {
 	String ERROR_MESSAGE_INVALID_PRIMARY_KEY = "primary key 'id' is not valid, it should be positive number";
 	String ERROR_MESSAGE_NONEXISTENT_LOCATION_ID = "location id does not exist. can not find from database";
 	String ERROR_MESSAGE_ALREADY_EXISTING_USER = "already signed up user, so that username or email is duplicated";
-	String ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED = "Check button isn't selected, so you should check this check button to sign up";
+	String ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED = "Check button isn't selected, so you should check this 'check button' to sign up";
 	String ERROR_MESSAGE_USERNAME_PASSWORD_MISMATCH = "can not login. check username or password";
 }

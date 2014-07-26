@@ -1,25 +1,24 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ArrayAdapterForMyRequestDuration;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
 
 public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity {
 
 	private Controller controller;
-	private RelativeLayout rl_selcet12hour;
-	private RelativeLayout rl_selcet1day;
-	private RelativeLayout rl_selcet3day;
-	private RelativeLayout rl_selcet7day;
-	private ImageView iv_requestNewDurationTwelve;
-	private ImageView iv_requestNewDurationOneDay;
-	private ImageView iv_requestNewDurationThreeDay;
-	private ImageView iv_requestNewDurationSevenDay;
+	private ListView lv_requestNewDuration;
+	private ArrayAdapterForMyRequestDuration arrayAdapterForMyRequestDuration;
+
 
 	public ViewForMyNewRequestDurationActivity(Context context, Controller aController) {
 		super(context);
@@ -33,96 +32,30 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 
 	@Override
 	protected void initViews() {
-		rl_selcet12hour = (RelativeLayout)findViewById(R.id.rl_selcet_12hour);
-		rl_selcet1day = (RelativeLayout)findViewById(R.id.rl_selcet_1day);
-		rl_selcet3day = (RelativeLayout)findViewById(R.id.rl_selcet_3day);
-		rl_selcet7day = (RelativeLayout)findViewById(R.id.rl_selcet_7day);
-		
-		iv_requestNewDurationTwelve = (ImageView)findViewById(R.id.iv_request_new_duration_twelve);
-		iv_requestNewDurationOneDay = (ImageView)findViewById(R.id.iv_request_new_duration_one_day);
-		iv_requestNewDurationThreeDay = (ImageView)findViewById(R.id.iv_request_new_duration_three_day);
-		iv_requestNewDurationSevenDay = (ImageView)findViewById(R.id.iv_request_new_duration_seven_day);
-		
-		iv_requestNewDurationTwelve.setVisibility(ImageView.VISIBLE);
-		iv_requestNewDurationOneDay.setVisibility(ImageView.INVISIBLE);
-		iv_requestNewDurationThreeDay.setVisibility(ImageView.INVISIBLE);
-		iv_requestNewDurationSevenDay.setVisibility(ImageView.INVISIBLE);
+		lv_requestNewDuration = (ListView)findViewById(R.id.lv_request_new_duration);
+		arrayAdapterForMyRequestDuration = new ArrayAdapterForMyRequestDuration(getContext( ), 0);
+		lv_requestNewDuration.setAdapter(arrayAdapterForMyRequestDuration);
 	}
 
 	@Override
 	protected void setEvent() {
-		rl_selcet12hour.setOnClickListener(new View.OnClickListener() {			
+		lv_requestNewDuration.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
 			@Override
-			public void onClick(View v) {
-				
-				lockCheckButton( );
-				releseCheckButton(12);
-				controller.onDurationSelected(12);
-			}
-		});
-		
-		rl_selcet1day.setOnClickListener(new View.OnClickListener() {	
-			@Override
-			public void onClick(View v) {
-						
-				lockCheckButton( );
-				releseCheckButton(1);
-				controller.onDurationSelected(1);
-			}
-		});
-		
-		rl_selcet3day.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				lockCheckButton( );
-				releseCheckButton(3);
-				controller.onDurationSelected(3);
-			}
-		});
-		
-		rl_selcet7day.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				lockCheckButton( );
-				releseCheckButton(7);
-				controller.onDurationSelected(7);
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				controller.onDurationSelected(position);
 			}
 		});
 	}
-	
-	private void lockCheckButton( )
+
+	public void resetDuration(ArrayList<IMyRequestDurationItem> aDurations)
 	{
-		iv_requestNewDurationTwelve.setVisibility(ImageView.INVISIBLE);
-		iv_requestNewDurationOneDay.setVisibility(ImageView.INVISIBLE);
-		iv_requestNewDurationThreeDay.setVisibility(ImageView.INVISIBLE);
-		iv_requestNewDurationSevenDay.setVisibility(ImageView.INVISIBLE);
-	}
-	
-	private void releseCheckButton(int aDuration)
-	{
-		switch(aDuration)
-		{
-			case 12 :
-				iv_requestNewDurationTwelve.setVisibility(ImageView.VISIBLE);
-				break;
-			case 1 :
-				iv_requestNewDurationOneDay.setVisibility(ImageView.VISIBLE);
-				break;
-			case 3 :
-				iv_requestNewDurationThreeDay.setVisibility(ImageView.VISIBLE);
-				break;
-			case 7 :
-				iv_requestNewDurationSevenDay.setVisibility(ImageView.VISIBLE);
-				break;
-			default :
-				break;
-		}
+		arrayAdapterForMyRequestDuration.addAll(aDurations);
 	}
 	
 	public static interface Controller
 	{
-		public void onDurationSelected(int aDuration);
+		public void onDurationSelected(int aPosition);
 	}
 }

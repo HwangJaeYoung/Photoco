@@ -5,8 +5,8 @@
     android:background="#dde6f2"
     android:orientation="vertical" >
 
-     <ListView
-        android:id="@+id/lv_request_new_duration"
+   <ListView
+        android:id="@+id/lv_request_new_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="0.5dp"

@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
 import com.continueing.photoco.ui.location_page.LocationActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity;
 
 public class MyNewRequestActivity extends ActionBarActivity implements ViewForMyNewRequestActivity.Controller{
@@ -22,6 +23,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	public static final int REQUEST_CODE_GET_QUERY = 0;
 	public static final int REQUEST_PICK_IMAGE = 1;
 	public static final int REQUEST_PICK_DURATION = 2;
+	public static final int REQUEST_PICK_CATEGORY = 3;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -60,6 +62,12 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	}
 	
 	@Override
+	public void onSelectCategory() {
+		Intent intent = new Intent(this, MyNewRequestCategoryActivity.class);
+		startActivityForResult(intent, REQUEST_PICK_CATEGORY); 
+	}
+	
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_GET_QUERY)
 		{
@@ -83,12 +91,23 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 				}    
 			}
 		}
+		
 		else if (requestCode == REQUEST_PICK_DURATION)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
-				view.selectedDuration(data.getIntExtra("duration", 0));
+				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
+						data.getStringExtra(MyNewRequestDurationActivity.PARAM_END_DATE_KEY));
 			}
 		}
+		
+		else if(requestCode == REQUEST_PICK_CATEGORY)
+		{
+			if(resultCode == Activity.RESULT_OK)
+			{
+				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
+			}
+		}
+		
 	}
 }

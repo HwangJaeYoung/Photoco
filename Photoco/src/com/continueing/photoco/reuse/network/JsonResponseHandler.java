@@ -37,6 +37,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
         Log.i("JsonResponseHandler",""+response.toString());
         try {
             if(response.getString(PARM_RESULT).equals(RESULT_SUCCESS)){
+            	Log.i("js", "success");
                 this.networkResponseListener.onSuccess(response);
             }else if(response.getString(PARM_RESULT).equals(RESULT_FAIL))
                 this.networkResponseListener.onFail(response, response.getInt(PARM_ERROR_CODE));

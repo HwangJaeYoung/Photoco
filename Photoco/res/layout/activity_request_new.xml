@@ -104,7 +104,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:id="@+id/rl_request_cateory" >
 
             <ImageView
                 android:id="@+id/iv_request_new_category"
@@ -244,8 +245,8 @@
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="4dp"
                     android:layout_toLeftOf="@id/bt_request_new_duration"
-                    android:text="7 Days"
-                    android:textColor="#ffc868"
+                    android:text="Select Duration"
+                    android:textColor="#b0bac8"
                     android:textSize="18sp" />
 
                 <TextView
@@ -256,8 +257,8 @@
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="4dp"
                     android:layout_toLeftOf="@id/bt_request_new_duration"
-                    android:text="2013/09/20"
-                    android:textColor="#323a45"
+                    android:text="End Date"
+                    android:textColor="#b0bac8"
                     android:textSize="13sp" />
             </RelativeLayout>
         </LinearLayout>
