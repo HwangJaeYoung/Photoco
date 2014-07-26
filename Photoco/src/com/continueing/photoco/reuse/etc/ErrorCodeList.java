@@ -16,6 +16,15 @@ public interface ErrorCodeList {
 	String ERROR_MESSAGE_INVALID_PRIMARY_KEY = "primary key 'id' is not valid, it should be positive number";
 	String ERROR_MESSAGE_NONEXISTENT_LOCATION_ID = "location id does not exist. can not find from database";
 	String ERROR_MESSAGE_ALREADY_EXISTING_USER = "already signed up user, so that username or email is duplicated";
-	String ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED = "Check button isn't selected, so you should check this 'check button' to sign up";
 	String ERROR_MESSAGE_USERNAME_PASSWORD_MISMATCH = "can not login. check username or password";
+	String ERROR_MESSAGE_IMAGE_ABSENCE = "image file is absent";
+	String ERROR_MESSAGE_CATEGORY_ID_ABSENCE = "category id is absent";
+	String ERROR_MESSAGE_DURATION_HOUR_ABSENCE = "duration hour is absent";
+	String ERROR_MESSAGE_TAG_NAMES_ABSENCE = "tag names are absent";
+	String ERROR_MESSAGE_DESCRIPTION_ABSENCE = "description is absent";
+	String ERROR_MESSAGE_NONEXISTENT_CATEGORY_ID = "category id does not exist. can not find from database";
+	String ERROR_MESSAGE_LOGIN_REQUIRED = "you should login if you want to use this API";
+	String ERROR_MESSAGE_INVALID_JSON_STRING = "json in post parameter is not valid. Format the data";
+
+	String ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED = "Check button isn't selected, so you should check this 'check button' to sign up";
 }

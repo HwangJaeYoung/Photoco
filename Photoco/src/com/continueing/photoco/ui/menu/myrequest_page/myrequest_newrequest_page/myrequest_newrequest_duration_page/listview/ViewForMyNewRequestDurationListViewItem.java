@@ -39,7 +39,7 @@ public class ViewForMyNewRequestDurationListViewItem extends AbstractViewForList
 	
 	public static interface IMyRequestDurationItem extends IListViewItem
 	{
-		public int getHour( );
+		public String getHour( );
 		public String getHourText( );
 		public String getEndDate( );
 	}

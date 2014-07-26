@@ -1,12 +1,13 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page;
 
-import java.util.Calendar;
-
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private TextView tv_requestNewDurationDetailDay;
 	private TextView tv_requestNewDurationDetailCalendar;
 	private TextView tv_requestNewCategoryDetail;
+	private EditText et_requestNew;
 	
 	public ViewForMyNewRequestActivity(Context context, Controller aController) {
 		super(context);
@@ -50,6 +52,8 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewDurationDetailDay = (TextView)findViewById(R.id.tv_request_new_duration_detail_day);
 		tv_requestNewDurationDetailCalendar = (TextView)findViewById(R.id.tv_request_new_duration_detail_calendar);
 		tv_requestNewCategoryDetail = (TextView)findViewById(R.id.tv_request_new_category_detail);
+	
+		et_requestNew = (EditText)findViewById(R.id.et_request_new);
 	}
 
 	@Override
@@ -88,6 +92,17 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 				controller.onSelectCategory();
 			}
 		});
+		
+		et_requestNew.addTextChangedListener(new TextWatcher() {	
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) { }
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+			
+			@Override
+			public void afterTextChanged(Editable s) { }
+		});
 	}
 	
 	public void selectedLocation(String aLocation)
@@ -103,6 +118,11 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	public void selectedImage(Bitmap aBitmap)
 	{
 		bt_imageView.setImageBitmap(aBitmap);
+	}
+	
+	public String getDescription( )
+	{
+		return et_requestNew.getText().toString();
 	}
 	
 	public void selectedDuration(String aDuration, String aEndDate)

@@ -3,6 +3,9 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,8 +15,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.continueing.photoco.reuse.etc.ErrorCodeList;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.RequestsRequest;
 import com.continueing.photoco.ui.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity;
@@ -24,6 +32,11 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	public static final int REQUEST_PICK_IMAGE = 1;
 	public static final int REQUEST_PICK_DURATION = 2;
 	public static final int REQUEST_PICK_CATEGORY = 3;
+	private String locationId;
+	private String categoryId;
+	private String durationHour;
+	private String description;
+	private Bitmap bitmap;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -38,9 +51,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 
 	@Override
 	public void onSubmit() {
-		// 여기서 tag, category, locatino같은것을 인텐트로 던져주고
-		setResult(Activity.RESULT_OK);
-		finish( );
+		addMyRequestItemToServer( );
 	}
 
 	@Override
@@ -72,7 +83,10 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		if(requestCode == REQUEST_CODE_GET_QUERY)
 		{
 			if(resultCode == Activity.RESULT_OK)
+			{
 				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATION_ACTIVITY_KEY));
+				locationId = data.getStringExtra(LocationActivity.PARAM_PRIMARY_KEY);
+			}
 		}
 		
 		else if(requestCode == REQUEST_PICK_IMAGE)
@@ -80,10 +94,14 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				 Uri imageUri = data.getData();
-                 Bitmap bitmap;
+				 String path = imageUri.getPath();
+				 String filename = path.substring(path.lastIndexOf("/") + 1, path.length());
+                 Log.i("js", filename);
+                 
                  try {
 					bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
 					view.selectedImage(bitmap);     
+					
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -98,6 +116,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			{
 				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
 						data.getStringExtra(MyNewRequestDurationActivity.PARAM_END_DATE_KEY));
+				durationHour = data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_KEY);
 			}
 		}
 		
@@ -106,8 +125,64 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
+				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
 			}
+		}	
+	}
+	
+	private void addMyRequestItemToServer( )
+	{
+		RequestsRequest request = new RequestsRequest(getApplicationContext());
+		description = view.getDescription();
+		String[] tag = new String[2];
+		tag[0] = "kk"; tag[1] = "hoho";
+		
+		try {
+			request.setMyRequestItem(locationId, categoryId, durationHour, tag, description, bitmap, submitListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	HttpRequester.NetworkResponseListener submitListener = new HttpRequester.NetworkResponseListener( ){
+
+		@Override
+		public void onSuccess(JSONObject jsonObject) {
+		
+			finish( );
 		}
 		
-	}
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) {
+			switch(errorCode)
+			{
+				case 16:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_IMAGE_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 17:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_CATEGORY_ID_ABSENCE , Toast.LENGTH_SHORT).show();
+					break;
+				case 18:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_DURATION_HOUR_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 19:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_TAG_NAMES_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 20:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_DESCRIPTION_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 21:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_NONEXISTENT_CATEGORY_ID, Toast.LENGTH_SHORT).show();
+					break;
+				case 22:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_LOGIN_REQUIRED, Toast.LENGTH_SHORT).show();
+					break;
+				case 23:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_INVALID_JSON_STRING, Toast.LENGTH_SHORT).show();
+					break;
+				default:
+					break;
+			}		
+		}
+	};
 }
