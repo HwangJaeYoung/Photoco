@@ -12,14 +12,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.continueing.photoco.domain.Category;
 import com.continueing.photoco.reuse.network.CategoryRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
-import com.continueing.photoco.ui.location_page.listview.ViewForLocationListViewItem.ILocationItem;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem;
 
 public class MyNewRequestCategoryActivity extends ActionBarActivity implements ViewForMyRequestCategoryActivity.Controller{
@@ -34,7 +32,7 @@ public class MyNewRequestCategoryActivity extends ActionBarActivity implements V
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
-		view = new ViewForMyRequestCategoryActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
+		view = new ViewForMyRequestCategoryActivity(getApplicationContext(), this);
 		setContentView(view.getRoot());
 		searchCategoryFromServer( );
 	}
@@ -85,8 +83,7 @@ public class MyNewRequestCategoryActivity extends ActionBarActivity implements V
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}				
-			}
-			
+			}	
 			view.resetCategory(categorys);
 		}
 

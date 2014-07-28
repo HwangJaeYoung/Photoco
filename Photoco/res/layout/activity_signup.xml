@@ -250,7 +250,7 @@
             android:layout_width="330dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:background="@drawable/bt_create_account"
+            android:background="@drawable/bt_sign_in"
             android:text="Sign up"
             android:textColor="#fff"
             android:textSize="20sp" />

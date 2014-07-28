@@ -1,9 +1,12 @@
 package com.continueing.photoco.reuse.network;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 
 import com.loopj.android.http.RequestParams;
 
@@ -22,7 +25,7 @@ public class RequestsRequest {
 		this.context = aContext;
 	}
 	
-	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, String[] aTag, String aDescription, Bitmap aBitmap, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
+	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, JSONArray aTag, String aDescription, File aFilePath, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
 	{
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_LOCATION_ID, aLocationId);
@@ -30,7 +33,11 @@ public class RequestsRequest {
 		requestParams.put(PARAM_DURATION_HOUR, aDurationHour);
 		requestParams.put(PARAM_TAG_NAMES, aTag);
 		requestParams.put(PARAM_DESCRIPTION, aDescription);
-		requestParams.put(PARAM_IMAGE, "asdf");
+		try {
+			requestParams.put(PARAM_IMAGE, aFilePath);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

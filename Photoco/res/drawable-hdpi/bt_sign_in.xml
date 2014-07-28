@@ -3,5 +3,5 @@
 
     <item android:drawable="@color/bt_signin_pressed" android:state_pressed="true"/>
     <item android:drawable="@color/bt_signin_default" android:state_enabled="true"/>
- 
+ 	<item android:drawable="@color/bt_signin_disabled" android:state_enabled="false"/>
 </selector>

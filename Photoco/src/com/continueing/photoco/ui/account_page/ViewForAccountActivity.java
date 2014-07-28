@@ -108,6 +108,7 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 	
 	public void releaseSubmitButton()
     {
+		
         this.bt_submit.release();
     }
 

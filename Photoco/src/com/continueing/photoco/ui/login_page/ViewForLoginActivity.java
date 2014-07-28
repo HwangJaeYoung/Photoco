@@ -48,7 +48,7 @@ public class ViewForLoginActivity extends AbstractViewForActivity {
 		bt_signIn.addViewToHold(et_password);
 		bt_signIn.addViewToHold(bt_createAccount);
 		bt_signIn.addViewToHold(bt_forgotPassword);
-		bt_signIn.setBackgroundColor(Color.parseColor("#dde6f2"));
+		//bt_signIn.setBackgroundColor(Color.parseColor("#dde6f2"));
 	}
 
 	@Override
@@ -111,14 +111,14 @@ public class ViewForLoginActivity extends AbstractViewForActivity {
 	public void makeLoginDisable() // signIn버튼을 비활성화 시킨다.
 	{	
 		bt_signIn.setEnabled(false);
-		bt_signIn.setBackgroundColor(Color.parseColor("#dde6f2"));
+		//bt_signIn.setBackgroundColor(Color.parseColor("#dde6f2"));
 	}
 	
 	public void makeLoginEnable() // signIn버튼을 활성화 시킨다.
 	{
 		// 활성화 되었을 때 버튼의 색을 바꾸고 클릭 가능한 상태로 한다.
 		bt_signIn.setEnabled(true);
-		bt_signIn.setBackgroundColor(Color.parseColor("#62caf7"));
+		//bt_signIn.setBackgroundColor(Color.parseColor("#62caf7"));
 	}
 	
 	public void releaseSubmitButton()

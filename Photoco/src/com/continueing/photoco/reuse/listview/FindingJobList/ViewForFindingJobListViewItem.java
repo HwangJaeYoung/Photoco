@@ -38,12 +38,6 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		bt_tagSecond =(ImageView)findViewById_(R.id.bt_list_tag_second);
 		bt_tagThird =  (ImageView)findViewById_(R.id.bt_list_tag_third);
 		tv_leftTime = (TextView)findViewById_(R.id.tv_left_time);
-		
-		Typeface type = Typeface.createFromAsset(getContext().getAssets(), "BreeSerif_Reg.otf");
-		
-		tv_category.setTypeface(type);
-		tv_name.setTypeface(type);
-		tv_leftTime.setTypeface(type);
 	}
 	
 	// 여기서는 아이템내에서 따로 발생하는 이벤트가 없다.

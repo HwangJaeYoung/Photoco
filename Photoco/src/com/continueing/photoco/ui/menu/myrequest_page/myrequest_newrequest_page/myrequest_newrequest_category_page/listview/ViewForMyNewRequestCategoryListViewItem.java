@@ -27,10 +27,7 @@ public class ViewForMyNewRequestCategoryListViewItem extends AbstractViewForList
 	}
 
 	@Override
-	protected void setEvents() {
-		
-		
-	}
+	protected void setEvents() { }
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {

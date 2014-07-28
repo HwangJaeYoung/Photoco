@@ -12,14 +12,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.listview.Staggered.StaggeredAdapter;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
+import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ArrayAdapterStaggeredGridView;
+import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
+import com.loopj.android.image.SmartImageView;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 
 public class ViewForMyPhotoFragment extends AbstractViewForFragment implements OnItemClickListener {
 
-	private StaggeredAdapter adapter;
+	private ArrayAdapterStaggeredGridView adapter;
 	private StaggeredGridView gridView;
 	private Controller controller;
 	private Button bt_myphotoNew;
@@ -42,10 +44,12 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		int margin = getContext().getResources().getDimensionPixelSize(R.dimen.margin);
 		gridView.setItemMargin(margin); // set the GridView margin
 		gridView.setPadding(margin, 0, margin, 0); // have the margin on the sides as well 
-		adapter = new StaggeredAdapter(getContext( ), R.id.imageView1);
+		// adapter = new StaggeredAdapter(getContext( ), R.id.imageView1);
+		adapter = new ArrayAdapterStaggeredGridView(getContext( ), 0);
 		
 		gridView.setAdapter(adapter);
 		
+	
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
@@ -53,7 +57,7 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section4);
 	}
 	
-	public void addItem(ArrayList<String> aList)
+	public void addItem(ArrayList<IStaggredGridViewListItem> aList)
 	{
 		adapter.addAll(aList);
 	}

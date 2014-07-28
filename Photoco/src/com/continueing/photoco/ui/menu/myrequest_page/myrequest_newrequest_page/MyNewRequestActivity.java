@@ -1,13 +1,17 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,7 +19,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -36,7 +39,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	private String categoryId;
 	private String durationHour;
 	private String description;
-	private Bitmap bitmap;
+	private File filePath;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -94,12 +97,12 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				 Uri imageUri = data.getData();
-				 String path = imageUri.getPath();
-				 String filename = path.substring(path.lastIndexOf("/") + 1, path.length());
-                 Log.i("js", filename);
-                 
+
+				 String realpath = getRealPathFromUri(this, imageUri);
+				 filePath = new File(realpath);
+				 	 
                  try {
-					bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                	 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
 					view.selectedImage(bitmap);     
 					
 				} catch (FileNotFoundException e) {
@@ -130,15 +133,37 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		}	
 	}
 	
+	public static String getRealPathFromUri(Context context, Uri contentUri) {
+	    Cursor cursor = null;
+	    try {
+	        String[] proj = { MediaStore.Images.Media.DATA };
+	        cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+	        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+	        cursor.moveToFirst();
+	        return cursor.getString(column_index);
+	    } finally {
+	        if (cursor != null) {
+	            cursor.close();
+	        }
+	    }
+	}
+	
 	private void addMyRequestItemToServer( )
 	{
 		RequestsRequest request = new RequestsRequest(getApplicationContext());
 		description = view.getDescription();
-		String[] tag = new String[2];
-		tag[0] = "kk"; tag[1] = "hoho";
+
+		JSONArray tag = new JSONArray( );
 		
 		try {
-			request.setMyRequestItem(locationId, categoryId, durationHour, tag, description, bitmap, submitListener);
+			tag.put(0, "kk");
+			tag.put(1, "hh");
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
+			request.setMyRequestItem(locationId, categoryId, durationHour, tag, description, filePath, submitListener);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -148,7 +173,6 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
-		
 			finish( );
 		}
 		

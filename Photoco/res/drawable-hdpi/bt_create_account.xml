@@ -3,5 +3,4 @@
 
     <item android:drawable="@color/bt_create_account_default" android:state_pressed="false"/>
     <item android:drawable="@color/bt_create_account_pressed" android:state_pressed="true"/>
-
 </selector>
