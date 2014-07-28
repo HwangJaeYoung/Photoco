@@ -20,10 +20,11 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private Controller controller;
 	private Button bt_requestNewSubmit;
 	private ImageView bt_imageView;
-	private RelativeLayout rl_requestLocation;
 	private TextView tv_requestNewLocationDetail;
+	private RelativeLayout rl_requestLocation;
 	private RelativeLayout rl_selectDuration;
 	private RelativeLayout rl_selectCategory;
+	private RelativeLayout rl_requestTag;
 	private TextView tv_requestNewDurationDetailDay;
 	private TextView tv_requestNewDurationDetailCalendar;
 	private TextView tv_requestNewCategoryDetail;
@@ -48,6 +49,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		rl_selectCategory = (RelativeLayout)findViewById(R.id.rl_request_cateory);
 		rl_requestLocation = (RelativeLayout)findViewById(R.id.rl_request_location);
 		rl_selectDuration = (RelativeLayout)findViewById(R.id.rl_select_duration);
+		rl_requestTag = (RelativeLayout)findViewById(R.id.rl_request_tag);
 		
 		tv_requestNewDurationDetailDay = (TextView)findViewById(R.id.tv_request_new_duration_detail_day);
 		tv_requestNewDurationDetailCalendar = (TextView)findViewById(R.id.tv_request_new_duration_detail_calendar);
@@ -90,6 +92,13 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 			@Override
 			public void onClick(View v) {
 				controller.onSelectCategory();
+			}
+		});
+		
+		rl_requestTag.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View v) {
+				controller.onSelectTag();
 			}
 		});
 		
@@ -136,6 +145,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		public void onSubmit( );
 		public void onLocationSelect( );
 		public void onSelectGallery( );
+		public void onSelectTag( );
 		public void onSelectCategory( );
 		public void onSelectDuration();
 	}

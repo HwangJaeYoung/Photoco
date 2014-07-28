@@ -21,6 +21,7 @@
     <color name="bt_job_detail_hide_preesed">#d23f3f</color>
     <color name="bt_job_detail_participate_default">#62caf7</color>
     <color name="bt_job_detail_participate_pressed">#3aaada</color>
-    <color name="layout_request_tag_default">#fff</color>
+    
+    <color name="layout_request_tag_default">#ffffff</color>
 	<color name="layout_request_tag_pressed">#e8eef6</color>
 </resources>

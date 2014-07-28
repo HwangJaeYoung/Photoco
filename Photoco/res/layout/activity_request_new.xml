@@ -23,11 +23,10 @@
                 android:id="@+id/et_request_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Description."
                 android:background="#fff"
-                android:textColorHint="#b0bac8"
+                android:hint="Description."
                 android:textColor="#323a45"
-                 />
+                android:textColorHint="#b0bac8" />
         </LinearLayout>
 
         <RelativeLayout
@@ -58,6 +57,7 @@
         android:orientation="vertical" >
 
         <RelativeLayout
+            android:id="@+id/rl_request_tag"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:orientation="horizontal" >
@@ -103,10 +103,10 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_request_cateory"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:orientation="horizontal"
-            android:id="@+id/rl_request_cateory" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:id="@+id/iv_request_new_category"

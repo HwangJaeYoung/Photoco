@@ -20,10 +20,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.listview.ProgressBarFooter;
 import com.continueing.photoco.reuse.listview.FindingJobList.ArrayAdapterForFindingJobListFragment;
 import com.continueing.photoco.reuse.listview.FindingJobList.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
+import com.continueing.photoco.reuse.widget.ProgressBarFooter;
 
 public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	private ProgressBarFooter progressBarFooter;

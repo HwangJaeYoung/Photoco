@@ -28,13 +28,16 @@ import com.continueing.photoco.reuse.network.RequestsRequest;
 import com.continueing.photoco.ui.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.MyNewRequestTagActivity;
 
 public class MyNewRequestActivity extends ActionBarActivity implements ViewForMyNewRequestActivity.Controller{
 	
-	public static final int REQUEST_CODE_GET_QUERY = 0;
+	public static final int REQUEST_PICK_LOCATION = 0;
 	public static final int REQUEST_PICK_IMAGE = 1;
 	public static final int REQUEST_PICK_DURATION = 2;
 	public static final int REQUEST_PICK_CATEGORY = 3;
+	public static final int REQUEST_PICK_TAG = 4;
+	
 	private String locationId;
 	private String categoryId;
 	private String durationHour;
@@ -60,7 +63,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	@Override
 	public void onLocationSelect() {
 		Intent intent = new Intent(this, LocationActivity.class);
-		startActivityForResult(intent, REQUEST_CODE_GET_QUERY); 	
+		startActivityForResult(intent, REQUEST_PICK_LOCATION); 	
 	}
 
 	@Override
@@ -82,8 +85,14 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	}
 	
 	@Override
+	public void onSelectTag() {
+		Intent intent = new Intent(this, MyNewRequestTagActivity.class);
+		startActivityForResult(intent, REQUEST_PICK_TAG); 
+	}
+	
+	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_CODE_GET_QUERY)
+		if(requestCode == REQUEST_PICK_LOCATION)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{

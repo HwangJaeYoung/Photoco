@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/lv_request_new_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+        <ImageButton
+            android:id="@+id/ib_myrequest_new_add_tag"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@drawable/layout_request_tag_new"
+            android:layout_below="@id/lv_request_new_tag"
+            android:src="@drawable/tag_add_ic" />
+    </RelativeLayout>
+
+</LinearLayout>
