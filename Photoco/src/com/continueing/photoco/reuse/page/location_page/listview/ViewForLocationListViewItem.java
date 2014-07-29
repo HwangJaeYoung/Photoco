@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.location_page.listview;
+package com.continueing.photoco.reuse.page.location_page.listview;
 
 import android.content.Context;
 import android.view.View;
@@ -8,8 +8,8 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
-public class ViewForLocationListViewItem extends AbstractViewForListViewItem {
-	
+public class ViewForLocationListViewItem  extends AbstractViewForListViewItem{
+
 	private TextView tv_location;
 	private ILocationItem iLocationItem;
 	

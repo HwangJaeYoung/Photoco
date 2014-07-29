@@ -20,10 +20,12 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 	private EditText et_settingPassword;
 	private EditText et_settingConfrimPassword;
 	private String location;
+	private String userName;
 	
-	public ViewForSettingActivity(Context context, Controller aController) {
+	public ViewForSettingActivity(Context context, String aUserName, Controller aController) {
 		super(context);
 		controller = aController;
+		userName = aUserName;
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package com.continueing.photoco.ui.setting_page;
 
-import com.continueing.photoco.ui.location_page.LocationActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,9 +9,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.continueing.photoco.reuse.page.location_page.LocationActivity;
+import com.continueing.photoco.ui.MainActivity;
+
 public class SettingActivity extends ActionBarActivity implements ViewForSettingActivity.Controller{
 	
 	private ViewForSettingActivity view;
+	private String userName;
 	public static final int REQUEST_CODE_GET_QUERY = 0;
 	
 	@Override
@@ -21,7 +23,8 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
-		view = new ViewForSettingActivity(getApplicationContext( ),this);
+		userName = getIntent( ).getStringExtra(MainActivity.PARAM_MAINACTIVITY_USERNAME_KEY);
+		view = new ViewForSettingActivity(getApplicationContext( ), userName, this);
 		setContentView(view.getRoot());
 	}
 
@@ -48,7 +51,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 		if(requestCode == REQUEST_CODE_GET_QUERY)
 			if(resultCode == Activity.RESULT_OK)
 			{
-				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATION_ACTIVITY_KEY));
+				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 			}
 	}
 

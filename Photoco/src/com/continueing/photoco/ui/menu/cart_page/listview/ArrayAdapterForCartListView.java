@@ -1,6 +1,7 @@
 package com.continueing.photoco.ui.menu.cart_page.listview;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;

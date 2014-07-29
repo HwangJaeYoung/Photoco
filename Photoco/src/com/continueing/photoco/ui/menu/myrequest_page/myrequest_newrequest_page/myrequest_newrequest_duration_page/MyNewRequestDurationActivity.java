@@ -18,7 +18,6 @@ import com.continueing.photoco.domain.Duration;
 import com.continueing.photoco.reuse.network.DurationRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
 
 public class MyNewRequestDurationActivity extends ActionBarActivity implements ViewForMyNewRequestDurationActivity.Controller{

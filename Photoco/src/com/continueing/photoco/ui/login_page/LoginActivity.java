@@ -20,6 +20,8 @@ import com.continueing.photoco.ui.account_page.AccountActivity;
 public class LoginActivity extends Activity implements ViewForLoginActivity.Controller {
 	private ViewForLoginActivity view;
 	private BackPressCloseHandler backPressCloseHandler;
+	private String userName;
+	public static final String PARAM_LOGINACTIVITY_USERNAME_KEY ="username";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 	@Override
 	public void onSingIn(String aUserName, String aPassword) {
 		UsersRequest userLoginRequest = new UsersRequest(getApplicationContext());
+		userName = aUserName; // Setting Activity로 보낼 유저 이름
 		try {
 			userLoginRequest.login(aUserName, aPassword, loginListener);
 		} catch (JSONException e) {
@@ -61,6 +64,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 		public void onSuccess(JSONObject jsonObject) {
 			view.releaseSubmitButton();
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+			intent.putExtra(PARAM_LOGINACTIVITY_USERNAME_KEY, userName);
 			startActivity(intent);
 			finish( );
 		}	

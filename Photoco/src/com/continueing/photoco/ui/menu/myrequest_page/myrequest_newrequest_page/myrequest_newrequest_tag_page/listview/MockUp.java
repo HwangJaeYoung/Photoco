@@ -3,23 +3,16 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class MockUp implements IMyRequestTagItem{
-
+	
+	private String tagText = "";
+	
 	@Override
-	public String getHour() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTagText() {
+		return tagText;
 	}
 
 	@Override
-	public String getHourText() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setTagText(String aTagText) {
+		tagText = aTagText;
 	}
-
-	@Override
-	public String getEndDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

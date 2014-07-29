@@ -43,7 +43,7 @@
             android:theme="@style/Theme.AppCompat" >
         </activity>
         <activity
-            android:name="com.continueing.photoco.ui.location_page.LocationActivity"
+            android:name="com.continueing.photoco.reuse.page.location_page.LocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat" >
         </activity>

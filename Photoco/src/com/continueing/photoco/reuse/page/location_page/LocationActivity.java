@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.location_page;
+package com.continueing.photoco.reuse.page.location_page;
 
 import java.util.ArrayList;
 
@@ -18,12 +18,12 @@ import com.continueing.photoco.domain.Location;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.LocationRequest;
-import com.continueing.photoco.ui.location_page.listview.ViewForLocationListViewItem.ILocationItem;
+import com.continueing.photoco.reuse.page.location_page.listview.ViewForLocationListViewItem.ILocationItem;
 
 public class LocationActivity extends ActionBarActivity implements ViewForLocationActivity.Controller {
 	private ViewForLocationActivity view;
 	private ArrayList<ILocationItem> locations;
-	public static String PARAM_LOCATION_ACTIVITY_KEY ="location";
+	public static String PARAM_LOCATIONACTIVITY_LOCATION_KEY ="location";
 	public static final String PARAM_PRIMARY_KEY = "primaryKey";
 	
 	@Override
@@ -89,7 +89,7 @@ public class LocationActivity extends ActionBarActivity implements ViewForLocati
 	public void onLocationSelected(int aPosition) {
 		ILocationItem item = locations.get(aPosition);
 		Intent intent = new Intent( );
-		intent.putExtra(PARAM_LOCATION_ACTIVITY_KEY, item.getDescription());
+		intent.putExtra(PARAM_LOCATIONACTIVITY_LOCATION_KEY, item.getDescription());
 		intent.putExtra(PARAM_PRIMARY_KEY, item.getId());
 		setResult(Activity.RESULT_OK, intent);
 		finish( );	

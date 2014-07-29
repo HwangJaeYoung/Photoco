@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.location_page;
+package com.continueing.photoco.reuse.page.location_page;
 
 import java.util.ArrayList;
 
@@ -13,8 +13,8 @@ import android.widget.ListView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
-import com.continueing.photoco.ui.location_page.listview.ArrayAdapterForLocationListView;
-import com.continueing.photoco.ui.location_page.listview.ViewForLocationListViewItem.ILocationItem;
+import com.continueing.photoco.reuse.page.location_page.listview.ArrayAdapterForLocationListView;
+import com.continueing.photoco.reuse.page.location_page.listview.ViewForLocationListViewItem.ILocationItem;
 
 public class ViewForLocationActivity extends AbstractViewForActivity {
 

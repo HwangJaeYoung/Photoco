@@ -1,7 +1,6 @@
 package com.continueing.photoco.ui.login_page;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -48,7 +47,6 @@ public class ViewForLoginActivity extends AbstractViewForActivity {
 		bt_signIn.addViewToHold(et_password);
 		bt_signIn.addViewToHold(bt_createAccount);
 		bt_signIn.addViewToHold(bt_forgotPassword);
-		//bt_signIn.setBackgroundColor(Color.parseColor("#dde6f2"));
 	}
 
 	@Override

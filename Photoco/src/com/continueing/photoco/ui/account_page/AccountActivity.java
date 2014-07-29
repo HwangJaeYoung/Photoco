@@ -13,7 +13,8 @@ import android.widget.Toast;
 import com.continueing.photoco.reuse.etc.ErrorCodeList;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.UsersRequest;
-import com.continueing.photoco.ui.location_page.LocationActivity;
+import com.continueing.photoco.reuse.page.location_page.LocationActivity;
+
 
 public class AccountActivity extends Activity implements ViewForAccountActivity.Controller{
 	private ViewForAccountActivity view;
@@ -42,7 +43,7 @@ public class AccountActivity extends Activity implements ViewForAccountActivity.
 		if(requestCode == REQUEST_CODE_GET_QUERY)
 			if(resultCode == Activity.RESULT_OK)
 			{
-				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATION_ACTIVITY_KEY));
+				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 				primaryKey = data.getStringExtra(LocationActivity.PARAM_PRIMARY_KEY); // DB에서 primaryKey로 사용함.
 			}
 	}

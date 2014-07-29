@@ -21,8 +21,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.ui.login_page.LoginActivity;
 
 public class NavigationDrawerFragment extends Fragment {
 
@@ -35,12 +37,15 @@ public class NavigationDrawerFragment extends Fragment {
 	private int mCurrentSelectedPosition = 0;
 	private Button bt_setting;
 	private View root;
+	private TextView tv_drawableName;
+	private String userName;
 
 	public NavigationDrawerFragment() { }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		userName = getActivity( ).getIntent().getStringExtra(LoginActivity.PARAM_LOGINACTIVITY_USERNAME_KEY);
 		
 		if (savedInstanceState != null) // 저장되어 있던 선택된 항목의 번호를 줌. 
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -60,6 +65,9 @@ public class NavigationDrawerFragment extends Fragment {
 		// 해당 프레그먼트의 뷰를 inflate한다.(드로워 메뉴)
 		root = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
 		mDrawerListView = (ListView) root.findViewById(R.id.lv_navigation_drawer_menu);
+		
+		tv_drawableName = (TextView)root.findViewById(R.id.tv_drawable_name);
+		tv_drawableName.setText(userName);
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override

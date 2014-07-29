@@ -25,7 +25,7 @@ public class RequestsRequest {
 		this.context = aContext;
 	}
 	
-	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, JSONArray aTag, String aDescription, File aFilePath, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
+	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, JSONArray aTag, String aDescription, File aFile, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
 	{
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_LOCATION_ID, aLocationId);
@@ -34,7 +34,7 @@ public class RequestsRequest {
 		requestParams.put(PARAM_TAG_NAMES, aTag);
 		requestParams.put(PARAM_DESCRIPTION, aDescription);
 		try {
-			requestParams.put(PARAM_IMAGE, aFilePath);
+			requestParams.put(PARAM_IMAGE, aFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

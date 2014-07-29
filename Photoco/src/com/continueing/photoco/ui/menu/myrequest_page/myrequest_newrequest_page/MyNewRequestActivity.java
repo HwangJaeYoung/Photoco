@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.continueing.photoco.reuse.etc.ErrorCodeList;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.RequestsRequest;
-import com.continueing.photoco.ui.location_page.LocationActivity;
+import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.MyNewRequestTagActivity;
@@ -96,7 +96,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
-				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATION_ACTIVITY_KEY));
+				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 				locationId = data.getStringExtra(LocationActivity.PARAM_PRIMARY_KEY);
 			}
 		}

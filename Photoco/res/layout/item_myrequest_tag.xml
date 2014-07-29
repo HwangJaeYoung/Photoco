@@ -19,7 +19,7 @@
             android:src="@drawable/tag_ic" />
 
         <EditText
-            android:id="@+id/tv_request_timeleft"
+            android:id="@+id/et_myrequest_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

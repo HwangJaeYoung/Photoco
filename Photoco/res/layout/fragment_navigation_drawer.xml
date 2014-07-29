@@ -25,7 +25,7 @@
                 android:src="@drawable/name_ic" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_drawable_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

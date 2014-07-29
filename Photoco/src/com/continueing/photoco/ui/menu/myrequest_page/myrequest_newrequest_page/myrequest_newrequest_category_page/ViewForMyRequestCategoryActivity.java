@@ -3,7 +3,6 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;

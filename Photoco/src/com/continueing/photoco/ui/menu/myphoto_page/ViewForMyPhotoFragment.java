@@ -15,7 +15,6 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ArrayAdapterStaggeredGridView;
 import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
-import com.loopj.android.image.SmartImageView;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 

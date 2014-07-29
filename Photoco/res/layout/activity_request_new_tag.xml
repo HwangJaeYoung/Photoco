@@ -13,16 +13,9 @@
         <ListView
             android:id="@+id/lv_request_new_tag"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent" >
         </ListView>
 
-        <ImageButton
-            android:id="@+id/ib_myrequest_new_add_tag"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:background="@drawable/layout_request_tag_new"
-            android:layout_below="@id/lv_request_new_tag"
-            android:src="@drawable/tag_add_ic" />
     </RelativeLayout>
 
 </LinearLayout>
