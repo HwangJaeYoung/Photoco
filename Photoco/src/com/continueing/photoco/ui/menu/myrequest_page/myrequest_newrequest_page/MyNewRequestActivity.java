@@ -3,6 +3,7 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +30,7 @@ import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.MyNewRequestTagActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class MyNewRequestActivity extends ActionBarActivity implements ViewForMyNewRequestActivity.Controller{
 	
@@ -137,6 +139,15 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
+				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
+			}
+		}
+
+		else if(requestCode == REQUEST_CODE_PICK_TAG)
+		{
+			if(resultCode == Activity.RESULT_OK)
+			{
+				view.selectedTag((ArrayList<IMyRequestTagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY));
 				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
 			}
 		}	

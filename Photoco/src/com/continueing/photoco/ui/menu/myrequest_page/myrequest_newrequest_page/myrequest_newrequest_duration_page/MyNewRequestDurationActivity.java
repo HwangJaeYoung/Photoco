@@ -88,9 +88,7 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 		Intent intent = new Intent( );
 		intent.putExtra(PARAM_HOUR_KEY, item.getHour());
 		intent.putExtra(PARAM_HOUR_TEXT_KEY, item.getHourText());
-		intent.putExtra(PARAM_END_DATE_KEY, item.getEndDate());
-		ArrayList<String> ar= new ArrayList<String>( );
-		
+		intent.putExtra(PARAM_END_DATE_KEY, item.getEndDate());		
 		setResult(Activity.RESULT_OK, intent);
 		finish( );	
 	}

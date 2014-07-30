@@ -2,20 +2,25 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 
 import java.util.ArrayList;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.continueing.photoco.R;
 import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class MyNewRequestTagActivity extends ActionBarActivity implements ViewForMyNewRequestTagActivity.Controller{
 	private ViewForMyNewRequestTagActivity view;
 	private ArrayList<IMyRequestTagItem> myrequestTagArrayList;
-	
+	public static final String PARAM_TAG_ARRAYLIST_KEY = "tagArrayList";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,5 +52,26 @@ public class MyNewRequestTagActivity extends ActionBarActivity implements ViewFo
 			Toast.makeText(getApplicationContext(), "can't add tag because you exceed 9 tags", Toast.LENGTH_SHORT).show( );
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.menu_myrequest_tag, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.item_menu_ok)
+		{
+			Intent intent = new Intent( );
+			intent.putExtra(PARAM_TAG_ARRAYLIST_KEY, myrequestTagArrayList);
+			setResult(Activity.RESULT_OK, intent);
+			finish( );	
+			return true;
+		}
+		else
+			return super.onOptionsItemSelected(item);
+	}
 	// ok버튼 눌렸을때 그떄 arraylist들을 넘기면 된다. 그것들은 jsonarray로 만들어야 하고 ;;
 }

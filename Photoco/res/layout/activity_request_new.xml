@@ -100,6 +100,15 @@
                 android:text="Input Tag"
                 android:textColor="#b0bac8"
                 android:textSize="18sp" />
+            <GirdView
+                android:id="@+id/examgrid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns = "auto_fit"
+                android:stretchMode ="columnWidth" >
+                
+            </GirdView>
+            
         </RelativeLayout>
 
         <RelativeLayout

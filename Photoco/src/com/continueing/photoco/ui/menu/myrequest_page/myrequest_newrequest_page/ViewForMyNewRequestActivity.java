@@ -1,5 +1,7 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.Editable;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 
@@ -140,6 +143,11 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	
+	public void selectedTag(ArrayList<IMyRequestTagItem> items)
+	{
+		
+		
+	}
 	public static interface Controller
 	{
 		public void onSubmit( );
