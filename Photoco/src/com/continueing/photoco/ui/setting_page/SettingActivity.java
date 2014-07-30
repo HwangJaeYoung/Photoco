@@ -16,7 +16,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	
 	private ViewForSettingActivity view;
 	private String userName;
-	public static final int REQUEST_CODE_GET_QUERY = 0;
+	public static final int REQUEST_CODE_PICK_LOCATION = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	// 지역검색 액티비티가 종료되고 거기서 사용자가 선택한 지역을 받기위한 콜백 메소드
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_CODE_GET_QUERY)
+		if(requestCode == REQUEST_CODE_PICK_LOCATION)
 			if(resultCode == Activity.RESULT_OK)
 			{
 				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
@@ -58,6 +58,6 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	@Override
 	public void onLocationSelect() {
 		Intent intent = new Intent(this, LocationActivity.class);
-		startActivityForResult(intent, REQUEST_CODE_GET_QUERY); 		
+		startActivityForResult(intent, REQUEST_CODE_PICK_LOCATION); 		
 	}
 }

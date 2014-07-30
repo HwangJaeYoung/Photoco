@@ -20,7 +20,11 @@ public abstract class AbstractArrayAdapter<T extends IListViewItem> extends Arra
 		this.position = position;
 		// getInstance의 용도는 ListView의 아이템 하나를 가지고 오는 역할이다.
 		if (abstractViewForListViewItem == null)
+		{
 			abstractViewForListViewItem = getInstance();
+			Log.i("getView", "getView");
+		}
+		
 
 		// 새로운 뷰이던 기존 뷰이던 간에 뷰에 데이터를 바꾸거나 채워야 하기 때문에 구현 해 놓음.
 		abstractViewForListViewItem.setData(getItem(position));

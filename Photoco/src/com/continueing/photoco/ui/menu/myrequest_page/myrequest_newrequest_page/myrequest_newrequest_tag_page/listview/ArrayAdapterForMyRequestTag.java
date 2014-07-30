@@ -13,7 +13,6 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequestTagItem> implements ViewForArrayAdapterForMyNewRequestTag.Controller{
 
 	private ArrayList<IMyRequestTagItem> items;
-	private ArrayList<ViewForArrayAdapterForMyNewRequestTag> views = new ArrayList<ViewForArrayAdapterForMyNewRequestTag>( );
 	
 	public ArrayAdapterForMyRequestTag(Context context, int resource) {
 		super(context, resource);
@@ -21,10 +20,8 @@ public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequest
 
 	@Override
 	public AbstractViewForListViewItem getInstance() {
-		Log.i("kkk", position+"");
-		ViewForArrayAdapterForMyNewRequestTag view =  new ViewForArrayAdapterForMyNewRequestTag(getContext(), items.get(position), this, position);
-		views.add(view);
-		return view;
+		Log.i("getView", "getView");
+		return  new ViewForArrayAdapterForMyNewRequestTag(getContext(),this,position);
 	}
 	
 	public void setArrayList(ArrayList<IMyRequestTagItem> item)
@@ -34,9 +31,9 @@ public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequest
 
 	@Override
 	public void removeTag(int position) {
-
 		Log.i("position", position+"");
 			items.remove(position);
-			notifyDataSetChanged();
+			clear();
+			addAll(items);
 	}
 }

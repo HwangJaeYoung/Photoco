@@ -40,13 +40,10 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
         list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg"));
         list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg"));
         
-        
         view.addItem(list);
         
         return view.getRoot( );
            
-       
-
         /*list.add("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg");
         list.add("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg");
         list.add("http://farm9.staticflickr.com/8060/8173387478_a117990661.jpg");
@@ -68,8 +65,6 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 		list.add("http://farm8.staticflickr.com/7251/7059629417_e0e96a4c46.jpg");
 		list.add("http://farm8.staticflickr.com/7084/6885444694_6272874cfc.jpg");  
         list.add("http://farm7.staticflickr.com/6101/6853156632_6374976d38_c.jpg");*/
-        
-        
     }
 	
 	@Override

@@ -11,10 +11,9 @@ public class ArrayAdapterForMyRequestDuration extends AbstractArrayAdapter<IMyRe
 	public ArrayAdapterForMyRequestDuration(Context context, int resource) {
 		super(context, resource);
 	}
-
+ 
 	@Override
 	public AbstractViewForListViewItem getInstance() {
 		return new ViewForMyNewRequestDurationListViewItem(getContext( ));
 	}
-
 }

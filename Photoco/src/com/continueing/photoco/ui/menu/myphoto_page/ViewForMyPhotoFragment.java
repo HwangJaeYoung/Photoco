@@ -48,8 +48,6 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		
 		gridView.setAdapter(adapter);
 		
-	
-		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
 		

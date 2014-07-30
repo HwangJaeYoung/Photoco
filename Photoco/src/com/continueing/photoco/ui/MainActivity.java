@@ -90,9 +90,4 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 	public void onBackPressed() {
 		backPressCloseHandler.onBackPressed();
 	}
-	
-	public String getUserName( )
-	{
-		return userName;
-	}
 }

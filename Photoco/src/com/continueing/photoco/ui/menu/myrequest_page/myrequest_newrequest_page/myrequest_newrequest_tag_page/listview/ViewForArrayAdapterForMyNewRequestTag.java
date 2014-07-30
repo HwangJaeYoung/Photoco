@@ -19,9 +19,8 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 	private Controller controller;
 	private int position;
 	
-	public ViewForArrayAdapterForMyNewRequestTag(Context context, IMyRequestTagItem item, Controller aController, int position) {
+	public ViewForArrayAdapterForMyNewRequestTag(Context context, Controller aController, int position) {
 		super(context);
-		items = item;
 		controller = aController;
 		this.position = position;
 	}
@@ -45,25 +44,12 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 				controller.removeTag(position);
 			}
 		});	
-		
-		et_myrequestTag.addTextChangedListener(new TextWatcher() {	
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				items.setTagText(et_myrequestTag.getText().toString());
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-			
-			@Override
-			public void afterTextChanged(Editable s) { }
-		});
 	}
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
-	
-
+		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
+		et_myrequestTag.setText(iMyRequestTagItem.getTagText());
 	}
 	
 	public void removeSetPosition(int aposition)

@@ -32,11 +32,11 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 
 public class MyNewRequestActivity extends ActionBarActivity implements ViewForMyNewRequestActivity.Controller{
 	
-	public static final int REQUEST_PICK_LOCATION = 0;
-	public static final int REQUEST_PICK_IMAGE = 1;
-	public static final int REQUEST_PICK_DURATION = 2;
-	public static final int REQUEST_PICK_CATEGORY = 3;
-	public static final int REQUEST_PICK_TAG = 4;
+	public static final int REQUEST_CODE_PICK_LOCATION = 0;
+	public static final int REQUEST_CODE_PICK_IMAGE = 1;
+	public static final int REQUEST_CODE_PICK_DURATION = 2;
+	public static final int REQUEST_CODE_PICK_CATEGORY = 3;
+	public static final int REQUEST_CODE_PICK_TAG = 4;
 	
 	private String locationId;
 	private String categoryId;
@@ -63,36 +63,36 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	@Override
 	public void onLocationSelect() {
 		Intent intent = new Intent(this, LocationActivity.class);
-		startActivityForResult(intent, REQUEST_PICK_LOCATION); 	
+		startActivityForResult(intent, REQUEST_CODE_PICK_LOCATION); 	
 	}
 
 	@Override
 	public void onSelectGallery() {
 		Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		startActivityForResult(pickImageIntent, REQUEST_PICK_IMAGE);		
+		startActivityForResult(pickImageIntent, REQUEST_CODE_PICK_IMAGE);		
 	}
 
 	@Override
 	public void onSelectDuration() {
 		Intent intent = new Intent(this, MyNewRequestDurationActivity.class);
-		startActivityForResult(intent, REQUEST_PICK_DURATION); 
+		startActivityForResult(intent, REQUEST_CODE_PICK_DURATION); 
 	}
 	
 	@Override
 	public void onSelectCategory() {
 		Intent intent = new Intent(this, MyNewRequestCategoryActivity.class);
-		startActivityForResult(intent, REQUEST_PICK_CATEGORY); 
+		startActivityForResult(intent, REQUEST_CODE_PICK_CATEGORY); 
 	}
 	
 	@Override
 	public void onSelectTag() {
 		Intent intent = new Intent(this, MyNewRequestTagActivity.class);
-		startActivityForResult(intent, REQUEST_PICK_TAG); 
+		startActivityForResult(intent, REQUEST_CODE_PICK_TAG); 
 	}
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_PICK_LOCATION)
+		if(requestCode == REQUEST_CODE_PICK_LOCATION)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
@@ -101,7 +101,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			}
 		}
 		
-		else if(requestCode == REQUEST_PICK_IMAGE)
+		else if(requestCode == REQUEST_CODE_PICK_IMAGE)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
@@ -122,7 +122,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			}
 		}
 		
-		else if (requestCode == REQUEST_PICK_DURATION)
+		else if (requestCode == REQUEST_CODE_PICK_DURATION)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
@@ -132,7 +132,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			}
 		}
 		
-		else if(requestCode == REQUEST_PICK_CATEGORY)
+		else if(requestCode == REQUEST_CODE_PICK_CATEGORY)
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
