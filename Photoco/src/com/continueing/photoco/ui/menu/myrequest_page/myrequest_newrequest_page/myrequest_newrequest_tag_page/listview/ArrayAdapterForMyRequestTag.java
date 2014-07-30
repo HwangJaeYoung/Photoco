@@ -20,8 +20,7 @@ public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequest
 
 	@Override
 	public AbstractViewForListViewItem getInstance() {
-		Log.i("getView", "getView");
-		return  new ViewForArrayAdapterForMyNewRequestTag(getContext(),this,position);
+		return  new ViewForArrayAdapterForMyNewRequestTag(getContext(), this, position);
 	}
 	
 	public void setArrayList(ArrayList<IMyRequestTagItem> item)
@@ -30,9 +29,8 @@ public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequest
 	}
 
 	@Override
-	public void removeTag(int position) {
-		Log.i("position", position+"");
-			items.remove(position);
+	public void removeTag(int aPosition) {
+			items.remove(aPosition);
 			clear();
 			addAll(items);
 	}

@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
    <ImageButton
-            android:id="@+id/ib_myrequest_new_add_tag"
+            android:id="@+id/ib_myrequest_new_add_tag_footer"
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:background="@drawable/layout_request_tag_new"

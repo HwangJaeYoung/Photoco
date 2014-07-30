@@ -18,18 +18,18 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 
 public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 	
+	private String tagText="";	
 	private Controller controller;
+	private ListView lv_requestNewTag;	
+	private EditText et_myrequestEdittextTagFooter;
+	private ImageButton ib_myrequestNewAddTagFooter;
 	private ArrayAdapterForMyRequestTag arrayAdapterForMyRequestTag;
-	private ListView lv_requestNewTag;
-	private EditText examTag;
-	private String tagText="";
-	
-	private ImageButton ib;
 	
 	public ViewForMyNewRequestTagActivity(Context context, Controller aController, ArrayList<IMyRequestTagItem> item) {
 		super(context);
 		controller = aController;
 		arrayAdapterForMyRequestTag.setArrayList(item);
+		// 삭제연산을 하기 위해서 ArrayAdapter에 추가 된 ArrayList 항목을 전달한다. 
 	}
 
 	@Override
@@ -42,50 +42,46 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 		arrayAdapterForMyRequestTag = new ArrayAdapterForMyRequestTag(getContext( ), 0);
 		lv_requestNewTag = (ListView)findViewById(R.id.lv_request_new_tag);
 		
+		// 태그추가와 EditText Footer를 생성한다.
 		LayoutInflater inflater  =  (LayoutInflater)getContext( ).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View view = inflater.inflate(R.layout.footer_addtag, null, false);
-		View view2 = inflater.inflate(R.layout.examedittext, null, false);
+		View addTagFooter = inflater.inflate(R.layout.footer_add_tag, null, false);
+		View editTextFooter = inflater.inflate(R.layout.footer_edittext_tag, null, false);
 		
-		ib = (ImageButton)view.findViewById(R.id.ib_myrequest_new_add_tag);
+		// 태그추가와 EditText Footer를 추가한다.
+		lv_requestNewTag.addFooterView(editTextFooter, null, false);
+		lv_requestNewTag.addFooterView(addTagFooter, null, false);
 		
-		lv_requestNewTag.addFooterView(view2, null, false);
-		lv_requestNewTag.addFooterView(view, null, false);
-		
-		examTag = (EditText)findViewById(R.id.exam_tag);
+		ib_myrequestNewAddTagFooter = (ImageButton)addTagFooter.findViewById(R.id.ib_myrequest_new_add_tag_footer);
+		et_myrequestEdittextTagFooter = (EditText)findViewById(R.id.et_myrequest_edittext_tag_footer);
 		
 		lv_requestNewTag.setAdapter(arrayAdapterForMyRequestTag);
 	}
 	
 	public void resetEditText( )
 	{
-		examTag.setText("");
+		et_myrequestEdittextTagFooter.setText("");
 	}
+	
 	@Override
 	protected void setEvent() {
-		ib.setOnClickListener(new View.OnClickListener() {		
+		ib_myrequestNewAddTagFooter.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
 				controller.addTagItem(tagText);
 			}
 		});
 		
-		examTag.addTextChangedListener(new TextWatcher() {
-			
+		et_myrequestEdittextTagFooter.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				tagText = examTag.getText().toString();
+				tagText = et_myrequestEdittextTagFooter.getText().toString();
 			}
 			
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				
-			}
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 			
 			@Override
-			public void afterTextChanged(Editable s) {		
-				
-			}
+			public void afterTextChanged(Editable s) { }
 		});
 	}
 	
@@ -97,6 +93,6 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 	
 	public static interface Controller
 	{
-		public void addTagItem(String tagText);
+		public void addTagItem(String aTagText);
 	}
 }

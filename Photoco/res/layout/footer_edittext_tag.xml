@@ -6,11 +6,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@drawable/layout_request_tag_new"
-        android:layout_height="49dp" >
+        android:layout_height="49dp"
+        android:background="@drawable/layout_request_tag_new" >
 
         <ImageView
-            android:id="@+id/iv_request_timeleft"
+            android:id="@+id/iv_myrequest_image_tag_footer"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_centerVertical="true"
@@ -19,17 +19,17 @@
             android:src="@drawable/tag_ic" />
 
         <EditText
-            android:id="@+id/exam_tag"
+            android:id="@+id/et_myrequest_edittext_tag_footer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/iv_request_timeleft"
+            android:layout_toRightOf="@id/iv_myrequest_image_tag_footer"
             android:background="#fff"
             android:hint="Input Tag.."
-            android:textSize="18sp"
+            android:inputType="textEmailAddress"
             android:textColor="#323a45"
-            android:textColorHint="#b0bac8" />
-
+            android:textColorHint="#b0bac8"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </LinearLayout>

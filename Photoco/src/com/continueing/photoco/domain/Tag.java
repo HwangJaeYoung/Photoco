@@ -6,13 +6,8 @@ public class Tag implements IMyRequestTagItem{
 	
 	private String tagText;
 	
-	public Tag(String atagText) {
-		tagText = atagText;
-	}
-
 	@Override
 	public String getTagText() {
-		// TODO Auto-generated method stub
 		return tagText;
 	}
 

@@ -31,15 +31,21 @@ public class MyNewRequestTagActivity extends ActionBarActivity implements ViewFo
 		if(myrequestTagArrayList.size() < 9)
 		{
 			if(aTagText.equals(""))
-				Toast.makeText(getApplicationContext(), "insert tag text", Toast.LENGTH_SHORT).show( );
+				Toast.makeText(getApplicationContext(), "insert tag to the textbox", Toast.LENGTH_SHORT).show( );
 			else
 			{
-				myrequestTagArrayList.add(new Tag(aTagText));
+				// 태그의 생성
+				Tag tag = new Tag( );
+				tag.setTagText(aTagText);
+				
+				myrequestTagArrayList.add(tag);
 				view.addItems(myrequestTagArrayList);
-				view.resetEditText( );
+				view.resetEditText( ); // EditText에 입력 후 입력창 초기화 하기위해서
 			}
 		}
-		else
-			Toast.makeText(getApplicationContext(), "can't add tags because exeed 9tags!!", Toast.LENGTH_SHORT).show( );
+		else  // Tag 9개 초과
+			Toast.makeText(getApplicationContext(), "can't add tag because you exceed 9 tags", Toast.LENGTH_SHORT).show( );
 	}
+	
+	// ok버튼 눌렸을때 그떄 arraylist들을 넘기면 된다. 그것들은 jsonarray로 만들어야 하고 ;;
 }

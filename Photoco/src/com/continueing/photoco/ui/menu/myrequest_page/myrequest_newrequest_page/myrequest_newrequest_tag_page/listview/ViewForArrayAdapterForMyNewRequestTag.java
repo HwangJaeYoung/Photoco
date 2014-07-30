@@ -15,14 +15,13 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	private Button bt_myrequestTagCancel;
 	private EditText et_myrequestTag;
-	private IMyRequestTagItem items;
 	private Controller controller;
-	private int position;
+	private int position; // 삭제 할 때 사용하는 Position 값
 	
-	public ViewForArrayAdapterForMyNewRequestTag(Context context, Controller aController, int position) {
+	public ViewForArrayAdapterForMyNewRequestTag(Context context, Controller aController, int aPosition) {
 		super(context);
 		controller = aController;
-		this.position = position;
+		this.position = aPosition; 
 	}
 
 	@Override
@@ -52,22 +51,13 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 		et_myrequestTag.setText(iMyRequestTagItem.getTagText());
 	}
 	
-	public void removeSetPosition(int aposition)
-	{
-		position = aposition;
-	}
-	
-	public void removeSetItem( IMyRequestTagItem item)
-	{
-		items = item;
-	}
-	
-	
+	// Tag를 삭제 할 때 사용하는 메소드
 	public static interface Controller
 	{
 		public void removeTag(int position);
 	}
 	
+	// Tag의 모델을 정의한다.
 	public static interface IMyRequestTagItem extends IListViewItem
 	{
 		public String getTagText();
