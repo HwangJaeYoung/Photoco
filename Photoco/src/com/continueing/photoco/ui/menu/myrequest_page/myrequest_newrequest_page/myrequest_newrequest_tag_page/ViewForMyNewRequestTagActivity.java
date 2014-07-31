@@ -55,6 +55,7 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 		et_myrequestEdittextTagFooter = (EditText)findViewById(R.id.et_myrequest_edittext_tag_footer);
 		
 		lv_requestNewTag.setAdapter(arrayAdapterForMyRequestTag);
+
 	}
 	
 	public void resetEditText( )

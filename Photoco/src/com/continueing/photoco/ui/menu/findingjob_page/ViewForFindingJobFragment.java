@@ -72,6 +72,7 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				controller.onRequestSeleted(position);
+				
 			}
 		});
 	}
