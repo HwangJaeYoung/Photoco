@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/lv_request_new_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="#fff" >
+
+        <ImageView
+            android:id="@+id/iv_request_new_tag"
+            android:layout_width="15dp"
+            android:layout_height="14.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/tag_ic" />
+
+        <EditText
+            android:id="@+id/et_request_new_tag_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_request_new_tag"
+            android:hint="Input Tag.."
+            android:inputType="textEmailAddress"
+            android:textColor="#323a45"
+            android:textColorHint="#bab0c8"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_request_new_tag_add"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@drawable/layout_request_tag_new" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentTop="true"
+            android:background="#ccc" />
+
+        <Button
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/tag_add_ic" />
+    </RelativeLayout>
+
+</LinearLayout>

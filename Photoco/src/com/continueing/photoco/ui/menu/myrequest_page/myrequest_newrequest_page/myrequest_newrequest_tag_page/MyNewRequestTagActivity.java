@@ -20,58 +20,35 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 public class MyNewRequestTagActivity extends ActionBarActivity implements ViewForMyNewRequestTagActivity.Controller{
 	private ViewForMyNewRequestTagActivity view;
 	private ArrayList<IMyRequestTagItem> myrequestTagArrayList;
-	public static final String PARAM_TAG_ARRAYLIST_KEY = "tagArrayList";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		myrequestTagArrayList = new ArrayList<IMyRequestTagItem>( );
-		view = new ViewForMyNewRequestTagActivity(getApplicationContext(), this, myrequestTagArrayList);
+		view = new ViewForMyNewRequestTagActivity(getApplicationContext(), this);
 		setContentView(view.getRoot());		
 	}
 
 	@Override
 	public void addTagItem(String aTagText) {
 		if(myrequestTagArrayList.size() < 9)
-		{
-			if(aTagText.equals(""))
-				Toast.makeText(getApplicationContext(), "insert tag to the textbox", Toast.LENGTH_SHORT).show( );
-			else
-			{
-				// 태그의 생성
-				Tag tag = new Tag( );
-				tag.setTagText(aTagText);
-				
-				myrequestTagArrayList.add(tag);
-				view.addItems(myrequestTagArrayList);
-				view.resetEditText( ); // EditText에 입력 후 입력창 초기화 하기위해서
-			}
-		}
-		else  // Tag 9개 초과
-			Toast.makeText(getApplicationContext(), "can't add tag because you exceed 9 tags", Toast.LENGTH_SHORT).show( );
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_myrequest_tag, menu);
-		return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.item_menu_ok)
-		{
-			Intent intent = new Intent( );
-			intent.putExtra(PARAM_TAG_ARRAYLIST_KEY, myrequestTagArrayList);
-			setResult(Activity.RESULT_OK, intent);
-			finish( );	
-			return true;
-		}
-		else
-			return super.onOptionsItemSelected(item);
-	}
-	// ok버튼 눌렸을때 그떄 arraylist들을 넘기면 된다. 그것들은 jsonarray로 만들어야 하고 ;;
+  		{
+  			if(aTagText.equals(""))
+  				Toast.makeText(getApplicationContext(), "insert tag to the textbox", Toast.LENGTH_SHORT).show( );
+  			else
+  			{
+  				// 태그의 생성
+  				Tag tag = new Tag( );
+  				tag.setTagText(aTagText);
+  				
+  				myrequestTagArrayList.add(tag);
+  				view.addItems(myrequestTagArrayList);
+  				view.resetEditText( ); // EditText에 입력 후 입력창 초기화 하기위해서
+  			}
+  		}
+  		else  // Tag 9개 초과
+  			Toast.makeText(getApplicationContext(), "can't add tag because you exceed 9 tags", Toast.LENGTH_SHORT).show( );
+	}	
 }
