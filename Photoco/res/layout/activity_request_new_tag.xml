@@ -34,6 +34,7 @@
             android:hint="Input Tag.."
             android:inputType="textEmailAddress"
             android:textColor="#323a45"
+            android:background="#fff"
             android:textColorHint="#bab0c8"
             android:textSize="18sp" />
     </RelativeLayout>

@@ -1,10 +1,12 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview;
 
 import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
@@ -12,7 +14,7 @@ import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
 public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListViewItem {
 
-	private Button bt_myrequestTagCancel;
+	private ImageView iv_myrequestTagCancel;
 	private TextView tv_myrequestTag;
 	private Controller controller;
 	
@@ -28,16 +30,19 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	@Override
 	protected void initViews() {
-		bt_myrequestTagCancel = (Button)findViewById(R.id.bt_myrequest_tag_cancel);
+		iv_myrequestTagCancel = (ImageView)findViewById(R.id.iv_myrequest_tag_cancel);
 		tv_myrequestTag = (TextView)findViewById(R.id.tv_myrequest_tag);
 	}
 
 	@Override
 	protected void setEvents() {
-		bt_myrequestTagCancel.setOnClickListener(new View.OnClickListener() {
+		iv_myrequestTagCancel.setOnTouchListener(new OnTouchListener() {
 			@Override
-			public void onClick(View v) {
-				
+			public boolean onTouch(View v, MotionEvent event) {
+				// 여기서 리스트뷰의  onitemclicklistener를 촉발시켜야한다는 건데?
+				// positino사용?
+				Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
+				return false;
 			}
 		});	
 	}

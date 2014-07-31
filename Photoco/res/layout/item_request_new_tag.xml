@@ -29,8 +29,8 @@
             android:textColor="#323a45"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/bt_myrequest_tag_cancel"
+        <ImageView
+            android:id="@+id/iv_myrequest_tag_cancel"
             android:layout_width="62dp"
             android:layout_height="49dp"
             android:layout_alignParentRight="true"

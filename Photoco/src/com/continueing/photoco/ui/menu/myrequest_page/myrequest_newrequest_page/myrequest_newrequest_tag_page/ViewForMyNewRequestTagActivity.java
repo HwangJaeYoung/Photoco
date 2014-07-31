@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -32,13 +34,13 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(R.layout.activitiy_request_new_tag, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_request_new_tag, null);
 	}
 
 	@Override
 	protected void initViews() {
-		arrayAdapterForMyRequestTag = new ArrayAdapterForMyRequestTag(getContext( ), 0);
 		lv_requestNewTag = (ListView)findViewById(R.id.lv_request_new_tag);
+		arrayAdapterForMyRequestTag = new ArrayAdapterForMyRequestTag(getContext( ), 0);
 		lv_requestNewTag.setAdapter(arrayAdapterForMyRequestTag);
 		
 		et_requestNewTagInput = (EditText)findViewById(R.id.et_request_new_tag_input);
@@ -66,6 +68,17 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 				controller.addTagItem(tagText);
 			}
 		});
+		
+		lv_requestNewTag.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if(view.findViewById(R.id.iv_myrequest_tag_cancel).getId() == R.id.iv_myrequest_tag_cancel){
+					
+				}				
+			}
+		});
+
 	}
 	
 	public void resetEditText( )
