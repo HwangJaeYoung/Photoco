@@ -78,7 +78,6 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 				}				
 			}
 		});
-
 	}
 	
 	public void resetEditText( )

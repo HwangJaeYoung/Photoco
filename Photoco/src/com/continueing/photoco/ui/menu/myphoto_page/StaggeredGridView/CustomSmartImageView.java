@@ -1,40 +1,29 @@
-package com.continueing.photoco.reuse.listview.Staggered;
+package com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
+import com.loopj.android.image.SmartImageView;
 
-/**
- * 
- * This view will auto determine the width or height by determining if the 
- * height or width is set and scale the other dimension depending on the images dimension
- * 
- * This view also contains an ImageChangeListener which calls changed(boolean isEmpty) once a 
- * change has been made to the ImageView
- * 
- * @author Maurycy Wojtowicz
- *
- */
-public class ScaleImageView extends ImageView implements IListViewItem{
+public class CustomSmartImageView extends SmartImageView {
+
 	private ImageChangeListener imageChangeListener;
 	private boolean scaleToWidth = false; // this flag determines if should measure height manually dependent of width
 
-	public ScaleImageView(Context context) {
+	public CustomSmartImageView(Context context) {
 		super(context);
 		init();
 	}
 
-	public ScaleImageView(Context context, AttributeSet attrs, int defStyle) {
+	public CustomSmartImageView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init();
 	}
 
-	public ScaleImageView(Context context, AttributeSet attrs) {
+	public CustomSmartImageView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
@@ -42,7 +31,12 @@ public class ScaleImageView extends ImageView implements IListViewItem{
 	private void init(){
 		this.setScaleType(ScaleType.CENTER_INSIDE);
 	}
-
+	
+	public void setImageUrl(String aURL)
+	{
+		super.setImageUrl(aURL);
+	}
+	
 	@Override
 	public void setImageBitmap(Bitmap bm) {
 		super.setImageBitmap(bm);
@@ -74,7 +68,7 @@ public class ScaleImageView extends ImageView implements IListViewItem{
 	public void setImageChangeListener(ImageChangeListener imageChangeListener) {
 		this.imageChangeListener = imageChangeListener;
 	}
-
+	
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		

@@ -17,6 +17,7 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 	private ImageView iv_myrequestTagCancel;
 	private TextView tv_myrequestTag;
 	private Controller controller;
+	public static boolean isDeleteButtonClicked = false;
 	
 	public ViewForArrayAdapterForMyNewRequestTag(Context context, Controller aController) {
 		super(context);
@@ -36,15 +37,7 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	@Override
 	protected void setEvents() {
-		iv_myrequestTagCancel.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// 여기서 리스트뷰의  onitemclicklistener를 촉발시켜야한다는 건데?
-				// positino사용?
-				Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});	
+		
 	}
 
 	@Override

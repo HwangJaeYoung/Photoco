@@ -3,6 +3,11 @@ package com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +20,7 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 	private TextView tv_category;
 	private TextView tv_size;
 	private TextView tv_price;
-	private SmartImageView sivImage;
+	private CustomSmartImageView sivImage;
 	
 	public ViewForStaggeredGridViewListViewItem(Context context) {
 		super(context);
@@ -23,27 +28,20 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_myphoto_new, this);
+		 return inflate(getContext( ), R.layout.item_myphoto_new, this);
 	}
 
 	@Override
 	protected void initViews() {
-		sivImage = (SmartImageView)findViewById(R.id.siv_image);
+		sivImage = (CustomSmartImageView)findViewById(R.id.siv_image);
 		tv_category = (TextView)findViewById(R.id.tv_category);
 		tv_size = (TextView)findViewById(R.id.tv_size);
 		tv_price = (TextView)findViewById(R.id.tv_price);
 	}
-
+	
 	@Override
 	protected void setEvents() {		
-		this.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});	
+		
 	}
 
 	@Override
@@ -53,6 +51,11 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 		tv_size.setText(iStaggredGridViewListItem.getSize());
 		tv_price.setText(iStaggredGridViewListItem.getPrice());
 		sivImage.setImageUrl(iStaggredGridViewListItem.getURL());
+	}
+	
+	public CustomSmartImageView returnView( )
+	{
+		return sivImage;
 	}
 	
 	public static interface IStaggredGridViewListItem extends IListViewItem

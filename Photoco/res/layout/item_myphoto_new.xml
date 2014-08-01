@@ -1,32 +1,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#e9f0f6"
+    android:orientation="vertical" >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <com.loopj.android.image.SmartImageView
+        <com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.CustomSmartImageView
             android:id="@+id/siv_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="5.5dp"
+            android:layout_marginTop="5.5dp"
+            android:textColor="#fff"
+            android:textSize="15sp"
             android:text="LandScape" />
 
-        <TextView
-            android:id="@+id/tv_size"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/size_small"
-            android:text="L"
-            android:textColor="#fff" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/size_small" >
+
+            <TextView
+                android:id="@+id/tv_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="L"
+                android:textSize="15sp"
+                android:layout_marginLeft="5.5dp"
+                android:layout_marginBottom="4.5dp"
+                android:textColor="#fff" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_price"
@@ -34,6 +52,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="5.5dp"
+            android:textColor="#fff"
+            android:textSize="17sp"
             android:text="25$" />
     </RelativeLayout>
 
