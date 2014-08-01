@@ -1,6 +1,6 @@
-package com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView;
+package com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view;
 
-import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
+import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 
 public class MockUp implements IStaggredGridViewListItem {
 

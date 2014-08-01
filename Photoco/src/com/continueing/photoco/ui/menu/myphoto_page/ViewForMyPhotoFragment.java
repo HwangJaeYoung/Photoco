@@ -13,8 +13,8 @@ import android.widget.Button;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
-import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ArrayAdapterStaggeredGridView;
-import com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
+import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ArrayAdapterStaggeredGridView;
+import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 

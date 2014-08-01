@@ -1,8 +1,8 @@
-package com.continueing.photoco.reuse.listview.FindingJobList;
+package com.continueing.photoco.reuse.listview.finding_job_list;
 
 import android.content.Context;
 
-import com.continueing.photoco.reuse.listview.FindingJobList.ViewForFindingJobListViewItem.IFindingJobListItem;
+import com.continueing.photoco.reuse.listview.finding_job_list.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 

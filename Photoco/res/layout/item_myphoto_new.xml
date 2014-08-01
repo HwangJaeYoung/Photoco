@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <com.continueing.photoco.ui.menu.myphoto_page.StaggeredGridView.CustomSmartImageView
-            android:id="@+id/siv_image"
+        <com.continueing.photoco.reuse.widget.CustomSmartImageView
+            android:id="@+id/csiv_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -20,9 +20,9 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="5.5dp"
             android:layout_marginTop="5.5dp"
+            android:text="LandScape"
             android:textColor="#fff"
-            android:textSize="15sp"
-            android:text="LandScape" />
+            android:textSize="15sp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -39,11 +39,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="L"
-                android:textSize="15sp"
-                android:layout_marginLeft="5.5dp"
                 android:layout_marginBottom="4.5dp"
-                android:textColor="#fff" />
+                android:layout_marginLeft="5.5dp"
+                android:text="L"
+                android:textColor="#fff"
+                android:textSize="15sp" />
         </RelativeLayout>
 
         <TextView
@@ -54,9 +54,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="6dp"
             android:layout_marginRight="5.5dp"
+            android:text="25$"
             android:textColor="#fff"
-            android:textSize="17sp"
-            android:text="25$" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.continueing.photoco.reuse.listview.FindingJobList;
+package com.continueing.photoco.reuse.listview.finding_job_list;
 
 import android.content.Context;
 import android.view.View;

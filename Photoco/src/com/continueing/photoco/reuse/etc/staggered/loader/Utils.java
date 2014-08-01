@@ -1,4 +1,4 @@
-package com.continueing.photoco.reuse.listview.Staggered.loader;
+package com.continueing.photoco.reuse.etc.staggered.loader;
 
 import java.io.InputStream;
 import java.io.OutputStream;

@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.continueing.photoco.reuse.listview.FindingJobList.MockRequestAbstractItem;
-import com.continueing.photoco.reuse.listview.FindingJobList.ViewForFindingJobListViewItem.IFindingJobListItem;
+import com.continueing.photoco.reuse.listview.finding_job_list.MockRequestAbstractItem;
+import com.continueing.photoco.reuse.listview.finding_job_list.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page.FindingJobDetailActivity;
 
 public class FindingJobFragment extends Fragment implements ViewForFindingJobFragment.Controller {
