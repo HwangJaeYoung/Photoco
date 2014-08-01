@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.etc.staggered.loader.ImageLoader;
+import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem;
 import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 
 public abstract class AbstarctArrayImageAdapter <T extends IListViewItem> extends ArrayAdapter<T>{
@@ -29,9 +30,10 @@ public abstract class AbstarctArrayImageAdapter <T extends IListViewItem> extend
 		// 새로운 뷰이던 기존 뷰이던 간에 뷰에 데이터를 바꾸거나 채워야 하기 때문에 구현 해 놓음.
 		abstractViewForListViewItem.setData(getItem(position));
 		
+		ViewForStaggeredGridViewListViewItem view = (ViewForStaggeredGridViewListViewItem)abstractViewForListViewItem;
 		// 이미지 리사이즈는 CustomerSmartImageView에서 되고, 여기서는 리사이즈 된 이미지를 스크롤 할 때 이미지가 움직이지 않도록 해주는것 같다.
 		IStaggredGridViewListItem item = (IStaggredGridViewListItem)getItem(position);
-		mLoader.DisplayImage(item.getURL(), (ImageView)abstractViewForListViewItem.findViewById_(R.id.csiv_image));
+		mLoader.DisplayImage(item.getURL(), view.returnSmartImageView());
 	
 		return abstractViewForListViewItem; // 새로 구성된 뷰를 리턴한다.
 	}

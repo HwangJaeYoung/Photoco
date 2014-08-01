@@ -44,7 +44,7 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 		csivImage.setImageUrl(iStaggredGridViewListItem.getURL());
 	}
 	
-	public CustomSmartImageView returnView( )
+	public CustomSmartImageView returnSmartImageView( )
 	{
 		return csivImage;
 	}
