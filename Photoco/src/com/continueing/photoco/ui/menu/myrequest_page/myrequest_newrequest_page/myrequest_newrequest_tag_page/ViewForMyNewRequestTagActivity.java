@@ -12,10 +12,12 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ArrayAdapterForMyRequestTag;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
@@ -25,11 +27,13 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 	private ListView lv_requestNewTag;	
 	private EditText et_requestNewTagInput;
 	private RelativeLayout rl_requestNewTagAdd;
+	private ArrayList<IMyRequestTagItem> arrayList;
 	private ArrayAdapterForMyRequestTag arrayAdapterForMyRequestTag;
 	
-	public ViewForMyNewRequestTagActivity(Context context, Controller aController) {
+	public ViewForMyNewRequestTagActivity(Context context, Controller aController,  ArrayList<IMyRequestTagItem> aArrayList) {
 		super(context);
 		controller = aController;
+		arrayList = aArrayList;
 	}
 
 	@Override
@@ -73,9 +77,12 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if(view.findViewById(R.id.iv_myrequest_tag_cancel).getId() == R.id.iv_myrequest_tag_cancel){
-					
-				}				
+				if(ViewForArrayAdapterForMyNewRequestTag.isDeleteButtonClicked == true){
+					arrayList.remove(position);
+					arrayAdapterForMyRequestTag.clear();
+					arrayAdapterForMyRequestTag.addAll(arrayList);
+					ViewForArrayAdapterForMyNewRequestTag.isDeleteButtonClicked = false;
+				}
 			}
 		});
 	}

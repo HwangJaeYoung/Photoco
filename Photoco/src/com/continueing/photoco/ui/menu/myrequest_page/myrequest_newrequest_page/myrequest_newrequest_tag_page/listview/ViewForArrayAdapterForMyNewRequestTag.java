@@ -1,12 +1,11 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
@@ -37,7 +36,18 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	@Override
 	protected void setEvents() {
-		
+		iv_myrequestTagCancel.setOnTouchListener(new OnTouchListener() {			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.ACTION_DOWN == 0) 
+				{
+					isDeleteButtonClicked = true;
+					return false;
+				}
+				else
+					return true;
+			}
+		});
 	}
 
 	@Override

@@ -20,6 +20,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	private String durationHour;
 	private String description;
 	private File filePath;
+	private JSONArray tagJSONArray;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -147,7 +149,12 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
-				
+				tagJSONArray = new JSONArray( );
+				ArrayList<IMyRequestTagItem> tagArrayList = (ArrayList<IMyRequestTagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY);
+				for(int i = 0; i < tagArrayList.size(); i++)
+				{
+					tagJSONArray.put(tagArrayList.get(i).getTagText());
+				}
 			}
 		}	
 	}
@@ -171,18 +178,9 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	{
 		RequestsRequest request = new RequestsRequest(getApplicationContext());
 		description = view.getDescription();
-
-		JSONArray tag = new JSONArray( );
 		
 		try {
-			tag.put(0, "kk");
-			tag.put(1, "hh");
-		} catch (JSONException e1) {
-			e1.printStackTrace();
-		}
-		
-		try {
-			request.setMyRequestItem(locationId, categoryId, durationHour, tag, description, filePath, submitListener);
+			request.setMyRequestItem(locationId, categoryId, durationHour, tagJSONArray, description, filePath, submitListener);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
