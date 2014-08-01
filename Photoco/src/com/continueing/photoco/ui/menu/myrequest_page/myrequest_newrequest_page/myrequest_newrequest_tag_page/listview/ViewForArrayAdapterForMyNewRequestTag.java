@@ -15,12 +15,10 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	private ImageView iv_myrequestTagCancel;
 	private TextView tv_myrequestTag;
-	private Controller controller;
 	public static boolean isDeleteButtonClicked = false;
 	
-	public ViewForArrayAdapterForMyNewRequestTag(Context context, Controller aController) {
+	public ViewForArrayAdapterForMyNewRequestTag(Context context) {
 		super(context);
-		controller = aController;
 	}
 
 	@Override
@@ -54,12 +52,6 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 	protected void setData(IListViewItem aIListViewItem) {
 		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
 		tv_myrequestTag.setText(iMyRequestTagItem.getTagText());
-	}
-	
-	// Tag를 삭제 할 때 사용하는 메소드
-	public static interface Controller
-	{
-		public void removeTag(int position);
 	}
 	
 	// Tag의 모델을 정의한다.

@@ -150,11 +150,15 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				tagJSONArray = new JSONArray( );
+				
+				@SuppressWarnings("unchecked")
 				ArrayList<IMyRequestTagItem> tagArrayList = (ArrayList<IMyRequestTagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY);
 				for(int i = 0; i < tagArrayList.size(); i++)
 				{
 					tagJSONArray.put(tagArrayList.get(i).getTagText());
 				}
+				
+				view.selectedTag(tagArrayList);
 			}
 		}	
 	}

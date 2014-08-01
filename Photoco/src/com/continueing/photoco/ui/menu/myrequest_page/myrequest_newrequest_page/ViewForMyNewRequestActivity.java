@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.gridview.ArrayAdapterForMyRequestTagGrid;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
@@ -32,6 +34,8 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private TextView tv_requestNewDurationDetailCalendar;
 	private TextView tv_requestNewCategoryDetail;
 	private EditText et_requestNew;
+	private GridView gv_requestTag;
+	private ArrayAdapterForMyRequestTagGrid arrayAdapterForMyRequestTagGrid;
 	
 	public ViewForMyNewRequestActivity(Context context, Controller aController) {
 		super(context);
@@ -59,6 +63,10 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewCategoryDetail = (TextView)findViewById(R.id.tv_request_new_category_detail);
 	
 		et_requestNew = (EditText)findViewById(R.id.et_request_new);
+		
+		gv_requestTag = (GridView)findViewById(R.id.gv_request_tag);	
+		arrayAdapterForMyRequestTagGrid = new ArrayAdapterForMyRequestTagGrid(getContext( ), 0);
+		gv_requestTag.setAdapter(arrayAdapterForMyRequestTagGrid);	
 	}
 
 	@Override
@@ -145,9 +153,10 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	
 	public void selectedTag(ArrayList<IMyRequestTagItem> items)
 	{
-		
-		
+		arrayAdapterForMyRequestTagGrid.clear();
+		arrayAdapterForMyRequestTagGrid.addAll(items);
 	}
+	
 	public static interface Controller
 	{
 		public void onSubmit( );
