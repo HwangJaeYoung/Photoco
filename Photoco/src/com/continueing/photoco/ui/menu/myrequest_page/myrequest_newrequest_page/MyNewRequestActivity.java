@@ -194,6 +194,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
+			setResult(Activity.RESULT_OK);
 			finish( );
 		}
 		

@@ -2,6 +2,7 @@ package com.continueing.photoco.ui.menu.myrequest_page.listview;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
@@ -12,7 +13,9 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	
 	private Controller controller;
 	private TextView tv_requestName;
-	private int index;
+	private Button bt_listTagFirst;
+	private Button bt_listTagSecond;
+	private Button bt_listTagThird;
 	
 	public ViewForMyRequestListViewItem(Context context, Controller aController) {
 		super(context);
@@ -27,6 +30,13 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	@Override
 	protected void initViews() {
 		tv_requestName = (TextView)findViewById(R.id.tv_request_name);
+		bt_listTagFirst = (Button)findViewById(R.id.bt_list_tag_first);
+		bt_listTagSecond = (Button)findViewById(R.id.bt_list_tag_second);
+		bt_listTagThird = (Button)findViewById(R.id.bt_list_tag_third);
+		
+		bt_listTagFirst.setFocusable(false);
+		bt_listTagSecond.setFocusable(false);
+		bt_listTagThird.setFocusable(false);
 	}
 
 	@Override

@@ -97,6 +97,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat" >
         </activity>
+        <activity
+            android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.MyRequestDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" >
+        </activity>
     </application>
 
 </manifest>

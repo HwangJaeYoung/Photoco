@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -68,6 +69,13 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 				controller.onNewRequest();				
 			}
 		});
+		
+		lv_myRequest.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				controller.showRequestDetail( );
+			}
+		});
 	}
 
 	// 사용자가 NewRequest한 모든 항목을 보여주기 위해서 만들어 놓음
@@ -81,7 +89,6 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	// 사용하자 NewRequest를 누르고 Submit을 하였을 때 사용하는 메소드
 	public void addMyRequestObject(IMyRequestItem anObject)
 	{
-		
 		arrayAdapterForMyRequestListView.add(anObject);
 		setInvisible( );
 	}
@@ -97,5 +104,6 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	
 	public static interface Controller {
 		public void onNewRequest( );
+		public void showRequestDetail( );
 	}
 }
