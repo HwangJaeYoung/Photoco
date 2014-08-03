@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#dde6f2" >
 
-    <GridView
-        android:id="@+id/gv_request_detail"
+    <ScrollView
+        android:id="@+id/sv_reqeust_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="0dp"
-        android:numColumns="2"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="0dp" />
+        android:layout_marginLeft="10dp"
+        android:fillViewport="true"
+        android:overScrollMode="never" >
+
+        <com.continueing.photoco.reuse.widget.ExpandableHeightGridView
+            android:id="@+id/gv_request_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:isScrollContainer="false"
+            android:listSelector="@drawable/list_selector"
+            android:numColumns="3"
+            android:verticalSpacing="4.5dp" />
+    </ScrollView>
 
 </FrameLayout>

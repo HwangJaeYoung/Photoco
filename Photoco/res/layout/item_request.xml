@@ -27,6 +27,13 @@
                 android:textColor="#323a45"
                 android:textSize="20sp" />
 
+            <ImageView
+                android:id="@+id/iv_request_remove"
+                android:layout_width="49dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bt_request_remove" />
         </RelativeLayout>
 
         <!-- tag -->

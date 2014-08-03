@@ -16,22 +16,33 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 
 public class MyRequestFragment extends Fragment implements ViewForMyRequestFragment.Controller{
 	private ViewForMyRequestFragment view;
+	private ArrayList<IMyRequestItem> arrayList;
 	private int i;
 	public static final int REQUEST_CODE_GET_REQUEST_ITEM = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);
 	}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		view = new ViewForMyRequestFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
-		
-		ArrayList<IMyRequestItem> arrayList= new ArrayList<IMyRequestItem>( );
-		
+		arrayList= new ArrayList<IMyRequestItem>( );
+		view = new ViewForMyRequestFragment(getActivity( ), inflater, container, this, arrayList); // 뷰를 생성해 낸다.
+
 		arrayList.add(new Mockup("Mock" + i++ ));
 		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		arrayList.add(new Mockup("Mock" + i++ ));
+		
 		view.addMyRequestArrayList(arrayList);
 
 		return view.getRoot(); 
@@ -48,7 +59,10 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_GET_REQUEST_ITEM)
 			if(resultCode == Activity.RESULT_OK)
-				view.addMyRequestObject(new Mockup("Mock" + i++));
+			{
+				arrayList.add(new Mockup("Mock" + i++));
+				view.addMyRequestArrayList(arrayList);
+			}
 	}
 
 	@Override

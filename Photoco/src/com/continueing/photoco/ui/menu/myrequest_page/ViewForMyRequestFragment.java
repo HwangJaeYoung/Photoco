@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ArrayAdapterForMyRequestListView;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag;
 
 public class ViewForMyRequestFragment extends AbstractViewForFragment {
 
@@ -31,11 +33,12 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	private ImageView iv_myrequestEmptyArrow;
 	
 	private ArrayAdapterForMyRequestListView arrayAdapterForMyRequestListView;
-	ArrayList<IMyRequestItem> temp = new ArrayList<IMyRequestItem>( ); 
+	private ArrayList<IMyRequestItem> arrayList = new ArrayList<IMyRequestItem>( ); 
 
-	public ViewForMyRequestFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
+	public ViewForMyRequestFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController, ArrayList<IMyRequestItem> anArrayList) {
 		super(context, layoutInflater, container);
 		controller = aController;
+		arrayList = anArrayList;
 	}
 
 	@Override
@@ -73,7 +76,16 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		lv_myRequest.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				controller.showRequestDetail( );
+				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
+					arrayList.remove(position);
+					arrayAdapterForMyRequestListView.clear();
+					arrayAdapterForMyRequestListView.addAll(arrayList);
+					ViewForMyRequestListViewItem.isDeleteButtonClicked = false;
+				}
+				else if(ViewForMyRequestListViewItem.isDeleteButtonClicked == false)
+				{
+					controller.showRequestDetail( );
+				}
 			}
 		});
 	}
@@ -81,16 +93,11 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	// 사용자가 NewRequest한 모든 항목을 보여주기 위해서 만들어 놓음
 	public void addMyRequestArrayList(ArrayList<IMyRequestItem> anArrayList)
 	{
-		arrayAdapterForMyRequestListView.addAll(anArrayList);
 		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );
-	}
-	
-	// 사용하자 NewRequest를 누르고 Submit을 하였을 때 사용하는 메소드
-	public void addMyRequestObject(IMyRequestItem anObject)
-	{
-		arrayAdapterForMyRequestListView.add(anObject);
-		setInvisible( );
+		
+		arrayAdapterForMyRequestListView.clear();
+		arrayAdapterForMyRequestListView.addAll(anArrayList);
 	}
 
 	// 추가 할 때 Empty일 때의 상태를 숨긴다.(스마일, 텍스트)

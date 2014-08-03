@@ -37,6 +37,20 @@ public class MyRequestDetailActivity extends ActionBarActivity implements ViewFo
         list.add(new Images("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg"));
         list.add(new Images("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg"));
         list.add(new Images("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg"));
-		view.addRequestImages(list);
+        list.add(new Images("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg"));
+        list.add(new Images("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg"));
+        list.add(new Images("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg"));
+        list.add(new Images("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg"));
+        list.add(new Images("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg"));
+        list.add(new Images("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg"));
+        list.add(new Images("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg"));
+		
+        
+        view.addRequestImages(list);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,18 +13,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.reuse.widget.SubmitButton;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.gridview.ArrayAdapterForMyRequestTagGrid;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 
 	private Controller controller;
-	private Button bt_requestNewSubmit;
+	private SubmitButton sb_requestNewSubmit;
+	private Button bt_requestNewTagDetail;
 	private ImageView bt_imageView;
 	private TextView tv_requestNewLocationDetail;
 	private RelativeLayout rl_requestLocation;
@@ -33,6 +38,8 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private TextView tv_requestNewDurationDetailDay;
 	private TextView tv_requestNewDurationDetailCalendar;
 	private TextView tv_requestNewCategoryDetail;
+	private TextView tv_requestNewTagDetail;
+	private TextView tv_requestNewAdd;
 	private EditText et_requestNew;
 	private GridView gv_requestTag;
 	private ArrayAdapterForMyRequestTagGrid arrayAdapterForMyRequestTagGrid;
@@ -49,7 +56,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 
 	@Override
 	protected void initViews() {
-		bt_requestNewSubmit = (Button)findViewById(R.id.bt_request_new_submit);
+		sb_requestNewSubmit = (SubmitButton)findViewById(R.id.sb_request_new_submit);
 		tv_requestNewLocationDetail = (TextView)findViewById(R.id.tv_request_new_location_detail);
 		bt_imageView = (ImageView)findViewById(R.id.bt_image_view);
 		
@@ -64,6 +71,20 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	
 		et_requestNew = (EditText)findViewById(R.id.et_request_new);
 		
+		bt_requestNewTagDetail = (Button)findViewById(R.id.bt_request_new_tag_detail);
+		tv_requestNewTagDetail = (TextView)findViewById(R.id.tv_request_new_tag_detail);
+		
+		tv_requestNewAdd = (TextView)findViewById(R.id.tv_request_new_add);
+		
+		
+		sb_requestNewSubmit.init((ProgressBar)findViewById(R.id.pg_request_submit));
+		sb_requestNewSubmit.addViewToHold(et_requestNew);
+		sb_requestNewSubmit.addViewToHold(bt_imageView);
+		sb_requestNewSubmit.addViewToHold(rl_requestTag);
+		sb_requestNewSubmit.addViewToHold(rl_selectCategory);
+		sb_requestNewSubmit.addViewToHold(rl_requestLocation);
+		sb_requestNewSubmit.addViewToHold(rl_selectDuration);
+		
 		gv_requestTag = (GridView)findViewById(R.id.gv_request_tag);	
 		arrayAdapterForMyRequestTagGrid = new ArrayAdapterForMyRequestTagGrid(getContext( ), 0);
 		gv_requestTag.setAdapter(arrayAdapterForMyRequestTagGrid);	
@@ -71,7 +92,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 
 	@Override
 	protected void setEvent() {
-		bt_requestNewSubmit.setOnClickListener(new View.OnClickListener() {
+		sb_requestNewSubmit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				controller.onSubmit();
@@ -137,6 +158,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	
 	public void selectedImage(Bitmap aBitmap)
 	{
+		tv_requestNewAdd.setVisibility(View.INVISIBLE);
 		bt_imageView.setImageBitmap(aBitmap);
 	}
 	
@@ -145,17 +167,25 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		return et_requestNew.getText().toString();
 	}
 	
-	public void selectedDuration(String aDuration, String aEndDate)
+	public void selectedDuration(String aDuration, String aEndDate, String aDurationHour)
 	{
-		tv_requestNewDurationDetailDay.setText(aDuration);		
+		tv_requestNewDurationDetailDay.setText(aDuration);
+		tv_requestNewDurationDetailDay.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(aDurationHour)));
 		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	
 	public void selectedTag(ArrayList<IMyRequestTagItem> items)
 	{
+		bt_requestNewTagDetail.setVisibility(View.INVISIBLE);
+		tv_requestNewTagDetail.setVisibility(View.INVISIBLE);
 		arrayAdapterForMyRequestTagGrid.clear();
 		arrayAdapterForMyRequestTagGrid.addAll(items);
 	}
+	
+	public void releaseSubmitButton()
+    {
+        this.sb_requestNewSubmit.release();
+    }	
 	
 	public static interface Controller
 	{

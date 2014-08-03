@@ -9,13 +9,14 @@ import android.widget.GridView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.reuse.widget.ExpandableHeightGridView;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.ArrayAdapterForMyRequestDetailActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.ViewForArrayAdapterForMyRequestDetailActivity.IMyRequestDetailItem;
 
 public class ViewForMyRequestDetailActivity extends AbstractViewForActivity{
 
 	private Controller controller;
-	private GridView gv_requestDetail;
+	private ExpandableHeightGridView gv_requestDetail;
 	private ArrayAdapterForMyRequestDetailActivity arrayAdapterForMyRequestDetailActivity;
 	
 	public ViewForMyRequestDetailActivity(Context context, Controller aController) {
@@ -30,7 +31,8 @@ public class ViewForMyRequestDetailActivity extends AbstractViewForActivity{
 
 	@Override
 	protected void initViews() {
-		gv_requestDetail = (GridView)findViewById(R.id.gv_request_detail);
+		gv_requestDetail = (ExpandableHeightGridView)findViewById(R.id.gv_request_detail);
+		gv_requestDetail.setExpanded(true);
 		arrayAdapterForMyRequestDetailActivity = new ArrayAdapterForMyRequestDetailActivity(getContext(), 0);
 		gv_requestDetail.setAdapter(arrayAdapterForMyRequestDetailActivity);
 	}

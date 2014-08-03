@@ -130,9 +130,9 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
-				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
-						data.getStringExtra(MyNewRequestDurationActivity.PARAM_END_DATE_KEY));
 				durationHour = data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_KEY);
+				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
+						data.getStringExtra(MyNewRequestDurationActivity.PARAM_END_DATE_KEY), durationHour);
 			}
 		}
 		
@@ -158,7 +158,8 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 					tagJSONArray.put(tagArrayList.get(i).getTagText());
 				}
 				
-				view.selectedTag(tagArrayList);
+				if(tagArrayList.size() != 0)
+					view.selectedTag(tagArrayList);
 			}
 		}	
 	}
@@ -195,6 +196,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			setResult(Activity.RESULT_OK);
+			view.releaseSubmitButton();
 			finish( );
 		}
 		
@@ -228,7 +230,8 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 					break;
 				default:
 					break;
-			}		
+			}	
+			view.releaseSubmitButton();
 		}
 	};
 }

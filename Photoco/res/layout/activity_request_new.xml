@@ -42,9 +42,9 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="@drawable/bt_request_new_add_image"
+                android:scaleType="fitXY"
                 android:text="Add\nImage"
                 android:textColor="#b0bac8"
-                android:scaleType="fitXY"
                 android:textSize="15sp" />
 
             <TextView
@@ -123,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="120dp"
-                android:horizontalSpacing="5.5dp"
                 android:numColumns="3"
                 android:verticalSpacing="5.5dp" >
             </GridView>
@@ -221,7 +220,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="13dp"
                     android:layout_toLeftOf="@id/bt_request_new_location_detail"
-                    android:text="Newyourk,USA"
+                    android:text="Select Location"
                     android:textColor="#b0bac8"
                     android:textSize="18sp" />
             </RelativeLayout>
@@ -304,14 +303,21 @@
         android:layout_margin="15dp"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/bt_request_new_submit"
+        <com.continueing.photoco.reuse.widget.SubmitButton
+            android:id="@+id/sb_request_new_submit"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/bt_job_detail_participate"
+            android:background="@drawable/bt_sign_in"
             android:text="Submit"
             android:textColor="#fff"
             android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/pg_request_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
     </RelativeLayout>
     <!-- 세번째 -->
 
