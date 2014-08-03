@@ -26,7 +26,7 @@ public class ViewForMyRequestDetailActivity extends AbstractViewForActivity{
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(R.layout.activity_request_datail, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_myrequest_datail, null);
 	}
 
 	@Override

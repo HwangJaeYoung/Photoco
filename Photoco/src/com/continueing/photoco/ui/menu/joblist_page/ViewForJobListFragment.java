@@ -31,7 +31,7 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 
 	@Override
 	protected View inflate(LayoutInflater inflater, ViewGroup container) {
-		return inflater.inflate(R.layout.fragment_finding_job_list, container, false);
+		return inflater.inflate(R.layout.fragment_findingjoblist, container, false);
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class ViewForMyRequestCategoryActivity extends AbstractViewForActivity {
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(R.layout.activity_request_new_category, null);	
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_myrequest_new_category, null);	
 	}
 
 	@Override

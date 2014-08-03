@@ -40,7 +40,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
 		
 		lv_cart = (ListView)findViewById(R.id.list_view_left);
-		arrayAdapterForCartListView = new ArrayAdapterForCartListView(getContext( ), R.layout.item_list_cart);
+		arrayAdapterForCartListView = new ArrayAdapterForCartListView(getContext( ), R.layout.item_cart_list);
 		lv_cart.setAdapter(arrayAdapterForCartListView);
 		lv_cart.setItemsCanFocus(false);
 		lv_cart.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

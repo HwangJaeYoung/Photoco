@@ -23,7 +23,7 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_request_new_tag, this);
+		return inflate(getContext( ), R.layout.item_myrequest_new_tag, this);
 	}
 
 	@Override
@@ -37,13 +37,8 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 		iv_myrequestTagCancel.setOnTouchListener(new OnTouchListener() {			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				if(event.ACTION_DOWN == 0) 
-				{
 					isDeleteButtonClicked = true;
 					return false;
-				}
-				else
-					return true;
 			}
 		});
 	}

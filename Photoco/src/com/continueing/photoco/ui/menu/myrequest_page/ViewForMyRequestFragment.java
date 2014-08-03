@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ArrayAdapterForMyRequestListView;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag;
 
 public class ViewForMyRequestFragment extends AbstractViewForFragment {
 
@@ -43,7 +43,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 
 	@Override
 	protected View inflate(LayoutInflater inflater, ViewGroup container) {
-		return inflater.inflate(R.layout.fragment_request_empty, container, false);
+		return inflater.inflate(R.layout.fragment_myrequest, container, false);
 	}
 
 	@Override
@@ -77,6 +77,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
+					Log.i("position", ""+position);
 					arrayList.remove(position);
 					arrayAdapterForMyRequestListView.clear();
 					arrayAdapterForMyRequestListView.addAll(arrayList);

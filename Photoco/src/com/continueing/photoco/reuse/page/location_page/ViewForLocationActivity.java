@@ -31,7 +31,7 @@ public class ViewForLocationActivity extends AbstractViewForActivity {
 	@Override
 	protected View inflate() {
 		return LayoutInflater.from(getContext()).inflate(
-				R.layout.activity_request_new_location, null);
+				R.layout.activity_myrequest_new_location, null);
 	}
 
 	@Override

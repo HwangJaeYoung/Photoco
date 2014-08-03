@@ -32,7 +32,7 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	@Override
 	protected View inflate() {
 		return LayoutInflater.from(getContext()).inflate(
-				R.layout.activity_finding_job_detail, null);
+				R.layout.activity_findingjob_detail, null);
 	}
 
 	@Override

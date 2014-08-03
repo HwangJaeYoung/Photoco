@@ -27,7 +27,7 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(R.layout.activity_request_new_duration, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_myrequest_new_duration, null);
 	}
 
 	@Override

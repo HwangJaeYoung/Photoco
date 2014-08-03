@@ -20,7 +20,7 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 
 	@Override
 	protected View inflate(LayoutInflater inflater, ViewGroup container) {
-		return inflater.inflate(R.layout.fragment_account, container, false);
+		return inflater.inflate(R.layout.fragment_myaccount, container, false);
 	}
 
 	@Override

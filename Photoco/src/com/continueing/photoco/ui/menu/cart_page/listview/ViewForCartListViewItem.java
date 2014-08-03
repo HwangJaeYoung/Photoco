@@ -19,7 +19,7 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_list_cart, this);
+		return inflate(getContext( ), R.layout.item_cart_list, this);
 	}
 
 	@Override

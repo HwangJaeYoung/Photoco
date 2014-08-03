@@ -33,7 +33,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_request, this);
+		return inflate(getContext( ), R.layout.item_myrequest, this);
 	}
 
 	@Override

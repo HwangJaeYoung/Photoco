@@ -26,7 +26,7 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	@Override
 	protected View inflate() {
 		/* 여기에서는 this를 인자로 주면서 인플레이트한 item_request_abstract_info를 뷰 그룹에 붙이게 된다. */
-		return inflate(getContext( ), R.layout.item_finding_job_list, this);
+		return inflate(getContext( ), R.layout.item_findingjoblist, this);
 	}
 
 	@Override

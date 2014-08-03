@@ -18,7 +18,7 @@ public class ViewForArrayAdapterForMyNewRequestGrid extends AbstractViewForListV
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_request_tag_gridview, this);
+		return inflate(getContext( ), R.layout.item_myrequest_tag_gridview, this);
 	}
 
 	@Override
