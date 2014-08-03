@@ -21,7 +21,7 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 
 	@Override
 	protected View inflate() {
-		 return inflate(getContext( ), R.layout.item_myphoto_new, this);
+		 return inflate(getContext( ), R.layout.item_myphoto, this);
 	}
 
 	@Override

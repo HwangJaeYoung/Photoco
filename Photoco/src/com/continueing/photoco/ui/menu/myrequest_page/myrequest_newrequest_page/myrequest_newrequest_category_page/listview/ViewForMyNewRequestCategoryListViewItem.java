@@ -18,7 +18,7 @@ public class ViewForMyNewRequestCategoryListViewItem extends AbstractViewForList
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_myrequest_category, this);
+		return inflate(getContext( ), R.layout.item_myrequest_new_category, this);
 	}
 
 	@Override
