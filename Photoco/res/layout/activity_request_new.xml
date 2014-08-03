@@ -44,6 +44,17 @@
                 android:background="@drawable/bt_request_new_add_image"
                 android:text="Add\nImage"
                 android:textColor="#b0bac8"
+                android:scaleType="fitXY"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_request_new_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:text="  Add\nImage"
+                android:textColor="#b0bac8"
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
@@ -57,9 +68,9 @@
         android:orientation="vertical" >
 
         <RelativeLayout
+            android:id="@+id/rl_request_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rl_request_tag"
             android:orientation="horizontal" >
 
             <RelativeLayout
@@ -110,8 +121,11 @@
                 android:id="@+id/gv_request_tag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" >
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="120dp"
+                android:horizontalSpacing="5.5dp"
+                android:numColumns="3"
+                android:verticalSpacing="5.5dp" >
             </GridView>
         </RelativeLayout>
 

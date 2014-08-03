@@ -118,7 +118,7 @@ public class NavigationDrawerFragment extends Fragment {
 		// ActionBarDrawerToggle은 navigation drawer와 action bar app icon을 연결해 서로 상호 작용이 가능하게 한다.
 		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), // host Activity
 		mDrawerLayout, // DrawerLayout 객체
-		R.drawable.ic_bar_menu, // 네비게이션 이미지 
+		R.drawable.bt_menu, // 네비게이션 이미지 
 		R.string.title_section1, // 열었을 때 설명 
 		R.string.title_section1 // 닫았을 때 설명 
 		) {

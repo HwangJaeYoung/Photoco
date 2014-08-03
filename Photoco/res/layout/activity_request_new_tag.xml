@@ -27,14 +27,14 @@
 
         <EditText
             android:id="@+id/et_request_new_tag_input"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/iv_request_new_tag"
+            android:background="#fff"
             android:hint="Input Tag.."
             android:inputType="textEmailAddress"
             android:textColor="#323a45"
-            android:background="#fff"
             android:textColorHint="#bab0c8"
             android:textSize="18sp" />
     </RelativeLayout>
