@@ -35,10 +35,9 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	private ArrayAdapterForMyRequestListView arrayAdapterForMyRequestListView;
 	private ArrayList<IMyRequestItem> arrayList = new ArrayList<IMyRequestItem>( ); 
 
-	public ViewForMyRequestFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController, ArrayList<IMyRequestItem> anArrayList) {
+	public ViewForMyRequestFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
 		controller = aController;
-		arrayList = anArrayList;
 	}
 
 	@Override
@@ -77,12 +76,15 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
-					Log.i("position", ""+position);
-					arrayList.remove(position);
+					arrayList.remove(position); // 삭제오류
 					arrayAdapterForMyRequestListView.clear();
 					arrayAdapterForMyRequestListView.addAll(arrayList);
 					ViewForMyRequestListViewItem.isDeleteButtonClicked = false;
+					
+					if(arrayList.size() == 0) // 초기에 하나라도 아이템이 있으면
+						setVisible( );
 				}
+				
 				else if(ViewForMyRequestListViewItem.isDeleteButtonClicked == false)
 				{
 					controller.showRequestDetail( );
@@ -94,7 +96,8 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	// 사용자가 NewRequest한 모든 항목을 보여주기 위해서 만들어 놓음
 	public void addMyRequestArrayList(ArrayList<IMyRequestItem> anArrayList)
 	{
-		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
+		arrayList = anArrayList;
+		if(arrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );
 		
 		arrayAdapterForMyRequestListView.clear();
@@ -108,6 +111,14 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		tv_myrequestEmpty1.setVisibility(TextView.INVISIBLE);
 		tv_myrequestEmpty2.setVisibility(TextView.INVISIBLE);
 		iv_myrequestEmptyArrow.setVisibility(ImageView.INVISIBLE);
+	}
+	
+	public void setVisible( )
+	{
+		iv_myrequestEmptyFace.setVisibility(ImageView.VISIBLE);
+		tv_myrequestEmpty1.setVisibility(TextView.VISIBLE);
+		tv_myrequestEmpty2.setVisibility(TextView.VISIBLE);
+		iv_myrequestEmptyArrow.setVisibility(ImageView.VISIBLE);
 	}
 	
 	public static interface Controller {

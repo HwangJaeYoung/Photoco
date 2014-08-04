@@ -98,7 +98,7 @@
             android:theme="@style/Theme.AppCompat" >
         </activity>
         <activity
-            android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.MyRequestDetailGridViewActivity"
+            android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.MyRequestGridViewDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat" >
         </activity>

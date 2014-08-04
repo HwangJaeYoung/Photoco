@@ -37,8 +37,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 
 	@Override
 	public void onEditTextsLengthChanged(int aUserNameLength, int aPasswordLength) {
-		// (aUserNameLength > 2 && aUserNameLength < 16) && (aPasswordLength > 5 && aPasswordLength < 21)
-		if ((aUserNameLength == 1 && aPasswordLength == 1)) {
+		if ((aUserNameLength > 2 && aUserNameLength < 16) && (aPasswordLength > 5 && aPasswordLength < 21)) {
 			view.makeLoginEnable(); // 뷰에 관한것은 뷰에서 해아한다.
 		} else {
 			view.makeLoginDisable();
@@ -51,8 +50,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 		UsersRequest userLoginRequest = new UsersRequest(getApplicationContext());
 		userName = aUserName; // Setting Activity로 보낼 유저 이름
 		try {
-			// userLoginRequest.login(aUserName, aPassword, loginListener);
-			userLoginRequest.login("jaeyoung", "1234567", loginListener);
+			userLoginRequest.login(aUserName, aPassword, loginListener);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} 

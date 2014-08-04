@@ -6,7 +6,7 @@ import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 
-public class ArrayAdapterForMyRequestListView extends AbstractArrayAdapter<IMyRequestItem> implements ViewForMyRequestListViewItem.Controller{
+public class ArrayAdapterForMyRequestListView extends AbstractArrayAdapter<IMyRequestItem> {
 	
 	public ArrayAdapterForMyRequestListView(Context context, int resource) {
 		super(context, resource);
@@ -14,13 +14,6 @@ public class ArrayAdapterForMyRequestListView extends AbstractArrayAdapter<IMyRe
 
 	@Override
 	public AbstractViewForListViewItem getInstance() {
-		return new ViewForMyRequestListViewItem(getContext(), this);
+		return new ViewForMyRequestListViewItem(getContext());
 	}
-
-	@Override
-	public void onRemoveClicked() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
