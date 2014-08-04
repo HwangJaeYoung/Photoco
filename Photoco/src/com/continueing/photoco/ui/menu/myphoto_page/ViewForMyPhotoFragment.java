@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.reuse.girdview.staggered_grid_view.ArrayAdapterStaggeredGridView;
+import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
-import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ArrayAdapterStaggeredGridView;
-import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 
@@ -43,9 +43,7 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		int margin = getContext().getResources().getDimensionPixelSize(R.dimen.margin);
 		gridView.setItemMargin(margin); // set the GridView margin
 		gridView.setPadding(margin, 0, margin, 0); // have the margin on the sides as well 
-		// adapter = new StaggeredAdapter(getContext( ), R.id.imageView1);
 		adapter = new ArrayAdapterStaggeredGridView(getContext( ), 0);
-		
 		gridView.setAdapter(adapter);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));

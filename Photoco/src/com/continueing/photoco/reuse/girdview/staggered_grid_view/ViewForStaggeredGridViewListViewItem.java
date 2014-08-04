@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view;
+package com.continueing.photoco.reuse.girdview.staggered_grid_view;
 
 import android.content.Context;
 import android.view.View;

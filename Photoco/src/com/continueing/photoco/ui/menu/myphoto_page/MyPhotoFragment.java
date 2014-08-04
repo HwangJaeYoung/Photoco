@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.continueing.photoco.reuse.girdview.staggered_grid_view.MockUp;
+import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 import com.continueing.photoco.ui.menu.myphoto_page.myphoto_detail_page.MyPhotoDetailActivity;
 import com.continueing.photoco.ui.menu.myphoto_page.myphoto_newphoto_page.MyPhotoNewPhotoActivity;
-import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.MockUp;
-import com.continueing.photoco.ui.menu.myphoto_page.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 
 public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.Controller {
 	private ViewForMyPhotoFragment view;

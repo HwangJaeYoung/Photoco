@@ -1,4 +1,4 @@
-package com.continueing.photoco.reuse.etc.staggered.loader;
+package com.continueing.photoco.reuse.girdview.staggered.loader;
 
 import java.io.File;
 import java.io.FileInputStream;

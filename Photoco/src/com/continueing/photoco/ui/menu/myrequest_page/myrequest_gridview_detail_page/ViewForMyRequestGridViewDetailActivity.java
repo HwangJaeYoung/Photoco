@@ -26,7 +26,7 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(R.layout.activity_myrequest_datail, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_myrequest_gridview_datail, null);
 	}
 
 	@Override
