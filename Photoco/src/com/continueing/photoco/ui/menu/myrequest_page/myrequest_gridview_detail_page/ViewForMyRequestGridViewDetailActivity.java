@@ -1,25 +1,25 @@
-package com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page;
+package com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page;
 
 import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridView;
+import android.widget.AdapterView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.reuse.widget.ExpandableHeightGridView;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.ArrayAdapterForMyRequestDetailActivity;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.ViewForArrayAdapterForMyRequestDetailActivity.IMyRequestDetailItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview.ArrayAdapterForMyRequestDetailActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview.ViewForArrayAdapterForMyRequestDetailActivity.IMyRequestDetailItem;
 
-public class ViewForMyRequestDetailActivity extends AbstractViewForActivity{
+public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActivity{
 
 	private Controller controller;
 	private ExpandableHeightGridView gv_requestDetail;
 	private ArrayAdapterForMyRequestDetailActivity arrayAdapterForMyRequestDetailActivity;
 	
-	public ViewForMyRequestDetailActivity(Context context, Controller aController) {
+	public ViewForMyRequestGridViewDetailActivity(Context context, Controller aController) {
 		super(context);
 		controller = aController;
 	}
@@ -45,12 +45,16 @@ public class ViewForMyRequestDetailActivity extends AbstractViewForActivity{
 	
 	@Override
 	protected void setEvent() {
-	
-		
+		gv_requestDetail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				controller.selectedGridViewItem();
+			}
+		});
 	}
 	
 	public static interface Controller
 	{
-		
+		public void selectedGridViewItem( );
 	}
 }

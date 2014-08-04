@@ -1,25 +1,27 @@
-package com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page;
+package com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.Images;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview.ViewForArrayAdapterForMyRequestDetailActivity.IMyRequestDetailItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview.Images;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview.ViewForArrayAdapterForMyRequestDetailActivity.IMyRequestDetailItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.myrequest_detail_page.MyRequestDetailActivity;
 
-public class MyRequestDetailActivity extends ActionBarActivity implements ViewForMyRequestDetailActivity.Controller{
+public class MyRequestGridViewDetailActivity extends ActionBarActivity implements ViewForMyRequestGridViewDetailActivity.Controller{
 
-	private ViewForMyRequestDetailActivity view;
+	private ViewForMyRequestGridViewDetailActivity view;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		view = new ViewForMyRequestDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
+		view = new ViewForMyRequestGridViewDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
 		
@@ -50,7 +52,12 @@ public class MyRequestDetailActivity extends ActionBarActivity implements ViewFo
         list.add(new Images("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg"));
         list.add(new Images("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg"));
 		
-        
         view.addRequestImages(list);
+	}
+
+	@Override
+	public void selectedGridViewItem() {
+		Intent intent = new Intent(getApplicationContext(), MyRequestDetailActivity.class);
+		startActivity(intent);
 	}
 }

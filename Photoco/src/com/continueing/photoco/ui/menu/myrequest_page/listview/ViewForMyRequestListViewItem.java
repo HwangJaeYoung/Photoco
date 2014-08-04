@@ -71,7 +71,15 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	public static interface IMyRequestItem extends IListViewItem
 	{
 		// 뽑아낼 데이터의 메소드를 정의
+		public String getId( );
 		public String getName( );
+		public String getDescription( );
+		public String getImageURL( );
+		public String getTag( );
+		public String getCategory( );
+		public String location( );
+		public String getLeftTime( );
+		public String getEndDate( );
 	}
 	 
 	public static interface Controller

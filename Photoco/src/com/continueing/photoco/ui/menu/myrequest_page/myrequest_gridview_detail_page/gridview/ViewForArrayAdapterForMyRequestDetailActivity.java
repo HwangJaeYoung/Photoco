@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.menu.myrequest_page.myrequest_detail_page.gridview;
+package com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview;
 
 import android.content.Context;
 import android.view.View;
