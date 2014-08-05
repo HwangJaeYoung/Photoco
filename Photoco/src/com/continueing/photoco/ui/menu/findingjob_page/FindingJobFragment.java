@@ -46,7 +46,6 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		// this는 Controller를 위해서 넣어주는 것이다.
         view = new ViewForFindingJobFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
         searchFindingJobItemFromServer("recommended");
-       
         return view.getRoot();
     }
 
@@ -71,7 +70,6 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;
-			Log.i("find", jsonObject.toString());
 			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);

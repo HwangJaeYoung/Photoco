@@ -7,18 +7,27 @@ import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStagger
 import com.continueing.photoco.ui.menu.marketplace_page.marketplace_detail_page.MarketplaceDetailActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar.Tab;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class MarketplaceFragment extends Fragment implements ViewForMarketplaceFragment.Controller{
 	private ViewForMarketplaceFragment view;
+	private ActionBar actionBar;
+	private ActionBar.Tab actionBarTab;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		addActionBarTab( );
 	}
 	
 	@Override
@@ -67,5 +76,51 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	public void onPhotoSelected() {
 		Intent intent = new Intent(getActivity( ), MarketplaceDetailActivity.class);
 		startActivity(intent);
+	}
+	
+	public void addActionBarTab( ) {
+		actionBar = ((ActionBarActivity)getActivity( )).getSupportActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
+		
+		TabListener findjobListener = new TabListener(null);
+		
+		actionBarTab = actionBar.newTab();
+		actionBarTab.setText("BestSeller");
+		actionBarTab.setTabListener(findjobListener);
+		actionBar.addTab(actionBarTab);
+		
+		actionBarTab = actionBar.newTab();
+		actionBarTab.setText("MostViewed");
+		actionBarTab.setTabListener(findjobListener);
+		actionBar.addTab(actionBarTab);
+		
+		actionBarTab = actionBar.newTab();
+		actionBarTab.setText("Latest");
+		actionBarTab.setTabListener(findjobListener);
+		actionBar.addTab(actionBarTab);
+	}
+	
+	private class TabListener implements ActionBar.TabListener {
+		public TabListener(Fragment aFragment) { }
+
+		@Override
+		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
+
+		}
+		
+		@Override
+		public void onTabReselected(Tab arg0, FragmentTransaction arg1) { }
+
+		@Override
+		public void onTabUnselected(Tab arg0, FragmentTransaction arg1) { }
+	}
+	
+	@Override
+	public void onDetach( )
+	{
+		super.onDetach();
+		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
+		//removeTab(ActionBar.Tab tab)는 하나만 지운다
 	}
 }

@@ -58,8 +58,8 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 	
 	public void addJobListItemArrayList(ArrayList<IFindingJobListItem> anArrayList)
 	{
+		arrayAdapterForFindingJobListFragment.clear();
 		arrayAdapterForFindingJobListFragment.addAll(anArrayList);
-		//setProgressbarVisibility(false);
 	}
 	
 	public static interface Controller extends IListViewItem
