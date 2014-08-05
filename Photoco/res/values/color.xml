@@ -3,7 +3,6 @@
 
     <color name="layout_list_drawer_default">#323a45</color>
     <color name="layout_list_drawer_pressed">#4b5563</color>
-    
     <color name="bt_signin_disabled">#dde6f2</color>
     <color name="bt_signin_default">#62caf7</color>
     <color name="bt_signin_pressed">#3aaada</color>
@@ -15,13 +14,16 @@
     <color name="bt_signup_confirm_pressed">#e8eef6</color>
     <color name="tv_signup_agree_default">#323a45</color>
     <color name="tv_signup_agree_pressed">#000000</color>
-    
-
     <color name="bt_job_detail_hide_default">#f65454</color>
     <color name="bt_job_detail_hide_preesed">#d23f3f</color>
     <color name="bt_job_detail_participate_default">#62caf7</color>
     <color name="bt_job_detail_participate_pressed">#3aaada</color>
-    
     <color name="layout_request_tag_default">#ffffff</color>
-	<color name="layout_request_tag_pressed">#e8eef6</color>
+    <color name="layout_request_tag_pressed">#e8eef6</color>
+    <color name="tab_text_default">#606873</color>
+    <color name="tab_text_pressed">#18191b</color>
+    <color name="tab_text_selected">#ffffff</color>
+    <color name="tab_default">#323a45</color>
+    <color name="tab_pressed">#24282d</color>
+
 </resources>

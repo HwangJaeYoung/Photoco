@@ -13,8 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.listview.finding_job_list.ArrayAdapterForFindingJobListFragment;
-import com.continueing.photoco.reuse.listview.finding_job_list.ViewForFindingJobListViewItem.IFindingJobListItem;
+import com.continueing.photoco.reuse.listview.findingjoblist.ArrayAdapterForFindingJobListFragment;
+import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 

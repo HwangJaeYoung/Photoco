@@ -17,7 +17,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/CustomActionBarTheme" >
         <activity
             android:name="com.continueing.photoco.ui.login_page.LoginActivity"
             android:label="@string/app_name"
@@ -35,77 +35,77 @@
         <activity
             android:name="com.continueing.photoco.ui.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page.FindingJobDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.reuse.page.location_page.LocationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.MyNewRequestActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.setting_page.SettingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myphoto_page.myphoto_detail_page.MyPhotoDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.MyNewRequestDurationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page.JobListDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.cart_page.cart_detail_page.CartDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myphoto_page.myphoto_newphoto_page.MyPhotoNewPhotoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.marketplace_page.marketplace_detail_page.MarketplaceDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.MyNewRequestCategoryActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.MyNewRequestTagActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.MyRequestGridViewDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
             android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.myrequest_detail_page.MyRequestDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat" >
+            android:theme="@style/CustomActionBarTheme" >
         </activity>
     </application>
 

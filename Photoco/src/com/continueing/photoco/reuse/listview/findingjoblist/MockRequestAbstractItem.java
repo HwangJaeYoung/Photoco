@@ -1,4 +1,5 @@
-package com.continueing.photoco.reuse.listview.finding_job_list;
+package com.continueing.photoco.reuse.listview.findingjoblist;
+
 
 public class MockRequestAbstractItem implements ViewForFindingJobListViewItem.IFindingJobListItem{
 

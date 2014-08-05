@@ -20,8 +20,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.listview.finding_job_list.ArrayAdapterForFindingJobListFragment;
-import com.continueing.photoco.reuse.listview.finding_job_list.ViewForFindingJobListViewItem.IFindingJobListItem;
+import com.continueing.photoco.reuse.listview.findingjoblist.ArrayAdapterForFindingJobListFragment;
+import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.reuse.widget.ProgressBarFooter;
 
@@ -31,8 +31,8 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	private Controller controller;
 	private ArrayAdapterForFindingJobListFragment arrayAdapterForFindingJobListFragment;
 	private LayoutInflater layoutInflater;
-	private ActionBar acb;
-	private ActionBar.Tab tab;
+	private ActionBar actionBar;
+	private ActionBar.Tab actionBarTab;
 	
 	public ViewForFindingJobFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -90,46 +90,40 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	
 	public void removeActionBarTab( )
 	{
-		acb.removeAllTabs(); // 생성된 모든 탭을 지운다.
+		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다
 	}
 	
 	public void addActionBarTab(FragmentActivity activity) {
-			acb = ((ActionBarActivity) activity).getSupportActionBar();
-			acb.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-			acb.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
+		actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 			
-			for(int i = 0; i < 3; i++)
-			{
-				tab = acb.newTab();
-				String temp = "action";
-				tab.setText(temp + i);
-				TabFragment frag = new TabFragment( );
-				tab.setTabListener(new TabListener(frag));
-				acb.addTab(tab);
+		for(int i = 0; i < 3; i++)
+		{
+			actionBarTab = actionBar.newTab();
+			String temp = "action";
+			actionBarTab.setText(temp + i);
+			TabFragment frag = new TabFragment( );
+			actionBarTab.setTabListener(new TabListener(frag));
+			actionBar.addTab(actionBarTab);
 		}
 	}
 	
-	private class TabListener implements ActionBar.TabListener{
+	private class TabListener implements ActionBar.TabListener {
 		
 		public TabListener(Fragment fragment) {
 	
 		}
 
 		@Override
-		public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-			
-		}
+		public void onTabReselected(Tab arg0, FragmentTransaction arg1) { }
 
 		@Override
-		public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
-			
-		}
+		public void onTabSelected(Tab arg0, FragmentTransaction arg1) { }
 
 		@Override
-		public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-		
-		}
+		public void onTabUnselected(Tab arg0, FragmentTransaction arg1) { }
 	}
 	
 	public class TabFragment extends Fragment
