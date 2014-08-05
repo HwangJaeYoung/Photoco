@@ -2,6 +2,7 @@ package com.continueing.photoco.reuse.listview.findingjoblist;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,9 +14,9 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	private IFindingJobListItem iFindingJobListItem;
 	private TextView tv_category;
 	private TextView tv_name;
-	private ImageView bt_tagFirst;
-	private ImageView bt_tagSecond;
-	private ImageView bt_tagThird;
+	private Button bt_tagFirst;
+	private Button bt_tagSecond;
+	private Button bt_tagThird;
 	private TextView tv_leftTime;
 	
 	public ViewForFindingJobListViewItem(Context context) {
@@ -33,9 +34,9 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	protected void initViews() {
 		tv_category = (TextView)findViewById_(R.id.tv_listv_group);
 		tv_name = (TextView)findViewById_(R.id.tv_list_name);
-		bt_tagFirst = (ImageView)findViewById_(R.id.bt_list_tag_first);
-		bt_tagSecond =(ImageView)findViewById_(R.id.bt_list_tag_second);
-		bt_tagThird =  (ImageView)findViewById_(R.id.bt_list_tag_third);
+		bt_tagFirst = (Button)findViewById_(R.id.bt_list_tag_first);
+		bt_tagSecond =(Button)findViewById_(R.id.bt_list_tag_second);
+		bt_tagThird =  (Button)findViewById_(R.id.bt_list_tag_third);
 		tv_leftTime = (TextView)findViewById_(R.id.tv_left_time);
 	}
 	
@@ -47,17 +48,24 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	protected void setData(IListViewItem aIListViewItem) {
 		iFindingJobListItem = (IFindingJobListItem)aIListViewItem;
 		tv_category.setText(iFindingJobListItem.getCategory());	
+		tv_name.setText(iFindingJobListItem.getName( ));
+		bt_tagFirst.setText((iFindingJobListItem.getTag())[0]);
+		bt_tagSecond.setText((iFindingJobListItem.getTag())[1]);
+		bt_tagThird.setText((iFindingJobListItem.getTag())[2]);
+		tv_leftTime.setText(iFindingJobListItem.getLeftTime());;	
 	}
 	
 	/* IRequestAbstractInfoItem를 사용하여 Model에서 이 인터페이스를 구현한 객체와 통신한다.
 	 * 한 번더 IRequestAbstractInfoItem의 구현을 강요하여 IListViewItem을 직접 구현 한것 보다 더 유연성을 준다.
 	 */
 	public static interface IFindingJobListItem extends IListViewItem {
-		public String getCategory( ); // 카데고리 이름
-		public String getName( ); // 사용자 이름
-		public String getTagFirst( ); // 첫번째 태그
-		public String getTagSecond( ); // 두번째 태그
-		public String getTagThird( ); // 세번째 태그
-		public int getLeftTime( ); // 남은 시간
+		public String getName( ); 
+		public String getDescription( ); 
+		public String getImageURL( ); 
+		public String getCategory( ); 
+		public String getLocation( ); 
+		public String getLeftTime( );
+		public String getEndDate( );	
+		public String[] getTag( ); 
 	}
 }

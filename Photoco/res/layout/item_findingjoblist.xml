@@ -91,26 +91,35 @@
             android:layout_marginTop="7dp"
             android:orientation="horizontal" >
 
-            <ImageView
+            <Button
                 android:id="@+id/bt_list_tag_first"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:text="Cafe"
+                android:textColor="#fff"
+                android:textSize="14sp"
                 android:background="@drawable/tag_bg" />
 
-            <ImageView
+            <Button
                 android:id="@+id/bt_list_tag_second"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
+                android:text="Coffee"
+                android:textColor="#fff"
+                android:textSize="14sp"
                 android:background="@drawable/tag_bg" />
 
-            <ImageView
+            <Button
                 android:id="@+id/bt_list_tag_third"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
+                android:text="Notebook"
+                android:textColor="#fff"
+                android:textSize="14sp"
                 android:background="@drawable/tag_bg" />
         </LinearLayout>
     </LinearLayout>

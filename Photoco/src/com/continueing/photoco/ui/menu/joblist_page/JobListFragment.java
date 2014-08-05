@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.continueing.photoco.reuse.listview.findingjoblist.MockRequestAbstractItem;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page.JobListDetailActivity;
 
@@ -26,15 +25,7 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
         view = new ViewForJobListFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
      
         ArrayList<IFindingJobListItem> arrayList = new ArrayList<IFindingJobListItem>( );
-       
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
-        arrayList.add(new MockRequestAbstractItem());
+   
         
         view.addJobListItemArrayList(arrayList);
         return view.getRoot();
