@@ -19,10 +19,10 @@ import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.reuse.widget.SubmitButton;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.gridview.ArrayAdapterForMyRequestTagGrid;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 
@@ -42,7 +42,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	private TextView tv_requestNewAdd;
 	private EditText et_requestNew;
 	private GridView gv_requestTag;
-	private ArrayAdapterForMyRequestTagGrid arrayAdapterForMyRequestTagGrid;
+	private ArrayAdapterForTagGridView arrayAdapterForMyRequestTagGrid;
 	
 	public ViewForMyNewRequestActivity(Context context, Controller aController) {
 		super(context);
@@ -86,7 +86,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		sb_requestNewSubmit.addViewToHold(rl_selectDuration);
 		
 		gv_requestTag = (GridView)findViewById(R.id.gv_request_tag);	
-		arrayAdapterForMyRequestTagGrid = new ArrayAdapterForMyRequestTagGrid(getContext( ), 0);
+		arrayAdapterForMyRequestTagGrid = new ArrayAdapterForTagGridView(getContext( ), 0);
 		gv_requestTag.setAdapter(arrayAdapterForMyRequestTagGrid);	
 	}
 

@@ -1,13 +1,13 @@
 package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
@@ -47,12 +47,5 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 	protected void setData(IListViewItem aIListViewItem) {
 		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
 		tv_myrequestTag.setText(iMyRequestTagItem.getTagText());
-	}
-	
-	// Tag의 모델을 정의한다.
-	public static interface IMyRequestTagItem extends IListViewItem
-	{
-		public String getTagText();
-		public void setTagText(String aTagText);
 	}
 }

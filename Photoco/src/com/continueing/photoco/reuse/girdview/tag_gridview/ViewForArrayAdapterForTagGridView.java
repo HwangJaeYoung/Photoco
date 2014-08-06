@@ -1,4 +1,4 @@
-package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.gridview;
+package com.continueing.photoco.reuse.girdview.tag_gridview;
 
 import android.content.Context;
 import android.view.View;
@@ -7,23 +7,22 @@ import android.widget.TextView;
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
-public class ViewForArrayAdapterForMyNewRequestGrid extends AbstractViewForListViewItem {
+public class ViewForArrayAdapterForTagGridView extends AbstractViewForListViewItem {
 	
 	private TextView tv_requestTagItem;
-	public ViewForArrayAdapterForMyNewRequestGrid(Context context) {
+	public ViewForArrayAdapterForTagGridView(Context context) {
 		super(context);
 	}
 
 	@Override
 	protected View inflate() {
-		return inflate(getContext( ), R.layout.item_myrequest_new_gridview_tag, this);
+		return inflate(getContext( ), R.layout.item_gridview_tag, this);
 	}
 
 	@Override
 	protected void initViews() {
-		tv_requestTagItem = (TextView)findViewById(R.id.tv_request_tag_item);	
+		tv_requestTagItem = (TextView)findViewById(R.id.tv_gridview_tag_item);	
 	}
 
 	@Override
@@ -33,5 +32,12 @@ public class ViewForArrayAdapterForMyNewRequestGrid extends AbstractViewForListV
 	protected void setData(IListViewItem aIListViewItem) {
 		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
 		tv_requestTagItem.setText(iMyRequestTagItem.getTagText());
+	}
+	
+	// Tag의 모델을 정의한다.
+	public static interface IMyRequestTagItem extends IListViewItem
+	{
+		public String getTagText();
+		public void setTagText(String aTagText);
 	}
 }

@@ -20,23 +20,23 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 
 	private String userName;
 	private String description;
-	private JSONArray tags;
 	private String imageURL;
 	private String leftTime;
 	private String endTime;
-	private JSONObject location;
-	private JSONObject category;
+	private String locations;
+	private String categorys;
+	private String tags;
 	
 	public FindingJobList(JSONObject aJsonObject) throws JSONException
 	{
 		userName = aJsonObject.getString(JSON_KEY_USERNAME);
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
-		tags = aJsonObject.getJSONArray(JSON_KEY_TAG);
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
-		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
 		imageURL= aJsonObject.getString(JSON_KEY_IMAGEURL);
-		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
+		tags = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
+		locations = aJsonObject.getJSONObject(JSON_KEY_LOCATION).toString();
+		categorys = aJsonObject.getJSONObject(JSON_KEY_CATEGORY).toString();
 	}
 	
 	@Override
@@ -57,16 +57,17 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	@Override
 	public String[] getTag() {
 		String[] tag = new String[9];
-			
-		for(int i = 0; i < 9; i++)
-		{
-			try {
-				JSONObject temp = tags.getJSONObject(i);
+		
+		try {
+			JSONArray tempArray = new JSONArray(tags);
+			for(int i = 0; i < 9; i++) {
+				JSONObject temp = tempArray.getJSONObject(i);
 				if(temp != null)
 					tag[i] = temp.getString("name");
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}			
+			}
+		}
+		catch( JSONException e) {
+			e.printStackTrace();
 		}
 		return tag;
 	}
@@ -75,7 +76,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	public String getCategory() {
 		String category = null;
 		try {
-			category = this.category.getString("name");
+			JSONObject temp = new JSONObject(categorys);
+			category = temp.getString("name");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -86,7 +88,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	public String getLocation() {
 		String location = null;
 		try {
-			location = this.location.getString("description");
+			JSONObject temp = new JSONObject(locations);
+			location = temp.getString("description");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

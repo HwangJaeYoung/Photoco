@@ -2,9 +2,9 @@ package com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page
 
 import android.content.Context;
 
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag.IMyRequestTagItem;
 
 public class ArrayAdapterForMyRequestTag extends AbstractArrayAdapter<IMyRequestTagItem> {
 	
