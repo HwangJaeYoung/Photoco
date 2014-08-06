@@ -1,12 +1,14 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem;
 
-public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJobListItem{
+public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJobListItem, Serializable{
 	public static final String JSON_KEY_USERNAME = "username";
 	public static final String JSON_KEY_DESCRIPTION = "description";
 	public static final String JSON_KEY_TAG = "tags";
@@ -54,22 +56,19 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 
 	@Override
 	public String[] getTag() {
-		
-		String tag1 = null;
-		String tag2 = null;
-		String tag3 = null;
-		
-		try {
-			tag1 = (tags.getJSONObject(0)).getString("name");
-			tag2 = (tags.getJSONObject(1)).getString("name");
-			tag3 = (tags.getJSONObject(2)).getString("name");
-		} catch (JSONException e) {
-			e.printStackTrace();
+		String[] tag = new String[9];
+			
+		for(int i = 0; i < 9; i++)
+		{
+			try {
+				JSONObject temp = tags.getJSONObject(i);
+				if(temp != null)
+					tag[i] = temp.getString("name");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}			
 		}
-		
-		String[] temp = new String[3];
-		temp[0] = tag1; temp[1] = tag2; temp[2] = tag3;
-		return temp;
+		return tag;
 	}
 
 	@Override

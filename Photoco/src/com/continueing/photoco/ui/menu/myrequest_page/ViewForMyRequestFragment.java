@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
@@ -31,6 +31,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	private TextView tv_myrequestEmpty1;
 	private TextView tv_myrequestEmpty2;
 	private ImageView iv_myrequestEmptyArrow;
+	private ProgressBar progressBar;
 	
 	private ArrayAdapterForMyRequestListView arrayAdapterForMyRequestListView;
 	private ArrayList<IMyRequestItem> arrayList = new ArrayList<IMyRequestItem>( ); 
@@ -57,6 +58,8 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		arrayAdapterForMyRequestListView = new ArrayAdapterForMyRequestListView(getContext( ), 0);
 		lv_myRequest.setAdapter(arrayAdapterForMyRequestListView);
 		
+		progressBar = (ProgressBar)findViewById(R.id.pb_myrequest);
+
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", false).apply();
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section2);
@@ -99,6 +102,8 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		arrayList = anArrayList;
 		if(arrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );
+		else 
+			setVisible( );
 		
 		arrayAdapterForMyRequestListView.clear();
 		arrayAdapterForMyRequestListView.addAll(anArrayList);
@@ -119,6 +124,22 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		tv_myrequestEmpty1.setVisibility(TextView.VISIBLE);
 		tv_myrequestEmpty2.setVisibility(TextView.VISIBLE);
 		iv_myrequestEmptyArrow.setVisibility(ImageView.VISIBLE);
+	}
+	
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void listviewOff( ) {
+		lv_myRequest.setVisibility(View.INVISIBLE);
+	}
+	
+	public void listviewOn( ) {
+		lv_myRequest.setVisibility(View.VISIBLE);
 	}
 	
 	public static interface Controller {

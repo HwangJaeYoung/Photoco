@@ -30,12 +30,12 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		searchMyRequestItemFromServer( );
 	}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = new ViewForMyRequestFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
+		searchMyRequestItemFromServer( );
 		return view.getRoot(); 
     }
 
@@ -62,6 +62,9 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	}
 	
 	public void searchMyRequestItemFromServer( ) {
+		view.setInvisible();
+		view.listviewOff();
+		view.progressOn();
 		MyRequestItemRequest getMyrequestItems = new MyRequestItemRequest(getActivity( ));
 		try {
 			getMyrequestItems.getItems(getMyrequestItemListener);
@@ -97,6 +100,8 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 				}
 			}
 			view.addMyRequestArrayList(myrequestItems);
+			view.listviewOn();
+			view.progresOff();
 		}	
 		
 		@Override

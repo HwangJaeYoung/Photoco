@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.girdview.staggered_grid_view.ArrayAdapterStaggeredGridView;
@@ -24,6 +25,7 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	private StaggeredGridView gridView;
 	private Controller controller;
 	private Button bt_myphotoNew;
+	private ProgressBar progressBar;
 	
 	public ViewForMyPhotoFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -38,6 +40,7 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	@Override
 	protected void initViews() {
 		bt_myphotoNew = (Button)findViewById(R.id.bt_myphoto_new);
+		progressBar = (ProgressBar)findViewById(R.id.pb_myphoto);
 		
 		gridView = (StaggeredGridView)findViewById(R.id.sgv_myphoto);	
 		int margin = getContext().getResources().getDimensionPixelSize(R.dimen.margin);
@@ -68,6 +71,23 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 			}
 		});
 	}
+	
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void gridviewOff( ) {
+		gridView.setVisibility(View.INVISIBLE);
+	}
+	
+	public void gridviewviewOn( ) {
+		gridView.setVisibility(View.VISIBLE);
+	}
+	
 
     public static interface Controller
     {

@@ -4,31 +4,24 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.Tab;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.findingjoblist.ArrayAdapterForFindingJobListFragment;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
-import com.continueing.photoco.reuse.widget.ProgressBarFooter;
 
 public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	private ListView lv_requestFindingJobList;
 	private Controller controller;
+	private ProgressBar progressBar;
 	private ArrayAdapterForFindingJobListFragment arrayAdapterForFindingJobListFragment;
 	
 	public ViewForFindingJobFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
@@ -46,7 +39,7 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 		arrayAdapterForFindingJobListFragment = new ArrayAdapterForFindingJobListFragment(getContext( ), 0);
 		lv_requestFindingJobList = (ListView)findViewById(R.id.lv_request_finding_job_list);
 		lv_requestFindingJobList.setAdapter(arrayAdapterForFindingJobListFragment);
-		
+		progressBar = (ProgressBar)findViewById(R.id.pb_findingjoblist);
 		// NavigationDrawerFragment에서 드로워를 열고 닫을 때 액션바 사용여부 확인용
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
@@ -66,10 +59,25 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 	}
 
 	// FindingJobFragment(Controller)로 부터 리스트 뷰의 데이터(Model)를 가지고 온다.
-	public void addFindjobItemArrayList(ArrayList<IFindingJobListItem> anArrayList)
-	{
+	public void addFindjobItemArrayList(ArrayList<IFindingJobListItem> anArrayList) {
 		arrayAdapterForFindingJobListFragment.clear();
 		arrayAdapterForFindingJobListFragment.addAll(anArrayList);
+	}
+	
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void listviewOff( ) {
+		lv_requestFindingJobList.setVisibility(View.INVISIBLE);
+	}
+	
+	public void listviewOn( ) {
+		lv_requestFindingJobList.setVisibility(View.VISIBLE);
 	}
 	
 	public static interface Controller {

@@ -19,6 +19,13 @@
             android:focusableInTouchMode="false"
             staggered:drawSelectorOnTop="true"
             staggered:numColumns="2" />
+        
+        <ProgressBar
+            android:id="@+id/pb_myphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
     </LinearLayout>
 
     <LinearLayout

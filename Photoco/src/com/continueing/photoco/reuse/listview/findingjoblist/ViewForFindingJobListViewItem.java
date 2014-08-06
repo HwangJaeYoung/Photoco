@@ -34,10 +34,14 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	protected void initViews() {
 		tv_category = (TextView)findViewById_(R.id.tv_listv_group);
 		tv_name = (TextView)findViewById_(R.id.tv_list_name);
+		tv_leftTime = (TextView)findViewById_(R.id.tv_left_time);
 		bt_tagFirst = (Button)findViewById_(R.id.bt_list_tag_first);
 		bt_tagSecond =(Button)findViewById_(R.id.bt_list_tag_second);
 		bt_tagThird =  (Button)findViewById_(R.id.bt_list_tag_third);
-		tv_leftTime = (TextView)findViewById_(R.id.tv_left_time);
+		
+		bt_tagFirst.setFocusable(false);
+		bt_tagSecond.setFocusable(false);
+		bt_tagThird.setFocusable(false);
 	}
 	
 	// 여기서는 아이템내에서 따로 발생하는 이벤트가 없다.

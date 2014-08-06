@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
@@ -53,11 +52,15 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	@Override
 	public void onRequestSeleted(int aPosition) {
 		// 디테일한 정보를 보여주는 새로운 액티비티를 띄운다.
+		FindingJobList item= (FindingJobList)findingJobItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), FindingJobDetailActivity.class);
+		intent.putExtra("itemfileds", item);
 		startActivity(intent);
 	}
 	
 	public void searchFindingJobItemFromServer(String aTabName) {
+		view.progressOn();
+		view.listviewOff();
 		FindingJobRequest findingJobRequest = new FindingJobRequest(getActivity( ));
 		try {
 			findingJobRequest.getFindingJobItem(aTabName, getFindingJobListener);
@@ -93,6 +96,8 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 			}
 			// ViewForFindingJobFragment(View)에 데이터(Model)를 FindingJobFragment(Controller)에서 넘겨준다.
 			view.addFindjobItemArrayList(findingJobItems);
+			view.progresOff();
+			view.listviewOn();
 		}	
 		
 		@Override
@@ -109,17 +114,17 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Recommended");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Latest");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Distance");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 	}
 	
 	private class TabListener implements ActionBar.TabListener {
@@ -127,7 +132,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
-			if(aTabName.getText().equals("Recommended"))
+			if(aTabName.getText().toString().equals("Recommended"))
 				searchFindingJobItemFromServer("recommended");
 			else if(aTabName.getText().equals("Latest"))
 				searchFindingJobItemFromServer("latest");

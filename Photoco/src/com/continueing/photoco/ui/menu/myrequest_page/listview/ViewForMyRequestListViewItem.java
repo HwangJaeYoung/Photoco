@@ -67,8 +67,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
 		// 데이터를 삽입한다.
-		IMyRequestItem iMyRequestItem = (IMyRequestItem)aIListViewItem;
-		
+		IMyRequestItem iMyRequestItem = (IMyRequestItem)aIListViewItem;	
 		tv_requestName.setText(iMyRequestItem.getCategory());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		bt_listTagFirst.setText((iMyRequestItem.getTag())[0]);

@@ -95,12 +95,12 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Bought");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Uploaded");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 	}
 	
 	private class TabListener implements ActionBar.TabListener {

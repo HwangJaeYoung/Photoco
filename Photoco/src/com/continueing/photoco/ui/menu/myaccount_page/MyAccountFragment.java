@@ -40,17 +40,17 @@ public class MyAccountFragment extends Fragment{
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Sold");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Bought");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("All");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 	}
 	
 	private class TabListener implements ActionBar.TabListener {

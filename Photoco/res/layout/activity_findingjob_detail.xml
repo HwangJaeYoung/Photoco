@@ -61,6 +61,13 @@
         </LinearLayout>
         <!-- 맨위 -->
 
+        <View
+            android:id="@+id/tip1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/top"
+            android:alpha="0.3"
+            android:background="#323a45" />
 
         <!-- 두번째 -->
 
@@ -68,7 +75,7 @@
             android:id="@+id/mid"
             android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/top"
+            android:layout_below="@id/tip1"
             android:background="#fff"
             android:orientation="vertical" >
 
@@ -108,6 +115,13 @@
                     android:textSize="18sp" />
             </RelativeLayout>
 
+            <View
+                android:id="@+id/tip2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:alpha="0.3"
+                android:background="#323a45" />
+
             <LinearLayout
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
@@ -140,15 +154,21 @@
                 <!-- GridView -->
 
                 <GridView
-                    android:id="@+id/gridView"
-                    android:layout_width="230dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:columnWidth="69dp"
-                    android:numColumns="3" >
-                </GridView>
+                android:id="@+id/gv_finding_job_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:verticalSpacing="5.5dp" >
+            </GridView>
                 <!-- GridView -->
             </LinearLayout>
+
+            <View
+                android:id="@+id/tip2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:alpha="0.3"
+                android:background="#323a45" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -191,6 +211,13 @@
                         android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
+
+            <View
+                android:id="@+id/tip3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:alpha="0.3"
+                android:background="#323a45" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -243,11 +270,28 @@
                         android:text="2013/09/20"
                         android:textColor="#323a45"
                         android:textSize="13sp" />
+                    <View
+                    android:id="@+id/tip4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:alpha="0.3"
+                    android:layout_alignParentBottom="true"
+                    android:background="#323a45" />
                 </RelativeLayout>
+
+                
             </LinearLayout>
         </LinearLayout>
         <!-- 두번째 -->
 
+		<View
+		    android:id="@+id/tip2"
+		    android:layout_width="match_parent"
+		    android:layout_height="0.5dp"
+		    android:layout_below="@id/top"
+		    android:background="#323a45"
+		    android:alpha="0.3"
+		    />
 
         <!-- 세번째 -->
 

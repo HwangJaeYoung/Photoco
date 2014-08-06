@@ -16,5 +16,6 @@ public class FindingJobDetailActivity extends ActionBarActivity implements ViewF
 		view = new ViewForFindingJobDetailActivity(getApplicationContext( ), this);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
+		view.initViewInfos(getIntent( ));
 	}
 }

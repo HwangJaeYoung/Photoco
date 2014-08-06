@@ -1,13 +1,14 @@
 package com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 
 public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
@@ -31,8 +32,7 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(
-				R.layout.activity_findingjob_detail, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_findingjob_detail, null);
 	}
 
 	@Override
@@ -47,26 +47,16 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 		tv_timeLeftDetailCalendar = (TextView)findViewById(R.id.tv_finding_job_detail_timeleft_detail_calendar);
 		bt_hide = (Button)findViewById(R.id.bt_finding_job_detail_hide);
 	    bt_participate = (Button)findViewById(R.id.bt_finding_job_detail_participate);
-
-		Typeface type = Typeface.createFromAsset(getContext().getAssets(), "BreeSerif_Reg.otf");
-		
-		tv_userRequest.setTypeface(type);
-		tv_detailCategory.setTypeface(type);
-		tv_tag.setTypeface(type);
-		tv_location.setTypeface(type);
-		tv_locationDetail.setTypeface(type);
-		tv_timeLeft.setTypeface(type);
-		tv_timeLeftDetailDay.setTypeface(type);
-		tv_timeLeftDetailCalendar.setTypeface(type);
-		bt_hide.setTypeface(type);
-		bt_participate.setTypeface(type);
 	}
 
 	@Override
-	protected void setEvent() {
-
+	protected void setEvent() { }
+	
+	public void initViewInfos(Intent anIntent)
+	{
+		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra("itemfileds");
 		
-
+		tv_timeLeft.setText(item.getLeftTime());
 	}
 	
 	public static interface Controller {
