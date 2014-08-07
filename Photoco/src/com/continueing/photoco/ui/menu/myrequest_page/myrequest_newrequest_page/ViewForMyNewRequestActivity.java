@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.reuse.widget.SubmitButton;
 
@@ -174,7 +174,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	
-	public void selectedTag(ArrayList<IMyRequestTagItem> items)
+	public void selectedTag(ArrayList<ITagItem> items)
 	{
 		bt_requestNewTagDetail.setVisibility(View.INVISIBLE);
 		tv_requestNewTagDetail.setVisibility(View.INVISIBLE);

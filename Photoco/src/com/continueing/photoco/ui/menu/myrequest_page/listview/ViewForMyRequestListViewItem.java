@@ -70,6 +70,32 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		IMyRequestItem iMyRequestItem = (IMyRequestItem)aIListViewItem;	
 		tv_requestName.setText(iMyRequestItem.getCategory());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
+		
+		int counting = 0;
+		for(int i = 0; i < 3; i++)
+		{
+			if(iMyRequestItem.getTag()[i] == null)
+						counting++;			
+		}
+		
+		if(counting == 1)
+		{
+			bt_listTagFirst.setVisibility(View.VISIBLE);
+			bt_listTagSecond.setVisibility(View.VISIBLE);
+			bt_listTagThird.setVisibility(View.INVISIBLE);
+		}
+		else if(counting == 2){
+			bt_listTagFirst.setVisibility(View.VISIBLE);
+			bt_listTagSecond.setVisibility(View.INVISIBLE);
+			bt_listTagThird.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			bt_listTagFirst.setVisibility(View.VISIBLE);
+			bt_listTagSecond.setVisibility(View.VISIBLE);
+			bt_listTagThird.setVisibility(View.VISIBLE);
+		}
+		
 		bt_listTagFirst.setText((iMyRequestItem.getTag())[0]);
 		bt_listTagSecond.setText((iMyRequestItem.getTag())[1]);
 		bt_listTagThird.setText((iMyRequestItem.getTag())[2]);

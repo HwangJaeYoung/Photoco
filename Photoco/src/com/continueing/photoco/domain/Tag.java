@@ -2,10 +2,10 @@ package com.continueing.photoco.domain;
 
 import java.io.Serializable;
 
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 
 
-public class Tag  implements IMyRequestTagItem, Serializable {
+public class Tag  implements ITagItem, Serializable {
 	
 	private String tagText;
 	

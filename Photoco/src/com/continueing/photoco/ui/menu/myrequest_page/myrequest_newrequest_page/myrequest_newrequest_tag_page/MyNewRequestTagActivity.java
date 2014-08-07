@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.domain.Tag;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 
 public class MyNewRequestTagActivity extends ActionBarActivity implements ViewForMyNewRequestTagActivity.Controller{
 	private ViewForMyNewRequestTagActivity view;
-	private ArrayList<IMyRequestTagItem> myrequestTagArrayList;
+	private ArrayList<ITagItem> myrequestTagArrayList;
 	public static final String PARAM_TAG_ARRAYLIST_KEY = "tagArrayList";
 	
 	@Override
@@ -28,7 +28,7 @@ public class MyNewRequestTagActivity extends ActionBarActivity implements ViewFo
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
-		myrequestTagArrayList = new ArrayList<IMyRequestTagItem>( );
+		myrequestTagArrayList = new ArrayList<ITagItem>( );
 		view = new ViewForMyNewRequestTagActivity(getApplicationContext(), this, myrequestTagArrayList);
 		setContentView(view.getRoot());		
 	}

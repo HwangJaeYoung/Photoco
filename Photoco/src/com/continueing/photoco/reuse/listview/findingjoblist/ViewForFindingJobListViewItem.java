@@ -1,9 +1,9 @@
 package com.continueing.photoco.reuse.listview.findingjoblist;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
@@ -53,6 +53,34 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		iFindingJobListItem = (IFindingJobListItem)aIListViewItem;
 		tv_category.setText(iFindingJobListItem.getCategory());	
 		tv_name.setText(iFindingJobListItem.getName( ));
+		
+		int counting = 0;
+		for(int i = 0; i < 3; i++)
+		{
+			if(iFindingJobListItem.getTag()[i] == null)
+						counting++;			
+		}
+		
+		Log.i("counting",counting+"");
+		
+		if(counting == 1)
+		{
+			bt_tagFirst.setVisibility(View.VISIBLE);
+			bt_tagSecond.setVisibility(View.VISIBLE);
+			bt_tagThird.setVisibility(View.INVISIBLE);
+		}
+		else if(counting == 2){
+			bt_tagFirst.setVisibility(View.VISIBLE);
+			bt_tagSecond.setVisibility(View.INVISIBLE);
+			bt_tagThird.setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			bt_tagFirst.setVisibility(View.VISIBLE);
+			bt_tagSecond.setVisibility(View.VISIBLE);
+			bt_tagThird.setVisibility(View.VISIBLE);
+		}
+		
 		bt_tagFirst.setText((iFindingJobListItem.getTag())[0]);
 		bt_tagSecond.setText((iFindingJobListItem.getTag())[1]);
 		bt_tagThird.setText((iFindingJobListItem.getTag())[2]);

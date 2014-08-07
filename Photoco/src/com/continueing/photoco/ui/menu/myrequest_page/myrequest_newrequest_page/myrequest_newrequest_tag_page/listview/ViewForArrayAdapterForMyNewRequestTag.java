@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
@@ -45,7 +45,7 @@ public class ViewForArrayAdapterForMyNewRequestTag extends AbstractViewForListVi
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
-		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
+		ITagItem iMyRequestTagItem = (ITagItem)aIListViewItem;
 		tv_myrequestTag.setText(iMyRequestTagItem.getTagText());
 	}
 }

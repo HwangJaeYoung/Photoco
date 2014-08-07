@@ -31,8 +31,10 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 
 	private ActionBar actionBar;
 	private ActionBar.Tab actionBarTab;
+	private boolean tabRestrict = true;
 	private ViewForFindingJobFragment view;
 	private ArrayList<IFindingJobListItem> findingJobItems;
+	public static final String PARAM_TAG_ITEM_KEY = "tagitemfileds";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// this는 Controller를 위해서 넣어주는 것이다.
         view = new ViewForFindingJobFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
-        searchFindingJobItemFromServer("recommended");
+        actionBar.setSelectedNavigationItem(0);
         return view.getRoot();
     }
 
@@ -54,7 +56,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		// 디테일한 정보를 보여주는 새로운 액티비티를 띄운다.
 		FindingJobList item= (FindingJobList)findingJobItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), FindingJobDetailActivity.class);
-		intent.putExtra("itemfileds", item);
+		intent.putExtra(PARAM_TAG_ITEM_KEY, item);
 		startActivity(intent);
 	}
 	
@@ -73,7 +75,6 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;
-			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
 			} catch (JSONException e) {
@@ -115,7 +116,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		actionBarTab.setText("Recommended");
 		actionBarTab.setTabListener(findjobListener);
 		actionBar.addTab(actionBarTab, false);
-		
+
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Latest");
 		actionBarTab.setTabListener(findjobListener);
@@ -130,14 +131,25 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	private class TabListener implements ActionBar.TabListener {
 		public TabListener(Fragment aFragment) { }
 
+		// * 눌려진 액션바의 탭에 따라서 통신을 한 다음에 하나의 프레그먼트에서 데이터를 바꾼다.
+		// * joblist->findingjob으로 갈 경우 onTabSelected가 두 번 콜 되어
+		// server와 통신을 두번하게 되므로 tabRestrict로 제한을 두었다.
+		// onTabUnselected 여기서 값을 바꾸는 것은 여러 예외상황 때문에 좋지못한듯하여
+		// else if안에서 수행하기로 한다.
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
-			if(aTabName.getText().toString().equals("Recommended"))
+			if(aTabName.getText().toString().equals("Recommended") && tabRestrict == true) {
 				searchFindingJobItemFromServer("recommended");
-			else if(aTabName.getText().equals("Latest"))
+				tabRestrict = false;
+			}
+			else if(aTabName.getText().equals("Latest")) {
 				searchFindingJobItemFromServer("latest");
-			else if(aTabName.getText().equals("Distance"))
+				tabRestrict = true;
+			}
+			else if(aTabName.getText().equals("Distance")) {	
 				searchFindingJobItemFromServer("distance");
+				tabRestrict = true;
+			}
 		}
 		
 		@Override

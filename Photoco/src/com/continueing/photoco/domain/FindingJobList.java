@@ -64,6 +64,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 				JSONObject temp = tempArray.getJSONObject(i);
 				if(temp != null)
 					tag[i] = temp.getString("name");
+				else
+					tag[i] = null;
 			}
 		}
 		catch( JSONException e) {

@@ -14,8 +14,9 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.ui.menu.findingjob_page.FindingJobFragment;
 import com.loopj.android.image.SmartImageView;
 
 public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
@@ -65,7 +66,7 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	
 	public void initViewInfos(Intent anIntent)
 	{
-		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra("itemfileds");
+		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(FindingJobFragment.PARAM_TAG_ITEM_KEY);
 		
 		tv_userRequest.setText(item.getName()+"'s Request");
 		tv_findingJobListDescription.setText(item.getDescription());
@@ -75,8 +76,8 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 		tv_timeLeftDetailDay.setText(item.getLeftTime());
 		tv_timeLeftDetailCalendar.setText(item.getEndDate());
 		
-		ArrayList<IMyRequestTagItem> tags = new ArrayList<IMyRequestTagItem>( );
-		for(int i = 0; i < 10; i++)
+		ArrayList<ITagItem> tags = new ArrayList<ITagItem>( );
+		for(int i = 0; i < 9; i++)
 		{
 			String temp = item.getTag()[i];
 			if(temp != null)

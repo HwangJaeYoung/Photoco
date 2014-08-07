@@ -10,7 +10,7 @@ import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
 public class ViewForArrayAdapterForTagGridView extends AbstractViewForListViewItem {
 	
-	private TextView tv_requestTagItem;
+	private TextView tv_TagItem;
 	public ViewForArrayAdapterForTagGridView(Context context) {
 		super(context);
 	}
@@ -22,7 +22,7 @@ public class ViewForArrayAdapterForTagGridView extends AbstractViewForListViewIt
 
 	@Override
 	protected void initViews() {
-		tv_requestTagItem = (TextView)findViewById(R.id.tv_gridview_tag_item);	
+		tv_TagItem = (TextView)findViewById(R.id.tv_gridview_tag_item);	
 	}
 
 	@Override
@@ -30,12 +30,12 @@ public class ViewForArrayAdapterForTagGridView extends AbstractViewForListViewIt
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
-		IMyRequestTagItem iMyRequestTagItem = (IMyRequestTagItem)aIListViewItem;
-		tv_requestTagItem.setText(iMyRequestTagItem.getTagText());
+		ITagItem iMyRequestTagItem = (ITagItem)aIListViewItem;
+		tv_TagItem.setText(iMyRequestTagItem.getTagText());
 	}
 	
 	// Tag의 모델을 정의한다.
-	public static interface IMyRequestTagItem extends IListViewItem
+	public static interface ITagItem extends IListViewItem
 	{
 		public String getTagText();
 		public void setTagText(String aTagText);

@@ -24,7 +24,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.continueing.photoco.reuse.etc.ErrorCodeList;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.RequestsRequest;
 import com.continueing.photoco.reuse.page.location_page.LocationActivity;
@@ -151,7 +151,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 				tagJSONArray = new JSONArray( );
 				
 				@SuppressWarnings("unchecked")
-				ArrayList<IMyRequestTagItem> tagArrayList = (ArrayList<IMyRequestTagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY);
+				ArrayList<ITagItem> tagArrayList = (ArrayList<ITagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY);
 				for(int i = 0; i < tagArrayList.size(); i++)
 				{
 					tagJSONArray.put(tagArrayList.get(i).getTagText());

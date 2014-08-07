@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.IMyRequestTagItem;
+import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ArrayAdapterForMyRequestTag;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_tag_page.listview.ViewForArrayAdapterForMyNewRequestTag;
@@ -25,10 +25,10 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 	private ListView lv_requestNewTag;	
 	private EditText et_requestNewTagInput;
 	private RelativeLayout rl_requestNewTagAdd;
-	private ArrayList<IMyRequestTagItem> arrayList;
+	private ArrayList<ITagItem> arrayList;
 	private ArrayAdapterForMyRequestTag arrayAdapterForMyRequestTag;
 	
-	public ViewForMyNewRequestTagActivity(Context context, Controller aController,  ArrayList<IMyRequestTagItem> aArrayList) {
+	public ViewForMyNewRequestTagActivity(Context context, Controller aController,  ArrayList<ITagItem> aArrayList) {
 		super(context);
 		controller = aController;
 		arrayList = aArrayList;
@@ -90,7 +90,7 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 		et_requestNewTagInput.setText("");
 	}
 	
-	public void addItems(ArrayList<IMyRequestTagItem> item)
+	public void addItems(ArrayList<ITagItem> item)
 	{
 		arrayAdapterForMyRequestTag.clear();
 		arrayAdapterForMyRequestTag.addAll(item);

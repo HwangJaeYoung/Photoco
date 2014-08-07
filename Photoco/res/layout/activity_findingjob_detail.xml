@@ -68,8 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_below="@id/top"
-            android:alpha="0.3"
-            android:background="#323a45" />
+            android:background="#DDE6F2" />
 
         <!-- 두번째 -->
 
@@ -121,8 +120,7 @@
                 android:id="@+id/tip2"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:alpha="0.3"
-                android:background="#323a45" />
+                android:background="#DDE6F2" />
 
             <LinearLayout
                 android:layout_width="360dp"
@@ -130,47 +128,53 @@
                 android:orientation="horizontal" >
 
                 <RelativeLayout
-                    android:layout_width="130dp"
-                    android:layout_height="49dp"
-                    android:orientation="horizontal" >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
 
-                    <ImageView
-                        android:id="@+id/iv_finding_job_detail_tag"
-                        android:layout_width="18dp"
-                        android:layout_height="17dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="17dp"
-                        android:src="@drawable/tag_ic" />
+                    <RelativeLayout
+                        android:layout_width="130dp"
+                        android:layout_height="49dp" >
 
-                    <TextView
-                        android:id="@+id/tv_finding_job_detail_tag"
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/iv_finding_job_detail_tag"
+                            android:layout_width="18dp"
+                            android:layout_height="17dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="17dp"
+                            android:src="@drawable/tag_ic" />
+
+                        <TextView
+                            android:id="@+id/tv_finding_job_detail_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="17dp"
+                            android:layout_toRightOf="@id/iv_finding_job_detail_tag"
+                            android:text="Tag"
+                            android:textColor="#808a99"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                    <!-- GridView -->
+
+                    <GridView
+                        android:id="@+id/gv_finding_job_tag"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="17dp"
-                        android:layout_toRightOf="@id/iv_finding_job_detail_tag"
-                        android:text="Tag"
-                        android:textColor="#808a99"
-                        android:textSize="18sp" />
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="5.5dp" >
+                    </GridView>
+                    <!-- GridView -->
                 </RelativeLayout>
-                <!-- GridView -->
-
-                <GridView
-                    android:id="@+id/gv_finding_job_tag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:numColumns="3"
-                    android:verticalSpacing="5.5dp" >
-                </GridView>
-                <!-- GridView -->
             </LinearLayout>
 
             <View
                 android:id="@+id/tip2"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:alpha="0.3"
-                android:background="#323a45" />
+                android:background="#DDE6F2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,8 +221,7 @@
                 android:id="@+id/tip3"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:alpha="0.3"
-                android:background="#323a45" />
+                android:background="#DDE6F2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -255,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="13dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="3dp"
                         android:text="7 Days"
                         android:textColor="#ffc868"
                         android:textSize="18sp" />
@@ -267,7 +270,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_below="@id/tv_finding_job_detail_timeleft_detail_day"
                         android:layout_marginRight="13dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:text="2013/09/20"
                         android:textColor="#323a45"
                         android:textSize="13sp" />
@@ -277,8 +280,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:alpha="0.3"
-                        android:background="#323a45" />
+                        android:background="#DDE6F2" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -289,8 +291,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_below="@id/top"
-            android:alpha="0.3"
-            android:background="#323a45" />
+            android:background="#DDE6F2" />
 
         <!-- 세번째 -->
 
