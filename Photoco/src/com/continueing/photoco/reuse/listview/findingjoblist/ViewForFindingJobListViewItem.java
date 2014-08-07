@@ -55,27 +55,22 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		tv_name.setText(iFindingJobListItem.getName( ));
 		
 		int counting = 0;
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			if(iFindingJobListItem.getTag()[i] == null)
 						counting++;			
 		}
 		
-		Log.i("counting",counting+"");
-		
-		if(counting == 1)
-		{
+		if(counting == 1) {
 			bt_tagFirst.setVisibility(View.VISIBLE);
 			bt_tagSecond.setVisibility(View.VISIBLE);
 			bt_tagThird.setVisibility(View.INVISIBLE);
 		}
-		else if(counting == 2){
+		else if(counting == 2) {
 			bt_tagFirst.setVisibility(View.VISIBLE);
 			bt_tagSecond.setVisibility(View.INVISIBLE);
 			bt_tagThird.setVisibility(View.INVISIBLE);
 		}
-		else
-		{
+		else {
 			bt_tagFirst.setVisibility(View.VISIBLE);
 			bt_tagSecond.setVisibility(View.VISIBLE);
 			bt_tagThird.setVisibility(View.VISIBLE);

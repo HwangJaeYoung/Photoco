@@ -130,12 +130,12 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	
 	private class TabListener implements ActionBar.TabListener {
 		public TabListener(Fragment aFragment) { }
-
-		// * 눌려진 액션바의 탭에 따라서 통신을 한 다음에 하나의 프레그먼트에서 데이터를 바꾼다.
-		// * joblist->findingjob으로 갈 경우 onTabSelected가 두 번 콜 되어
-		// server와 통신을 두번하게 되므로 tabRestrict로 제한을 두었다.
-		// onTabUnselected 여기서 값을 바꾸는 것은 여러 예외상황 때문에 좋지못한듯하여
-		// else if안에서 수행하기로 한다.
+		
+		/* 눌려진 액션바의 탭에 따라서 통신을 한 다음에 하나의 프레그먼트에서 데이터를 바꾼다.
+		joblist->findingjob으로 갈 경우 onTabSelected가 두 번 콜 되어
+		server와 통신을 두번하게 되므로 tabRestrict로 제한을 두었다.
+		onTabUnselected 여기서 값을 바꾸는 것은 여러 예외상황 때문에 좋지못한듯하여
+		else if안에서 수행하기로 한다. */
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("Recommended") && tabRestrict == true) {

@@ -72,25 +72,22 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
 		int counting = 0;
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			if(iMyRequestItem.getTag()[i] == null)
 						counting++;			
 		}
 		
-		if(counting == 1)
-		{
+		if(counting == 1) {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.VISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
 		}
-		else if(counting == 2){
+		else if(counting == 2) {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.INVISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
 		}
-		else
-		{
+		else {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.VISIBLE);
 			bt_listTagThird.setVisibility(View.VISIBLE);
@@ -104,8 +101,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 				"(" + iMyRequestItem.getEndDate() + ")");
 	}
 	
-	public static interface IMyRequestItem extends IListViewItem
-	{
+	public static interface IMyRequestItem extends IListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의
 		public String getName( ); 
 		public String getDescription( ); 
