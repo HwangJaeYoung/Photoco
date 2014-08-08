@@ -40,10 +40,14 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	public static final int REQUEST_CODE_PICK_CATEGORY = 3;
 	public static final int REQUEST_CODE_PICK_TAG = 4;
 	
+	public static final String PARAM_DURATION_CHECKED_KEY ="checkedDurationKey";
+	
 	private String locationId;
 	private String categoryId;
 	private String durationHour;
 	private String description;
+	private int durationChcked;
+	private int CategoryChecked;
 	private File filePath;
 	private JSONArray tagJSONArray;
 	
@@ -78,12 +82,14 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	@Override
 	public void onSelectDuration() {
 		Intent intent = new Intent(this, MyNewRequestDurationActivity.class);
+		intent.putExtra(PARAM_DURATION_CHECKED_KEY, durationChcked);
 		startActivityForResult(intent, REQUEST_CODE_PICK_DURATION); 
 	}
 	
 	@Override
 	public void onSelectCategory() {
 		Intent intent = new Intent(this, MyNewRequestCategoryActivity.class);
+		intent.putExtra("asdf", CategoryChecked);
 		startActivityForResult(intent, REQUEST_CODE_PICK_CATEGORY); 
 	}
 	
@@ -130,6 +136,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			if(resultCode == Activity.RESULT_OK)
 			{
 				durationHour = data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_KEY);
+				durationChcked = data.getIntExtra(PARAM_DURATION_CHECKED_KEY, 0);
 				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
 						data.getStringExtra(MyNewRequestDurationActivity.PARAM_END_DATE_KEY), durationHour);
 			}

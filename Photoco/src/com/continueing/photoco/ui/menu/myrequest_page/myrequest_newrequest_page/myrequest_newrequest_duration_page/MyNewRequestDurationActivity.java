@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
@@ -18,6 +19,7 @@ import com.continueing.photoco.domain.Duration;
 import com.continueing.photoco.reuse.network.DurationRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.MyNewRequestActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
 
 public class MyNewRequestDurationActivity extends ActionBarActivity implements ViewForMyNewRequestDurationActivity.Controller{
@@ -27,6 +29,11 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 	public static final String PARAM_HOUR_TEXT_KEY = "hourtext";
 	public static final String PARAM_END_DATE_KEY = "enddate";
 	
+	
+	 private Handler mHandler;
+	 private Runnable mRunnable;
+
+	    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,9 +80,18 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}				
-			}
-			
+			}		
 			view.resetDuration(durations);
+		
+			 mRunnable = new Runnable() {
+		            @Override
+		            public void run() {
+		            	view.checkedDuration(getIntent( ).getIntExtra(MyNewRequestActivity.PARAM_DURATION_CHECKED_KEY, 0));
+		            }
+		        };
+		         
+		     mHandler = new Handler();
+		     mHandler.postDelayed(mRunnable, 1500);
 		}
 
 		@Override
@@ -88,7 +104,8 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 		Intent intent = new Intent( );
 		intent.putExtra(PARAM_HOUR_KEY, item.getHour());
 		intent.putExtra(PARAM_HOUR_TEXT_KEY, item.getHourText());
-		intent.putExtra(PARAM_END_DATE_KEY, item.getEndDate());		
+		intent.putExtra(PARAM_END_DATE_KEY, item.getEndDate());
+		intent.putExtra(MyNewRequestActivity.PARAM_DURATION_CHECKED_KEY, aPosition);
 		setResult(Activity.RESULT_OK, intent);
 		finish( );	
 	}
