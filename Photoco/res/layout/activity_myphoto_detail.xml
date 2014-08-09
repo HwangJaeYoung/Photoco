@@ -182,6 +182,12 @@
                 android:textSize="18sp" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_myphoto_bought_location"
+            android:background="#dde6f2" />
+
         <ImageButton
             android:id="@+id/bt_myphoto_remove"
             android:layout_width="330dp"

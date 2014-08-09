@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="100dp"
         android:layout_height="105dp"
-        android:gravity="center"
         android:background="#fff"
+        android:gravity="center"
         android:orientation="vertical" >
 
         <ImageView
@@ -58,9 +58,8 @@
                 android:layout_marginRight="100dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/iv_list_cart_name"
-                android:textColor="#bab0c8"
-                android:text="Namgu&apos;s Request" />
-
+                android:text="Namgu&apos;s Request"
+                android:textColor="#bab0c8" />
         </RelativeLayout>
 
         <LinearLayout

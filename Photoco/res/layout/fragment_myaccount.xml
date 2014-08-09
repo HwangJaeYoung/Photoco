@@ -108,12 +108,28 @@
                     android:textColor="#fff"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="999P"
-                    android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_account_income_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="999"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_account_income_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="P"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -130,13 +146,29 @@
                     android:textColor="#fff"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="999P"
-                    android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_account_spent_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="999"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_account_spent_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="P"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -153,13 +185,29 @@
                     android:textColor="#fff"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="999P"
-                    android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_account_balance_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="999"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_account_balance_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="P"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

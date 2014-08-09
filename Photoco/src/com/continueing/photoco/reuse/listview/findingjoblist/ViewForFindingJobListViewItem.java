@@ -1,7 +1,6 @@
 package com.continueing.photoco.reuse.listview.findingjoblist;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;

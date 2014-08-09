@@ -48,17 +48,23 @@
                 android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="48dp"
-                android:src="@drawable/textlogo_small"
-                android:background="@drawable/bt_finding_job_detail" />
-            	
+                android:background="@drawable/bt_finding_job_detail"
+                android:src="@drawable/textlogo_small" />
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:id="@+id/tip"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/layout_job_list_job_detail_layout_top"
+        android:background="#dde6f2" />
 
     <LinearLayout
         android:id="@+id/layout_job_list_job_detail_layout_middle"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_job_list_job_detail_layout_top"
+        android:layout_below="@id/tip"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -97,32 +103,56 @@
                 android:textSize="18sp" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="0.5dp"
+            android:background="#dde6f2" />
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <ImageView
-                android:id="@+id/iv_job_list_job_detail_tag"
-                android:layout_width="18dp"
-                android:layout_height="17dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="17dp"
-                android:src="@drawable/tag_ic" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp" >
 
-            <TextView
-                android:id="@+id/tv_job_list_job_detail_tag"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/iv_job_list_job_detail_tag"
+                    android:layout_width="18dp"
+                    android:layout_height="17dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="17dp"
+                    android:src="@drawable/tag_ic" />
+
+                <TextView
+                    android:id="@+id/tv_job_list_job_detail_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/iv_job_list_job_detail_tag"
+                    android:text="Tag"
+                    android:textColor="#808a99"
+                    android:textSize="18sp" />
+
+                <!-- GridView 넣어야함 -->
+
+            </RelativeLayout>
+
+            <GridView
+                android:id="@+id/gv_job_list_job_detail_tag"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/iv_job_list_job_detail_tag"
-                android:text="Tag"
-                android:textColor="#808a99"
-                android:textSize="18sp" />
-            
-            <!-- GridView 넣어야함 -->
-        </RelativeLayout>
+                android:numColumns="3"
+                android:verticalSpacing="5.5dp" >
+            </GridView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dde6f2" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,6 +196,11 @@
             </RelativeLayout>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dde6f2" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="49dp"
@@ -199,9 +234,9 @@
                     android:id="@+id/tv_request_new_duration_detail_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="4dp"
-                    android:layout_alignParentRight="true"
                     android:text="7 Days"
                     android:textColor="#ffc868"
                     android:textSize="18sp" />
@@ -210,15 +245,20 @@
                     android:id="@+id/tv_request_new_duration_detail_calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@id/tv_request_new_duration_detail_day"
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="4dp"
-                    android:layout_alignParentRight="true"
                     android:text="2013/09/20"
                     android:textColor="#323a45"
                     android:textSize="13sp" />
             </RelativeLayout>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dde6f2" />
     </LinearLayout>
     <!-- 두번째 -->
 

@@ -55,7 +55,7 @@
             android:layout_marginRight="30dp"
             android:background="#fff"
             android:gravity="left|center"
-            android:hint="User Name"
+            android:hint="E-mail"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="#323a45"
@@ -65,7 +65,7 @@
 
     <View
         android:layout_width="330dp"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:layout_gravity="center"
         android:background="#dde6f2" />
 
@@ -97,6 +97,12 @@
             android:textColorHint="#b0bac8"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <View
+        android:layout_width="330dp"
+        android:layout_height="0.5dp"
+        android:layout_gravity="center"
+        android:background="#dde6f2" />
 
     <RelativeLayout
         android:layout_width="330dp"

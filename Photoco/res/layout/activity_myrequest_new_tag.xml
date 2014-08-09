@@ -8,6 +8,8 @@
     <ListView
         android:id="@+id/lv_request_new_tag"
         android:layout_width="match_parent"
+        android:divider="#dde6f2"
+        android:dividerHeight="0.5dp"
         android:layout_height="wrap_content" >
     </ListView>
 

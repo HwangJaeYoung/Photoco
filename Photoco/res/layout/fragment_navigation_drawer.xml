@@ -137,12 +137,7 @@
                 android:background="#323a45"
                 android:choiceMode="singleChoice"
                 android:divider="#24282d"
-                android:dividerHeight="0.5dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#24282d" />
+                android:dividerHeight="0.1dp" />
         </LinearLayout>
     </LinearLayout>
 

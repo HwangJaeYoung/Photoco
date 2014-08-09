@@ -2,10 +2,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.loopj.android.image.SmartImageView
-        android:id="@+id/siv_myrequest_detail_image"
+    <RelativeLayout
         android:layout_width="111dp"
-        android:layout_height="111dp"
-        android:scaleType="fitXY" />
+        android:layout_height="111dp" >
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/siv_myrequest_detail_image"
+            android:layout_width="111dp"
+            android:layout_height="111dp"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:layout_width="22.5dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/badge_big_ic" />
+        
+        <Button 
+            android:id="@+id/bt_myrequest_detail_cart"
+            android:layout_width="107dp"
+            android:layout_height="107dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_myrequest_detail_cart"
+            />
+        <Button 
+            android:id="@+id/bt_myrequest_detail_buy"
+            android:layout_width="107dp"
+            android:layout_height="107dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_myrequest_detail_buy"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>
