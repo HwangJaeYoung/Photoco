@@ -23,12 +23,13 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/iv_request_new_duration_twelve"
+            android:id="@+id/iv_request_new_category"
             android:layout_width="26dp"
             android:layout_height="19dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
+            android:visibility="invisible"
             android:background="@drawable/check_ic" />
     </RelativeLayout>
 

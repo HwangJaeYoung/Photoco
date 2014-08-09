@@ -41,13 +41,14 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	public static final int REQUEST_CODE_PICK_TAG = 4;
 	
 	public static final String PARAM_DURATION_CHECKED_KEY ="checkedDurationKey";
+	public static final String PARAM_CATEGORY_CHECKED_KEY ="checkedCategoryKey";
 	
 	private String locationId;
 	private String categoryId;
 	private String durationHour;
 	private String description;
 	private int durationChcked;
-	private int CategoryChecked;
+	private int categoryChecked;
 	private File filePath;
 	private JSONArray tagJSONArray;
 	
@@ -89,7 +90,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	@Override
 	public void onSelectCategory() {
 		Intent intent = new Intent(this, MyNewRequestCategoryActivity.class);
-		intent.putExtra("asdf", CategoryChecked);
+		intent.putExtra(PARAM_CATEGORY_CHECKED_KEY, categoryChecked);
 		startActivityForResult(intent, REQUEST_CODE_PICK_CATEGORY); 
 	}
 	
@@ -146,6 +147,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
+				categoryChecked=  data.getIntExtra(PARAM_CATEGORY_CHECKED_KEY, 0);
 				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
 				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
 			}

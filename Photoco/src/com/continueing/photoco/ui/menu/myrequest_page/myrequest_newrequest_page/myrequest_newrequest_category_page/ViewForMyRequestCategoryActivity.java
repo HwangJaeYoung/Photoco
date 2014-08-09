@@ -6,15 +6,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ArrayAdapterForMyNewRequestCategory;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem;
 
 public class ViewForMyRequestCategoryActivity extends AbstractViewForActivity {
 
+	private int itemLength;
 	private Controller controller;
 	private ListView lv_requestNewCategory;
 	private ArrayAdapterForMyNewRequestCategory arrayAdapterForMyNewRequestCategory;
@@ -42,13 +46,33 @@ public class ViewForMyRequestCategoryActivity extends AbstractViewForActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				
+				ViewForMyNewRequestCategoryListViewItem viewItem = null;
+				for(int i = 0; i < itemLength; i++)
+				{
+					viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(i);
+					ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
+					checkImage.setVisibility(View.INVISIBLE);
+				}
+				viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(position);
+				ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
+				checkImage.setVisibility(View.VISIBLE);
+				
 				controller.onCategorySelected(position);
 			}
 		});
 	}
 
+	public void checkedCategory(int aCheckedPosition)
+	{
+		ViewForMyNewRequestCategoryListViewItem viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(aCheckedPosition);
+		ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
+		checkImage.setVisibility(View.VISIBLE);
+	}
+	
 	public void resetCategory(ArrayList<IMyRequestCategoryItem> aCategorys)
 	{
+		itemLength = aCategorys.size();
 		arrayAdapterForMyNewRequestCategory.addAll(aCategorys);
 	}
 	

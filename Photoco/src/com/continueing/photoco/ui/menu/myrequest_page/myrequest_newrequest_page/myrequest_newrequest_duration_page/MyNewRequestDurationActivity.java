@@ -25,15 +25,12 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 public class MyNewRequestDurationActivity extends ActionBarActivity implements ViewForMyNewRequestDurationActivity.Controller{
 	private ViewForMyNewRequestDurationActivity view;
 	private ArrayList<IMyRequestDurationItem> durations;
+	private Handler mHandler;
+	private Runnable mRunnable;
 	public static final String PARAM_HOUR_KEY ="hours";
 	public static final String PARAM_HOUR_TEXT_KEY = "hourtext";
 	public static final String PARAM_END_DATE_KEY = "enddate";
 	
-	
-	 private Handler mHandler;
-	 private Runnable mRunnable;
-
-	    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -82,16 +79,16 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 				}				
 			}		
 			view.resetDuration(durations);
-		
-			 mRunnable = new Runnable() {
-		            @Override
-		            public void run() {
-		            	view.checkedDuration(getIntent( ).getIntExtra(MyNewRequestActivity.PARAM_DURATION_CHECKED_KEY, 0));
-		            }
-		        };
-		         
-		     mHandler = new Handler();
-		     mHandler.postDelayed(mRunnable, 1500);
+
+			mRunnable = new Runnable() {
+				@Override
+				public void run() {
+					view.checkedDuration(getIntent().getIntExtra(MyNewRequestActivity.PARAM_DURATION_CHECKED_KEY, 0));
+				}
+			};
+
+			mHandler = new Handler();
+			mHandler.postDelayed(mRunnable, 500);
 		}
 
 		@Override
