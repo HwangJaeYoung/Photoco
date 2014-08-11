@@ -2,7 +2,7 @@
 
 <!--
      여기서 맨 처음의 LinearLayout에 있는 layout_width, layout_height는 
-     자신이 위치 할 레이아웃에게 자신의 배치 정보를 명시해 놓은 것이다.
+     자신이 위치 할 레이아웃에게 자신의 배치 정보를 명시해 놓은 것이다.
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -79,9 +79,9 @@
                 android:id="@+id/bt_list_name"
                 android:layout_width="10dp"
                 android:layout_height="18dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/tv_list_name"
+                android:layout_marginRight="9.5dp"
                 android:background="@drawable/arrow_ic" />
         </RelativeLayout>
 
@@ -97,30 +97,36 @@
                 android:layout_height="21dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Cafe"
+                android:background="@drawable/tag_bg"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Cafeasdfdafsaff"
                 android:textColor="#fff"
-                android:textSize="14sp"
-                android:background="@drawable/tag_bg" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/bt_list_tag_second"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
-                android:text="Coffee"
+                android:background="@drawable/tag_bg"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Coffeegsgsdgasg"
                 android:textColor="#fff"
-                android:textSize="14sp"
-                android:background="@drawable/tag_bg" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/bt_list_tag_third"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
-                android:text="Notebook"
+                android:background="@drawable/tag_bg"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Notebookasfsafsfs"
                 android:textColor="#fff"
-                android:textSize="14sp"
-                android:background="@drawable/tag_bg" />
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 

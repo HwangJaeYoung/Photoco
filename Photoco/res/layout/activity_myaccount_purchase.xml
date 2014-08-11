@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#414b59" >
+
+        <TextView
+            android:id="@+id/tv_purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="Purchase"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/tv_purchase_my_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_purchase"
+            android:layout_marginLeft="77dp"
+            android:layout_marginTop="14dp"
+            android:text="My balance : "
+            android:textColor="#fff"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/tv_purchase_my_balance_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_purchase"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="77dp"
+            android:layout_marginTop="16dp"
+            android:text="P"
+            android:textColor="#ff89d854"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/tv_purchase_my_balance_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_purchase"
+            android:layout_marginTop="14dp"
+            android:layout_toLeftOf="@id/tv_purchase_my_balance_unit"
+            android:text="999"
+            android:textColor="#ff89d854"
+            android:textSize="25sp" />
+
+        <View
+            android:id="@+id/tip"
+            android:layout_width="317dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/tv_purchase_my_balance"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#7fffffff" />
+
+        <!-- 10P -->
+
+        <RelativeLayout
+            android:id="@+id/layout_purchase_10p"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/tip"
+            android:background="@drawable/layout_purchase" >
+
+            <TextView
+                android:id="@+id/tv_purchase_10p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="2dp"
+                android:text="10"
+                android:textColor="#ff72bd40"
+                android:textSize="44sp" />
+
+            <TextView
+                android:id="@+id/tv_purchase_10p_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_purchase_10p"
+                android:text="P"
+                android:textColor="#ff89d854"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/tv_purchase_10p_arrow"
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_purchase_10p_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_purchase_10p_arrow"
+                android:text="1$"
+                android:textColor="#fff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_purchase_10p"
+            android:layout_width="317dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_purchase_10p"
+            android:layout_centerHorizontal="true"
+            android:background="#4cffffff" />
+        <!-- 30P -->
+
+        <RelativeLayout
+            android:id="@+id/layout_purchase_30p"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/v_purchase_10p"
+            android:background="@drawable/layout_purchase" >
+
+            <TextView
+                android:id="@+id/tv_purchase_30p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="2dp"
+                android:text="30"
+                android:textColor="#ff72bd40"
+                android:textSize="44sp" />
+
+            <TextView
+                android:id="@+id/tv_purchase_30p_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_purchase_30p"
+                android:text="P"
+                android:textColor="#ff89d854"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/tv_purchase_30p_arrow"
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_purchase_30p_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_purchase_30p_arrow"
+                android:text="3$"
+                android:textColor="#fff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_purchase_30p"
+            android:layout_width="317dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_purchase_30p"
+            android:layout_centerHorizontal="true"
+            android:background="#4cffffff" />
+        <!-- 50P -->
+
+        <RelativeLayout
+            android:id="@+id/layout_purchase_50p"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/v_purchase_30p"
+            android:background="@drawable/layout_purchase" >
+
+            <TextView
+                android:id="@+id/tv_purchase_50p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="2dp"
+                android:text="50"
+                android:textColor="#ff72bd40"
+                android:textSize="44sp" />
+
+            <TextView
+                android:id="@+id/tv_purchase_50p_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_purchase_50p"
+                android:text="P"
+                android:textColor="#ff89d854"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/tv_purchase_50p_arrow"
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_purchase_50p_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_purchase_50p_arrow"
+                android:text="5$"
+                android:textColor="#fff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_purchase_50p"
+            android:layout_width="317dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_purchase_50p"
+            android:layout_centerHorizontal="true"
+            android:background="#4cffffff" />
+        <!-- 100P -->
+
+        <RelativeLayout
+            android:id="@+id/layout_purchase_100p"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/layout_purchase_50p"
+            android:background="@drawable/layout_purchase" >
+
+            <TextView
+                android:id="@+id/tv_purchase_100p"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="2dp"
+                android:text="100"
+                android:textColor="#ff72bd40"
+                android:textSize="44sp" />
+
+            <TextView
+                android:id="@+id/tv_purchase_100p_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_purchase_100p"
+                android:text="P"
+                android:textColor="#ff89d854"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/tv_purchase_100p_arrow"
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/arrow_ic" />
+
+            <TextView
+                android:id="@+id/tv_purchase_100p_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/tv_purchase_100p_arrow"
+                android:text="10$"
+                android:textColor="#fff"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="317dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/layout_purchase_100p"
+            android:layout_centerHorizontal="true"
+            android:background="#4cffffff" />
+
+        <ImageView
+            android:layout_width="115dp"
+            android:layout_height="37dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/watermark" />
+    </RelativeLayout>
+
+</LinearLayout>

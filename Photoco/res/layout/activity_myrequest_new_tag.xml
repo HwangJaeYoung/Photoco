@@ -8,9 +8,9 @@
     <ListView
         android:id="@+id/lv_request_new_tag"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:divider="#dde6f2"
-        android:dividerHeight="0.5dp"
-        android:layout_height="wrap_content" >
+        android:dividerHeight="0.5dp" >
     </ListView>
 
     <RelativeLayout
@@ -37,7 +37,7 @@
             android:hint="Input Tag.."
             android:inputType="textEmailAddress"
             android:textColor="#323a45"
-            android:textColorHint="#bab0c8"
+            android:textColorHint="#b0bac8"
             android:textSize="18sp" />
     </RelativeLayout>
 

@@ -1,18 +1,21 @@
 package com.continueing.photoco.ui.menu.myaccount_page;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MyAccountFragment extends Fragment{
+import com.continueing.photoco.ui.menu.myaccount_page.myaccount_purchase_page.MyAccountPurchaseActivity;
+
+public class MyAccountFragment extends Fragment implements ViewForMyAccountFragment.Controller{
 	
 	private ViewForMyAccountFragment view;
 	private ActionBar actionBar;
@@ -26,7 +29,7 @@ public class MyAccountFragment extends Fragment{
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = new ViewForMyAccountFragment(getActivity( ), inflater, container);
+        view = new ViewForMyAccountFragment(getActivity( ), inflater, container, this);
         return view.getRoot();
 	}
 	
@@ -74,5 +77,11 @@ public class MyAccountFragment extends Fragment{
 		super.onDetach();
 		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다
+	}
+
+	@Override
+	public void onPurchase() {
+		Intent intent = new Intent(getActivity( ), MyAccountPurchaseActivity.class);
+		startActivity(intent);		
 	}
 }

@@ -51,6 +51,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	private int categoryChecked;
 	private File filePath;
 	private JSONArray tagJSONArray;
+	private  Bitmap bitmap;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -121,14 +122,15 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 				 filePath = new File(realpath);
 				 	 
                  try {
-                	 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-					view.selectedImage(bitmap);     
-					
+                	 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+					 view.selectedImage(bitmap);     
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
-				}    
+				} catch(OutOfMemoryError e) {
+					finish( );
+				}
 			}
 		}
 		

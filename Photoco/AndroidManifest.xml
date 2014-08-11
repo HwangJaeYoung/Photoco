@@ -102,8 +102,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme" >
         </activity>
+        <activity android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.myrequest_detail_page.MyRequestDetailActivity" >
+        </activity>
         <activity
-            android:name="com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.myrequest_detail_page.MyRequestDetailActivity"
+            android:name="com.continueing.photoco.ui.menu.myaccount_page.myaccount_purchase_page.MyAccountPurchaseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme" >
         </activity>

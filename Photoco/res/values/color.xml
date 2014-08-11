@@ -25,5 +25,7 @@
     <color name="tab_text_selected">#ffffff</color>
     <color name="tab_default">#323a45</color>
     <color name="tab_pressed">#24282d</color>
+    <color name="layout_purchase_default">#00ffffff</color>
+    <color name="layout_purchase_pressed">#14ffffff</color>
 
 </resources>
