@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	HttpRequester.NetworkResponseListener getFindingJobListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
+			Log.i("js","why");
 			JSONArray jsonArray = null;
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
@@ -101,7 +103,9 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		}	
 		
 		@Override
-		public void onFail(JSONObject jsonObject, int errorCode) { }
+		public void onFail(JSONObject jsonObject, int errorCode) { 
+			Log.i("onnet", "success");
+		}
 	};
 	
 	public void addActionBarTab( ) {

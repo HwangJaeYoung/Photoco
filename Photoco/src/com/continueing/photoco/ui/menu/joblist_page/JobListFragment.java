@@ -42,11 +42,11 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForJobListFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
-     
         ArrayList<IFindingJobListItem> arrayList = new ArrayList<IFindingJobListItem>( );
    
         searchJobListItemFromServer("d");
         view.addJobListItemArrayList(arrayList);
+        actionBar.setSelectedNavigationItem(0);
         return view.getRoot();
     }
 
@@ -104,17 +104,17 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Time");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Category");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Distance");
 		actionBarTab.setTabListener(findjobListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 	}
 	
 	private class TabListener implements ActionBar.TabListener {

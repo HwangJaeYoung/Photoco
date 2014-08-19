@@ -25,19 +25,19 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     public static final int ERROR_CODE_PASSWORD_INCORRECT = 5;
     public static final int ERROR_CODE_HAVE_TO_LOGIN = 7;
 
-    public JsonResponseHandler(HttpRequester.NetworkResponseListener aNetworkResponseListener)
-    {
+    public JsonResponseHandler(HttpRequester.NetworkResponseListener aNetworkResponseListener) {
         this.networkResponseListener = aNetworkResponseListener;
     }
 
     // 여기가 콜백 메소드 부분이다.
     // Fired when a request returns successfully
     @Override
-    public void onSuccess(int statusCode, Header[] headers, JSONObject response){
+    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         Log.i("JsonResponseHandler",""+response.toString());
         try {
             if(response.getString(PARM_RESULT).equals(RESULT_SUCCESS)){
-            	Log.i("js", "success");
+            	Log.i("js", "moji");
+            	Log.i("js", response.toString());
                 this.networkResponseListener.onSuccess(response);
             }else if(response.getString(PARM_RESULT).equals(RESULT_FAIL))
                 this.networkResponseListener.onFail(response, response.getInt(PARM_ERROR_CODE));
@@ -47,8 +47,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     // Returns when request failed
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-    	if(statusCode == 0)
-        {
+    	if(statusCode == 0) {
             this.networkResponseListener.onFail(new JSONObject(), ERROR_CODE_NETWORK_UNAVAILABLE);
         }
         else { }
