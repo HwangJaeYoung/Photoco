@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.findingjoblist.ArrayAdapterForFindingJobListFragment;
@@ -23,6 +24,7 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 	private Controller controller;
 	private ArrayAdapterForFindingJobListFragment arrayAdapterForFindingJobListFragment;
 	private ListView lv_requestFindingJobList;
+	private ProgressBar progressBar;
 	
 	public ViewForJobListFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -39,6 +41,7 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 		lv_requestFindingJobList = (ListView)findViewById(R.id.lv_request_finding_job_list);
 		arrayAdapterForFindingJobListFragment = new ArrayAdapterForFindingJobListFragment(getContext( ), 0);
 		lv_requestFindingJobList.setAdapter(arrayAdapterForFindingJobListFragment);
+		progressBar = (ProgressBar)findViewById(R.id.pb_findingjoblist);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
@@ -60,6 +63,22 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 	{
 		arrayAdapterForFindingJobListFragment.clear();
 		arrayAdapterForFindingJobListFragment.addAll(anArrayList);
+	}
+	
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void listviewOff( ) {
+		lv_requestFindingJobList.setVisibility(View.INVISIBLE);
+	}
+	
+	public void listviewOn( ) {
+		lv_requestFindingJobList.setVisibility(View.VISIBLE);
 	}
 	
 	public static interface Controller extends IListViewItem

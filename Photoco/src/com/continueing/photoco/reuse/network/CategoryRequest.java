@@ -8,15 +8,13 @@ import android.content.Context;
 
 public class CategoryRequest {
 	private Context context;
-	private static String URL_BASE = "/categories";
+	private static final String URL_BASE = "/categories";
 	
-	public CategoryRequest(Context aContext)
-	{
+	public CategoryRequest(Context aContext) {
 		this.context = aContext;
 	}
 	
-	public void getCategory(final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException
-	{
+	public void getCategory(final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		HttpRequester.get(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}

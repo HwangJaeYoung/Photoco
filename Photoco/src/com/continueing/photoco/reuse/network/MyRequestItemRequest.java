@@ -8,7 +8,7 @@ import com.loopj.android.http.RequestParams;
 
 public class MyRequestItemRequest {
 	private Context context;
-	private static String URL_BASE = "/me";
+	private static final String URL_BASE = "/me";
 	
 	public MyRequestItemRequest(Context aContext)
 	{

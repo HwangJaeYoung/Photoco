@@ -13,8 +13,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
-import com.continueing.photoco.reuse.network.FindingJobRequest;
+import com.continueing.photoco.reuse.network.FindingJobListRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page.JobListDetailActivity;
@@ -30,6 +30,7 @@ import com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page.JobListD
 public class JobListFragment extends Fragment implements ViewForJobListFragment.Controller{
 	private ViewForJobListFragment view;
 	private ActionBar actionBar;
+	private boolean tabRestrict = true;
 	private ActionBar.Tab actionBarTab;
 	private ArrayList<IFindingJobListItem> jobListItems;
 	
@@ -42,10 +43,6 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForJobListFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
-        ArrayList<IFindingJobListItem> arrayList = new ArrayList<IFindingJobListItem>( );
-   
-        searchJobListItemFromServer("d");
-        view.addJobListItemArrayList(arrayList);
         actionBar.setSelectedNavigationItem(0);
         return view.getRoot();
     }
@@ -57,14 +54,20 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 	}
 	
 	public void searchJobListItemFromServer(String aTabName) {
-		FindingJobRequest findingJobRequest = new FindingJobRequest(getActivity( ));
+		view.progressOn();
+		view.listviewOff();
+		FindingJobListRequest jobListRequest = new FindingJobListRequest(getActivity( ));
+		try {
+			jobListRequest.getJobListItem(aTabName, getJobListListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	HttpRequester.NetworkResponseListener getJobListListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;
-			Log.i("find", jsonObject.toString());
 			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
@@ -74,20 +77,21 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 			
 			jobListItems = new ArrayList<IFindingJobListItem>( );
 			
-			for(int i = 0; i < jsonArray.length(); i++)
-			{
+			for(int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonRequestObject = null;
 				
 				try {
 					jsonRequestObject = jsonArray.getJSONObject(i);
-					FindingJobList request = new FindingJobList(jsonRequestObject);
+					FindingJobList request = new FindingJobList(jsonRequestObject.getJSONObject("request"));
 					jobListItems.add(request);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
 			}
-			// ViewForFindingJobFragment(View)에 데이터(Model)를 FindingJobFragment(Controller)에서 넘겨준다.
+			
 			view.addJobListItemArrayList(jobListItems);
+			view.progresOff();
+			view.listviewOn();
 		}	
 		
 		@Override
@@ -99,21 +103,21 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		
-		TabListener findjobListener = new TabListener(null);
+		TabListener jobListListener = new TabListener(null);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Time");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(jobListListener);
 		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Category");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(jobListListener);
 		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Distance");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(jobListListener);
 		actionBar.addTab(actionBarTab, false);
 	}
 	
@@ -122,12 +126,18 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
-			if(aTabName.getText().equals("Recommended"))
-				searchJobListItemFromServer("recommended");
-			else if(aTabName.getText().equals("Latest"))
-				searchJobListItemFromServer("latest");
-			else if(aTabName.getText().equals("Distance"))
+			if(aTabName.getText().equals("Time") && tabRestrict == true) {
+				searchJobListItemFromServer("time");
+				tabRestrict = false;
+			}
+			else if(aTabName.getText().equals("Category")) {
+				searchJobListItemFromServer("category");
+				tabRestrict = true;
+			}
+			else if(aTabName.getText().equals("Distance")) {
 				searchJobListItemFromServer("distance");
+				tabRestrict = true;
+			}
 		}
 		
 		@Override

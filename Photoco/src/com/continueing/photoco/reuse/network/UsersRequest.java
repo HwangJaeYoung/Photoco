@@ -9,12 +9,12 @@ import android.content.Context;
 public class UsersRequest {
 	
 	private Context context;
-	private static String URL_BASE = "/users";
-	private static String PARM_NAME = "username";
-	private static String PARM_PASSWORD = "password";
-	private static String PARM_EMAIL = "email";
-	private static String PARM_CONFIRMPASSWORD = "password_confirmation";
-	private static String PARM_PRIMARYKEY = "location_id";
+	private static final String URL_BASE = "/users";
+	private static final String PARM_NAME = "username";
+	private static final String PARM_PASSWORD = "password";
+	private static final String PARM_EMAIL = "email";
+	private static final String PARM_CONFIRMPASSWORD = "password_confirmation";
+	private static final String PARM_PRIMARYKEY = "location_id";
 	
 	public UsersRequest(Context aContext)
 	{

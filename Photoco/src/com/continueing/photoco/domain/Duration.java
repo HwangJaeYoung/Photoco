@@ -7,9 +7,9 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 
 public class Duration implements IMyRequestDurationItem{
 
-	public static final String JSON_KEY_HOUR = "hours";
-	public static final String JSON_KEY_HOUR_TEXT = "text";
-	public static final String JSON_KEY_END_DATE = "end_date";
+	private static final String JSON_KEY_HOUR = "hours";
+	private static final String JSON_KEY_HOUR_TEXT = "text";
+	private static final String JSON_KEY_END_DATE = "end_date";
 	
 	
 	private String hour;

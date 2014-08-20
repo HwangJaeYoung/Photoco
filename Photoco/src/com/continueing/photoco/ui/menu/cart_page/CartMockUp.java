@@ -6,8 +6,7 @@ public class CartMockUp implements ICartItem{
 
 	private int a;
 	
-	public CartMockUp(int a)
-	{
+	public CartMockUp(int a) {
 		this.a = a;
 	}
 	

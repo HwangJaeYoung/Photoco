@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
-import com.continueing.photoco.reuse.network.FindingJobRequest;
+import com.continueing.photoco.reuse.network.FindingJobListRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page.FindingJobDetailActivity;
@@ -54,7 +54,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	@Override
 	public void onRequestSeleted(int aPosition) {
 		// 디테일한 정보를 보여주는 새로운 액티비티를 띄운다.
-		FindingJobList item= (FindingJobList)findingJobItems.get(aPosition);
+		FindingJobList item = (FindingJobList)findingJobItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), FindingJobDetailActivity.class);
 		intent.putExtra(PARAM_TAG_ITEM_KEY, item);
 		startActivity(intent);
@@ -63,7 +63,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	public void searchFindingJobItemFromServer(String aTabName) {
 		view.progressOn();
 		view.listviewOff();
-		FindingJobRequest findingJobRequest = new FindingJobRequest(getActivity( ));
+		FindingJobListRequest findingJobRequest = new FindingJobListRequest(getActivity( ));
 		try {
 			findingJobRequest.getFindingJobItem(aTabName, getFindingJobListener);
 		} catch (JSONException e) {
@@ -74,7 +74,6 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	HttpRequester.NetworkResponseListener getFindingJobListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
-			Log.i("js","why");
 			JSONArray jsonArray = null;
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);

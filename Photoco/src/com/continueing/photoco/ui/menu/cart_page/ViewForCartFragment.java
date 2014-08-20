@@ -68,23 +68,19 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		});
 	}
 	
-	public void addPurchaceItemArrayList(ArrayList<ICartItem> anArrayList)
-	{
+	public void addPurchaceItemArrayList(ArrayList<ICartItem> anArrayList) {
 		arrayAdapterForCartListView.addAll(anArrayList);
 	}
 	
-	public void removeAllItems( )
-	{
+	public void removeAllItems( ) {
 		arrayAdapterForCartListView.clear();
 	}
 	
-	public void removeSelectedItem(ICartItem anItem)
-	{
+	public void removeSelectedItem(ICartItem anItem) {
 		arrayAdapterForCartListView.remove(anItem);
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void onShowDetailCart(int aPosition);
 		public void onRemoveItems( );
 	}

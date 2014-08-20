@@ -7,8 +7,8 @@ import com.continueing.photoco.reuse.page.location_page.listview.ViewForLocation
 
 
 public class Location implements ViewForLocationListViewItem.ILocationItem{
-	public static final String JSON_KEY_ID = "id";
-	public static final String JSON_KEY_DESCRIPTION = "description";
+	private static final String JSON_KEY_ID = "id";
+	private static final String JSON_KEY_DESCRIPTION = "description";
 	
 	private String id;
 	private String description;

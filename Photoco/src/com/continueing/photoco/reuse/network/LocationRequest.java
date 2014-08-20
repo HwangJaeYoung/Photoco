@@ -8,8 +8,8 @@ import com.loopj.android.http.RequestParams;
 
 public class LocationRequest {
 	private Context context;
-	private static String URL_BASE = "/location";
-	private static String PARAM_LOCATION = "str";
+	private static final String URL_BASE = "/location";
+	private static final String PARAM_LOCATION = "str";
 	
 	public LocationRequest(Context aContext)
 	{

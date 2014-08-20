@@ -68,11 +68,9 @@ public class NavigationDrawerFragment extends Fragment {
 		
 		tv_drawableName = (TextView)root.findViewById(R.id.tv_drawable_name);
 		tv_drawableName.setText(userName);
-		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-		{
+		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				selectItem(position);
 			}
 		});
@@ -133,8 +131,7 @@ public class NavigationDrawerFragment extends Fragment {
                 
                 boolean actionExist = prefs.getBoolean("actionBar", false);
 
-                if(actionExist == true)
-                {
+                if(actionExist == true) {
                 	ActionBar actionBar = getActionBar();
                		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                 }

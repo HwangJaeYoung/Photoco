@@ -13,9 +13,9 @@
     <!-- 리스트 유동적인부분 -->
 
     <LinearLayout
+        android:id="@+id/ll_findjoblist_smile_image"
         android:layout_width="100dp"
         android:layout_height="95dp"
-        android:background="#ff6868"
         android:gravity="center"
         android:orientation="vertical" >
 

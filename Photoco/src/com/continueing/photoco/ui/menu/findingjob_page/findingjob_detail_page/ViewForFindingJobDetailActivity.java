@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.continueing.photoco.R;
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.domain.Tag;
+import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
@@ -32,8 +34,8 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	private TextView tv_timeLeftDetailCalendar;
 	private GridView gv_findingjobTag;
 	private ArrayAdapterForTagGridView arrayAdapterForTagGridView;
-	private Button bt_hide;
 	private Button bt_participate;
+	private String requestId;
 	
 	public ViewForFindingJobDetailActivity(Context context, Controller aController) {
 		super(context);
@@ -54,7 +56,6 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 		tv_location = (TextView)findViewById(R.id.tv_finding_job_detail_location);
 		tv_timeLeftDetailDay = (TextView)findViewById(R.id.tv_finding_job_detail_timeleft_detail_day);
 		tv_timeLeftDetailCalendar = (TextView)findViewById(R.id.tv_finding_job_detail_timeleft_detail_calendar);
-		bt_hide = (Button)findViewById(R.id.bt_finding_job_detail_hide);
 	    bt_participate = (Button)findViewById(R.id.bt_finding_job_detail_participate);
 	    
 	    gv_findingjobTag = (GridView)findViewById(R.id.gv_finding_job_tag);
@@ -63,7 +64,14 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	}
 
 	@Override
-	protected void setEvent() { }
+	protected void setEvent() { 
+		bt_participate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				controller.onParticipate(requestId);
+			}
+		});	
+	}
 	
 	public void initViewInfos(Intent anIntent)
 	{
@@ -89,10 +97,12 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 			}
 		}
 		arrayAdapterForTagGridView.addAll(tags);	
+		
+		tv_timeLeftDetailDay.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(item.getRemainMinutes())));
+		requestId = item.getId();
 	}
 	
 	public static interface Controller {
-
-		
+		public void onParticipate(String aRequestId);		
 	}
 }

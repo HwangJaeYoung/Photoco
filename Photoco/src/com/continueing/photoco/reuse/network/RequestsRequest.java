@@ -12,13 +12,13 @@ import com.loopj.android.http.RequestParams;
 
 public class RequestsRequest {
 	private Context context;
-	private static String URL_BASE = "/requests";
-	private static String PARAM_LOCATION_ID = "location_id";
-	private static String PARAM_CATEGORY_ID = "category_id";
-	private static String PARAM_DURATION_HOUR = "duration_hour";
-	private static String PARAM_TAG_NAMES = "tag_names";
-	private static String PARAM_DESCRIPTION = "description";
-	private static String PARAM_IMAGE = "image";
+	private static final String URL_BASE = "/requests";
+	private static final String PARAM_LOCATION_ID = "location_id";
+	private static final String PARAM_CATEGORY_ID = "category_id";
+	private static final String PARAM_DURATION_HOUR = "duration_hour";
+	private static final String PARAM_TAG_NAMES = "tag_names";
+	private static final String PARAM_DESCRIPTION = "description";
+	private static final String PARAM_IMAGE = "image";
 	
 	public RequestsRequest(Context aContext)
 	{

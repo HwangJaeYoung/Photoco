@@ -6,8 +6,8 @@ import org.json.JSONObject;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem;
 
 public class Category implements ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem{
-	public static final String JSON_KEY_ID = "id";
-	public static final String JSON_KEY_NAME = "name";
+	private static final String JSON_KEY_ID = "id";
+	private static final String JSON_KEY_NAME = "name";
 	
 	private String id;
 	private String name;

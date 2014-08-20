@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.MainActivity;
 
-public class SettingActivity extends ActionBarActivity implements ViewForSettingActivity.Controller{
+public class SettingActivity extends ActionBarActivity implements ViewForSettingActivity.Controller {
 	
 	private ViewForSettingActivity view;
 	private String userName;
@@ -31,16 +31,12 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	@Override
 	public void onSettingClicked(String aPassword, String aConfirmPassword, String aLocation) {
 		// 업데이트한 비밀번호 또는 지역을 업데이트하고 뷰 종료
-		if(aPassword.length() > 5 && aConfirmPassword.length() > 5 && aLocation.length() > 0)
-		{
-			if(aPassword.equals(aConfirmPassword))
-			{
+		if(aPassword.length() > 5 && aConfirmPassword.length() > 5 && aLocation.length() > 0) {
+			if(aPassword.equals(aConfirmPassword)) {
 				// 통신을 한다.
 				finish( );	
 			}
-		}
-		else
-		{
+		} else {
 			Toast.makeText(this, "pass오류", Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -49,8 +45,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_PICK_LOCATION)
-			if(resultCode == Activity.RESULT_OK)
-			{
+			if(resultCode == Activity.RESULT_OK){
 				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 			}
 	}

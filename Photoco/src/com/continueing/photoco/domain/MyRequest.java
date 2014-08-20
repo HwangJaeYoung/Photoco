@@ -7,15 +7,15 @@ import org.json.JSONObject;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 
 public class MyRequest implements IMyRequestItem{
-	public static final String JSON_KEY_USERNAME = "username";
-	public static final String JSON_KEY_DESCRIPTION = "description";
-	public static final String JSON_KEY_TAG = "tags";
-	public static final String JSON_KEY_CATEGORY = "category";
-	public static final String JSON_KEY_LOCATION = "location";
-	public static final String JSON_KEY_LEFTITME = "time_left";
-	public static final String JSON_KEY_ENDTIME = "end_date_time";
-	public static final String JSON_KEY_IMAGEURL = "sample_image";
-
+	private static final String JSON_KEY_USERNAME = "username";
+	private static final String JSON_KEY_DESCRIPTION = "description";
+	private static final String JSON_KEY_TAG = "tags";
+	private static final String JSON_KEY_CATEGORY = "category";
+	private static final String JSON_KEY_LOCATION = "location";
+	private static final String JSON_KEY_LEFTITME = "time_left";
+	private static final String JSON_KEY_ENDTIME = "end_date_time";
+	private static final String JSON_KEY_IMAGEURL = "sample_image";
+	
 	private String userName;
 	private String description;
 	private JSONArray tags;
