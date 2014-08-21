@@ -19,7 +19,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tv_finding_job_detail_user_request"
+                android:id="@+id/tv_joblist_detail_user_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
@@ -28,6 +28,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/tv_joblist_detail_user_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -43,12 +44,14 @@
             android:layout_marginLeft="7dp"
             android:layout_marginRight="10dp" >
 
-            <ImageButton
+            <com.loopj.android.image.SmartImageView
+                android:id="@+id/siv_joblist_detail_user_image"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/bt_finding_job_detail"
+                android:scaleType="fitXY"
                 android:src="@drawable/textlogo_small" />
         </LinearLayout>
     </LinearLayout>
@@ -92,7 +95,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tv_job_list_job_detail_detail"
+                android:id="@+id/tv_joblist_detail_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -135,13 +138,10 @@
                     android:text="Tag"
                     android:textColor="#808a99"
                     android:textSize="18sp" />
-
-                <!-- GridView 넣어야함 -->
-
             </RelativeLayout>
 
             <GridView
-                android:id="@+id/gv_job_list_job_detail_tag"
+                android:id="@+id/gv_joblist_detail_tag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="3"
@@ -184,7 +184,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_job_list_job_detail_location_detail"
+                    android:id="@+id/tv_joblist_detail_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -231,7 +231,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_request_new_duration_detail_day"
+                    android:id="@+id/tv_joblist_detail_leftday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -242,11 +242,11 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_request_new_duration_detail_calendar"
+                    android:id="@+id/tv_joblist_detail_calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@id/tv_request_new_duration_detail_day"
+                    android:layout_below="@id/tv_joblist_detail_leftday"
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="4dp"
                     android:text="2013/09/20"

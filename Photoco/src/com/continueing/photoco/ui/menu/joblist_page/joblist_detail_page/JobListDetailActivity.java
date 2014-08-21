@@ -18,11 +18,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.continueing.photoco.reuse.network.FindingJobListRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
-import com.continueing.photoco.reuse.network.SubmitPhotoRequest;
 
 public class JobListDetailActivity extends ActionBarActivity implements ViewForJobListDetailActivity.Controller{
 	private ViewForJobListDetailActivity view;
+	private String jobId;
 	private static final int REQUEST_CODE_PICK_IMAGE = 0;
 	
 	@Override
@@ -32,10 +33,12 @@ public class JobListDetailActivity extends ActionBarActivity implements ViewForJ
 		view = new ViewForJobListDetailActivity(getApplicationContext( ), this);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
+		view.initViewInfos(getIntent( ));
 	}
 
 	@Override
-	public void onPhotoSubmit() {
+	public void onPhotoSubmit(String aJobId) {
+		jobId = aJobId;
 		Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 		startActivityForResult(pickImageIntent, REQUEST_CODE_PICK_IMAGE);		
 	}
@@ -53,9 +56,9 @@ public class JobListDetailActivity extends ActionBarActivity implements ViewForJ
 	}
 	
 	public void submitPhotoToServer(File aFilePath) {
-		SubmitPhotoRequest submitPhotoRequest = new SubmitPhotoRequest(getApplicationContext());
+		FindingJobListRequest submitPhotoRequest = new FindingJobListRequest(getApplicationContext());
 		try {
-			submitPhotoRequest.submitPhoto(aFilePath, submitPhotoListener);
+			submitPhotoRequest.submitPhoto(aFilePath, jobId, submitPhotoListener);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

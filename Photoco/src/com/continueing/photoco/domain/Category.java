@@ -12,8 +12,7 @@ public class Category implements ViewForMyNewRequestCategoryListViewItem.IMyRequ
 	private String id;
 	private String name;
 	
-	public Category(JSONObject aJsonObject) throws JSONException
-	{
+	public Category(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);
 		name =  aJsonObject.getString(JSON_KEY_NAME);
 	}

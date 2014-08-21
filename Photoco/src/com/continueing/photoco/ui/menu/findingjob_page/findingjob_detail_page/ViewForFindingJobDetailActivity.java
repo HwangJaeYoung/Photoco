@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -75,9 +74,9 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	
 	public void initViewInfos(Intent anIntent)
 	{
-		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(FindingJobFragment.PARAM_TAG_ITEM_KEY);
+		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(FindingJobFragment.PARAM_FINDINGJOB_ITEM_KEY);
 		
-		tv_userRequest.setText(item.getName()+"'s Request");
+		tv_userRequest.setText(item.getName() + "'s Request");
 		tv_findingJobListDescription.setText(item.getDescription());
 		siv_findingJobListDetailImage.setImageUrl(item.getImageURL());
 		tv_detailCategory.setText(item.getCategory());
@@ -85,17 +84,8 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 		tv_timeLeftDetailDay.setText(item.getLeftTime());
 		tv_timeLeftDetailCalendar.setText(item.getEndDate());
 		
-		ArrayList<ITagItem> tags = new ArrayList<ITagItem>( );
-		for(int i = 0; i < 9; i++)
-		{
-			String temp = item.getTag()[i];
-			if(temp != null)
-			{
-				Tag tag = new Tag( );
-				tag.setTagText(temp);
-				tags.add(tag);
-			}
-		}
+		ArrayList<Tag> tags = new ArrayList<Tag>( );
+		tags = item.getTag();
 		arrayAdapterForTagGridView.addAll(tags);	
 		
 		tv_timeLeftDetailDay.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(item.getRemainMinutes())));

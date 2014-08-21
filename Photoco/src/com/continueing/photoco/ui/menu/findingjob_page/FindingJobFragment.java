@@ -26,7 +26,6 @@ import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobLi
 import com.continueing.photoco.reuse.network.FindingJobListRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
-import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page.FindingJobDetailActivity;
 
 public class FindingJobFragment extends Fragment implements ViewForFindingJobFragment.Controller {
@@ -37,7 +36,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	private ViewForFindingJobFragment view;
 	private ArrayList<IFindingJobListItem> findingJobItems;
 	private String savedTabName;
-	public static final String PARAM_TAG_ITEM_KEY = "tagitemfileds";
+	public static final String PARAM_FINDINGJOB_ITEM_KEY = "findingjobitem";
 	private static final int REQUEST_CODE_CHECK_PARTICIPATE = 0;
 	
 	@Override
@@ -60,7 +59,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		// 디테일한 정보를 보여주는 새로운 액티비티를 띄운다.
 		FindingJobList item = (FindingJobList)findingJobItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), FindingJobDetailActivity.class);
-		intent.putExtra(PARAM_TAG_ITEM_KEY, item);
+		intent.putExtra(PARAM_FINDINGJOB_ITEM_KEY, item);
 		startActivityForResult(intent, REQUEST_CODE_CHECK_PARTICIPATE);
 	}
 	
@@ -101,7 +100,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 				
 				try {
 					jsonRequestObject = jsonArray.getJSONObject(i);
-					FindingJobList request = new FindingJobList(jsonRequestObject);
+					FindingJobList request = new FindingJobList(jsonRequestObject, "");
 					findingJobItems.add(request);
 				} catch (JSONException e) {
 					e.printStackTrace();

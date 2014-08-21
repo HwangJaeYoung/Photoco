@@ -1,6 +1,12 @@
 package com.continueing.photoco.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.util.Log;
 
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 
@@ -8,6 +14,12 @@ import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterFo
 public class Tag  implements ITagItem, Serializable {
 	
 	private String tagText;
+	private JSONArray tagSet;
+	
+	public Tag( ) {}
+	public Tag(JSONArray aTags) {
+		tagSet = aTags;
+	}
 	
 	@Override
 	public String getTagText() {
@@ -17,5 +29,21 @@ public class Tag  implements ITagItem, Serializable {
 	@Override
 	public void setTagText(String aTagText) {
 		tagText = aTagText;
+	}
+	
+	@Override
+	public ArrayList<Tag> getTagSet() {
+		ArrayList<Tag> tags = new ArrayList<Tag>( );
+		for(int i = 0; i < tagSet.length(); i++) {
+			try {
+				String temp = tagSet.getJSONObject(i).getString("name");
+				Tag tag = new Tag( );
+				tag.setTagText(temp);
+				tags.add(tag);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		return tags;
 	}
 }

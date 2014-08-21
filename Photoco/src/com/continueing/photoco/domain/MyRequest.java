@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 
-public class MyRequest implements IMyRequestItem{
+public class MyRequest implements IMyRequestItem {
 	private static final String JSON_KEY_USERNAME = "username";
 	private static final String JSON_KEY_DESCRIPTION = "description";
 	private static final String JSON_KEY_TAG = "tags";
@@ -33,7 +33,7 @@ public class MyRequest implements IMyRequestItem{
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
 		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
-		imageURL= aJsonObject.getString(JSON_KEY_IMAGEURL);
+		imageURL= aJsonObject.getJSONObject(JSON_KEY_IMAGEURL).toString( );
 		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
 	}
 	
@@ -49,6 +49,12 @@ public class MyRequest implements IMyRequestItem{
 
 	@Override
 	public String getImageURL() {
+		try {
+			JSONObject temp = new JSONObject(imageURL);
+			imageURL = temp.getString("url");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		return imageURL;
 	}
 

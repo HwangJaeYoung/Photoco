@@ -83,6 +83,6 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 	
 	public static interface Controller extends IListViewItem
 	{
-		public void onItemSelected(int aPositions);
+		public void onItemSelected(int aPosition);
 	}
 }

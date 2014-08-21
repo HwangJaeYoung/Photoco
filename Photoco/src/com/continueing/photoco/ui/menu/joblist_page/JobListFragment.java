@@ -15,7 +15,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +31,7 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 	private ActionBar actionBar;
 	private boolean tabRestrict = true;
 	private ActionBar.Tab actionBarTab;
+	public static final String PARAM_JOBLIST_ITEM_KEY = "joblistitem";
 	private ArrayList<IFindingJobListItem> jobListItems;
 	
 	@Override
@@ -48,8 +48,11 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
     }
 
 	@Override
-	public void onItemSelected(int aPositions) {
+	public void onItemSelected(int aPosition) {
+		// 디테일한 정보를 보여주는 새로운 액티비티를 띄운다.
+		FindingJobList item = (FindingJobList)jobListItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), JobListDetailActivity.class);
+		intent.putExtra(PARAM_JOBLIST_ITEM_KEY, item);
 		startActivity(intent);
 	}
 	
@@ -82,7 +85,8 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 				
 				try {
 					jsonRequestObject = jsonArray.getJSONObject(i);
-					FindingJobList request = new FindingJobList(jsonRequestObject.getJSONObject("request"));
+					FindingJobList request 
+						= new FindingJobList(jsonRequestObject.getJSONObject("request"), jsonRequestObject.getString("id"));
 					jobListItems.add(request);
 				} catch (JSONException e) {
 					e.printStackTrace();

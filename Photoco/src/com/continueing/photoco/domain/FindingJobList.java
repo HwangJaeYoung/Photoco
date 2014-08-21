@@ -1,10 +1,13 @@
 package com.continueing.photoco.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem;
 
@@ -21,6 +24,7 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private static final String JSON_KEY_REMAIN_MINUTES = "remained_minutes_before_expired";
 	private static final String JSON_KEY_DISTANCE = "remained_minutes_before_expired";
 	
+	private String jobId;
 	private String id;
 	private String userName;
 	private String description;
@@ -33,22 +37,21 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private String remainMunutes;
 	private String distance;
 	
-	public FindingJobList(JSONObject aJsonObject) throws JSONException
-	{
+	public FindingJobList(JSONObject aJsonObject, String aJobId) throws JSONException {
+		jobId = aJobId;
 		id = aJsonObject.getString(JSON_KEY_ID);
 		userName = aJsonObject.getString(JSON_KEY_USERNAME);
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
-		imageURL= aJsonObject.getString(JSON_KEY_IMAGEURL);
+		imageURL= aJsonObject.getJSONObject(JSON_KEY_IMAGEURL).toString();
 		tags = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
 		locations = aJsonObject.getJSONObject(JSON_KEY_LOCATION).toString();
 		categorys = aJsonObject.getJSONObject(JSON_KEY_CATEGORY).toString();
 		remainMunutes = aJsonObject.getString(JSON_KEY_REMAIN_MINUTES);
 		distance = aJsonObject.getString(JSON_KEY_DISTANCE);
 	}
-	
-	
+
 	@Override
 	public String getName() {
 		return userName;
@@ -61,27 +64,25 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 
 	@Override
 	public String getImageURL() {
+		try {
+			JSONObject temp = new JSONObject(imageURL);
+			imageURL = temp.getString("url");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		return imageURL;
 	}
 
 	@Override
-	public String[] getTag() {
-		String[] tag = new String[9];
-		
+	public ArrayList<Tag> getTag() {		
+		Tag tagSet = null;
 		try {
 			JSONArray tempArray = new JSONArray(tags);
-			for(int i = 0; i < 9; i++) {
-				JSONObject temp = tempArray.getJSONObject(i);
-				if(temp != null)
-					tag[i] = temp.getString("name");
-				else
-					tag[i] = null;
-			}
-		}
-		catch( JSONException e) {
+			tagSet = new Tag(tempArray);	
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return tag;
+		return tagSet.getTagSet();
 	}
 
 	@Override
@@ -118,7 +119,6 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 		return endTime;
 	}
 
-
 	@Override
 	public String getId() {
 		return id;
@@ -132,5 +132,10 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	@Override
 	public String getDistance() {
 		return distance;
+	}
+
+	@Override
+	public String getJobId() {
+		return jobId;
 	}
 }

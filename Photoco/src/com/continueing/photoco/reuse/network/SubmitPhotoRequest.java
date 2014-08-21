@@ -17,7 +17,7 @@ public class SubmitPhotoRequest {
 		this.context = aContext;
 	}
 	
-	public void submitPhoto(File aFilePath, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
+	public void submitPhoto(File aFilePath, String aJobId, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		HttpRequester.get(URL_BASE + "/candidateJobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}

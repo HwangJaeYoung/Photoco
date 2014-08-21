@@ -11,7 +11,6 @@ public class Duration implements IMyRequestDurationItem{
 	private static final String JSON_KEY_HOUR_TEXT = "text";
 	private static final String JSON_KEY_END_DATE = "end_date";
 	
-	
 	private String hour;
 	private String hourText;
 	private String endDate;

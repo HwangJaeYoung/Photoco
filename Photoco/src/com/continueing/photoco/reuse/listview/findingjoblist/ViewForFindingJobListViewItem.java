@@ -1,13 +1,17 @@
 package com.continueing.photoco.reuse.listview.findingjoblist;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
@@ -58,20 +62,16 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		tv_category.setText(iFindingJobListItem.getCategory());	
 		tv_name.setText(iFindingJobListItem.getName( ));
 		
-		int counting = 0;
-		for(int i = 0; i < 3; i++) {
-			if(iFindingJobListItem.getTag()[i] == null)
-						counting++;			
-		}
-		
+		int counting = iFindingJobListItem.getTag().size();
+
 		if(counting == 1) {
 			bt_tagFirst.setVisibility(View.VISIBLE);
-			bt_tagSecond.setVisibility(View.VISIBLE);
+			bt_tagSecond.setVisibility(View.INVISIBLE);
 			bt_tagThird.setVisibility(View.INVISIBLE);
 		}
 		else if(counting == 2) {
 			bt_tagFirst.setVisibility(View.VISIBLE);
-			bt_tagSecond.setVisibility(View.INVISIBLE);
+			bt_tagSecond.setVisibility(View.VISIBLE);
 			bt_tagThird.setVisibility(View.INVISIBLE);
 		}
 		else {
@@ -80,9 +80,15 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 			bt_tagThird.setVisibility(View.VISIBLE);
 		}
 		
-		bt_tagFirst.setText((iFindingJobListItem.getTag())[0]);
-		bt_tagSecond.setText((iFindingJobListItem.getTag())[1]);
-		bt_tagThird.setText((iFindingJobListItem.getTag())[2]);
+		bt_tagFirst.setText((iFindingJobListItem.getTag()).get(0).getTagText());
+		
+		if(counting == 2)
+			bt_tagSecond.setText((iFindingJobListItem.getTag()).get(1).getTagText());
+		else if (counting > 2){
+			bt_tagSecond.setText((iFindingJobListItem.getTag()).get(1).getTagText());
+			bt_tagThird.setText((iFindingJobListItem.getTag()).get(2).getTagText());
+		}
+		
 		tv_leftTime.setText(iFindingJobListItem.getLeftTime() + " left");
 		ll_findjoblistSmileImage.setBackgroundColor(Color.parseColor(ReturnDurationColor.returnColor(iFindingJobListItem.getRemainMinutes())));
 	}
@@ -91,6 +97,7 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	 * 한 번더 IRequestAbstractInfoItem의 구현을 강요하여 IListViewItem을 직접 구현 한것 보다 더 유연성을 준다.
 	 */
 	public static interface IFindingJobListItem extends IListViewItem {
+		public String getJobId( );
 		public String getId( );
 		public String getName( ); 
 		public String getDescription( ); 
@@ -99,7 +106,7 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		public String getLocation( ); 
 		public String getLeftTime( );
 		public String getEndDate( );	
-		public String[] getTag( ); 
+		public ArrayList<Tag> getTag( ); 
 		public String getRemainMinutes( );
 		public String getDistance( );
 	}
