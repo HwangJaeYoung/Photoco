@@ -90,6 +90,7 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		}
 		
 		tv_leftTime.setText(iFindingJobListItem.getLeftTime() + " left");
+		Log.i("obj", iFindingJobListItem.getRemainMinutes()+"");
 		ll_findjoblistSmileImage.setBackgroundColor(Color.parseColor(ReturnDurationColor.returnColor(iFindingJobListItem.getRemainMinutes())));
 	}
 	

@@ -67,7 +67,7 @@ public class JobListDetailActivity extends ActionBarActivity implements ViewForJ
 	HttpRequester.NetworkResponseListener submitPhotoListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) { 
-			Toast.makeText(getApplicationContext(), "To submit photo to server is successful", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "To submit photo to server is successful", Toast.LENGTH_LONG).show();
 		}	
 		
 		@Override
