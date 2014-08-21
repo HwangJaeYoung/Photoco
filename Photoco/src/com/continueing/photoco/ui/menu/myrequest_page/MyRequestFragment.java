@@ -49,8 +49,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_GET_REQUEST_ITEM)
-			if(resultCode == Activity.RESULT_OK)
-			{
+			if(resultCode == Activity.RESULT_OK) {
 				searchMyRequestItemFromServer( );
 			}
 	}

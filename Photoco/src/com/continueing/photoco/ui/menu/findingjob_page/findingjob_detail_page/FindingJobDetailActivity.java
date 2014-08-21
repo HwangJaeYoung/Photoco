@@ -1,23 +1,16 @@
 package com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page;
 
-import java.util.ArrayList;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.continueing.photoco.domain.FindingJobList;
-import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
 import com.continueing.photoco.reuse.network.HttpRequester;
-import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.ParticipateRequest;
 
 public class FindingJobDetailActivity extends ActionBarActivity implements ViewForFindingJobDetailActivity.Controller {	
@@ -50,6 +43,7 @@ public class FindingJobDetailActivity extends ActionBarActivity implements ViewF
 	HttpRequester.NetworkResponseListener submitFindingJobListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) { 
+			setResult(Activity.RESULT_OK);
 			finish( );
 		}	
 		

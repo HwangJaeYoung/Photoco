@@ -34,11 +34,11 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 
 public class MyNewRequestActivity extends ActionBarActivity implements ViewForMyNewRequestActivity.Controller{
 	
-	public static final int REQUEST_CODE_PICK_LOCATION = 0;
-	public static final int REQUEST_CODE_PICK_IMAGE = 1;
-	public static final int REQUEST_CODE_PICK_DURATION = 2;
-	public static final int REQUEST_CODE_PICK_CATEGORY = 3;
-	public static final int REQUEST_CODE_PICK_TAG = 4;
+	private static final int REQUEST_CODE_PICK_LOCATION = 0;
+	private static final int REQUEST_CODE_PICK_IMAGE = 1;
+	private static final int REQUEST_CODE_PICK_DURATION = 2;
+	private static final int REQUEST_CODE_PICK_CATEGORY = 3;
+	private static final int REQUEST_CODE_PICK_TAG = 4;
 	
 	public static final String PARAM_DURATION_CHECKED_KEY ="checkedDurationKey";
 	public static final String PARAM_CATEGORY_CHECKED_KEY ="checkedCategoryKey";
@@ -174,7 +174,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		}	
 	}
 	
-	public static String getRealPathFromUri(Context context, Uri contentUri) {
+	public String getRealPathFromUri(Context context, Uri contentUri) {
 	    Cursor cursor = null;
 	    try {
 	        String[] proj = { MediaStore.Images.Media.DATA };

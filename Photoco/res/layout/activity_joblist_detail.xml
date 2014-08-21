@@ -274,7 +274,7 @@
         android:orientation="horizontal" >
 
         <ImageButton
-            android:id="@+id/bt_request_new_submit"
+            android:id="@+id/ib_submit_photo"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="15dp"

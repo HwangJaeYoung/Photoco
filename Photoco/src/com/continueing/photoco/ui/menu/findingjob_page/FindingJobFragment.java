@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -25,6 +26,7 @@ import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobLi
 import com.continueing.photoco.reuse.network.FindingJobListRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.findingjob_page.findingjob_detail_page.FindingJobDetailActivity;
 
 public class FindingJobFragment extends Fragment implements ViewForFindingJobFragment.Controller {
@@ -34,7 +36,9 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	private boolean tabRestrict = true;
 	private ViewForFindingJobFragment view;
 	private ArrayList<IFindingJobListItem> findingJobItems;
+	private String savedTabName;
 	public static final String PARAM_TAG_ITEM_KEY = "tagitemfileds";
+	private static final int REQUEST_CODE_CHECK_PARTICIPATE = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,16 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		FindingJobList item = (FindingJobList)findingJobItems.get(aPosition);
 		Intent intent = new Intent(getActivity( ), FindingJobDetailActivity.class);
 		intent.putExtra(PARAM_TAG_ITEM_KEY, item);
-		startActivity(intent);
+		startActivityForResult(intent, REQUEST_CODE_CHECK_PARTICIPATE);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == REQUEST_CODE_CHECK_PARTICIPATE) {
+			if(resultCode == Activity.RESULT_OK) {
+				searchFindingJobItemFromServer(savedTabName);
+			}
+		}
 	}
 	
 	public void searchFindingJobItemFromServer(String aTabName) {
@@ -83,8 +96,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 			
 			findingJobItems = new ArrayList<IFindingJobListItem>( );
 			
-			for(int i = 0; i < jsonArray.length(); i++)
-			{
+			for(int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonRequestObject = null;
 				
 				try {
@@ -102,9 +114,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		}	
 		
 		@Override
-		public void onFail(JSONObject jsonObject, int errorCode) { 
-			Log.i("onnet", "success");
-		}
+		public void onFail(JSONObject jsonObject, int errorCode) { }
 	};
 	
 	public void addActionBarTab( ) {
@@ -142,14 +152,17 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("Recommended") && tabRestrict == true) {
 				searchFindingJobItemFromServer("recommended");
+				savedTabName = "recommended";
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Latest")) {
 				searchFindingJobItemFromServer("latest");
+				savedTabName = "latest";
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Distance")) {	
 				searchFindingJobItemFromServer("distance");
+				savedTabName = "distance";
 				tabRestrict = true;
 			}
 		}
@@ -163,8 +176,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 	
 	// 프래그먼트가 replece에 의해서 지워질 때 액션바에 생성한 탭을 삭제한다.
 	@Override
-	public void onDetach( )
-	{
+	public void onDetach( ) {
 		super.onDetach();
 		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다

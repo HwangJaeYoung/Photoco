@@ -40,10 +40,10 @@ public class ViewForFindingJobFragment extends AbstractViewForFragment {
 		lv_requestFindingJobList = (ListView)findViewById(R.id.lv_request_finding_job_list);
 		lv_requestFindingJobList.setAdapter(arrayAdapterForFindingJobListFragment);
 		progressBar = (ProgressBar)findViewById(R.id.pb_findingjoblist);
+		
 		// NavigationDrawerFragment에서 드로워를 열고 닫을 때 액션바 사용여부 확인용
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
-		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section1);
 	}
 	
