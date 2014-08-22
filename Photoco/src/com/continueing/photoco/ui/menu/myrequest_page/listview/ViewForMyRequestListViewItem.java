@@ -1,7 +1,8 @@
 package com.continueing.photoco.ui.menu.myrequest_page.listview;
 
+import java.util.ArrayList;
+
 import android.content.Context;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
@@ -70,20 +72,16 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestName.setText(iMyRequestItem.getCategory());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
-		int counting = 0;
-		for(int i = 0; i < 3; i++) {
-			if(iMyRequestItem.getTag()[i] == null)
-						counting++;			
-		}
-		
+		int counting = iMyRequestItem.getTag().size();
+
 		if(counting == 1) {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
-			bt_listTagSecond.setVisibility(View.VISIBLE);
+			bt_listTagSecond.setVisibility(View.INVISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
 		}
 		else if(counting == 2) {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
-			bt_listTagSecond.setVisibility(View.INVISIBLE);
+			bt_listTagSecond.setVisibility(View.VISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
 		}
 		else {
@@ -92,9 +90,15 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 			bt_listTagThird.setVisibility(View.VISIBLE);
 		}
 		
-		bt_listTagFirst.setText((iMyRequestItem.getTag())[0]);
-		bt_listTagSecond.setText((iMyRequestItem.getTag())[1]);
-		bt_listTagThird.setText((iMyRequestItem.getTag())[2]);
+		bt_listTagFirst.setText((iMyRequestItem.getTag()).get(0).getTagText());
+		
+		if(counting == 2)
+			bt_listTagSecond.setText((iMyRequestItem.getTag()).get(1).getTagText());
+		else if (counting > 2){
+			bt_listTagSecond.setText((iMyRequestItem.getTag()).get(1).getTagText());
+			bt_listTagThird.setText((iMyRequestItem.getTag()).get(2).getTagText());
+		}
+		
 		tv_requestLocationDetail.setText(iMyRequestItem.getLocation());
 		tv_requestTimeleftDetail.setText(iMyRequestItem.getLeftTime() +
 				"(" + iMyRequestItem.getEndDate() + ")");
@@ -109,6 +113,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public String getLocation( ); 
 		public String getLeftTime( );
 		public String getEndDate( );	
-		public String[] getTag( ); 
+		public ArrayList<Tag> getTag( ); 
 	}
 }

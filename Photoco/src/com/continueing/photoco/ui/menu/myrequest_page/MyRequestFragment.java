@@ -10,14 +10,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.continueing.photoco.domain.MyRequest;
+import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MyRequestItemRequest;
+import com.continueing.photoco.reuse.network.RequestsRequest;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.MyRequestGridViewDetailActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.MyNewRequestActivity;
@@ -25,6 +28,8 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.
 public class MyRequestFragment extends Fragment implements ViewForMyRequestFragment.Controller{
 	private ViewForMyRequestFragment view;
 	private ArrayList<IMyRequestItem> myrequestItems;
+	private ArrayList<URL> imageURLSet;
+	private String savedImageURL;
 	public static final int REQUEST_CODE_GET_REQUEST_ITEM = 0;
 
 	@Override
@@ -86,18 +91,25 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 			
 			myrequestItems = new ArrayList<IMyRequestItem>( );
 			
-			for(int i = 0; i < jsonArray.length(); i++)
-			{
+			for(int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonRequestObject = null;
 				
 				try {
 					jsonRequestObject = jsonArray.getJSONObject(i);
-					MyRequest request = new MyRequest(jsonRequestObject);
+					
+					RequestsRequest RequestsRequest = new RequestsRequest(getActivity( ));
+					Log.i("obj", jsonRequestObject.getString("id"));
+					RequestsRequest.getImageURL(getImageURLListener, jsonRequestObject.getString("id"));
+					
+					
+		
+					MyRequest request = new MyRequest(jsonRequestObject);			
 					myrequestItems.add(request);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
 			}
+			
 			view.addMyRequestArrayList(myrequestItems);
 			view.listviewOn();
 			view.progresOff();
@@ -105,5 +117,37 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		
 		@Override
 		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
+	
+	HttpRequester.NetworkResponseListener getImageURLListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) {
+			Log.i("obj", "image success");
+			JSONArray jsonArray = null;
+			
+			try {
+				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
+				Log.i("obj", jsonArray.toString());
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			imageURLSet = new ArrayList<URL>( );
+			
+			for(int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonRequestObject = null;
+				try {
+					jsonRequestObject = jsonArray.getJSONObject(i);
+					URL url = new URL(jsonRequestObject);
+					imageURLSet.add(url);					
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}	
+		
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { 
+			Log.i("obj", "image fail");
+		}
 	};
 }

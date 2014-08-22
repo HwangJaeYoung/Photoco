@@ -1,5 +1,7 @@
 package com.continueing.photoco.domain;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,23 +61,9 @@ public class MyRequest implements IMyRequestItem {
 	}
 
 	@Override
-	public String[] getTag() {
-		
-		String tag1 = null;
-		String tag2 = null;
-		String tag3 = null;
-		
-		try {
-			tag1 = (tags.getJSONObject(0)).getString("name");
-			tag2 = (tags.getJSONObject(1)).getString("name");
-			tag3 = (tags.getJSONObject(2)).getString("name");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		String[] temp = new String[3];
-		temp[0] = tag1; temp[1] = tag2; temp[2] = tag3;
-		return temp;
+	public ArrayList<Tag> getTag() {
+		Tag tagSet = new Tag(tags);
+		return tagSet.getTagSet();
 	}
 
 	@Override

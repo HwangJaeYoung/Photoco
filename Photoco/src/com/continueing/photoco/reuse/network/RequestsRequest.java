@@ -20,13 +20,11 @@ public class RequestsRequest {
 	private static final String PARAM_DESCRIPTION = "description";
 	private static final String PARAM_IMAGE = "image";
 	
-	public RequestsRequest(Context aContext)
-	{
+	public RequestsRequest(Context aContext) {
 		this.context = aContext;
 	}
 	
-	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, JSONArray aTag, String aDescription, File aFile, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
-	{
+	public void setMyRequestItem(String aLocationId, String aCategoryId, String aDurationHour, JSONArray aTag, String aDescription, File aFile, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_LOCATION_ID, aLocationId);
 		requestParams.put(PARAM_CATEGORY_ID, aCategoryId);
@@ -39,5 +37,11 @@ public class RequestsRequest {
 			e.printStackTrace();
 		}
 		HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+	}
+	
+	public void getImageURL(final HttpRequester.NetworkResponseListener aNetworkListener, String aRequestId) throws JSONException {
+		RequestParams requestParams = new RequestParams( );
+		HttpRequester.post(URL_BASE + "/" + aRequestId + "/attachments/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+	
 	}
 }
