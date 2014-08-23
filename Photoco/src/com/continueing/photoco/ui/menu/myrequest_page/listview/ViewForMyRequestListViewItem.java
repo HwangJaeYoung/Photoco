@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.domain.Tag;
+import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
+import com.loopj.android.image.SmartImageView;
 
 public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 
@@ -25,6 +27,9 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	private Button bt_listTagFirst;
 	private Button bt_listTagSecond;
 	private Button bt_listTagThird;
+	private SmartImageView iv_requestPhotoLeft;
+	private SmartImageView iv_requestPhotoMid;
+	private SmartImageView iv_requestPhotoRight;
 	private ImageView iv_requestRemove;
 	
 	public ViewForMyRequestListViewItem(Context context) {
@@ -49,6 +54,10 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		bt_listTagSecond.setFocusable(false);
 		bt_listTagThird.setFocusable(false);
 		
+		iv_requestPhotoLeft = (SmartImageView)findViewById(R.id.siv_request_photo_left);
+		iv_requestPhotoMid = (SmartImageView)findViewById(R.id.siv_request_photo_mid);
+		iv_requestPhotoRight = (SmartImageView)findViewById(R.id.siv_request_photo_right);
+		
 		tv_requestTimeleftDetail = (TextView)findViewById(R.id.tv_request_timeleft_detail);
 		tv_requestDescDetail = (TextView)findViewById(R.id.tv_request_desc_detail);
 		tv_requestLocationDetail = (TextView)findViewById(R.id.tv_request_location_detail);
@@ -71,6 +80,31 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		IMyRequestItem iMyRequestItem = (IMyRequestItem)aIListViewItem;	
 		tv_requestName.setText(iMyRequestItem.getCategory());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
+		
+		int imageURLCounting = iMyRequestItem.getImageURLSet().size();
+		
+		if(imageURLCounting == 0) {
+			iv_requestPhotoLeft.setVisibility(View.INVISIBLE);
+			iv_requestPhotoMid.setVisibility(View.INVISIBLE);
+			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
+		}
+		
+		else if(imageURLCounting == 1) {
+			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setVisibility(View.INVISIBLE);
+			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
+		}
+		
+		else if(imageURLCounting == 2) {
+			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setImageUrl( (iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
+		}
+		else if(imageURLCounting > 2) {
+			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setImageUrl( (iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoRight.setImageUrl( (iMyRequestItem.getImageURLSet()).get(2).getURL());
+		}
 		
 		int counting = iMyRequestItem.getTag().size();
 
@@ -114,5 +148,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public String getLeftTime( );
 		public String getEndDate( );	
 		public ArrayList<Tag> getTag( ); 
+		public ArrayList<URL> getImageURLSet( ); 
 	}
 }

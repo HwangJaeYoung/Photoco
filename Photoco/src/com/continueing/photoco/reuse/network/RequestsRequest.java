@@ -41,7 +41,7 @@ public class RequestsRequest {
 	
 	public void getImageURL(final HttpRequester.NetworkResponseListener aNetworkListener, String aRequestId) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.post(URL_BASE + "/" + aRequestId + "/attachments/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		HttpRequester.get(URL_BASE + "/" + aRequestId + "/attachments/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	
 	}
 }

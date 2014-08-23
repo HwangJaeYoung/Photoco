@@ -17,7 +17,9 @@ public class MyRequest implements IMyRequestItem {
 	private static final String JSON_KEY_LEFTITME = "time_left";
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
 	private static final String JSON_KEY_IMAGEURL = "sample_image";
+	private static final String JSON_KEY_IMAGEURL_SET = "urlset";
 	
+	private JSONObject savedJSONObject;
 	private String userName;
 	private String description;
 	private JSONArray tags;
@@ -26,9 +28,11 @@ public class MyRequest implements IMyRequestItem {
 	private String endTime;
 	private JSONObject location;
 	private JSONObject category;
+	private JSONArray imageURLSet;
 	
-	public MyRequest(JSONObject aJsonObject) throws JSONException
-	{
+	public MyRequest() { }
+	
+	public MyRequest(JSONObject aJsonObject) throws JSONException {
 		userName = aJsonObject.getString(JSON_KEY_USERNAME);
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
 		tags = aJsonObject.getJSONArray(JSON_KEY_TAG);
@@ -37,6 +41,20 @@ public class MyRequest implements IMyRequestItem {
 		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
 		imageURL= aJsonObject.getJSONObject(JSON_KEY_IMAGEURL).toString( );
 		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
+		imageURLSet = aJsonObject.getJSONArray(JSON_KEY_IMAGEURL_SET);
+	}
+	
+	public void setSaveJSONOjbect(JSONObject aJSONObject) {
+		savedJSONObject = aJSONObject;
+	}
+	
+	public JSONObject getSavedJSONObject( ) {
+		return savedJSONObject;
+	}
+	
+	public ArrayList<URL> getImageURLSet( ) {
+		URL url = new URL(imageURLSet);
+		return url.getURLSet();
 	}
 	
 	@Override

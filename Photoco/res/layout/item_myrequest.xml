@@ -242,14 +242,15 @@
                     android:textColor="#323a45"
                     android:visibility="invisible" />
 
-                <ImageView
-                    android:id="@+id/iv_request_photo_right"
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/siv_request_photo_right"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:background="#cdd8e2"
+                    android:scaleType="fitXY"
                     android:src="@drawable/textlogo_small" />
 
                 <ImageView
@@ -261,14 +262,15 @@
                     android:layout_marginTop="12dp"
                     android:background="@drawable/newbadge_ic" />
 
-                <ImageView
-                    android:id="@+id/iv_request_photo_mid"
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/siv_request_photo_mid"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@id/iv_request_photo_right"
+                    android:layout_toLeftOf="@id/siv_request_photo_right"
                     android:background="#cdd8e2"
+                    android:scaleType="fitXY"
                     android:src="@drawable/textlogo_small" />
 
                 <ImageView
@@ -276,17 +278,18 @@
                     android:layout_width="18dp"
                     android:layout_height="19dp"
                     android:layout_marginTop="12dp"
-                    android:layout_toLeftOf="@id/iv_request_photo_right"
+                    android:layout_toLeftOf="@id/siv_request_photo_right"
                     android:background="@drawable/newbadge_ic" />
 
-                <ImageView
-                    android:id="@+id/iv_request_photo_left"
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/siv_request_photo_left"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@id/iv_request_photo_mid"
+                    android:layout_toLeftOf="@id/siv_request_photo_mid"
                     android:background="#cdd8e2"
+                    android:scaleType="fitXY"
                     android:src="@drawable/textlogo_small" />
 
                 <ImageView
@@ -294,7 +297,7 @@
                     android:layout_width="18dp"
                     android:layout_height="19dp"
                     android:layout_marginTop="12dp"
-                    android:layout_toLeftOf="@id/iv_request_photo_mid"
+                    android:layout_toLeftOf="@id/siv_request_photo_mid"
                     android:background="@drawable/newbadge_ic"
                     android:visibility="invisible" />
             </RelativeLayout>
