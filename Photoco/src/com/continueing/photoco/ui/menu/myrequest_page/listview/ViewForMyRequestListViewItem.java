@@ -3,6 +3,7 @@ package com.continueing.photoco.ui.menu.myrequest_page.listview;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -83,22 +84,14 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size();
 		
-		if(imageURLCounting == 0) {
-			iv_requestPhotoLeft.setVisibility(View.INVISIBLE);
-			iv_requestPhotoMid.setVisibility(View.INVISIBLE);
-			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
-		}
-		
-		else if(imageURLCounting == 1) {
+		if(imageURLCounting == 1) {
 			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
-			iv_requestPhotoMid.setVisibility(View.INVISIBLE);
-			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
+
 		}
 		
 		else if(imageURLCounting == 2) {
 			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
 			iv_requestPhotoMid.setImageUrl( (iMyRequestItem.getImageURLSet()).get(1).getURL());
-			iv_requestPhotoRight.setVisibility(View.INVISIBLE);
 		}
 		else if(imageURLCounting > 2) {
 			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());

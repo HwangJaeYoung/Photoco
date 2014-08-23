@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -169,8 +170,12 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 	
 	public void selectedDuration(String aDuration, String aEndDate, String aDurationHour)
 	{
+		Log.i("duration", ""+aDurationHour);
+		
+		int leftTime = Integer.parseInt(aDurationHour);
+		leftTime *= 60;
 		tv_requestNewDurationDetailDay.setText(aDuration);
-		tv_requestNewDurationDetailDay.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(aDurationHour)));
+		tv_requestNewDurationDetailDay.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(String.valueOf(leftTime))));
 		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	

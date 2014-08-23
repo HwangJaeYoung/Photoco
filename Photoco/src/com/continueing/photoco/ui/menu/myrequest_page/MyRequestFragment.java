@@ -162,7 +162,6 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 			itemCounter++;
 			
 			if(itemCounter == requestIdSet.size()) {
-				itemCounter = 0;
 				view.progresOff();
 				view.listviewOn();
 				view.addMyRequestArrayList(myrequestItems);

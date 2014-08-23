@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	private ProgressBar progressBar;
 	
 	private ArrayAdapterForMyRequestListView arrayAdapterForMyRequestListView;
-	private ArrayList<IMyRequestItem> arrayList = new ArrayList<IMyRequestItem>( ); 
+	private ArrayList<IMyRequestItem> arrayList; 
 
 	public ViewForMyRequestFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -79,6 +80,8 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
+					
+					Log.i("attach", position+"");
 					arrayList.remove(position); // 삭제오류
 					arrayAdapterForMyRequestListView.clear();
 					arrayAdapterForMyRequestListView.addAll(arrayList);
