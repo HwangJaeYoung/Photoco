@@ -80,8 +80,6 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
-					
-					Log.i("attach", position+"");
 					arrayList.remove(position); // 삭제오류
 					arrayAdapterForMyRequestListView.clear();
 					arrayAdapterForMyRequestListView.addAll(arrayList);

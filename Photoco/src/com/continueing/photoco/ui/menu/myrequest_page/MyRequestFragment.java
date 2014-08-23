@@ -36,10 +36,21 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	
 	Handler mHandler = new Handler( ) {
 		public void handleMessage(Message msg) {
-			switch(msg.what) {
-			case 1:
-				searchImageURLFromServer( );
-				break;
+			if(msg.what == 1) {
+				if(itemCounter < requestIdSet.size())
+					searchImageURLFromServer(requestIdSet.get(itemCounter));
+				else if(itemCounter == requestIdSet.size()) {
+					itemCounter = 0;
+					view.progresOff();
+					view.listviewOn();
+					view.addMyRequestArrayList(myrequestItems);
+				}
+			}
+			
+			else if(msg.what == 2) {
+				view.progresOff();
+				view.listviewOn();
+				view.addMyRequestArrayList(myrequestItems);
 			}
 		}
 	};
@@ -89,15 +100,12 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		}
 	}
 	
-	public void searchImageURLFromServer( ) {
+	public void searchImageURLFromServer(String aRequestId) {
 		RequestsRequest requestsRequest = new RequestsRequest(getActivity( ));
-		
-		for(int i = 0; i < requestIdSet.size(); i++) {
-			try {
-				requestsRequest.getImageURL(getImageURLListener, requestIdSet.get(i));
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+		try {
+			requestsRequest.getImageURL(getImageURLListener, aRequestId);
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -106,33 +114,39 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;
+			Message message = new Message( );
+			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
-			myrequestItems = new ArrayList<IMyRequestItem>( );
-			requestIdSet = new ArrayList<String>( );
+			myrequestItems = new ArrayList<IMyRequestItem>();
+			requestIdSet = new ArrayList<String>();
 			
-			for(int i = 0; i < jsonArray.length(); i++) {
-				JSONObject jsonRequestObject = null;
-				
-				try {
-					jsonRequestObject = jsonArray.getJSONObject(i);
-					requestIdSet.add(jsonRequestObject.getString("id"));
+			if (jsonArray.length() != 0) {
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject jsonRequestObject = null;
 
-					MyRequest myrequest = new MyRequest( );
-					myrequest.setSaveJSONOjbect(jsonRequestObject);
-					myrequestItems.add(myrequest);	
-					
-				} catch (JSONException e) {
-					e.printStackTrace();
+					try {
+						jsonRequestObject = jsonArray.getJSONObject(i);
+						requestIdSet.add(jsonRequestObject.getString("id"));
+
+						MyRequest myrequest = new MyRequest();
+						myrequest.setSaveJSONOjbect(jsonRequestObject);
+						myrequestItems.add(myrequest);
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
+				message.what = 1;
+				mHandler.sendMessage((message));
+			} else {
+				message.what = 2;
+				mHandler.sendMessage((message));
 			}
-			Message message = new Message( );
-			message.what = 1;
-			mHandler.sendMessage((message));
 		}	
 		
 		@Override
@@ -144,6 +158,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;
 			JSONObject requestObject = null;
+			Message message = new Message( );
 			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
@@ -156,16 +171,14 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 			try {
 				MyRequest myrequest = new MyRequest(requestObject);
 				myrequestItems.set(itemCounter, myrequest);
+				Log.i("attach", "items" + myrequest.getImageURLSet().size());
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			itemCounter++;
 			
-			if(itemCounter == requestIdSet.size()) {
-				view.progresOff();
-				view.listviewOn();
-				view.addMyRequestArrayList(myrequestItems);
-			}
+			itemCounter++;
+			message.what = 1;
+			mHandler.sendMessage((message));
 		}
 
 		@Override

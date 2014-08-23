@@ -84,19 +84,20 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size();
 		
+		Log.i("attach", imageURLCounting+"");
+		
 		if(imageURLCounting == 1) {
-			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
-
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 		}
 		
 		else if(imageURLCounting == 2) {
-			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
-			iv_requestPhotoMid.setImageUrl( (iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
 		}
 		else if(imageURLCounting > 2) {
-			iv_requestPhotoLeft.setImageUrl( (iMyRequestItem.getImageURLSet()).get(0).getURL());
-			iv_requestPhotoMid.setImageUrl( (iMyRequestItem.getImageURLSet()).get(1).getURL());
-			iv_requestPhotoRight.setImageUrl( (iMyRequestItem.getImageURLSet()).get(2).getURL());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getURL());
 		}
 		
 		int counting = iMyRequestItem.getTag().size();
