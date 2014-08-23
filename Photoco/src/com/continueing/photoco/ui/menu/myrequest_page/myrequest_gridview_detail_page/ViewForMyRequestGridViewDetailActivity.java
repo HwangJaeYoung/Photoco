@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.domain.URL;
@@ -16,6 +17,7 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_
 public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActivity{
 
 	private Controller controller;
+	private ProgressBar progressBar;
 	private ExpandableHeightGridView gv_requestDetail;
 	private ArrayAdapterForMyRequestDetailActivity arrayAdapterForMyRequestDetailActivity;
 	
@@ -31,6 +33,7 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 
 	@Override
 	protected void initViews() {
+		progressBar = (ProgressBar)findViewById(R.id.pb_myrequest_detail);
 		gv_requestDetail = (ExpandableHeightGridView)findViewById(R.id.gv_request_detail);
 		gv_requestDetail.setExpanded(true);
 		arrayAdapterForMyRequestDetailActivity = new ArrayAdapterForMyRequestDetailActivity(getContext(), 0);
@@ -52,8 +55,23 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 		});
 	}
 	
-	public static interface Controller
-	{
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void gridviewOff( ) {
+		gv_requestDetail.setVisibility(View.INVISIBLE);
+	}
+	
+	public void gridviewOn( ) {
+		gv_requestDetail.setVisibility(View.VISIBLE);
+	}
+	
+	public static interface Controller {
 		public void selectedGridViewItem( );
 	}
 }

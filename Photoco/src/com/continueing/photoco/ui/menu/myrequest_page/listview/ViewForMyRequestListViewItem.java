@@ -140,7 +140,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의
 		public String getName( ); 
 		public String getDescription( ); 
-		public String getImageURL( ); 
 		public String getCategory( ); 
 		public String getLocation( ); 
 		public String getLeftTime( );

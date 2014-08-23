@@ -16,14 +16,12 @@ public class MyRequest implements IMyRequestItem {
 	private static final String JSON_KEY_LOCATION = "location";
 	private static final String JSON_KEY_LEFTITME = "time_left";
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
-	private static final String JSON_KEY_IMAGEURL = "sample_image";
 	private static final String JSON_KEY_IMAGEURL_SET = "urlset";
 	
 	private JSONObject savedJSONObject;
 	private String userName;
 	private String description;
 	private JSONArray tags;
-	private String imageURL;
 	private String leftTime;
 	private String endTime;
 	private JSONObject location;
@@ -39,7 +37,6 @@ public class MyRequest implements IMyRequestItem {
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
 		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
-		imageURL= aJsonObject.getJSONObject(JSON_KEY_IMAGEURL).toString( );
 		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
 		imageURLSet = aJsonObject.getJSONArray(JSON_KEY_IMAGEURL_SET);
 	}
@@ -65,17 +62,6 @@ public class MyRequest implements IMyRequestItem {
 	@Override
 	public String getDescription() {
 		return description;
-	}
-
-	@Override
-	public String getImageURL() {
-		try {
-			JSONObject temp = new JSONObject(imageURL);
-			imageURL = temp.getString("url");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return imageURL;
 	}
 
 	@Override

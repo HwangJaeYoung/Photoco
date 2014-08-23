@@ -38,6 +38,8 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 	
 	// 내가 요청한 것들에서 다른 사용자가 등록한 이미지를 가져오기 위한 통신
 	public void searchImageURLFromServer(String aRequestId) {
+		view.gridviewOff();
+		view.progressOn();
 		RequestsRequest requestsRequest = new RequestsRequest(getApplicationContext( ));
 		try {
 			requestsRequest.getImageURL(getImageURLListener, aRequestId);
@@ -57,6 +59,8 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
+			view.progresOff();
+			view.gridviewOn();
 			view.addRequestImages(urlSet);
 		}
 
