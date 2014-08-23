@@ -2,8 +2,9 @@ package com.continueing.photoco.ui.menu.myrequest_page.listview;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+
 import android.content.Context;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -83,7 +84,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
-			
+				
 		if(imageURLCounting == 1) { // 이미지 하나
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 		} else if(imageURLCounting == 2) { // 이미지 둘
@@ -125,6 +126,16 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 				"(" + iMyRequestItem.getEndDate() + ")");
 	}
 	
+	public SmartImageView returnLeftView( ) {
+		return iv_requestPhotoLeft;	
+	}
+	public SmartImageView returnMidView( ) {
+		return iv_requestPhotoMid;
+	}
+	public SmartImageView returnRightView( ) {
+		return iv_requestPhotoRight;
+	}
+	
 	public static interface IMyRequestItem extends IListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의
 		public String getName( ); 
@@ -136,5 +147,10 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public String getEndDate( );	
 		public ArrayList<Tag> getTag( ); 
 		public ArrayList<URL> getImageURLSet( ); 
+	}
+	
+	public static interface IMyRequestItemImageURL extends IListViewItem {
+		public ArrayList<URL> getURLSet();
+		public String getURL();
 	}
 }

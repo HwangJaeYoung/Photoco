@@ -33,6 +33,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	private ArrayList<String> requestIdSet; // 해당 요청에 대한 이미지들을 요청할 때 필요한 것
 	private int itemCounter = 0; // 이것을 사용하여 searchImageURLFromServer의 동기화를 조정한다.
 	public static final int REQUEST_CODE_GET_REQUEST_ITEM = 0;
+	public static final String PARAM_REQUESTID_KEY ="requestID";
 	
 	/* 다른 방법이 있을 수 있겠으나 searchImageURLFromServer를 여러번 통신할 때 생기는
 	    문제를 해결하기 위해서 Hadler를 사용하여 통신할 때 생기는 동기화 문제를 해결 하였다.
@@ -90,8 +91,9 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 
 	// 내가 요청한 것에 다른 사용자들이 등록한 이미지들을 모두다 보여준다.
 	@Override
-	public void showRequestDetail() {
+	public void showRequestDetail(int aRequestIdIndex) {
 		Intent intent = new Intent(getActivity( ), MyRequestGridViewDetailActivity.class);
+		intent.putExtra(PARAM_REQUESTID_KEY, requestIdSet.get(aRequestIdIndex));
 		startActivity(intent);
 	}
 	
@@ -178,7 +180,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA); // 이미지 url 데이터들
-				// 아까 저장해 두었던 JSONObject를 가지고 와서 통신을해서 가자고 온 url을 합친다.
+				// 아까 저장해 두었던 JSONObject를 가지고 와서 통신을해서 가지고 온 url을 합친다.
 				requestObject = ((MyRequest)myrequestItems.get(itemCounter)).getSavedJSONObject();
 				requestObject.put("urlset", jsonArray);
 			} catch (JSONException e) {

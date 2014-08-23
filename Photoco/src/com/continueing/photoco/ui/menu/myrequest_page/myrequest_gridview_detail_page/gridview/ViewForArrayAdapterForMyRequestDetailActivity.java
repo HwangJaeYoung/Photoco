@@ -6,6 +6,7 @@ import android.view.View;
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItemImageURL;
 import com.loopj.android.image.SmartImageView;
 
 public class ViewForArrayAdapterForMyRequestDetailActivity extends AbstractViewForListViewItem{
@@ -31,11 +32,7 @@ public class ViewForArrayAdapterForMyRequestDetailActivity extends AbstractViewF
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
-		IMyRequestDetailItem iMyRequestDetailItem = (IMyRequestDetailItem)aIListViewItem;
-		siv_myrequestDetailImage.setImageUrl(iMyRequestDetailItem.getImageURL());
-	}
-	
-	public static interface IMyRequestDetailItem extends IListViewItem{
-		public String getImageURL( );
+		IMyRequestItemImageURL iMyRequestItemImageURL = (IMyRequestItemImageURL)aIListViewItem;
+		siv_myrequestDetailImage.setImageUrl(iMyRequestItemImageURL.getURL());
 	}
 }

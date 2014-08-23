@@ -91,7 +91,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 				
 				else if(ViewForMyRequestListViewItem.isDeleteButtonClicked == false)
 				{
-					controller.showRequestDetail( );
+					controller.showRequestDetail(position);
 				}
 			}
 		});
@@ -145,6 +145,6 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	
 	public static interface Controller {
 		public void onNewRequest( );
-		public void showRequestDetail( );
+		public void showRequestDetail(int aRequestIdIndex);
 	}
 }

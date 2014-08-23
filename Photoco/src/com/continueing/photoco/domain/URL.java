@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import android.util.Log;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItemImageURL;
 
-public class URL {
+public class URL implements IMyRequestItemImageURL{
 	
 	private String URL;
 	private JSONArray url;
@@ -21,6 +20,7 @@ public class URL {
 		url = anURLs;
 	}
 	
+	@Override
 	public ArrayList<URL> getURLSet() {
 		ArrayList<URL> urls = new ArrayList<URL>( );
 		for(int i = 0; i < url.length(); i++) {
@@ -35,6 +35,7 @@ public class URL {
 		return urls;
 	}
 	
+	@Override
 	public String getURL( ) {
 		return URL;
 	}
