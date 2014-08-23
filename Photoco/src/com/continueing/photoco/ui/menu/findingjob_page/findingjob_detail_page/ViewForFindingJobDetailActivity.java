@@ -16,7 +16,6 @@ import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.findingjob_page.FindingJobFragment;
 import com.loopj.android.image.SmartImageView;

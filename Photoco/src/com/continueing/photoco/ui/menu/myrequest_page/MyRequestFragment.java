@@ -12,13 +12,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.continueing.photoco.domain.MyRequest;
-import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MyRequestItemRequest;

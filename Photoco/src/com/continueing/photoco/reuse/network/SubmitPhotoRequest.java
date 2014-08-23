@@ -11,7 +11,6 @@ import com.loopj.android.http.RequestParams;
 public class SubmitPhotoRequest {
 	private Context context;
 	private static final String URL_BASE = "/me";
-	private static final String PARM_TABNAME= "sortBy";
 	
 	public SubmitPhotoRequest(Context aContext) {
 		this.context = aContext;

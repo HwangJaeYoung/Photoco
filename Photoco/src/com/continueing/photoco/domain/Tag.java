@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.util.Log;
-
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
-
 
 public class Tag  implements ITagItem, Serializable {
 	

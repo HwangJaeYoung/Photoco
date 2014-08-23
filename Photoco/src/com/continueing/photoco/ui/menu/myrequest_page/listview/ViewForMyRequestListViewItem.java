@@ -2,8 +2,6 @@ package com.continueing.photoco.ui.menu.myrequest_page.listview;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,8 +20,10 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 
 	public static boolean isDeleteButtonClicked = false;
 	
+	
 	private TextView tv_requestName;
 	private TextView tv_requestDescDetail;
+	private TextView tv_requestPhotoNumber;
 	private TextView tv_requestLocationDetail;
 	private TextView tv_requestTimeleftDetail;
 	private Button bt_listTagFirst;
@@ -63,6 +63,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestTimeleftDetail = (TextView)findViewById(R.id.tv_request_timeleft_detail);
 		tv_requestDescDetail = (TextView)findViewById(R.id.tv_request_desc_detail);
 		tv_requestLocationDetail = (TextView)findViewById(R.id.tv_request_location_detail);
+		tv_requestPhotoNumber = (TextView)findViewById(R.id.tv_request_photo_number);
 	}
 
 	@Override
@@ -84,7 +85,9 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
-				
+		
+		tv_requestPhotoNumber.setText("Photo(" + imageURLCounting + ")");
+		
 		if(imageURLCounting == 1) { // 이미지 하나
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 		} else if(imageURLCounting == 2) { // 이미지 둘

@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem;
 
 public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJobListItem, Serializable{

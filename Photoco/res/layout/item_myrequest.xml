@@ -218,7 +218,7 @@
                 android:src="@drawable/photo_ic" />
 
             <TextView
-                android:id="@+id/tv_request_photo"
+                android:id="@+id/tv_request_photo_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

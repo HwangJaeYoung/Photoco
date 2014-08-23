@@ -1,6 +1,5 @@
 package com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page;
 
-import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +12,8 @@ import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.domain.FindingJobList;
-import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ArrayAdapterForTagGridView;
-import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.joblist_page.JobListFragment;
 import com.loopj.android.image.SmartImageView;
