@@ -82,19 +82,14 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestName.setText(iMyRequestItem.getCategory());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
-		int imageURLCounting = iMyRequestItem.getImageURLSet().size();
-		
-		Log.i("attach", imageURLCounting+"");
-		
-		if(imageURLCounting == 1) {
+		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
+			
+		if(imageURLCounting == 1) { // 이미지 하나
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
-		}
-		
-		else if(imageURLCounting == 2) {
+		} else if(imageURLCounting == 2) { // 이미지 둘
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
-		}
-		else if(imageURLCounting > 2) {
+		} else if(imageURLCounting > 2) { // 이미지가 세개 이상일 때
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
 			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getURL());
@@ -102,17 +97,15 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		
 		int counting = iMyRequestItem.getTag().size();
 
-		if(counting == 1) {
+		if(counting == 1) { // 태그 하나
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.INVISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
-		}
-		else if(counting == 2) {
+		} else if(counting == 2) { // 태그 둘
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.VISIBLE);
 			bt_listTagThird.setVisibility(View.INVISIBLE);
-		}
-		else {
+		} else {
 			bt_listTagFirst.setVisibility(View.VISIBLE);
 			bt_listTagSecond.setVisibility(View.VISIBLE);
 			bt_listTagThird.setVisibility(View.VISIBLE);
