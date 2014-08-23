@@ -19,8 +19,6 @@ import com.loopj.android.image.SmartImageView;
 public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 
 	public static boolean isDeleteButtonClicked = false;
-	
-	
 	private TextView tv_requestName;
 	private TextView tv_requestDescDetail;
 	private TextView tv_requestPhotoNumber;
@@ -33,6 +31,8 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	private SmartImageView iv_requestPhotoMid;
 	private SmartImageView iv_requestPhotoRight;
 	private ImageView iv_requestRemove;
+	
+	private String tempImageURL = "http://postfiles6.naver.net/20140823_5/forest62590_1408798188279givmc_PNG/textlogo_small.png?type=w2";
 	
 	public ViewForMyRequestListViewItem(Context context) {
 		super(context);
@@ -87,12 +87,19 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
 		
 		tv_requestPhotoNumber.setText("Photo(" + imageURLCounting + ")");
-		
-		if(imageURLCounting == 1) { // 이미지 하나
+
+		if(imageURLCounting == 0) {
+			iv_requestPhotoLeft.setImageUrl(tempImageURL);
+			iv_requestPhotoMid.setImageUrl(tempImageURL);
+			iv_requestPhotoRight.setImageUrl(tempImageURL);
+		} else if(imageURLCounting == 1) { // 이미지 하나
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoMid.setImageUrl(tempImageURL);
+			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting == 2) { // 이미지 둘
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting > 2) { // 이미지가 세개 이상일 때
 			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
 			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
@@ -125,8 +132,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		}
 		
 		tv_requestLocationDetail.setText(iMyRequestItem.getLocation());
-		tv_requestTimeleftDetail.setText(iMyRequestItem.getLeftTime() +
-				"(" + iMyRequestItem.getEndDate() + ")");
+		tv_requestTimeleftDetail.setText(iMyRequestItem.getLeftTime() +"(" + iMyRequestItem.getEndDate() + ")");
 	}
 	
 	public SmartImageView returnLeftView( ) {
@@ -146,7 +152,8 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public String getCategory( ); 
 		public String getLocation( ); 
 		public String getLeftTime( );
-		public String getEndDate( );	
+		public String getEndDate( );
+		public URL getSampleImageURL( );
 		public ArrayList<Tag> getTag( ); 
 		public ArrayList<URL> getImageURLSet( ); 
 	}

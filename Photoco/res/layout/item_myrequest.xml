@@ -253,6 +253,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/textlogo_small" />
 
+                <!-- 
                 <ImageView
                     android:id="@+id/iv_request_photo_new_right"
                     android:layout_width="18dp"
@@ -261,7 +262,8 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/newbadge_ic" />
-
+				-->
+				
                 <com.loopj.android.image.SmartImageView
                     android:id="@+id/siv_request_photo_mid"
                     android:layout_width="60dp"
@@ -273,6 +275,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/textlogo_small" />
 
+                <!-- 
                 <ImageView
                     android:id="@+id/iv_request_photo_new_mid"
                     android:layout_width="18dp"
@@ -280,7 +283,8 @@
                     android:layout_marginTop="12dp"
                     android:layout_toLeftOf="@id/siv_request_photo_right"
                     android:background="@drawable/newbadge_ic" />
-
+ 				-->
+ 				
                 <com.loopj.android.image.SmartImageView
                     android:id="@+id/siv_request_photo_left"
                     android:layout_width="60dp"

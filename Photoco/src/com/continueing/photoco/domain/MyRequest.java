@@ -17,6 +17,7 @@ public class MyRequest implements IMyRequestItem {
 	private static final String JSON_KEY_LEFTITME = "time_left";
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
 	private static final String JSON_KEY_IMAGEURL_SET = "urlset";
+	private static final String JSON_KEY_SAMPLEIMAGE_URL = "sample_image";
 	
 	private JSONObject savedJSONObject;
 	private String userName;
@@ -27,6 +28,7 @@ public class MyRequest implements IMyRequestItem {
 	private JSONObject location;
 	private JSONObject category;
 	private JSONArray imageURLSet;
+	private JSONObject sampleObject;
 	
 	public MyRequest() { }
 	
@@ -39,6 +41,7 @@ public class MyRequest implements IMyRequestItem {
 		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
 		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
 		imageURLSet = aJsonObject.getJSONArray(JSON_KEY_IMAGEURL_SET);
+		sampleObject = aJsonObject.getJSONObject(JSON_KEY_SAMPLEIMAGE_URL);
 	}
 	
 	public void setSaveJSONOjbect(JSONObject aJSONObject) {
@@ -52,6 +55,16 @@ public class MyRequest implements IMyRequestItem {
 	public ArrayList<URL> getImageURLSet( ) {
 		URL url = new URL(imageURLSet);
 		return url.getURLSet();
+	}
+	
+	public URL getSampleImageURL( ) {
+		URL sampleImageURL = null;
+		try {
+			sampleImageURL = new URL(sampleObject.getString("url"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return sampleImageURL;
 	}
 	
 	@Override
