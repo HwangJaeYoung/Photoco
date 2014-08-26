@@ -45,16 +45,12 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 					searchImageURLFromServer(requestIdSet.get(itemCounter));
 				else if(itemCounter == requestIdSet.size()) {
 					itemCounter = 0; // searchImageURLFromServer 통신횟수 초기화
-					view.progresOff();
-					view.listviewOn();
-					view.addMyRequestArrayList(myrequestItems);
+					finishedNewtork( );
 				}
 			}
 			
 			else if(msg.what == 2) { // 내가 요청한 것이 없을 때 동작
-				view.progresOff();
-				view.listviewOn();
-				view.addMyRequestArrayList(myrequestItems);
+				finishedNewtork( );
 			}
 		}
 	};
@@ -70,6 +66,13 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		searchMyRequestItemFromServer( );
 		return view.getRoot(); 
     }
+	
+	// 통신을 끝낸 후에 사용하는 메소드
+	private void finishedNewtork( ) {
+		view.progresOff();
+		view.listviewOn();
+		view.addMyRequestArrayList(myrequestItems);
+	}
 
 	// 나의 요청을 등록하기 위해서 사용한다.
 	@Override
