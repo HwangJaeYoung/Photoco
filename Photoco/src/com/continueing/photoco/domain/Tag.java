@@ -9,11 +9,11 @@ import org.json.JSONException;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 
 public class Tag  implements ITagItem, Serializable {
-	
 	private String tagText;
 	private JSONArray tagSet;
 	
 	public Tag( ) {}
+	
 	public Tag(JSONArray aTags) {
 		tagSet = aTags;
 	}
