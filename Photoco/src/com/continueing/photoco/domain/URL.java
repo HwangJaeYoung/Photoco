@@ -1,5 +1,6 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -7,7 +8,7 @@ import org.json.JSONException;
 
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItemImageURL;
 
-public class URL implements IMyRequestItemImageURL{
+public class URL implements IMyRequestItemImageURL, Serializable{
 	
 	private String URL;
 	private JSONArray url;

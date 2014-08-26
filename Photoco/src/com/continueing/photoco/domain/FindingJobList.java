@@ -9,7 +9,8 @@ import org.json.JSONObject;
 
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem;
 
-public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJobListItem, Serializable{
+public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJobListItem, Serializable {
+	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_DESCRIPTION = "description";
 	private static final String JSON_KEY_IMAGE = "sample_image";
@@ -21,10 +22,11 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private static final String JSON_KEY_REMAIN_MINUTES = "remained_minutes_before_expired";
 	
 	private String jobId;
+	private String requestID;
 	private UserProfile userProfile;
 	private String description;
 	private Image image;
-	private String tags;
+	private Tag tags;
 	private Category category;
 	private Location location;
 	private String remainMunutes;
@@ -33,10 +35,11 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 
 	public FindingJobList(JSONObject aJsonObject, String aJobId) throws JSONException {
 		jobId = aJobId;
+		requestID = aJsonObject.getString(JSON_KEY_ID);
 		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
 		image = new Image(aJsonObject.getJSONObject(JSON_KEY_IMAGE));
-		tags = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
+		tags = new Tag(aJsonObject.getJSONArray(JSON_KEY_TAG));
 		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
 		location = new Location(aJsonObject.getJSONObject(JSON_KEY_LOCATION));
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
@@ -56,16 +59,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 
 	@Override
 	public ArrayList<Tag> getTag() {		
-		Tag tagSet = null;
-		try {
-			JSONArray tempArray = new JSONArray(tags);
-			tagSet = new Tag(tempArray);	
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return tagSet.getTagSet();
+		return tags.getTagSet();
 	}
-	
 
 	@Override
 	public String getCategory() {
@@ -99,12 +94,7 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	
 	@Override
 	public String getId() {
-		return null;
-	}
-
-	@Override
-	public String getDistance() {
-		return null;
+		return requestID;
 	}
 
 	@Override

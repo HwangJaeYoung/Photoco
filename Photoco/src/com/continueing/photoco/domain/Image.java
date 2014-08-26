@@ -1,10 +1,18 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Image {
+public class Image implements Serializable{
 
+	private static final String JSON_KEY_url = "url";
+	private static final String JSON_KEY_height = "height";
+	private static final String JSON_KEY_width = "width";
+	private static final String JSON_KEY_price = "price";
+	private static final String JSON_KEY_size = "size";
+	
 	private String url;
 	private String height;
 	private String width;
@@ -12,11 +20,11 @@ public class Image {
 	private String size;
 	
 	public Image(JSONObject jsonObject) throws JSONException {
-		url = jsonObject.getString("url");
-		height = jsonObject.getString("height");
-		width = jsonObject.getString("width");
-		price = jsonObject.getString("price");
-		size = jsonObject.getString("size");
+		url = jsonObject.getString(JSON_KEY_url);
+		height = jsonObject.getString(JSON_KEY_height);
+		width = jsonObject.getString(JSON_KEY_width);
+		price = jsonObject.getString(JSON_KEY_price);
+		size = jsonObject.getString(JSON_KEY_size);
 	}
 
 	public String getUrl() {

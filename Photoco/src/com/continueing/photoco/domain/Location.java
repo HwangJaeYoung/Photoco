@@ -1,12 +1,14 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.continueing.photoco.reuse.page.location_page.listview.ViewForLocationListViewItem;
 
 
-public class Location implements ViewForLocationListViewItem.ILocationItem{
+public class Location implements ViewForLocationListViewItem.ILocationItem, Serializable {
 	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_DESCRIPTION = "description";
 	

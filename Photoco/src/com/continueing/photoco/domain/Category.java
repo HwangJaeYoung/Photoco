@@ -1,11 +1,13 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_category_page.listview.ViewForMyNewRequestCategoryListViewItem;
 
-public class Category implements ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem{
+public class Category implements ViewForMyNewRequestCategoryListViewItem.IMyRequestCategoryItem, Serializable{
 	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_NAME = "name";
 	

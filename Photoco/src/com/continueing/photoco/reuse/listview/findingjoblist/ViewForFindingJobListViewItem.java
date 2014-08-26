@@ -109,6 +109,5 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 		public String getEndDate( );	
 		public ArrayList<Tag> getTag( ); 
 		public String getRemainMinutes( );
-		public String getDistance( );
 	}
 }

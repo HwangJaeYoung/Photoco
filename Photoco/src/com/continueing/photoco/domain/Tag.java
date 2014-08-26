@@ -10,12 +10,11 @@ import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterFo
 
 public class Tag  implements ITagItem, Serializable {
 	private String tagText;
-	private JSONArray tagSet;
 	
 	public Tag( ) {}
 	
 	public Tag(JSONArray aTags) {
-		tagSet = aTags;
+		tagText = aTags.toString();
 	}
 	
 	@Override
@@ -30,7 +29,15 @@ public class Tag  implements ITagItem, Serializable {
 	
 	@Override
 	public ArrayList<Tag> getTagSet() {
+		JSONArray tagSet = null;
+		try {
+			tagSet = new JSONArray(tagText);
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		
 		ArrayList<Tag> tags = new ArrayList<Tag>( );
+		
 		for(int i = 0; i < tagSet.length(); i++) {
 			try {
 				String temp = tagSet.getJSONObject(i).getString("name");

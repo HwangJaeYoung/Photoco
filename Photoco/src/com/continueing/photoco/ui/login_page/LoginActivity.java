@@ -87,7 +87,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 			intent.putExtra(PARAM_LOGINACTIVITY_USERNAME_KEY, userName);
 			UserPreference userPreference = new UserPreference(getApplicationContext());
-			userPreference.login(userName, userPassword);
+			//userPreference.login(userName, userPassword);
 			startActivity(intent);
 			finish( );
 		}	
