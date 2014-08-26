@@ -8,10 +8,10 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 
-public class ViewForMyNewRequestDurationListViewItem extends AbstractViewForListViewItem{
+public class ViewForArrayAdapterForMyRequesttDuration extends AbstractViewForListViewItem{
 
 	TextView tv_requestNewDuration;
-	public ViewForMyNewRequestDurationListViewItem(Context context) {
+	public ViewForArrayAdapterForMyRequesttDuration(Context context) {
 		super(context);
 	}
 

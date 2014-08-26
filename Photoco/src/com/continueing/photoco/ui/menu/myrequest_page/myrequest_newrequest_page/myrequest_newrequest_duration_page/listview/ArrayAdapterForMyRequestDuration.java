@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForArrayAdapterForMyRequesttDuration.IMyRequestDurationItem;
 
 public class ArrayAdapterForMyRequestDuration extends AbstractArrayAdapter<IMyRequestDurationItem>{
 
@@ -14,6 +14,6 @@ public class ArrayAdapterForMyRequestDuration extends AbstractArrayAdapter<IMyRe
  
 	@Override
 	public AbstractViewForListViewItem getInstance() {
-		return new ViewForMyNewRequestDurationListViewItem(getContext( ));
+		return new ViewForArrayAdapterForMyRequesttDuration(getContext( ));
 	}
 }

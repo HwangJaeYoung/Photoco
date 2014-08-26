@@ -3,7 +3,7 @@ package com.continueing.photoco.domain;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForArrayAdapterForMyRequesttDuration.IMyRequestDurationItem;
 
 public class Duration implements IMyRequestDurationItem{
 

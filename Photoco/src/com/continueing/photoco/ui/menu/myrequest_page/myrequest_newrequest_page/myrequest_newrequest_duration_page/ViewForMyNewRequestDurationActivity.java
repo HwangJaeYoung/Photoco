@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ArrayAdapterForMyRequestDuration;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem;
-import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForMyNewRequestDurationListViewItem.IMyRequestDurationItem;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForArrayAdapterForMyRequesttDuration;
+import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForArrayAdapterForMyRequesttDuration.IMyRequestDurationItem;
 
 public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity {
 
@@ -45,14 +46,14 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				ViewForMyNewRequestDurationListViewItem viewItem = null;
+				ViewForArrayAdapterForMyRequesttDuration viewItem = null;
 				for(int i = 0; i < itemLength; i++)
 				{
-					viewItem = (ViewForMyNewRequestDurationListViewItem)lv_requestNewDuration.getChildAt(i);
+					viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(i);
 					ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 					checkImage.setVisibility(View.INVISIBLE);
 				}
-				viewItem = (ViewForMyNewRequestDurationListViewItem)lv_requestNewDuration.getChildAt(position);
+				viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(position);
 				ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 				checkImage.setVisibility(View.VISIBLE);
 				
@@ -63,7 +64,7 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 	
 	public void checkedDuration(int aCheckedPosition)
 	{
-		ViewForMyNewRequestDurationListViewItem viewItem = (ViewForMyNewRequestDurationListViewItem)lv_requestNewDuration.getChildAt(aCheckedPosition);
+		ViewForArrayAdapterForMyRequesttDuration viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(aCheckedPosition);
 		ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 		checkImage.setVisibility(View.VISIBLE);
 	}
