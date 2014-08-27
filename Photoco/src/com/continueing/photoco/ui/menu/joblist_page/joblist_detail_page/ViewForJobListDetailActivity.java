@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
@@ -88,6 +89,7 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 		ib_submitPhoto.setOnClickListener(new View.OnClickListener() {	
 			@Override
 			public void onClick(View v) {
+				Log.i("attach", jobId+"");
 				controller.onPhotoSubmit(jobId);
 			}
 		});

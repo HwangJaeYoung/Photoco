@@ -27,6 +27,7 @@ public class MyNewRequestDurationActivity extends ActionBarActivity implements V
 	private ArrayList<IMyRequestDurationItem> durations;
 	private Handler mHandler;
 	private Runnable mRunnable;
+	
 	public static final String PARAM_HOUR_KEY ="hours";
 	public static final String PARAM_HOUR_TEXT_KEY = "hourtext";
 	public static final String PARAM_END_DATE_KEY = "enddate";

@@ -35,7 +35,7 @@ public class Tag  implements ITagItem, Serializable {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
-		
+		 
 		ArrayList<Tag> tags = new ArrayList<Tag>( );
 		
 		for(int i = 0; i < tagSet.length(); i++) {

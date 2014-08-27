@@ -34,6 +34,7 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         Log.i("JsonResponseHandler",""+response.toString());
+        Log.e("attach", response.toString());
         try {
             if(response.getString(PARM_RESULT).equals(RESULT_SUCCESS)){
             	Log.i("js", response.toString());
@@ -46,7 +47,8 @@ public class JsonResponseHandler extends JsonHttpResponseHandler {
     // Returns when request failed
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-    	Log.i("attach", "failfailfail");
+    	Log.e("attach", errorResponse.toString());
+    	
     	if(statusCode == 0) {
             this.networkResponseListener.onFail(new JSONObject(), ERROR_CODE_NETWORK_UNAVAILABLE);
         }

@@ -52,7 +52,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	private int categoryChecked;
 	private File filePath;
 	private JSONArray tagJSONArray;
-	private  Bitmap bitmap;
+	private Bitmap bitmap;
 	
 	private ViewForMyNewRequestActivity view;
 	
@@ -116,7 +116,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 				 Uri imageUri = data.getData();
 
 				 String realpath = getRealPathFromUri(this, imageUri);
-				 Log.i("attach", realpath);
+
 				 filePath = new File(realpath);
 				 	 
                  try {
