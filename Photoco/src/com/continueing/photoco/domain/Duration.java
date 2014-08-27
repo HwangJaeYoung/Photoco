@@ -1,11 +1,13 @@
 package com.continueing.photoco.domain;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_newrequest_page.myrequest_newrequest_duration_page.listview.ViewForArrayAdapterForMyRequesttDuration.IMyRequestDurationItem;
 
-public class Duration implements IMyRequestDurationItem{
+public class Duration implements IMyRequestDurationItem, Serializable {
 
 	private static final String JSON_KEY_HOUR = "hours";
 	private static final String JSON_KEY_HOUR_TEXT = "text";

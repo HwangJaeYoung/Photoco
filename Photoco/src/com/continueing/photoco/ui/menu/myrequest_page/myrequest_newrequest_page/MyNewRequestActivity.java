@@ -20,6 +20,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -103,22 +104,19 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_CODE_PICK_LOCATION)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		if(requestCode == REQUEST_CODE_PICK_LOCATION) {
+			if(resultCode == Activity.RESULT_OK) {
 				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 				locationId = data.getStringExtra(LocationActivity.PARAM_PRIMARY_KEY);
 			}
 		}
 		
-		else if(requestCode == REQUEST_CODE_PICK_IMAGE)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		else if(requestCode == REQUEST_CODE_PICK_IMAGE) {
+			if(resultCode == Activity.RESULT_OK) {
 				 Uri imageUri = data.getData();
 
 				 String realpath = getRealPathFromUri(this, imageUri);
+				 Log.i("attach", realpath);
 				 filePath = new File(realpath);
 				 	 
                  try {
@@ -149,22 +147,19 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		{
 			if(resultCode == Activity.RESULT_OK)
 			{
-				categoryChecked=  data.getIntExtra(PARAM_CATEGORY_CHECKED_KEY, 0);
+				categoryChecked = data.getIntExtra(PARAM_CATEGORY_CHECKED_KEY, 0);
 				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
 				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
 			}
 		}
 
-		else if(requestCode == REQUEST_CODE_PICK_TAG)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		else if(requestCode == REQUEST_CODE_PICK_TAG) {
+			if(resultCode == Activity.RESULT_OK) {
 				tagJSONArray = new JSONArray( );
 				
 				@SuppressWarnings("unchecked")
 				ArrayList<ITagItem> tagArrayList = (ArrayList<ITagItem>)data.getSerializableExtra(MyNewRequestTagActivity.PARAM_TAG_ARRAYLIST_KEY);
-				for(int i = 0; i < tagArrayList.size(); i++)
-				{
+				for(int i = 0; i < tagArrayList.size(); i++) {
 					tagJSONArray.put(tagArrayList.get(i).getTagText());
 				}
 				

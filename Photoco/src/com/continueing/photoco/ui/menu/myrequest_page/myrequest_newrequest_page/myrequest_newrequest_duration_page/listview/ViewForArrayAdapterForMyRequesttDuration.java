@@ -26,10 +26,7 @@ public class ViewForArrayAdapterForMyRequesttDuration extends AbstractViewForLis
 	}
 
 	@Override
-	protected void setEvents() {
-	
-		
-	}
+	protected void setEvents() { }
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
@@ -37,8 +34,7 @@ public class ViewForArrayAdapterForMyRequesttDuration extends AbstractViewForLis
 		tv_requestNewDuration.setText(iMyRequestDurationItem.getHourText());		
 	}
 	
-	public static interface IMyRequestDurationItem extends IListViewItem
-	{
+	public static interface IMyRequestDurationItem extends IListViewItem {
 		public String getHour( );
 		public String getHourText( );
 		public String getEndDate( );

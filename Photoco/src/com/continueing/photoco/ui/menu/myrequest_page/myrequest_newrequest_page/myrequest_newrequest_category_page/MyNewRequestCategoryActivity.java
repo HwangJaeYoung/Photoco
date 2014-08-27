@@ -41,8 +41,7 @@ public class MyNewRequestCategoryActivity extends ActionBarActivity implements V
 		searchCategoryFromServer( );
 	}
 
-	public void searchCategoryFromServer( )
-	{
+	public void searchCategoryFromServer( ) {
 		CategoryRequest categoryRequest = new CategoryRequest(getApplicationContext());
 		try {
 			categoryRequest.getCategory(categoryListener);
@@ -55,6 +54,7 @@ public class MyNewRequestCategoryActivity extends ActionBarActivity implements V
 	public void onCategorySelected(int aPosition) {
 		IMyRequestCategoryItem item = categorys.get(aPosition);
 		Intent intent = new Intent( );
+		intent.putExtra(MyNewRequestActivity.PARAM_CATEGORY_CHECKED_KEY, aPosition);
 		intent.putExtra(PARAM_CATEGORY_ACTIVITY_KEY, item.getName());
 		intent.putExtra(PARAM_PRIMARY_KEY, item.getId());
 		setResult(Activity.RESULT_OK, intent);
