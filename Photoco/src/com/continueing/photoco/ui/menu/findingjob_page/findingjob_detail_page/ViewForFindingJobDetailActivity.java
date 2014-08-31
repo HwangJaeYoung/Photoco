@@ -76,12 +76,11 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	{
 		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(FindingJobFragment.PARAM_FINDINGJOB_ITEM_KEY);
 		
-		Log.i("attach", item.getImageURL());
-		tv_userRequest.setText(item.getName() + "'s Request");
+		tv_userRequest.setText(item.getName().getUserName() + "'s Request");
 		tv_findingJobListDescription.setText(item.getDescription());
-		siv_findingJobListDetailImage.setImageUrl(item.getImageURL());
-		tv_detailCategory.setText(item.getCategory());
-		tv_location.setText(item.getLocation());
+		siv_findingJobListDetailImage.setImageUrl(item.getImageURL().getUrl());
+		tv_detailCategory.setText(item.getCategory().getName());
+		tv_location.setText(item.getLocation().getDescription());
 		tv_timeLeftDetailDay.setText(item.getLeftTime());
 		tv_timeLeftDetailCalendar.setText(item.getEndDate());
 		

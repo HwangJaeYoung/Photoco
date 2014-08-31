@@ -48,25 +48,4 @@ public class Image implements Serializable{
 	public String getSize() {
 		return size;
 	}
-	
-	public ArrayList<URL> getURLSet() {
-		JSONArray tempURL = null;
-		try {
-			tempURL = new JSONArray(url);
-		} catch (JSONException e1) {
-			e1.printStackTrace();
-		}
-		
-		ArrayList<URL> urls = new ArrayList<URL>( );
-		for(int i = 0; i < tempURL.length(); i++) {
-			try {
-				String temp = tempURL.getJSONObject(i).getString("url");
-				URL url = new URL(temp);
-				urls.add(url);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		return urls;
-	}
 }

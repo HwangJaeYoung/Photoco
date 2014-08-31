@@ -66,17 +66,18 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 	public void initViewInfos(Intent anIntent) {
 		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(JobListFragment.PARAM_JOBLIST_ITEM_KEY);
 		
-		tv_joblistDetailUser.setText(item.getName() + "'s Request");
+		tv_joblistDetailUser.setText(item.getName().getUserName() + "'s Request");
 		tv_joblistDetailUserDescription.setText(item.getDescription());
-		siv_joblistDetailUserImage.setImageUrl(item.getImageURL());
-		tv_joblistDetailCategory.setText(item.getCategory());
-		tv_joblistDetailLocation.setText(item.getLocation());
+		siv_joblistDetailUserImage.setImageUrl(item.getImageURL().getUrl());
+		tv_joblistDetailCategory.setText(item.getCategory().getName());
+		tv_joblistDetailLocation.setText(item.getLocation().getDescription());
 		tv_joblistDetailLeftday.setText(item.getLeftTime());
 		tv_joblistDetailCalendar.setText(item.getEndDate());
 		ib_submitPhoto = (ImageButton)findViewById(R.id.ib_submit_photo);
 		
 		ArrayList<Tag> tags = new ArrayList<Tag>( );
 		tags = item.getTag();
+		Log.i("tags", tags.size()+"");
 		arrayAdapterForTagGridView.addAll(tags);	
 		
 		jobId = item.getJobId();

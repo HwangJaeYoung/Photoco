@@ -17,7 +17,7 @@ public class UserProfile implements Serializable {
 	
 	public UserProfile(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);
-		name =aJsonObject.getJSONObject(JSON_KEY_BASIC_INFO).getString(JSON_KEY_NAME);
+		name = aJsonObject.getJSONObject(JSON_KEY_BASIC_INFO).getString(JSON_KEY_NAME);
 		coin = aJsonObject.getString(JSON_KEY_COIN);
 	}
 	

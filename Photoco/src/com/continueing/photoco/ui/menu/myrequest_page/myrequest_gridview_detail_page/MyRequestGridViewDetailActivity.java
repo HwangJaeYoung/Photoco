@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
@@ -23,7 +24,7 @@ import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_
 public class MyRequestGridViewDetailActivity extends ActionBarActivity implements ViewForMyRequestGridViewDetailActivity.Controller{
 
 	private ViewForMyRequestGridViewDetailActivity view;
-	private ArrayList<URL> urlSet;
+	private ArrayList<Image> imageSet;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		view = new ViewForMyRequestGridViewDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
-		urlSet = new ArrayList<URL>( );
+		imageSet = new ArrayList<Image>( );
 		setContentView(view.getRoot());
 		searchImageURLFromServer(getIntent( ).getStringExtra(MyRequestFragment.PARAM_REQUESTID_KEY));
 	}
@@ -51,11 +52,14 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 	HttpRequester.NetworkResponseListener getImageURLListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
+
 			JSONArray jsonArray = null;		
+	
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
-				URL urls = new URL(jsonArray);
-				urlSet = urls.getURLSet();
+				JSONObject tempJSONObject = jsonArray.getJSONObject(i).getJSONObject("image");
+				Image imageObject = new Image(tempJSONObject);
+				imageSet.add(imageObject);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

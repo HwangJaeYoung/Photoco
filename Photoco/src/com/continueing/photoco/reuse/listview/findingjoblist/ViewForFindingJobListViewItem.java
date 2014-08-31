@@ -11,7 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Category;
+import com.continueing.photoco.domain.Image;
+import com.continueing.photoco.domain.Location;
 import com.continueing.photoco.domain.Tag;
+import com.continueing.photoco.domain.UserProfile;
 import com.continueing.photoco.reuse.etc.ReturnDurationColor;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
@@ -59,8 +63,8 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
 		iFindingJobListItem = (IFindingJobListItem)aIListViewItem;
-		tv_category.setText(iFindingJobListItem.getCategory());	
-		tv_name.setText(iFindingJobListItem.getName( ));
+		tv_category.setText(iFindingJobListItem.getCategory().getName());	
+		tv_name.setText(iFindingJobListItem.getName( ).getUserName());
 		
 		int counting = iFindingJobListItem.getTag().size();
 
@@ -100,11 +104,11 @@ public class ViewForFindingJobListViewItem extends AbstractViewForListViewItem{
 	public static interface IFindingJobListItem extends IListViewItem {
 		public String getJobId( );
 		public String getId( );
-		public String getName( ); 
+		public UserProfile getName( ); 
 		public String getDescription( ); 
-		public String getImageURL( ); 
-		public String getCategory( ); 
-		public String getLocation( ); 
+		public Image getImageURL( ); 
+		public Category getCategory( ); 
+		public Location getLocation( ); 
 		public String getLeftTime( );
 		public String getEndDate( );	
 		public ArrayList<Tag> getTag( ); 

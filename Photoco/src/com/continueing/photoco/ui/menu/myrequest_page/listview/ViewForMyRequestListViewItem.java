@@ -3,6 +3,7 @@ package com.continueing.photoco.ui.menu.myrequest_page.listview;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Category;
+import com.continueing.photoco.domain.Image;
+import com.continueing.photoco.domain.Location;
 import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.domain.URL;
+import com.continueing.photoco.domain.UserProfile;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 import com.loopj.android.image.SmartImageView;
@@ -81,11 +86,12 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	protected void setData(IListViewItem aIListViewItem) {
 		// 데이터를 삽입한다.
 		IMyRequestItem iMyRequestItem = (IMyRequestItem)aIListViewItem;	
-		tv_requestName.setText(iMyRequestItem.getCategory());	
+		tv_requestName.setText(iMyRequestItem.getCategory().getName());	
 		tv_requestDescDetail.setText(iMyRequestItem.getDescription());
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
 		
+		Log.i("array", imageURLCounting+"");
 		tv_requestPhotoNumber.setText("Photo(" + imageURLCounting + ")");
 
 		if(imageURLCounting == 0) {
@@ -93,17 +99,17 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 			iv_requestPhotoMid.setImageUrl(tempImageURL);
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting == 1) { // 이미지 하나
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
 			iv_requestPhotoMid.setImageUrl(tempImageURL);
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting == 2) { // 이미지 둘
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
-			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getUrl());
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting > 2) { // 이미지가 세개 이상일 때
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getURL());
-			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getURL());
-			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getURL());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getUrl());
+			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getUrl());
 		}
 		
 		int counting = iMyRequestItem.getTag().size();
@@ -131,7 +137,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 			bt_listTagThird.setText((iMyRequestItem.getTag()).get(2).getTagText());
 		}
 		
-		tv_requestLocationDetail.setText(iMyRequestItem.getLocation());
+		tv_requestLocationDetail.setText(iMyRequestItem.getLocation().getDescription());
 		tv_requestTimeleftDetail.setText(iMyRequestItem.getLeftTime() +"(" + iMyRequestItem.getEndDate() + ")");
 	}
 	
@@ -147,15 +153,14 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	
 	public static interface IMyRequestItem extends IListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의
-		public String getName( ); 
+		public UserProfile getName( ); 
 		public String getDescription( ); 
-		public String getCategory( ); 
-		public String getLocation( ); 
+		public Category getCategory( ); 
+		public Location getLocation( ); 
 		public String getLeftTime( );
 		public String getEndDate( );
-		public URL getSampleImageURL( );
 		public ArrayList<Tag> getTag( ); 
-		public ArrayList<URL> getImageURLSet( ); 
+		public ArrayList<Image> getImageURLSet( ); 
 	}
 	
 	public static interface IMyRequestItemImageURL extends IListViewItem {

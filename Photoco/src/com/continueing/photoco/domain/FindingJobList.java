@@ -21,18 +21,18 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
 	private static final String JSON_KEY_REMAIN_MINUTES = "remained_minutes_before_expired";
 	
-	private String jobId;
-	private String requestID;
 	private UserProfile userProfile;
-	private String description;
 	private Image image;
 	private Category category;
 	private Location location;
+	private String tagJSONArray; // JSONArray Serializable 문제 때문에 String으로 변환
+	private String jobId;
+	private String requestID;
+	private String description;
 	private String remainMunutes;
 	private String leftTime;
 	private String endTime;
-	private String tagJSONArray;
-
+	
 	public FindingJobList(JSONObject aJsonObject, String aJobId) throws JSONException {
 		jobId = aJobId;
 		requestID = aJsonObject.getString(JSON_KEY_ID);
@@ -48,8 +48,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	}
 
 	@Override
-	public String getName() {
-		return userProfile.getUserName();
+	public UserProfile getName() {
+		return userProfile;
 	}
 
 	@Override
@@ -58,13 +58,13 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	}
 
 	@Override
-	public String getCategory() {
-		return category.getName();
+	public Category getCategory() {
+		return category;
 	}
 	
 	@Override
-	public String getLocation() {
-		return location.getDescription();
+	public Location getLocation() {
+		return location;
 	}
 
 	@Override
@@ -93,8 +93,8 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	}
 	
 	@Override
-	public String getImageURL() {
-		return image.getUrl();
+	public Image getImageURL() {
+		return image;
 	}
 	
 	@Override

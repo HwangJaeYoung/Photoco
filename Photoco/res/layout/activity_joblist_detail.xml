@@ -118,35 +118,43 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="49dp" >
+                android:layout_height="wrap_content" >
 
-                <ImageView
-                    android:id="@+id/iv_job_list_job_detail_tag"
-                    android:layout_width="18dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="17dp"
-                    android:src="@drawable/tag_ic" />
+                <RelativeLayout
+                    android:layout_width="130dp"
+                    android:layout_height="49dp" >
 
-                <TextView
-                    android:id="@+id/tv_job_list_job_detail_tag"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/iv_job_list_job_detail_tag"
+                        android:layout_width="18dp"
+                        android:layout_height="17dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="17dp"
+                        android:src="@drawable/tag_ic" />
+
+                    <TextView
+                        android:id="@+id/tv_job_list_job_detail_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="17dp"
+                        android:layout_toRightOf="@id/iv_job_list_job_detail_tag"
+                        android:text="Tag"
+                        android:textColor="#808a99"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <GridView
+                    android:id="@+id/gv_joblist_detail_tag"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@id/iv_job_list_job_detail_tag"
-                    android:text="Tag"
-                    android:textColor="#808a99"
-                    android:textSize="18sp" />
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="5.5dp" >
+                </GridView>
             </RelativeLayout>
-
-            <GridView
-                android:id="@+id/gv_joblist_detail_tag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:numColumns="3"
-                android:verticalSpacing="5.5dp" >
-            </GridView>
         </LinearLayout>
 
         <View

@@ -6,42 +6,45 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 
 public class MyRequest implements IMyRequestItem {
-	private static final String JSON_KEY_USERNAME = "username";
+	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_DESCRIPTION = "description";
+	private static final String JSON_KEY_IMAGE = "sample_image";
+	private static final String JSON_KEY_IMAGE_SET = "urlset";
 	private static final String JSON_KEY_TAG = "tags";
 	private static final String JSON_KEY_CATEGORY = "category";
 	private static final String JSON_KEY_LOCATION = "location";
 	private static final String JSON_KEY_LEFTITME = "time_left";
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
-	private static final String JSON_KEY_IMAGEURL_SET = "urlset";
-	private static final String JSON_KEY_SAMPLEIMAGE_URL = "sample_image";
+	private static final String JSON_KEY_REMAIN_MINUTES = "remained_minutes_before_expired";
 	
-	private JSONObject savedJSONObject;
-	private String userName;
+	private JSONObject savedJSONObject; // 합치기 전에 저장할 JSONObject
+	private UserProfile userProfile;
+	private Category category;
+	private Location location;
+	private String imageJSONArray;
+	private String tagJSONArray; // JSONArray Serializable 문제 때문에 String으로 변환
 	private String description;
-	private JSONArray tags;
+	private String remainMunutes;
 	private String leftTime;
 	private String endTime;
-	private JSONObject location;
-	private JSONObject category;
-	private JSONArray imageURLSet;
-	private JSONObject sampleObject;
 	
 	public MyRequest() { }
 	
 	public MyRequest(JSONObject aJsonObject) throws JSONException {
-		userName = aJsonObject.getString(JSON_KEY_USERNAME);
+		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
-		tags = aJsonObject.getJSONArray(JSON_KEY_TAG);
+		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
+		location = new Location(aJsonObject.getJSONObject(JSON_KEY_LOCATION));
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
-		location = aJsonObject.getJSONObject(JSON_KEY_LOCATION);
-		category = aJsonObject.getJSONObject(JSON_KEY_CATEGORY);
-		imageURLSet = aJsonObject.getJSONArray(JSON_KEY_IMAGEURL_SET);
-		sampleObject = aJsonObject.getJSONObject(JSON_KEY_SAMPLEIMAGE_URL);
+		remainMunutes = aJsonObject.getString(JSON_KEY_REMAIN_MINUTES);
+		tagJSONArray = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
+		imageJSONArray = aJsonObject.getJSONArray(JSON_KEY_IMAGE_SET).toString();
 	}
 	
 	public void setSaveJSONOjbect(JSONObject aJSONObject) {
@@ -52,24 +55,9 @@ public class MyRequest implements IMyRequestItem {
 		return savedJSONObject;
 	}
 	
-	public ArrayList<URL> getImageURLSet( ) {
-		URL url = new URL(imageURLSet);
-		return url.getURLSet();
-	}
-	
-	public URL getSampleImageURL( ) {
-		URL sampleImageURL = null;
-		try {
-			sampleImageURL = new URL(sampleObject.getString("url"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return sampleImageURL;
-	}
-	
 	@Override
-	public String getName() {
-		return userName;
+	public UserProfile getName() {
+		return userProfile;
 	}
 
 	@Override
@@ -78,29 +66,12 @@ public class MyRequest implements IMyRequestItem {
 	}
 
 	@Override
-	public ArrayList<Tag> getTag() {
-		return null;
-	}
-
-	@Override
-	public String getCategory() {
-		String category = null;
-		try {
-			category = this.category.getString("name");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+	public Category getCategory() {
 		return category;
 	}
-
+	
 	@Override
-	public String getLocation() {
-		String location = null;
-		try {
-			location = this.location.getString("description");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+	public Location getLocation() {
 		return location;
 	}
 
@@ -112,5 +83,43 @@ public class MyRequest implements IMyRequestItem {
 	@Override
 	public String getEndDate() {
 		return endTime;
+	}
+	
+	@Override
+	public ArrayList<Image> getImageURLSet() {
+		ArrayList<Image> imageSet = new ArrayList<Image>( );
+		
+		try {
+			JSONArray tempJSONArray = new JSONArray(imageJSONArray);
+			
+			for(int i = 0; i < tempJSONArray.length(); i++) {
+				JSONObject tempJSONObject = tempJSONArray.getJSONObject(i).getJSONObject("image");
+				Image imageObject = new Image(tempJSONObject);
+				imageSet.add(imageObject);
+			}
+		} catch (JSONException e) {	
+			e.printStackTrace();
+		}
+		
+		return imageSet;
+	}
+	
+	@Override
+	public ArrayList<Tag> getTag() {
+		ArrayList<Tag> tagSet = new ArrayList<Tag>( );
+		
+		try {
+			JSONArray tempJSONArray = new JSONArray(tagJSONArray);
+			
+			for(int i = 0; i < tempJSONArray.length(); i++) {
+				String tag = tempJSONArray.getJSONObject(i).getString("name");
+				Tag tagObject = new Tag( );
+				tagObject.setTagText(tag);
+				tagSet.add(tagObject);				
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return tagSet;
 	}
 }

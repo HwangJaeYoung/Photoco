@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.domain.URL;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
 import com.continueing.photoco.reuse.widget.ExpandableHeightGridView;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.gridview.ArrayAdapterForMyRequestDetailActivity;
@@ -40,7 +40,7 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 		gv_requestDetail.setAdapter(arrayAdapterForMyRequestDetailActivity);
 	}
 
-	public void addRequestImages(ArrayList<URL> items) {
+	public void addRequestImages(ArrayList<Image> items) {
 		arrayAdapterForMyRequestDetailActivity.clear();
 		arrayAdapterForMyRequestDetailActivity.addAll(items);
 	}
