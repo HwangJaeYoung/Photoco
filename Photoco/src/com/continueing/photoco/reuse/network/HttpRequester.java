@@ -14,7 +14,8 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 public class HttpRequester {
-    private static final String BASE_URL = "http://photoco-env-z5cnmns3pe.elasticbeanstalk.com";
+    private static final String BASE_URL = "http://photocoapi-env-x2ezvferc7.elasticbeanstalk.com";
+
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void post(String url, RequestParams params, JsonHttpResponseHandler responseHandler, Context aContext) {

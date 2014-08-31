@@ -26,12 +26,12 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private UserProfile userProfile;
 	private String description;
 	private Image image;
-	private Tag tags;
 	private Category category;
 	private Location location;
 	private String remainMunutes;
 	private String leftTime;
 	private String endTime;
+	private String tagJSONArray;
 
 	public FindingJobList(JSONObject aJsonObject, String aJobId) throws JSONException {
 		jobId = aJobId;
@@ -39,12 +39,12 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
 		image = new Image(aJsonObject.getJSONObject(JSON_KEY_IMAGE));
-		tags = new Tag(aJsonObject.getJSONArray(JSON_KEY_TAG));
 		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
 		location = new Location(aJsonObject.getJSONObject(JSON_KEY_LOCATION));
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
 		remainMunutes = aJsonObject.getString(JSON_KEY_REMAIN_MINUTES);
+		tagJSONArray = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
 	}
 
 	@Override
@@ -55,11 +55,6 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	@Override
 	public String getDescription() {
 		return description;
-	}
-
-	@Override
-	public ArrayList<Tag> getTag() {		
-		return tags.getTagSet();
 	}
 
 	@Override
@@ -88,11 +83,6 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	}
 	
 	@Override
-	public String getImageURL() {
-		return image.getUrl();
-	}
-	
-	@Override
 	public String getId() {
 		return requestID;
 	}
@@ -100,5 +90,30 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	@Override
 	public String getJobId() {
 		return jobId;
+	}
+	
+	@Override
+	public String getImageURL() {
+		return image.getUrl();
+	}
+	
+	@Override
+	public ArrayList<Tag> getTag() {
+		ArrayList<Tag> tagSet = new ArrayList<Tag>( );
+		
+		try {
+			JSONArray tempJSONArray = new JSONArray(tagJSONArray);
+			
+			for(int i = 0; i < tempJSONArray.length(); i++) {
+				String tag = tempJSONArray.getJSONObject(i).getString("name");
+				Tag tagObject = new Tag( );
+				tagObject.setTagText(tag);
+				tagSet.add(tagObject);				
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return tagSet;
 	}
 }

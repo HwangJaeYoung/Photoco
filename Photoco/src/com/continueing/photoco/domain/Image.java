@@ -9,11 +9,11 @@ import org.json.JSONObject;
 
 public class Image implements Serializable{
 
-	private static final String JSON_KEY_url = "url";
-	private static final String JSON_KEY_height = "height";
-	private static final String JSON_KEY_width = "width";
-	private static final String JSON_KEY_price = "price";
-	private static final String JSON_KEY_size = "size";
+	private static final String JSON_KEY_URL = "url";
+	private static final String JSON_KEY_HEIGHT = "height";
+	private static final String JSON_KEY_WIDTH = "width";
+	private static final String JSON_KEY_PRICE = "price";
+	private static final String JSON_KEY_SIZE = "size";
 	
 	private String url;
 	private String height;
@@ -22,11 +22,11 @@ public class Image implements Serializable{
 	private String size;
 	
 	public Image(JSONObject jsonObject) throws JSONException {
-		url = jsonObject.getString(JSON_KEY_url);
-		height = jsonObject.getString(JSON_KEY_height);
-		width = jsonObject.getString(JSON_KEY_width);
-		price = jsonObject.getString(JSON_KEY_price);
-		size = jsonObject.getString(JSON_KEY_size);
+		url = jsonObject.getString(JSON_KEY_URL);
+		height = jsonObject.getString(JSON_KEY_HEIGHT);
+		width = jsonObject.getString(JSON_KEY_WIDTH);
+		price = jsonObject.getString(JSON_KEY_PRICE);
+		size = jsonObject.getString(JSON_KEY_SIZE);
 	}
 
 	public String getUrl() {

@@ -41,6 +41,5 @@ public class ViewForArrayAdapterForTagGridView extends AbstractViewForListViewIt
 	public static interface ITagItem extends IListViewItem {
 		public String getTagText( );
 		public void setTagText(String aTagText);
-		public ArrayList<Tag> getTagSet( );
 	}
 }

@@ -79,8 +79,7 @@ public class MyRequest implements IMyRequestItem {
 
 	@Override
 	public ArrayList<Tag> getTag() {
-		Tag tagSet = new Tag(tags);
-		return tagSet.getTagSet();
+		return null;
 	}
 
 	@Override

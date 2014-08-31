@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +76,7 @@ public class ViewForFindingJobDetailActivity extends AbstractViewForActivity {
 	{
 		FindingJobList item = (FindingJobList)anIntent.getSerializableExtra(FindingJobFragment.PARAM_FINDINGJOB_ITEM_KEY);
 		
+		Log.i("attach", item.getImageURL());
 		tv_userRequest.setText(item.getName() + "'s Request");
 		tv_findingJobListDescription.setText(item.getDescription());
 		siv_findingJobListDetailImage.setImageUrl(item.getImageURL());
