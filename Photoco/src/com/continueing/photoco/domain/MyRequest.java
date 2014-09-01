@@ -26,6 +26,7 @@ public class MyRequest implements IMyRequestItem {
 	private UserProfile userProfile;
 	private Category category;
 	private Location location;
+	private ArrayList<Tag> tagSet;
 	private String imageJSONArray;
 	private String tagJSONArray; // JSONArray Serializable 문제 때문에 String으로 변환
 	private String description;
@@ -106,7 +107,7 @@ public class MyRequest implements IMyRequestItem {
 	
 	@Override
 	public ArrayList<Tag> getTag() {
-		ArrayList<Tag> tagSet = new ArrayList<Tag>( );
+		tagSet = new ArrayList<Tag>( );
 		
 		try {
 			JSONArray tempJSONArray = new JSONArray(tagJSONArray);

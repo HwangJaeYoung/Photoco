@@ -19,7 +19,6 @@ public class Image implements IImageURL, Serializable{
 	
 	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_CATEGORY = "category";
-	private static final String JSON_KEY_LOCATION = "location";
 	private static final String JSON_KEY_TAG = "tags";
 	
 	private String id;
@@ -31,9 +30,8 @@ public class Image implements IImageURL, Serializable{
 	
 	private String tagJSONArray;
 	private Category category;
-	private Location location;
 	private UserProfile userProfile;
-	
+	private ArrayList<Tag> tagSet;
 	
 	public Image(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);
@@ -45,7 +43,6 @@ public class Image implements IImageURL, Serializable{
 		
 		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
-		location = new Location(aJsonObject.getJSONObject(JSON_KEY_LOCATION));
 		tagJSONArray = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
 	}
 	
@@ -90,14 +87,9 @@ public class Image implements IImageURL, Serializable{
 	}
 	
 	@Override
-	public Location getLocation( ) {
-		return location;
-	}
-	
-	@Override
 	public ArrayList<Tag> getTag() {
 
-		ArrayList<Tag> tagSet = new ArrayList<Tag>( );
+		tagSet = new ArrayList<Tag>( );
 		
 		try {
 			JSONArray tempJSONArray = new JSONArray(tagJSONArray);

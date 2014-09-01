@@ -10,7 +10,7 @@ public class PurchaseRequest {
 	private Context context;
 	private static final String URL_BASE = "/commerce";
 	private static final String PARAM_CART = "/cart";
-	private static final String PARAM_PURCHASE = "/purchases";
+	private static final String PARAM_PURCHASE = "/purchase";
 	
 	public PurchaseRequest(Context aContext) {
 		this.context = aContext;

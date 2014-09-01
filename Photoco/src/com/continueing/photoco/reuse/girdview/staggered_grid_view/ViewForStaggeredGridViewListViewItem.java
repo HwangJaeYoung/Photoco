@@ -48,12 +48,4 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 	{
 		return csivImage;
 	}
-	
-	public static interface IStaggredGridViewListItem extends IListViewItem
-	{
-		public String getCategory( );
-		public String getSize( );
-		public String getPrice( );
-		public String getURL( );
-	}
 }

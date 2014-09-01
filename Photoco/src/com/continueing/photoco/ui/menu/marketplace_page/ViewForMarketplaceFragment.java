@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.girdview.staggered_grid_view.ArrayAdapterStaggeredGridView;
-import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 //import com.continueing.photoco.reuse.listview.Staggered.StaggeredAdapter;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 
 public class ViewForMarketplaceFragment extends AbstractViewForFragment implements OnItemClickListener {
-	private ArrayAdapterStaggeredGridView adapter;
+	private ArrayAdapterStaggeredGridView arrayAdapterStaggeredGridView;
 	private StaggeredGridView gridView;
 	private Controller controller;
 	
@@ -39,8 +39,8 @@ public class ViewForMarketplaceFragment extends AbstractViewForFragment implemen
 		int margin = getContext().getResources().getDimensionPixelSize(R.dimen.margin);
 		gridView.setItemMargin(margin);
 		gridView.setPadding(margin, 0, margin, 0);
-		adapter = new ArrayAdapterStaggeredGridView(getContext( ), 0);
-		gridView.setAdapter(adapter);
+		arrayAdapterStaggeredGridView = new ArrayAdapterStaggeredGridView(getContext( ), 0);
+		gridView.setAdapter(arrayAdapterStaggeredGridView);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
@@ -48,9 +48,9 @@ public class ViewForMarketplaceFragment extends AbstractViewForFragment implemen
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section5);
 	}
 	
-	public void addItem(ArrayList<IStaggredGridViewListItem> aList)
-	{
-		adapter.addAll(aList);
+	public void addMarketplaceImageSetArrayList(ArrayList<Image> aList){
+		arrayAdapterStaggeredGridView.clear();
+		arrayAdapterStaggeredGridView.addAll(aList);
 	}
 
 	@Override
@@ -58,8 +58,7 @@ public class ViewForMarketplaceFragment extends AbstractViewForFragment implemen
 		gridView.setOnItemClickListener(this);
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void onPhotoSelected( );
 	}
 	

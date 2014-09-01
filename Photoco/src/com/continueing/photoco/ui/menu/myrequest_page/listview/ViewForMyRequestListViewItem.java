@@ -171,7 +171,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public String getSize( );
 		public UserProfile getUserProfile( );
 		public Category getCategory( );
-		public Location getLocation( );
 		public ArrayList<Tag> getTag( );
 	}
 }

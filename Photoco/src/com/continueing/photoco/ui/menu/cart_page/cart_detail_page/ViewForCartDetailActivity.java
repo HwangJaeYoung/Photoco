@@ -60,7 +60,6 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 		bt_cart_detail_info.setText(item.getImage().getSize());
 		tv_cart_detail_price.setText(item.getImage().getPrice());
 		tv_cart_detail_size.setText(item.getImage().getWidth() + " X " + item.getImage().getHeight());
-		tv_cart_detail_location.setText(item.getImage().getLocation().getDescription());
 	}
 	
 	public static interface Controller

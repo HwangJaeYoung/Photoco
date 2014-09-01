@@ -4,17 +4,16 @@ import android.content.Context;
 
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
+import com.continueing.photoco.ui.menu.myaccount_page.listview.ViewForMyAccountListViewitem.IMyAccountItem;
 
-public class ArrayAdapterForMyAccountListView extends AbstractArrayAdapter{
+public class ArrayAdapterForMyAccountListView extends AbstractArrayAdapter<IMyAccountItem>{
 
 	public ArrayAdapterForMyAccountListView(Context context, int resource) {
 		super(context, resource);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public AbstractViewForListViewItem getInstance() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ViewForMyAccountListViewitem(getContext());
 	}
 }

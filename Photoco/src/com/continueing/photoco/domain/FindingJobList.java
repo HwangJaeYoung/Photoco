@@ -25,6 +25,7 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	private Image image;
 	private Category category;
 	private Location location;
+	private ArrayList<Tag> tagSet;
 	private String tagJSONArray; // JSONArray Serializable 문제 때문에 String으로 변환
 	private String jobId;
 	private String requestID;
@@ -99,7 +100,7 @@ public class FindingJobList implements ViewForFindingJobListViewItem.IFindingJob
 	
 	@Override
 	public ArrayList<Tag> getTag() {
-		ArrayList<Tag> tagSet = new ArrayList<Tag>( );
+		tagSet = new ArrayList<Tag>( );
 		
 		try {
 			JSONArray tempJSONArray = new JSONArray(tagJSONArray);

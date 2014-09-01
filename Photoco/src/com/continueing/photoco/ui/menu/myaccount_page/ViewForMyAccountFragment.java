@@ -1,5 +1,7 @@
 package com.continueing.photoco.ui.menu.myaccount_page;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,14 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Purchase;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
+import com.continueing.photoco.ui.menu.myaccount_page.listview.ArrayAdapterForMyAccountListView;
 
 public class ViewForMyAccountFragment extends AbstractViewForFragment {
 	
 	private Button btMyaccountPurchase;
 	private Controller controller;
+	private ListView lv_myaccountPurchase;
+	private ProgressBar progressBar;
+	private ArrayAdapterForMyAccountListView arrayAdapterForMyAccountListView;
 	
 	public ViewForMyAccountFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -29,14 +38,25 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 
 	@Override
 	protected void initViews() {
+		lv_myaccountPurchase = (ListView)findViewById(R.id.lv_myaccount_purchase);
+		arrayAdapterForMyAccountListView = new ArrayAdapterForMyAccountListView(getContext(), 0);
+		lv_myaccountPurchase.setAdapter(arrayAdapterForMyAccountListView);
 		
 		btMyaccountPurchase = (Button)findViewById(R.id.bt_myaccount_purchase);
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section7);
+		
+		progressBar = (ProgressBar)findViewById(R.id.pb_myaccount);
 	}
 
+	public void addMyAccountPurchaseArrayList(ArrayList<Purchase> anArrayList)
+	{
+		arrayAdapterForMyAccountListView.clear();
+		arrayAdapterForMyAccountListView.addAll(anArrayList);
+	}
+	
 	@Override
 	protected void setEvents() {
 		btMyaccountPurchase.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +65,22 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 				controller.onPurchase();				
 			}
 		});
+	}
+	
+	public void progresOff( ) {
+		progressBar.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		progressBar.setVisibility(View.VISIBLE);
+	}
+	
+	public void listviewOff( ) {
+		lv_myaccountPurchase.setVisibility(View.INVISIBLE);
+	}
+	
+	public void listviewOn( ) {
+		lv_myaccountPurchase.setVisibility(View.VISIBLE);
 	}
 	
 	public static interface Controller {

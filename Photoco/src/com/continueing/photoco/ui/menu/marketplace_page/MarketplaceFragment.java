@@ -2,9 +2,9 @@ package com.continueing.photoco.ui.menu.marketplace_page;
 
 import java.util.ArrayList;
 
-import com.continueing.photoco.reuse.girdview.staggered_grid_view.MockUp;
-import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
-import com.continueing.photoco.ui.menu.marketplace_page.marketplace_detail_page.MarketplaceDetailActivity;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,16 +13,25 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.continueing.photoco.domain.Image;
+import com.continueing.photoco.domain.Purchase;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.network.MarketpaceRequest;
+import com.continueing.photoco.ui.menu.marketplace_page.marketplace_detail_page.MarketplaceDetailActivity;
 
 public class MarketplaceFragment extends Fragment implements ViewForMarketplaceFragment.Controller{
 	private ViewForMarketplaceFragment view;
 	private ActionBar actionBar;
 	private ActionBar.Tab actionBarTab;
+	private boolean tabRestrict = true;
+	private ArrayList<Image> imageSet;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,44 +42,45 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMarketplaceFragment(getActivity( ), inflater, container, this);
-        
-        ArrayList<IStaggredGridViewListItem> list = new ArrayList<IStaggredGridViewListItem>( );
-        
-        list.add(new MockUp("http://farm7.staticflickr.com/6101/6853156632_6374976d38_c.jpg", "M", "1", "blossom"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "L", "2", "forest"));
-        list.add(new MockUp("http://farm8.staticflickr.com/7232/6913504132_a0fce67a0e_c.jpg", "M", "3", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "S", "4", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "M", "5", "forest"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8208/8219397252_a04e2184b2.jpg", "S", "6", "blossom"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "M", "7", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "L", "8", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8185/8081514424_270630b7a5.jpg", "M", "9", "blossom"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "S", "10", "hankook"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg", "S", "11", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "L", "12", "forest"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "M", "34", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8185/8081514424_270630b7a5.jpg", "M", "23", "blossom"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "L", "43", "forest"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg", "M", "25", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "M", "22", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "L", "74", "blossom"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8185/8081514424_270630b7a5.jpg", "L", "24", "hankook"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "M", "93", "forest"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg", "S", "85", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "M", "12", "blossom"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "L", "22", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8185/8081514424_270630b7a5.jpg", "L", "42", "blossom"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "M", "22", "forest"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg", "L", "32", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8483/8218023445_02037c8fda.jpg", "S", "42", "hankook"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8335/8144074340_38a4c622ab.jpg", "S", "62", "forest"));
-        list.add(new MockUp("http://farm9.staticflickr.com/8185/8081514424_270630b7a5.jpg", "L", "92", "hankook"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4074/4789681330_2e30dfcacb_b.jpg", "M", "26", "hankook"));
-        list.add(new MockUp("http://farm5.staticflickr.com/4133/5096108108_df62764fcc_b.jpg", "M", "25", "blossom"));
-        view.addItem(list);
-        
+        actionBar.setSelectedNavigationItem(0);
         return view.getRoot( );
     }
+	
+	public void searchMarketplaceItemFromServer(String aTabName) {
+		MarketpaceRequest marketpaceRequest = new MarketpaceRequest(getActivity( ));
+		try {
+			marketpaceRequest.getMarketplaceImageItems(aTabName, getMarketplaceItemListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	HttpRequester.NetworkResponseListener getMarketplaceItemListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) { 
+			JSONArray jsonArray = new JSONArray( ); 
+			imageSet = new ArrayList<Image>( );
+			
+			try {
+				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			for(int i = 0; i < jsonArray.length(); i++) {
+				try {
+					Image image = new Image(jsonArray.getJSONObject(i));
+					imageSet.add(image);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}			
+			view.addMarketplaceImageSetArrayList(imageSet);
+		}	
+		
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
 
 	@Override
 	public void onPhotoSelected() {
@@ -106,7 +116,18 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
-
+			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
+				searchMarketplaceItemFromServer("sold");
+				tabRestrict = false;
+			}
+			else if(aTabName.getText().equals("MostViewed")) {
+				searchMarketplaceItemFromServer("bought");
+				tabRestrict = true;
+			}
+			else if(aTabName.getText().equals("Latest")) {	
+				searchMarketplaceItemFromServer("bought");
+				tabRestrict = true;
+			}
 		}
 		
 		@Override
