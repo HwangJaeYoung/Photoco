@@ -50,7 +50,7 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 		gv_requestDetail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				controller.selectedGridViewItem();
+				controller.selectedGridViewItem(position);
 			}
 		});
 	}
@@ -72,6 +72,6 @@ public class ViewForMyRequestGridViewDetailActivity extends AbstractViewForActiv
 	}
 	
 	public static interface Controller {
-		public void selectedGridViewItem( );
+		public void selectedGridViewItem(int aPosition);
 	}
 }

@@ -6,24 +6,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.RequestsRequest;
+import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 import com.continueing.photoco.ui.menu.myrequest_page.MyRequestFragment;
 import com.continueing.photoco.ui.menu.myrequest_page.myrequest_gridview_detail_page.myrequest_detail_page.MyRequestDetailActivity;
 
 public class MyRequestGridViewDetailActivity extends ActionBarActivity implements ViewForMyRequestGridViewDetailActivity.Controller{
-
+	public static final String PARAM_MYREQUEST_DETAIL_ITEM_KEY = "myrequestdetailitem";
+	private static final int REQUEST_ADD_TO_CART = 0;
 	private ViewForMyRequestGridViewDetailActivity view;
 	private ArrayList<Image> imageSet;
+	private int clickedImagePosition;
+	private String requestId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,8 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		imageSet = new ArrayList<Image>( );
 		setContentView(view.getRoot());
-		searchImageURLFromServer(getIntent( ).getStringExtra(MyRequestFragment.PARAM_REQUESTID_KEY));
+		requestId = getIntent( ).getStringExtra(MyRequestFragment.PARAM_REQUESTID_KEY);
+		searchImageURLFromServer(requestId);
 	}
 	
 	// 내가 요청한 것들에서 다른 사용자가 등록한 이미지를 가져오기 위한 통신
@@ -74,10 +81,22 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 		@Override
 		public void onFail(JSONObject jsonObject, int errorCode) { }
 	};
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == REQUEST_ADD_TO_CART) {
+			if(resultCode == Activity.RESULT_OK) {
+				imageSet.remove(clickedImagePosition);
+				searchImageURLFromServer(requestId);				
+			}
+		}
+	}
 
 	@Override
-	public void selectedGridViewItem() {
+	public void selectedGridViewItem(int aPosition) {
+		clickedImagePosition = aPosition;
 		Intent intent = new Intent(getApplicationContext(), MyRequestDetailActivity.class);
-		startActivity(intent);
+		intent.putExtra(PARAM_MYREQUEST_DETAIL_ITEM_KEY, imageSet.get(aPosition));
+		startActivityForResult(intent, REQUEST_ADD_TO_CART);
 	}
 }
