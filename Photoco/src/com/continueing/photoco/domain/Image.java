@@ -1,13 +1,13 @@
 package com.continueing.photoco.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Image implements Serializable{
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IImageURL;
+
+public class Image implements IImageURL, Serializable{
 
 	private static final String JSON_KEY_URL = "url";
 	private static final String JSON_KEY_HEIGHT = "height";

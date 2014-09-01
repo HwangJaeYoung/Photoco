@@ -209,6 +209,9 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		public void onFail(JSONObject jsonObject, int errorCode) {
 			switch(errorCode)
 			{
+				case 5:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_LOCATION_ID_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
 				case 16:
 					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_IMAGE_ABSENCE, Toast.LENGTH_SHORT).show();
 					break;

@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
 import com.continueing.photoco.domain.Image;
-import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.RequestsRequest;
@@ -57,15 +56,19 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 	
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
-				JSONObject tempJSONObject = jsonArray.getJSONObject(i).getJSONObject("image");
-				Image imageObject = new Image(tempJSONObject);
-				imageSet.add(imageObject);
+				
+				for(int i = 0; i < jsonArray.length(); i++) {
+					JSONObject tempJSONObject = jsonArray.getJSONObject(i).getJSONObject("image");
+					Image imageObject = new Image(tempJSONObject);
+					imageSet.add(imageObject);			
+				}
+				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			view.progresOff();
 			view.gridviewOn();
-			view.addRequestImages(urlSet);
+			view.addRequestImages(imageSet);
 		}
 
 		@Override

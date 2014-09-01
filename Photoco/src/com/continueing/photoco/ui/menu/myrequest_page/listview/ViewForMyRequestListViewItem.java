@@ -15,7 +15,6 @@ import com.continueing.photoco.domain.Category;
 import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.domain.Location;
 import com.continueing.photoco.domain.Tag;
-import com.continueing.photoco.domain.URL;
 import com.continueing.photoco.domain.UserProfile;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
@@ -163,8 +162,11 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public ArrayList<Image> getImageURLSet( ); 
 	}
 	
-	public static interface IMyRequestItemImageURL extends IListViewItem {
-		public ArrayList<URL> getURLSet();
-		public String getURL();
+	public static interface IImageURL extends IListViewItem {
+		public String getUrl();
+		public String getHeight();
+		public String getWidth();
+		public String getPrice();
+		public String getSize();
 	}
 }

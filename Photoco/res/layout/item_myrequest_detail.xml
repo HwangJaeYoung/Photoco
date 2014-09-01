@@ -10,8 +10,9 @@
             android:id="@+id/siv_myrequest_detail_image"
             android:layout_width="111dp"
             android:layout_height="111dp"
-            android:scaleType="fitXY" />
-
+            android:background="#cdd8e2"
+            android:scaleType="fitXY"
+            android:src="@drawable/textlogo_small" />
     </RelativeLayout>
 
 </RelativeLayout>

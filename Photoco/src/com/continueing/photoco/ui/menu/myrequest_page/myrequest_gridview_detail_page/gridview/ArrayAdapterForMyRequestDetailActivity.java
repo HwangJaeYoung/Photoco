@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.continueing.photoco.reuse.listview.mvc.AbstractArrayAdapter;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
-import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItemImageURL;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IImageURL;
 
-public class ArrayAdapterForMyRequestDetailActivity extends AbstractArrayAdapter<IMyRequestItemImageURL>{
+public class ArrayAdapterForMyRequestDetailActivity extends AbstractArrayAdapter<IImageURL>{
 
 	public ArrayAdapterForMyRequestDetailActivity(Context context, int resource) {
 		super(context, resource);
