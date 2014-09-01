@@ -8,6 +8,7 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 import com.continueing.photoco.reuse.widget.CustomSmartImageView;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IImageURL;
 
 public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListViewItem{
 	private TextView tv_category;
@@ -37,11 +38,11 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
-		IStaggredGridViewListItem iStaggredGridViewListItem = (IStaggredGridViewListItem)aIListViewItem;
-		tv_category.setText(iStaggredGridViewListItem.getCategory());
-		tv_size.setText(iStaggredGridViewListItem.getSize());
-		tv_price.setText(iStaggredGridViewListItem.getPrice());
-		csivImage.setImageUrl(iStaggredGridViewListItem.getURL());
+		IImageURL iImageURL = (IImageURL)aIListViewItem;
+		tv_category.setText(iImageURL.getCategory().getName());
+		tv_size.setText(iImageURL.getSize());
+		tv_price.setText(iImageURL.getPrice());
+		csivImage.setImageUrl(iImageURL.getUrl());
 	}
 	
 	public CustomSmartImageView returnSmartImageView( )

@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.girdview.staggered_grid_view.ArrayAdapterStaggeredGridView;
-import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem.IStaggredGridViewListItem;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.origamilabs.library.views.StaggeredGridView;
 import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
@@ -53,11 +52,6 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		prefs.edit().putBoolean("actionBar", true).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section4);
-	}
-	
-	public void addItem(ArrayList<IStaggredGridViewListItem> aList)
-	{
-		adapter.addAll(aList);
 	}
 
 	@Override

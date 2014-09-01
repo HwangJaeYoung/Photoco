@@ -8,7 +8,7 @@ import com.loopj.android.http.RequestParams;
 
 public class MarketpaceRequest {
 	private Context context;
-	private static final String URL_BASE = "/me";
+	private static final String URL_BASE = "/images";
 	private static final String PARAM_MARKETPLACE = "/marketplace";
 	private static final String PARAM_TABNAME = "sortBy";
 	

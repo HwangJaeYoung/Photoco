@@ -42,9 +42,15 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMarketplaceFragment(getActivity( ), inflater, container, this);
-        actionBar.setSelectedNavigationItem(0);
+        
         return view.getRoot( );
     }
+	
+	@Override
+	public void onResume( ) {
+		super.onResume();
+		actionBar.setSelectedNavigationItem(0);
+	}
 	
 	public void searchMarketplaceItemFromServer(String aTabName) {
 		MarketpaceRequest marketpaceRequest = new MarketpaceRequest(getActivity( ));
@@ -67,7 +73,8 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 				e.printStackTrace();
 			}
 			
-			for(int i = 0; i < jsonArray.length(); i++) {
+		
+			for(int i = 0; i < 10; i++) {
 				try {
 					Image image = new Image(jsonArray.getJSONObject(i));
 					imageSet.add(image);
@@ -117,15 +124,15 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
-				searchMarketplaceItemFromServer("sold");
+				searchMarketplaceItemFromServer("bestseller");
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("MostViewed")) {
-				searchMarketplaceItemFromServer("bought");
+				searchMarketplaceItemFromServer("mostviewd");
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Latest")) {	
-				searchMarketplaceItemFromServer("bought");
+				searchMarketplaceItemFromServer("latest");
 				tabRestrict = true;
 			}
 		}
