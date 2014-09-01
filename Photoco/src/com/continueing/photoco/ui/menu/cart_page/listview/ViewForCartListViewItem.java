@@ -36,10 +36,10 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 	@Override
 	protected void setData(IListViewItem aIListViewItem) { 
 		iCartItem = (ICartItem) aIListViewItem;
-		tvListCartGroup.setText(iCartItem.getTitle());
+	
 	}
 	
 	public static interface ICartItem extends IListViewItem {
-		public String getTitle( );
+
 	}
 }

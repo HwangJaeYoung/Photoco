@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Cart;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.ui.menu.cart_page.listview.ArrayAdapterForCartListView;
 import com.continueing.photoco.ui.menu.cart_page.listview.ViewForCartListViewItem.ICartItem;
@@ -22,6 +24,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 
 	private Controller controller;
 	private ListView lv_cart;
+	private ProgressBar pb_cart;
 	private ImageButton ib_cartRemoveItem;
 	private ArrayAdapterForCartListView arrayAdapterForCartListView;
 	
@@ -49,6 +52,8 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		prefs.edit().putBoolean("actionBar", false).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section6);
+		
+		pb_cart = (ProgressBar)findViewById(R.id.pb_cart);
 	}
 
 	@Override
@@ -68,7 +73,8 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		});
 	}
 	
-	public void addPurchaceItemArrayList(ArrayList<ICartItem> anArrayList) {
+	public void addCartItemArrayList(ArrayList<Cart> anArrayList) {
+		arrayAdapterForCartListView.clear();
 		arrayAdapterForCartListView.addAll(anArrayList);
 	}
 	
@@ -78,6 +84,22 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	
 	public void removeSelectedItem(ICartItem anItem) {
 		arrayAdapterForCartListView.remove(anItem);
+	}
+	
+	public void progresOff( ) {
+		pb_cart.setVisibility(View.INVISIBLE);
+	}
+	
+	public void progressOn( ) {
+		pb_cart.setVisibility(View.VISIBLE);
+	}
+	
+	public void listviewOff( ) {
+		lv_cart.setVisibility(View.INVISIBLE);
+	}
+	
+	public void listviewOn( ) {
+		lv_cart.setVisibility(View.VISIBLE);
 	}
 	
 	public static interface Controller {

@@ -30,6 +30,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	private ViewForMyRequestFragment view;
 	private ArrayList<IMyRequestItem> myrequestItems; // 내가 생성한 요청을 저장하는 곳
 	private ArrayList<String> requestIdSet; // 해당 요청에 대한 이미지들을 요청할 때 필요한 것
+	private static final int REQUEST_MYREQUEST_GRIDVIEW_DETAIL = 0; // MyRequestDatailGridView호출할 때 사용
 	private int itemCounter = 0; // 이것을 사용하여 searchImageURLFromServer의 동기화를 조정한다.
 	public static final int REQUEST_CODE_GET_REQUEST_ITEM = 0;
 	public static final String PARAM_REQUESTID_KEY ="requestID";
@@ -82,13 +83,21 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 		startActivityForResult(intent, REQUEST_CODE_GET_REQUEST_ITEM);
 	}
 	
-	// NewRequest에서 Submit버튼을 클릭하였을 때 동작한다. 즉 하나의 요청을 만들어 낸다.
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_CODE_GET_REQUEST_ITEM)
+		// NewRequest에서 Submit버튼을 클릭하였을 때 동작한다. 즉 하나의 요청을 만들어 낸다.
+		if(requestCode == REQUEST_CODE_GET_REQUEST_ITEM) { 
 			if(resultCode == Activity.RESULT_OK) {
 				searchMyRequestItemFromServer( );
 			}
+		}
+		// GridView에서 AddToCart를 수행하였을 경우 통신을 한번 더 하여서 요청을 갱신한다.
+		else if(requestCode == REQUEST_MYREQUEST_GRIDVIEW_DETAIL) {
+			if(resultCode == Activity.RESULT_OK) {
+				searchMyRequestItemFromServer( );
+			}
+		}
 	}
 
 	// 내가 요청한 것에 다른 사용자들이 등록한 이미지들을 모두다 보여준다.
@@ -96,8 +105,10 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	public void showRequestDetail(int aRequestIdIndex) {
 		Intent intent = new Intent(getActivity( ), MyRequestGridViewDetailActivity.class);
 		intent.putExtra(PARAM_REQUESTID_KEY, requestIdSet.get(aRequestIdIndex));
-		startActivity(intent);
+		startActivityForResult(intent, REQUEST_MYREQUEST_GRIDVIEW_DETAIL);
 	}
+	
+	
 	
 	// 내가 요청한 것들을 가져오기 위한 통신
 	public void searchMyRequestItemFromServer( ) {

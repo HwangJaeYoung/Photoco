@@ -13,7 +13,7 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageView
+        <com.loopj.android.image.SmartImageView
             android:id="@+id/iv_list_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

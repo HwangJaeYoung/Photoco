@@ -86,8 +86,11 @@ public class MyRequestGridViewDetailActivity extends ActionBarActivity implement
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_ADD_TO_CART) {
 			if(resultCode == Activity.RESULT_OK) {
+				// AddToCart로 인해서 이미지가 없어졌으므로 GridView를 갱신한다.
+				// 통신을 해버리면 더하는 결과가 발생하므로 그냥 갱신만 시킨다.
 				imageSet.remove(clickedImagePosition);
-				searchImageURLFromServer(requestId);				
+				view.addRequestImages(imageSet);
+				setResult(Activity.RESULT_OK); // AddToCart를 하였다는 것을 MyRequestFragment에게 알려준다.
 			}
 		}
 	}
