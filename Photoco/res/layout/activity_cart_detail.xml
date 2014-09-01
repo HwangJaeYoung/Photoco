@@ -8,6 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/siv_cart_detail_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:layout_width="220dp"
             android:layout_height="72dp"
@@ -77,15 +83,6 @@
                     android:alpha="0.8"
                     android:text="Newyork, USA"
                     android:textColor="#fff" />
-
-                <Button
-                    android:id="@+id/bt_cart_detail_location"
-                    android:layout_width="10dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/allow_white_ic" />
             </RelativeLayout>
 
             <RelativeLayout

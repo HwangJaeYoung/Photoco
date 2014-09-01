@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -26,6 +27,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	private ListView lv_cart;
 	private ProgressBar pb_cart;
 	private ImageButton ib_cartRemoveItem;
+	private Button bt_cartBuyItem;
 	private ArrayAdapterForCartListView arrayAdapterForCartListView;
 	
 	public ViewForCartFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
@@ -40,8 +42,6 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 
 	@Override
 	protected void initViews() {
-		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
-		
 		lv_cart = (ListView)findViewById(R.id.list_view_left);
 		arrayAdapterForCartListView = new ArrayAdapterForCartListView(getContext( ), R.layout.item_cart);
 		lv_cart.setAdapter(arrayAdapterForCartListView);
@@ -54,6 +54,8 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section6);
 		
 		pb_cart = (ProgressBar)findViewById(R.id.pb_cart);
+		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
+		bt_cartBuyItem = (Button)findViewById(R.id.bt_cart_buy_item);
 	}
 
 	@Override
@@ -69,6 +71,13 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 			@Override
 			public void onClick(View v) {		
 				controller.onRemoveItems();
+			}
+		});
+		
+		bt_cartBuyItem.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				controller.onBytItems();
 			}
 		});
 	}
@@ -105,5 +114,6 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	public static interface Controller {
 		public void onShowDetailCart(int aPosition);
 		public void onRemoveItems( );
+		public void onBytItems ();
 	}
 }

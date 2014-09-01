@@ -1,9 +1,16 @@
 package com.continueing.photoco.ui.menu.myaccount_page;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -13,7 +20,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.continueing.photoco.domain.MyRequest;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.network.RequestsRequest;
 import com.continueing.photoco.ui.menu.myaccount_page.myaccount_purchase_page.MyAccountPurchaseActivity;
+import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IMyRequestItem;
 
 public class MyAccountFragment extends Fragment implements ViewForMyAccountFragment.Controller{
 	
@@ -32,6 +44,21 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
         view = new ViewForMyAccountFragment(getActivity( ), inflater, container, this);
         return view.getRoot();
 	}
+	
+	// 내가 요청한 것들에서 다른 사용자가 등록한 이미지를 가져오기 위한 통신
+	public void searchPurchaseItemFromServer(String aRequestId) {
+		RequestsRequest requestsRequest = new RequestsRequest(getActivity( ));
+
+	}
+	
+	HttpRequester.NetworkResponseListener getPurchaseItemListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) { }	
+		
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
+	
 	
 	public void addActionBarTab( ) {
 		actionBar = ((ActionBarActivity)getActivity( )).getSupportActionBar();

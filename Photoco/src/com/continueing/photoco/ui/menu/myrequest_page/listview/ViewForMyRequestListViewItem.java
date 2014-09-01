@@ -163,10 +163,15 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	}
 	
 	public static interface IImageURL extends IListViewItem {
-		public String getUrl();
-		public String getHeight();
-		public String getWidth();
-		public String getPrice();
-		public String getSize();
+		public String getId( );
+		public String getUrl( );
+		public String getHeight( );
+		public String getWidth( );
+		public String getPrice( );
+		public String getSize( );
+		public UserProfile getUserProfile( );
+		public Category getCategory( );
+		public Location getLocation( );
+		public ArrayList<Tag> getTag( );
 	}
 }

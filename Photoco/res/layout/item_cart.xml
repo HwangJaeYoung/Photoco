@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <com.loopj.android.image.SmartImageView
-            android:id="@+id/iv_list_cart"
+            android:id="@+id/siv_list_cart_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/urgent_ic" />
@@ -27,7 +27,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/tv_list_cart_group"
+            android:id="@+id/tv_list_cart_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
@@ -51,7 +51,7 @@
                 android:src="@drawable/name_small_ic" />
 
             <TextView
-                android:id="@+id/tv_list_cart_name"
+                android:id="@+id/tv_list_cart_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

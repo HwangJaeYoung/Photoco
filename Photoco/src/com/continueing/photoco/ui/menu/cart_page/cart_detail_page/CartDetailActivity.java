@@ -20,6 +20,7 @@ public class CartDetailActivity extends ActionBarActivity implements ViewForCart
 		view = new ViewForCartDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
+		view.initViewInfos(getIntent());
 	}
 	
 	@Override

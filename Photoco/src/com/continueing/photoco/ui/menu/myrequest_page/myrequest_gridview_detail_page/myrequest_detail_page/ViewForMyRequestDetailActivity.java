@@ -57,7 +57,7 @@ public class ViewForMyRequestDetailActivity extends AbstractViewForActivity {
 	public void initViewInfos(Intent anIntent) {
 		Image item = (Image)anIntent.getSerializableExtra(MyRequestGridViewDetailActivity.PARAM_MYREQUEST_DETAIL_ITEM_KEY);
 		
-		id = item.getId();
+		id = item.getId(); // AddToCart때 사용하는 이미지의 id이다.
 		bt_requestDetailSizeInfo.setText(item.getSize());
 		tv_requestDetailPrice.setText(item.getPrice());
 		tv_requestDetailImageSize.setText(item.getWidth() + " X " + item.getHeight());

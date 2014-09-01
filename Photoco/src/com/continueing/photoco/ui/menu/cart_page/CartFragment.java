@@ -13,21 +13,25 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.continueing.photoco.domain.Cart;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.network.CartRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.network.PurchaseRequest;
 import com.continueing.photoco.ui.menu.cart_page.cart_detail_page.CartDetailActivity;
-import com.continueing.photoco.ui.menu.cart_page.listview.ViewForCartListViewItem.ICartItem;
 
 public class CartFragment extends Fragment implements ViewForCartFragment.Controller{
 	
 	private ViewForCartFragment view;
 	private ArrayList<Cart> cartSet;
+	private ArrayList<String> cartId;
 	public static int REQUEST_CODE_GET_REMOVE = 0;
 	public static int REQUEST_CODE_GET_BUY = 1;
 	public static final String PARAM_SELECTED_POSITION = "position";
+	public static final String PARAM_CART_DETAIL_ITEM_KEY = "cartdetailitem";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null; 
 			cartSet = new ArrayList<Cart>( );
+			cartId = new ArrayList<String>( );
 			
 			try {
 				jsonArray = jsonObject.getJSONArray(JsonResponseHandler.PARM_DATA);
@@ -69,6 +74,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 			for(int i = 0; i < jsonArray.length(); i++) {
 				try {
 					Cart cart = new Cart(jsonArray.getJSONObject(i));
+					cartId.add(cart.getId());
 					cartSet.add(cart);				
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -84,14 +90,6 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	};
 	
 	@Override
-	public void onRemoveItems() {
-		// 통신으로 해서도 지우고 arraylist의 번호를 모두 던저준다.
-
-		// 사용자가 보이는 뷰에서도 지운다.
-		view.removeAllItems();
-	}
-	
-	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_GET_REMOVE)
 			if(resultCode == Activity.RESULT_OK) {
@@ -105,6 +103,41 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	public void onShowDetailCart(int aPosition) {
 		Intent intent = new Intent(getActivity( ), CartDetailActivity.class);
 		intent.putExtra(PARAM_SELECTED_POSITION, aPosition);
+		intent.putExtra(PARAM_CART_DETAIL_ITEM_KEY, cartSet.get(aPosition));
 		startActivityForResult(intent, REQUEST_CODE_GET_REMOVE);
 	}
+
+	// 카트에 있는 모든 아이템을 삭제한다.
+	@Override
+	public void onRemoveItems() {
+		// 통신으로 해서도 지우고 arraylist의 번호를 모두 던저준다.
+
+		// 사용자가 보이는 뷰에서도 지운다.
+		view.removeAllItems();
+	}
+	
+	// 카트에 있는 모든 아이템을 구매한다.
+	@Override
+	public void onBytItems() {
+		PurchaseRequest purchaseRequest = new PurchaseRequest(getActivity());
+		
+		for(int i = 0; i < cartId.size(); i++) {
+			try {
+				purchaseRequest.purchaseItemFormCart(cartId.get(i), executePurchaseItemListener);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}		
+		}
+	}
+	
+	HttpRequester.NetworkResponseListener executePurchaseItemListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) {
+			Toast.makeText(getActivity(), "To purchase items is complete", Toast.LENGTH_LONG).show();
+			searchCartItemFromServer( );
+		}
+
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
 }
