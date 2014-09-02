@@ -20,7 +20,7 @@
             android:src="@drawable/name_ic" />
 
         <TextView
-            android:id="@+id/et_setting_username"
+            android:id="@+id/tv_setting_username"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="30dp"
@@ -56,7 +56,7 @@
             android:src="@drawable/email_ic" />
 
         <TextView
-            android:id="@+id/et_setting_email"
+            android:id="@+id/tv_setting_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="30dp"

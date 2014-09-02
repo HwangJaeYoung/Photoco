@@ -1,5 +1,8 @@
 package com.continueing.photoco.ui.navigation_drawer_menu;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -24,6 +27,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.MyInformation;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.network.MyInformationRequest;
 import com.continueing.photoco.ui.login_page.LoginActivity;
 
 public class NavigationDrawerFragment extends Fragment {
@@ -36,8 +43,14 @@ public class NavigationDrawerFragment extends Fragment {
 	private View mFragmentContainerView;
 	private int mCurrentSelectedPosition = 0;
 	private Button bt_setting;
+	private MyInformation myInformation;
 	private View root;
+	
+	// 드로우워 메뉴 상단에 변하는 데이터들을 기록하기 위한 선언들
 	private TextView tv_drawableName;
+	private TextView tv_request;
+	private TextView tv_job;
+	private TextView tv_credits;
 	private String userName;
 
 	public NavigationDrawerFragment() { }
@@ -67,7 +80,10 @@ public class NavigationDrawerFragment extends Fragment {
 		mDrawerListView = (ListView) root.findViewById(R.id.lv_navigation_drawer_menu);
 		
 		tv_drawableName = (TextView)root.findViewById(R.id.tv_drawable_name);
-		tv_drawableName.setText(userName);
+		tv_request = (TextView)root.findViewById(R.id.tv_request);
+		tv_job = (TextView)root.findViewById(R.id.tv_job);
+		tv_credits = (TextView)root.findViewById(R.id.tv_credits);
+		
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -135,6 +151,9 @@ public class NavigationDrawerFragment extends Fragment {
                 	ActionBar actionBar = getActionBar();
                		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                 }
+                
+                
+                
             }
 
             // 드로워를 열었을 때 동작하는 방식
@@ -143,9 +162,13 @@ public class NavigationDrawerFragment extends Fragment {
                 super.onDrawerOpened(drawerView);
                 if (!isAdded())
                     return;
-               
+                
+                searchMyInformationFromServer( ); 
+                
                 ActionBar actionBar = getActionBar();
                 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+                
+                
             }
         };
 
@@ -166,6 +189,38 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 	}
+	
+	public void searchMyInformationFromServer( ) {
+		MyInformationRequest myInformationRequest = new MyInformationRequest(getActivity());
+		
+		try {
+			myInformationRequest.getMyInformation(getMyInformationListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	HttpRequester.NetworkResponseListener getMyInformationListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) { 
+			JSONObject tempJSONObject = null;
+			
+			try {
+				tempJSONObject = jsonObject.getJSONObject(JsonResponseHandler.PARM_DATA);
+				myInformation = new MyInformation(tempJSONObject);			
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			tv_drawableName.setText(myInformation.getUserName()); // 현재 로그인한 사용자의 이름을 기입한다.
+			tv_request.setText(myInformation.getNumberOfRequests());
+			tv_job.setText(myInformation.getNumberOfJobs());
+			tv_credits.setText(myInformation.getCoin());
+		}	
+		
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
 	
 	@Override
 	public void onAttach(Activity activity) {

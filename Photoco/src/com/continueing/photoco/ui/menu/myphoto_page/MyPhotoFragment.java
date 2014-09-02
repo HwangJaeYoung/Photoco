@@ -78,7 +78,7 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 				e.printStackTrace();
 			}
 			
-			for(int i = 0; i < 10; i++) {
+			for(int i = 0; i < 7; i++) {
 				try {
 					Image image = new Image(jsonArray.getJSONObject(i));
 					imageSet.add(image);

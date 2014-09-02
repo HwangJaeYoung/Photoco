@@ -71,7 +71,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 				e.printStackTrace();
 			}
 			
-			for(int i = 0; i < jsonArray.length(); i++) {
+			for(int i = 0; i < 7; i++) {
 				try {
 					Cart cart = new Cart(jsonArray.getJSONObject(i));
 					cartId.add(cart.getId());

@@ -72,7 +72,7 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
 				e.printStackTrace();
 			}
 			
-			for(int i = 0; i < jsonArray.length(); i++) {
+			for(int i = 0; i < 7; i++) {
 				try {
 					Purchase purchse = new Purchase(jsonArray.getJSONObject(i), savedTabIndex);
 					purchaseSet.add(purchse);
