@@ -1,5 +1,11 @@
 package com.continueing.photoco.ui;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +15,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.etc.BackPressCloseHandler;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.JsonResponseHandler;
+import com.continueing.photoco.reuse.network.MyPhotoRequest;
 import com.continueing.photoco.ui.login_page.LoginActivity;
 import com.continueing.photoco.ui.menu.cart_page.CartFragment;
 import com.continueing.photoco.ui.menu.findingjob_page.FindingJobFragment;
@@ -77,6 +87,35 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             }
         }
 	}
+	
+	public void searchMyInformationFromServer( ) {
+		MyPhotoRequest myPhotoRequest = new MyPhotoRequest(getActivity( ));
+		
+		if(aTabName.equals("bought")) {
+			try {
+				myPhotoRequest.getMyPhotoBoughtImageItems(getMyPhotoItemListener);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(aTabName.equals("uploaded")) { 
+			try {
+				myPhotoRequest.getMyPhotoUploadedImageItems(getMyPhotoItemListener);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	HttpRequester.NetworkResponseListener getMyPhotoItemListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) { 
+	
+		}	
+		
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
 
 	// 설정 버튼을 눌렸을 때 동작하는 메소드
 	@Override

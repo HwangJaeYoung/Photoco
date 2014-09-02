@@ -62,6 +62,7 @@ public class ViewForMyRequestDetailActivity extends AbstractViewForActivity {
 		tv_requestDetailPrice.setText(item.getPrice());
 		tv_requestDetailImageSize.setText(item.getWidth() + " X " + item.getHeight());
 		siv_requestDetailPhoto.setImageUrl(item.getUrl());
+		tv_requestDetailLocation.setText(item.getUserProfile().getLocation().getDescription());
 	}
 	
 	public static interface Controller
