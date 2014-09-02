@@ -59,11 +59,11 @@ public class ViewForMarketplaceFragment extends AbstractViewForFragment implemen
 	}
 	
 	public static interface Controller {
-		public void onPhotoSelected( );
+		public void onPhotoSelected(int aPosition);
 	}
 	
 	@Override
 	public void onItemClick(StaggeredGridView parent, View view, int position,long id) {
-		controller.onPhotoSelected();	
+		controller.onPhotoSelected(position);	
 	}
 } 

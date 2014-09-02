@@ -1,6 +1,7 @@
 package com.continueing.photoco.ui.menu.cart_page.cart_detail_page;
 
-import com.continueing.photoco.ui.menu.cart_page.CartFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +10,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.continueing.photoco.domain.Cart;
+import com.continueing.photoco.reuse.network.HttpRequester;
+import com.continueing.photoco.reuse.network.PurchaseRequest;
+import com.continueing.photoco.ui.menu.cart_page.CartFragment;
 
 public class CartDetailActivity extends ActionBarActivity implements ViewForCartDetailActivity.Controller {
 	
@@ -25,11 +32,31 @@ public class CartDetailActivity extends ActionBarActivity implements ViewForCart
 	
 	@Override
 	public void removeCartItem() {
-		int position = getIntent( ).getIntExtra(CartFragment.PARAM_SELECTED_POSITION, 0);
 		// 통신을 해서 해당 아이템을 삭제한다.
-		Intent intent = new Intent( );
-		intent.putExtra(CartFragment.PARAM_SELECTED_POSITION, position);
-		setResult(Activity.RESULT_OK, intent);
+		setResult(Activity.RESULT_OK);
 		finish( );
 	}
+
+	@Override
+	public void buyCartItem() {
+		Cart item = (Cart)getIntent().getSerializableExtra(CartFragment.PARAM_CART_DETAIL_ITEM_KEY);
+		PurchaseRequest purchaseRequest = new PurchaseRequest(getApplicationContext());
+		
+		try {
+			purchaseRequest.purchaseItemFormCart(item.getId(), executePurchaseItemListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	HttpRequester.NetworkResponseListener executePurchaseItemListener = new HttpRequester.NetworkResponseListener() {
+		@Override
+		public void onSuccess(JSONObject jsonObject) {
+			setResult(Activity.RESULT_OK);
+			finish( );
+		}
+
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
 }

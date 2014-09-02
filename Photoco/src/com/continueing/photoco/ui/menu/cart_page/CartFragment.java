@@ -10,13 +10,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.continueing.photoco.domain.Cart;
-import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.network.CartRequest;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
@@ -28,8 +28,8 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	private ViewForCartFragment view;
 	private ArrayList<Cart> cartSet;
 	private ArrayList<String> cartId;
-	public static int REQUEST_CODE_GET_REMOVE = 0;
-	public static int REQUEST_CODE_GET_BUY = 1;
+	private int itemPosition;
+	public static int REQUEST_CODE_GET_REMOVE_BUY = 0;
 	public static final String PARAM_SELECTED_POSITION = "position";
 	public static final String PARAM_CART_DETAIL_ITEM_KEY = "cartdetailitem";
 	
@@ -91,20 +91,20 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_CODE_GET_REMOVE)
+		if(requestCode == REQUEST_CODE_GET_REMOVE_BUY) {
 			if(resultCode == Activity.RESULT_OK) {
-				int position = data.getIntExtra(PARAM_SELECTED_POSITION, -1);
-				view.removeSelectedItem(cartSet.get(position));
-				cartSet.remove(position);
+				cartSet.remove(itemPosition);
+				view.addCartItemArrayList(cartSet);
 			}
+		}
 	}
 
 	@Override
 	public void onShowDetailCart(int aPosition) {
+		itemPosition = aPosition;
 		Intent intent = new Intent(getActivity( ), CartDetailActivity.class);
-		intent.putExtra(PARAM_SELECTED_POSITION, aPosition);
 		intent.putExtra(PARAM_CART_DETAIL_ITEM_KEY, cartSet.get(aPosition));
-		startActivityForResult(intent, REQUEST_CODE_GET_REMOVE);
+		startActivityForResult(intent, REQUEST_CODE_GET_REMOVE_BUY);
 	}
 
 	// 카트에 있는 모든 아이템을 삭제한다.

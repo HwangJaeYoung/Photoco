@@ -19,7 +19,6 @@ import com.continueing.photoco.R;
 import com.continueing.photoco.domain.Cart;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.continueing.photoco.ui.menu.cart_page.listview.ArrayAdapterForCartListView;
-import com.continueing.photoco.ui.menu.cart_page.listview.ViewForCartListViewItem.ICartItem;
 
 public class ViewForCartFragment extends AbstractViewForFragment{
 
@@ -91,7 +90,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		arrayAdapterForCartListView.clear();
 	}
 	
-	public void removeSelectedItem(ICartItem anItem) {
+	public void removeSelectedItem(Cart anItem) {
 		arrayAdapterForCartListView.remove(anItem);
 	}
 	

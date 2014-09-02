@@ -9,6 +9,7 @@ import com.continueing.photoco.reuse.girdview.staggered.loader.ImageLoader;
 import com.continueing.photoco.reuse.girdview.staggered_grid_view.ViewForStaggeredGridViewListViewItem;
 import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestListViewItem.IImageURL;
 
+
 public abstract class AbstarctArrayImageAdapter <T extends IListViewItem> extends ArrayAdapter<T>{
 	
 	private ImageLoader mLoader;

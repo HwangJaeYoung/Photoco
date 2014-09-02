@@ -1,11 +1,14 @@
 package com.continueing.photoco.ui.menu.myphoto_page.myphoto_detail_page;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForActivity;
+import com.continueing.photoco.ui.menu.marketplace_page.MarketplaceFragment;
 
 public class ViewForMyPhotoDetailActivity extends AbstractViewForActivity {
 
@@ -32,7 +35,12 @@ public class ViewForMyPhotoDetailActivity extends AbstractViewForActivity {
 	
 		
 	}
-
+	
+	public void initViewInfos(Intent anIntent) {
+	
+	
+	}
+	
 	public static interface Controller {
 		
 	}

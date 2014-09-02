@@ -29,14 +29,6 @@
             android:textColor="#b5bdc8"
             android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/iv_list_item_right"
-            android:layout_width="32dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/badge_ic" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -23,6 +23,7 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 	private TextView tv_cart_detail_price;
 	private TextView tv_cart_detail_size;
 	private TextView tv_cart_detail_location;
+	private Button bt_cart_detail_buy;
 	
 	public ViewForCartDetailActivity(Context context, Controller aController) {
 		super(context);
@@ -41,6 +42,8 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 		tv_cart_detail_price = (TextView)findViewById(R.id.tv_cart_detail_price);
 		tv_cart_detail_size = (TextView)findViewById(R.id.tv_cart_detail_size);
 		tv_cart_detail_location = (TextView)findViewById(R.id.tv_cart_detail_location);
+		ib_cartDetailRemove = (ImageButton)findViewById(R.id.ib_cart_detail_remove);
+		bt_cart_detail_buy= (Button)findViewById(R.id.bt_cart_detail_buy);
 	}
 
 	@Override
@@ -49,6 +52,13 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 			@Override
 			public void onClick(View v) {
 				controller.removeCartItem();				
+			}
+		});
+		
+		bt_cart_detail_buy.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				controller.buyCartItem();
 			}
 		});
 	}
@@ -62,8 +72,8 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 		tv_cart_detail_size.setText(item.getImage().getWidth() + " X " + item.getImage().getHeight());
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void removeCartItem( );
+		public void buyCartItem( );		
 	}
 }

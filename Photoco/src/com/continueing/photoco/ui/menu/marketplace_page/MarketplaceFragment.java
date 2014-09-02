@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -32,6 +33,9 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	private ActionBar.Tab actionBarTab;
 	private boolean tabRestrict = true;
 	private ArrayList<Image> imageSet;
+	private static final int REQUEST_ADD_TO_CART = 0;
+	private int clickedImagePosition;
+	public static final String PARAM_MARKETPLACE_IMAGE_ITEM ="marketplaceimageitem";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,15 +46,9 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMarketplaceFragment(getActivity( ), inflater, container, this);
-        
+        actionBar.setSelectedNavigationItem(0);
         return view.getRoot( );
     }
-	
-	@Override
-	public void onResume( ) {
-		super.onResume();
-		actionBar.setSelectedNavigationItem(0);
-	}
 	
 	public void searchMarketplaceItemFromServer(String aTabName) {
 		MarketpaceRequest marketpaceRequest = new MarketpaceRequest(getActivity( ));
@@ -73,7 +71,6 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 				e.printStackTrace();
 			}
 			
-		
 			for(int i = 0; i < 10; i++) {
 				try {
 					Image image = new Image(jsonArray.getJSONObject(i));
@@ -90,9 +87,21 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	};
 
 	@Override
-	public void onPhotoSelected() {
+	public void onPhotoSelected(int aPosition) {
+		clickedImagePosition = aPosition;
 		Intent intent = new Intent(getActivity( ), MarketplaceDetailActivity.class);
-		startActivity(intent);
+		intent.putExtra(PARAM_MARKETPLACE_IMAGE_ITEM, imageSet.get(aPosition));
+		startActivityForResult(intent, REQUEST_ADD_TO_CART);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == REQUEST_ADD_TO_CART) {
+			if(resultCode == Activity.RESULT_OK) {
+				imageSet.remove(clickedImagePosition);
+				view.addMarketplaceImageSetArrayList(imageSet);
+			}
+		}
 	}
 	
 	public void addActionBarTab( ) {
@@ -145,8 +154,7 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	}
 	
 	@Override
-	public void onDetach( )
-	{
+	public void onDetach( ) {
 		super.onDetach();
 		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -147,31 +146,24 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		});
 	}
 	
-	public void selectedLocation(String aLocation)
-	{
+	public void selectedLocation(String aLocation) {
 		tv_requestNewLocationDetail.setText(aLocation);
 	}
 	
-	public void selectedCategory(String aCategory)
-	{
+	public void selectedCategory(String aCategory) {
 		tv_requestNewCategoryDetail.setText(aCategory);
 	}
 	
-	public void selectedImage(Bitmap aBitmap)
-	{
+	public void selectedImage(Bitmap aBitmap) {
 		tv_requestNewAdd.setVisibility(View.INVISIBLE);
 		bt_imageView.setImageBitmap(aBitmap);
 	}
 	
-	public String getDescription( )
-	{
+	public String getDescription( ) {
 		return et_requestNew.getText().toString();
 	}
 	
-	public void selectedDuration(String aDuration, String aEndDate, String aDurationHour)
-	{
-		Log.i("duration", ""+aDurationHour);
-		
+	public void selectedDuration(String aDuration, String aEndDate, String aDurationHour) {
 		int leftTime = Integer.parseInt(aDurationHour);
 		leftTime *= 60;
 		tv_requestNewDurationDetailDay.setText(aDuration);
@@ -179,8 +171,7 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		tv_requestNewDurationDetailCalendar.setText(aEndDate);
 	}
 	
-	public void selectedTag(ArrayList<ITagItem> items)
-	{
+	public void selectedTag(ArrayList<ITagItem> items) {
 		bt_requestNewTagDetail.setVisibility(View.INVISIBLE);
 		tv_requestNewTagDetail.setVisibility(View.INVISIBLE);
 		arrayAdapterForMyRequestTagGrid.clear();

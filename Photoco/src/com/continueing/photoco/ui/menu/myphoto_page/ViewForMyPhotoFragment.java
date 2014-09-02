@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
+import com.continueing.photoco.domain.Image;
 import com.continueing.photoco.reuse.girdview.staggered_grid_view.ArrayAdapterStaggeredGridView;
 import com.continueing.photoco.reuse.mvc.activity.AbstractViewForFragment;
 import com.origamilabs.library.views.StaggeredGridView;
@@ -20,7 +21,7 @@ import com.origamilabs.library.views.StaggeredGridView.OnItemClickListener;
 
 public class ViewForMyPhotoFragment extends AbstractViewForFragment implements OnItemClickListener {
 
-	private ArrayAdapterStaggeredGridView adapter;
+	private ArrayAdapterStaggeredGridView arrayAdapterStaggeredGridView;
 	private StaggeredGridView gridView;
 	private Controller controller;
 	private Button bt_myphotoNew;
@@ -45,8 +46,8 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		int margin = getContext().getResources().getDimensionPixelSize(R.dimen.margin);
 		gridView.setItemMargin(margin); // set the GridView margin
 		gridView.setPadding(margin, 0, margin, 0); // have the margin on the sides as well 
-		adapter = new ArrayAdapterStaggeredGridView(getContext( ), 0);
-		gridView.setAdapter(adapter);
+		arrayAdapterStaggeredGridView = new ArrayAdapterStaggeredGridView(getContext( ), 0);
+		gridView.setAdapter(arrayAdapterStaggeredGridView);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
@@ -55,15 +56,13 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	}
 
 	@Override
-	protected void setEvents()
-	{
+	protected void setEvents() {
 		gridView.setOnItemClickListener(this);
-		bt_myphotoNew.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				controller.onNewPhotoSelected( );
-			}
-		});
+	}
+	
+	public void addMyPhotoImageSetArrayList(ArrayList<Image> aList){
+		arrayAdapterStaggeredGridView.clear();
+		arrayAdapterStaggeredGridView.addAll(aList);
 	}
 	
 	public void progresOff( ) {
@@ -83,14 +82,12 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	}
 	
 
-    public static interface Controller
-    {
-    	public void onPhotoSelected( );
-    	public void onNewPhotoSelected( );
+    public static interface Controller {
+    	public void onPhotoSelected(int aPosition);
     }
 
 	@Override
 	public void onItemClick(StaggeredGridView parent, View view, int position,long id) {
-		controller.onPhotoSelected();	
+		controller.onPhotoSelected(position);	
 	}
 }

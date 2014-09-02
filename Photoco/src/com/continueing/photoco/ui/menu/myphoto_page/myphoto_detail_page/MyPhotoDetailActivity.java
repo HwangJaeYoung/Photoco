@@ -17,5 +17,6 @@ public class MyPhotoDetailActivity extends ActionBarActivity implements ViewForM
 		view = new ViewForMyPhotoDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
+		view.initViewInfos(getIntent());
 	}
 }
