@@ -13,16 +13,16 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.continueing.photoco.domain.MyInformation;
+import com.continueing.photoco.reuse.etc.ErrorCodeList;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MyInformationRequest;
+import com.continueing.photoco.reuse.network.UsersRequest;
 import com.continueing.photoco.reuse.page.location_page.LocationActivity;
-import com.continueing.photoco.ui.MainActivity;
 
 public class SettingActivity extends ActionBarActivity implements ViewForSettingActivity.Controller {
 	
 	private ViewForSettingActivity view;
-	private String location;
 	private MyInformation myInformation;
 	public static final int REQUEST_CODE_PICK_LOCATION = 0;
 	
@@ -37,18 +37,17 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	}
 
 	@Override
-	public void onSettingClicked(String aPassword, String aConfirmPassword) {
+	public void onSettingClicked(String anUserId, String anUserName, String anEmail, String aPassword, String aConfirmPassword, String anLocationID) {
 		// 업데이트한 비밀번호 또는 지역을 업데이트하고 뷰 종료
-		if(aPassword.length() > 5 && aConfirmPassword.length() > 5 && location.length() > 0) {
-			if(aPassword.equals(aConfirmPassword)) {
-				// 통신을 한다.
-				finish( );	
-			}
-		} else {
-			Toast.makeText(this, "pass오류", Toast.LENGTH_SHORT).show();
+		UsersRequest usersRequest = new UsersRequest(getApplicationContext());
+		try {
+			usersRequest.updateUserInformation(anUserId, anUserName, anEmail,
+			aPassword, aConfirmPassword, anLocationID, userInformationUpdateListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
-	
+
 	public void searchMyInformationFromServer( ) {
 		MyInformationRequest myInformationRequest = new MyInformationRequest(getApplicationContext());
 		
@@ -76,6 +75,69 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 		
 		@Override
 		public void onFail(JSONObject jsonObject, int errorCode) { }
+	};
+	
+	HttpRequester.NetworkResponseListener userInformationUpdateListener = new HttpRequester.NetworkResponseListener() {
+		// Location객체를 만들고 리스트 뷰에 주기위해 합쳐놓는 과정
+		@Override
+		public void onSuccess(JSONObject jsonObject) {
+			finish( );
+			Toast.makeText(getApplicationContext(), "To update user information is success", Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		public void onFail(JSONObject jsonObject, int errorCode) { 
+			switch(errorCode)
+			{
+				case 0:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_UNKNOWN, Toast.LENGTH_SHORT).show();
+					break;
+				case 1:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_USERNAME_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 2:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_EMAIL_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 3:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_PASSWORD_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 4:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_PASSWORD_CONFIRMATION_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 5:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_LOCATION_ID_ABSENCE, Toast.LENGTH_SHORT).show();
+					break;
+				case 6:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_TOO_SHORT_USERNAME, Toast.LENGTH_SHORT).show();
+					break;
+				case 7:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_TOO_LONG_USERNAME, Toast.LENGTH_SHORT).show();
+					break;
+				case 8:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_TOO_SHORT_PASSWORD, Toast.LENGTH_SHORT).show();
+					break;
+				case 9:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_TOO_LONG_PASSWORD, Toast.LENGTH_SHORT).show();
+					break;
+				case 10:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_DIFFERENT_PASSWORDS, Toast.LENGTH_SHORT).show();
+					break;
+				case 11:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_INVALID_EMAIL, Toast.LENGTH_SHORT).show();
+					break;
+				case 12:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_INVALID_PRIMARY_KEY, Toast.LENGTH_SHORT).show();
+					break;
+				case 13:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_NONEXISTENT_LOCATION_ID, Toast.LENGTH_SHORT).show();
+					break;
+				case 14:
+					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_ALREADY_EXISTING_USER, Toast.LENGTH_SHORT).show();
+					break;
+				default:
+					break;
+			}	
+		}
 	};
 	
 	// 지역검색 액티비티가 종료되고 거기서 사용자가 선택한 지역을 받기위한 콜백 메소드

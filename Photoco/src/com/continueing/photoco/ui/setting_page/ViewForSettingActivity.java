@@ -22,6 +22,7 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 	private LinearLayout ll_settingLocation;
 	private EditText et_settingPassword;
 	private EditText et_settingConfrimPassword;
+	private MyInformation myInformation;
 	
 	public ViewForSettingActivity(Context context, Controller aController) {
 		super(context);
@@ -45,9 +46,10 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 	}
 	
 	public void setMyInformationData(MyInformation aMyInformation) {
-		tv_settingUsername.setText(aMyInformation.getUserName());
-		tv_settingEmail.setText(aMyInformation.geteMail());
-		tv_settingLocation.setText(aMyInformation.getLocation().getDescription());
+		myInformation = aMyInformation;
+		tv_settingUsername.setText(myInformation.getUserName());
+		tv_settingEmail.setText(myInformation.geteMail());
+		tv_settingLocation.setText(myInformation.getLocation().getDescription());
 	}
 
 	@Override
@@ -55,10 +57,14 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 		bt_settingAccount.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				controller.onSettingClicked(et_settingPassword.toString(), et_settingConfrimPassword.toString());
+				controller.onSettingClicked(myInformation.getId(),
+						myInformation.getUserName(), myInformation.geteMail(),
+						et_settingPassword.getText().toString(),
+						et_settingConfrimPassword.getText().toString(), myInformation
+								.getLocation().getId());
 			}
 		});
-		
+	
 		// 지역을 변경하기 위해서 버튼을 클릭했을 때
 		ll_settingLocation.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -75,7 +81,7 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 		
 	public static interface Controller
 	{
-		public void onSettingClicked(String aPassword, String aConfirmPassword);
+		public void onSettingClicked(String anUserId, String anUserName, String anEmail, String aPassword, String aConfirmPassword, String anLocationID);
 		public void onLocationSelect( );
 	}
 }

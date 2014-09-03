@@ -10,9 +10,10 @@ public class UsersRequest {
 	
 	private Context context;
 	private static final String URL_BASE = "/users";
+	private static final String PARM_UPDATE = "update";
 	private static final String PARM_NAME = "username";
-	private static final String PARM_PASSWORD = "password";
 	private static final String PARM_EMAIL = "email";
+	private static final String PARM_PASSWORD = "password";
 	private static final String PARM_CONFIRMPASSWORD = "password_confirmation";
 	private static final String PARM_PRIMARYKEY = "location_id";
 	
@@ -38,5 +39,15 @@ public class UsersRequest {
 		requestParams.put(PARM_CONFIRMPASSWORD, aConfirmPassword);
 		requestParams.put(PARM_PRIMARYKEY, aPrimaryKey);
 		HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+	}
+	
+	public void updateUserInformation(String userId, String aUserName, String anEmail, String aPassword, String aConfirmPassword, String aLocationId, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
+		RequestParams requestParams = new RequestParams( );
+		requestParams.put(PARM_NAME, aUserName);
+		requestParams.put(PARM_EMAIL, anEmail);
+		requestParams.put(PARM_PASSWORD, aPassword);
+		requestParams.put(PARM_CONFIRMPASSWORD, aConfirmPassword);
+		requestParams.put(PARM_PRIMARYKEY, aLocationId);
+		HttpRequester.post(URL_BASE + "/" + userId + "/" + PARM_UPDATE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }
