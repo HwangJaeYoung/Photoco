@@ -19,6 +19,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.continueing.photoco.domain.FindingJobList;
 import com.continueing.photoco.reuse.listview.findingjoblist.ViewForFindingJobListViewItem.IFindingJobListItem;
@@ -49,6 +50,7 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 		// this는 Controller를 위해서 넣어주는 것이다.
         view = new ViewForFindingJobFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
         actionBar.setSelectedNavigationItem(0);
+        view.setInvisible();
         return view.getRoot();
     }
 
@@ -151,16 +153,19 @@ public class FindingJobFragment extends Fragment implements ViewForFindingJobFra
 			if(aTabName.getText().toString().equals("Recommended") && tabRestrict == true) {
 				searchFindingJobItemFromServer("recommended");
 				savedTabName = "recommended";
+		        view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Latest")) {
 				searchFindingJobItemFromServer("latest");
 				savedTabName = "latest";
+		        view.setInvisible();
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Distance")) {	
 				searchFindingJobItemFromServer("distance");
 				savedTabName = "distance";
+		        view.setInvisible();
 				tabRestrict = true;
 			}
 		}

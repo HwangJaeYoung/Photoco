@@ -13,11 +13,52 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <com.loopj.android.image.SmartImageView
-            android:id="@+id/siv_list_cart_image"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/urgent_ic" />
+            android:layout_height="match_parent" >
+
+            <com.loopj.android.image.SmartImageView
+                android:id="@+id/siv_list_cart_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/urgent_ic" />
+
+            <Button
+                android:id="@+id/bt_list_cart_size"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/size_small"
+                android:text="L"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_list_cart_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="4dp"
+                android:text="P"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_list_cart_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="1dp"
+                android:layout_toLeftOf="@id/tv_list_cart_unit"
+                android:text="25"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout

@@ -44,6 +44,7 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMyAccountFragment(getActivity( ), inflater, container, this);
         actionBar.setSelectedNavigationItem(0);
+        view.setInvisible();
         return view.getRoot();
 	}
 	
@@ -120,17 +121,20 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("Sold") && tabRestrict == true) {
 				searchPurchaseItemFromServer("sold");
-				savedTabIndex = 0;
+				savedTabIndex = 0; // Sold, Boutght, All 상태를 구분하기윈한 flag svaedTabIndex
+				view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Bought")) {
 				searchPurchaseItemFromServer("bought");
 				savedTabIndex = 1;
+				view.setInvisible();
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("All")) {	
 				searchPurchaseItemFromServer("bought");
 				savedTabIndex = 2;
+				view.setInvisible();
 				tabRestrict = true;
 			}
 		}

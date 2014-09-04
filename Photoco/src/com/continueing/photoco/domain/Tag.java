@@ -8,6 +8,7 @@ import org.json.JSONException;
 
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 
+// 하나의 Tag객체를 구성한다.
 public class Tag implements ITagItem, Serializable {
 	private String tagText;
 

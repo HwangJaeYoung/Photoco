@@ -19,6 +19,8 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 	private Button bt_listCartTagFirst;
 	private Button bt_listCartTagSecond;
 	private Button bt_listCartTagThird;
+	private Button bt_listCartSize;
+	private TextView tv_listCartPrice;
 	
 	public ViewForCartListViewItem(Context context) {
 		super(context);
@@ -37,6 +39,8 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 		bt_listCartTagFirst = (Button)findViewById(R.id.bt_list_cart_tag_first);
 		bt_listCartTagSecond = (Button)findViewById(R.id.bt_list_cart_tag_second);
 		bt_listCartTagThird = (Button)findViewById(R.id.bt_list_cart_tag_third);
+		bt_listCartSize = (Button)findViewById(R.id.bt_list_cart_size);
+		tv_listCartPrice = (TextView)findViewById(R.id.tv_list_cart_price);
 	}
 
 	@Override
@@ -80,6 +84,9 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 		bt_listCartTagFirst = (Button)findViewById(R.id.bt_list_cart_tag_first);
 		bt_listCartTagSecond = (Button)findViewById(R.id.bt_list_cart_tag_second);
 		bt_listCartTagThird = (Button)findViewById(R.id.bt_list_cart_tag_third);
+		
+		bt_listCartSize.setText(iCartItem.getImage().getSize());
+		tv_listCartPrice.setText(iCartItem.getImage().getPrice());
 	}
 	
 	public static interface ICartItem extends IListViewItem {

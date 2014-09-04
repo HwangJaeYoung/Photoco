@@ -41,7 +41,7 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	Handler mHandler = new Handler( ) {
 		public void handleMessage(Message msg) {
 			/* searchImageURLFromServer의 통신을 시작하는 곳이며 
-			   itemCounter를 사용하여 searchImageURLFromServer의 호출 횟수를 조장한다 */
+			   itemCounter를 사용하여 searchImageURLFromServer의 호출 횟수를 조정한다 */
 			if(msg.what == 1) {
 				if(itemCounter < requestIdSet.size())
 					searchImageURLFromServer(requestIdSet.get(itemCounter));

@@ -16,12 +16,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.continueing.photoco.domain.Image;
-import com.continueing.photoco.domain.Purchase;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MarketpaceRequest;
@@ -51,6 +51,8 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
     }
 	
 	public void searchMarketplaceItemFromServer(String aTabName) {
+		view.progressOn();
+		view.gridviewOff();
 		MarketpaceRequest marketpaceRequest = new MarketpaceRequest(getActivity( ));
 		try {
 			marketpaceRequest.getMarketplaceImageItems(aTabName, getMarketplaceItemListener);
@@ -79,6 +81,8 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 					e.printStackTrace();
 				}
 			}			
+			view.progresOff();
+			view.gridviewviewOn();
 			view.addMarketplaceImageSetArrayList(imageSet);
 		}	
 		
@@ -109,21 +113,21 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		
-		TabListener findjobListener = new TabListener(null);
+		TabListener marketplaceListener = new TabListener(null);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("BestSeller");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(marketplaceListener);
 		actionBar.addTab(actionBarTab);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("MostViewed");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(marketplaceListener);
 		actionBar.addTab(actionBarTab);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Latest");
-		actionBarTab.setTabListener(findjobListener);
+		actionBarTab.setTabListener(marketplaceListener);
 		actionBar.addTab(actionBarTab);
 	}
 	
@@ -134,14 +138,22 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
 				searchMarketplaceItemFromServer("bestseller");
+				if(view == null) {
+					Log.i("ssi", "null");
+				}
+				else {
+				view.setInvisible();
+				}
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("MostViewed")) {
 				searchMarketplaceItemFromServer("mostviewd");
+				view.setInvisible();
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Latest")) {	
 				searchMarketplaceItemFromServer("latest");
+				view.setInvisible();
 				tabRestrict = true;
 			}
 		}

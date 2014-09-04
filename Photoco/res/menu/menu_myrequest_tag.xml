@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/item_menu_ok"
-        android:icon="@drawable/account_ic"
+        android:icon="@drawable/bt_ok"
         android:title="serarch"
         app:showAsAction="always">
     </item>

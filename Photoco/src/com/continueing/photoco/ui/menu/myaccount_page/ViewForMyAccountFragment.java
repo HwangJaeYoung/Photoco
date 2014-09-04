@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -25,6 +26,7 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 	private ListView lv_myaccountPurchase;
 	private ProgressBar progressBar;
 	private ArrayAdapterForMyAccountListView arrayAdapterForMyAccountListView;
+	private LinearLayout ll_myaccountEmpty;
 	
 	public ViewForMyAccountFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -49,10 +51,16 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section7);
 		
 		progressBar = (ProgressBar)findViewById(R.id.pb_myaccount);
+		ll_myaccountEmpty = (LinearLayout)findViewById(R.id.ll_myaccount_empty);
 	}
 
 	public void addMyAccountPurchaseArrayList(ArrayList<Purchase> anArrayList)
 	{
+		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
+			setInvisible( );
+		else 
+			setVisible( );
+		
 		arrayAdapterForMyAccountListView.clear();
 		arrayAdapterForMyAccountListView.addAll(anArrayList);
 	}
@@ -65,6 +73,14 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 				controller.onPurchase();				
 			}
 		});
+	}
+	
+	public void setInvisible( ) {
+		ll_myaccountEmpty.setVisibility(View.INVISIBLE);
+	}
+	
+	public void setVisible( ) {
+		ll_myaccountEmpty.setVisibility(View.VISIBLE);
 	}
 	
 	public void progresOff( ) {

@@ -3,6 +3,7 @@ package com.continueing.photoco.domain;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+// 구매, 또는 판매한 사람의 정보를 담는 도메인
 public class BuyerSeller {
 	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_BASICINFO = "basic_info";

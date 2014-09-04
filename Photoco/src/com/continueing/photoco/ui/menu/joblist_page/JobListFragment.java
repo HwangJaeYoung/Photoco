@@ -44,6 +44,7 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForJobListFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
         actionBar.setSelectedNavigationItem(0);
+        view.setInvisible();
         return view.getRoot();
     }
 
@@ -132,14 +133,17 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().equals("Time") && tabRestrict == true) {
 				searchJobListItemFromServer("time");
+		        view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Category")) {
 				searchJobListItemFromServer("category");
+		        view.setInvisible();
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Distance")) {
 				searchJobListItemFromServer("distance");
+		        view.setInvisible();
 				tabRestrict = true;
 			}
 		}

@@ -13,6 +13,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
+            <LinearLayout
+                android:id="@+id/ll_myaccount_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#dde6f2"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/iv_myaccount_empty_face"
+                    android:layout_width="108dp"
+                    android:layout_height="107dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/empty_face_ic" />
+
+                <TextView
+                    android:id="@+id/tv_myaccount_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="No myaccount."
+                    android:textColor="#afb9c1"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
             <ListView
                 android:id="@+id/lv_myaccount_purchase"
                 android:layout_width="match_parent"

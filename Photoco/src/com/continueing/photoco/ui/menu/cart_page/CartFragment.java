@@ -42,6 +42,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForCartFragment(getActivity( ), inflater, container, this);      
         searchCartItemFromServer( );
+        view.setInvisible();
         return view.getRoot();
     }
 	

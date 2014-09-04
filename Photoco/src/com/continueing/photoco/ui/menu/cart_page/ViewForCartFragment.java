@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -28,6 +29,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	private ImageButton ib_cartRemoveItem;
 	private Button bt_cartBuyItem;
 	private ArrayAdapterForCartListView arrayAdapterForCartListView;
+	private LinearLayout ll_cartEmpty;
 	
 	public ViewForCartFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -55,6 +57,8 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		pb_cart = (ProgressBar)findViewById(R.id.pb_cart);
 		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
 		bt_cartBuyItem = (Button)findViewById(R.id.bt_cart_buy_item);
+		
+		ll_cartEmpty = (LinearLayout)findViewById(R.id.ll_cart_empty);
 	}
 
 	@Override
@@ -82,8 +86,22 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	}
 	
 	public void addCartItemArrayList(ArrayList<Cart> anArrayList) {
+		
+		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
+			setInvisible( );
+		else 
+			setVisible( );
+		
 		arrayAdapterForCartListView.clear();
 		arrayAdapterForCartListView.addAll(anArrayList);
+	}
+	
+	public void setInvisible( ) {
+		ll_cartEmpty.setVisibility(View.INVISIBLE);
+	}
+	
+	public void setVisible( ) {
+		ll_cartEmpty.setVisibility(View.VISIBLE);
 	}
 	
 	public void removeAllItems( ) {

@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.continueing.photoco.R;
 import com.continueing.photoco.reuse.listview.findingjoblist.ArrayAdapterForFindingJobListFragment;
@@ -25,6 +28,8 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 	private ArrayAdapterForFindingJobListFragment arrayAdapterForFindingJobListFragment;
 	private ListView lv_requestFindingJobList;
 	private ProgressBar progressBar;
+	private LinearLayout ll_findingjoblistEmpty;
+	private TextView tv_findingjoblistEmpty1;
 	
 	public ViewForJobListFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -47,6 +52,9 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 		prefs.edit().putBoolean("actionBar", true).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section3);
+		
+		ll_findingjoblistEmpty = (LinearLayout)findViewById(R.id.ll_findingjoblist_empty);
+		tv_findingjoblistEmpty1 = (TextView)findViewById(R.id.tv_findingjoblist_empty1);
 	}
 
 	@Override
@@ -59,8 +67,22 @@ public class ViewForJobListFragment extends AbstractViewForFragment{
 		});
 	}
 	
+	public void setInvisible( ) {
+		ll_findingjoblistEmpty.setVisibility(View.INVISIBLE);
+	}
+	
+	public void setVisible( ) {
+		tv_findingjoblistEmpty1.setText("No findingjob list");
+		ll_findingjoblistEmpty.setVisibility(View.VISIBLE);
+	}
+	
 	public void addJobListItemArrayList(ArrayList<IFindingJobListItem> anArrayList)
 	{
+		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
+			setInvisible( );
+		else 
+			setVisible( );
+		
 		arrayAdapterForFindingJobListFragment.clear();
 		arrayAdapterForFindingJobListFragment.addAll(anArrayList);
 	}

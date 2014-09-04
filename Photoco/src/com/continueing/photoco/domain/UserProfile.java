@@ -12,10 +12,10 @@ public class UserProfile implements Serializable {
 	private static final String JSON_KEY_COIN = "coin";
 	private static final String JSON_KEY_LOCATION = "location";
 	
-	private String id;
-	private String name;
-	private String coin;
-	private Location location;
+	private String id; // 유저의 PrimaryKey
+	private String name; // 유저의 이름
+	private String coin; // 유저의 보유액
+	private Location location; // Location 객체
 	
 	public UserProfile(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);

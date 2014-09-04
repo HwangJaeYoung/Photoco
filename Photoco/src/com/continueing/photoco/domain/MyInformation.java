@@ -3,6 +3,7 @@ package com.continueing.photoco.domain;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+// 드로워 박스에서 로그인한 사용자의 정보를 보여줄 때 사용하는 도멘인
 public class MyInformation {
 	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_LOCATION = "location";

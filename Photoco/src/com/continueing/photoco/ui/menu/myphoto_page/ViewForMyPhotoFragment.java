@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.continueing.photoco.R;
@@ -24,8 +24,8 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	private ArrayAdapterStaggeredGridView arrayAdapterStaggeredGridView;
 	private StaggeredGridView gridView;
 	private Controller controller;
-	private Button bt_myphotoNew;
 	private ProgressBar progressBar;
+	private LinearLayout ll_myphoto_empty;
 	
 	public ViewForMyPhotoFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -39,7 +39,6 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 
 	@Override
 	protected void initViews() {
-		bt_myphotoNew = (Button)findViewById(R.id.bt_myphoto_new);
 		progressBar = (ProgressBar)findViewById(R.id.pb_myphoto);
 		
 		gridView = (StaggeredGridView)findViewById(R.id.sgv_myphoto);	
@@ -53,6 +52,8 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		prefs.edit().putBoolean("actionBar", true).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section4);
+		
+		ll_myphoto_empty = (LinearLayout)findViewById(R.id.ll_myphoto_empty);
 	}
 
 	@Override
@@ -61,8 +62,22 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 	}
 	
 	public void addMyPhotoImageSetArrayList(ArrayList<Image> aList){
+		
+		if(aList.size() != 0) // 초기에 하나라도 아이템이 있으면
+			setInvisible( );
+		else 
+			setVisible( );
+		
 		arrayAdapterStaggeredGridView.clear();
 		arrayAdapterStaggeredGridView.addAll(aList);
+	}
+	
+	public void setInvisible( ) {
+		ll_myphoto_empty.setVisibility(View.INVISIBLE);
+	}
+	
+	public void setVisible( ) {
+		ll_myphoto_empty.setVisibility(View.VISIBLE);
 	}
 	
 	public void progresOff( ) {
@@ -81,7 +96,6 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		gridView.setVisibility(View.VISIBLE);
 	}
 	
-
     public static interface Controller {
     	public void onPhotoSelected(int aPosition);
     }

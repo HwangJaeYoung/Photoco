@@ -44,10 +44,13 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMyPhotoFragment(getActivity( ), inflater, container, this); 
         actionBar.setSelectedNavigationItem(0);
+        view.setInvisible();
         return view.getRoot( );
     }
 	
 	public void searchMyPhotoItemFromServer(String aTabName) {
+		view.progressOn();
+		view.gridviewOff();
 		MyPhotoRequest myPhotoRequest = new MyPhotoRequest(getActivity( ));
 		
 		if(aTabName.equals("bought")) {
@@ -86,6 +89,8 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 					e.printStackTrace();
 				}
 			}			
+			view.progresOff();
+			view.gridviewviewOn();
 			view.addMyPhotoImageSetArrayList(imageSet);
 		}	
 		
@@ -125,10 +130,12 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("Bought") && tabRestrict == true) {
 				searchMyPhotoItemFromServer("bought");
+				view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Uploaded")) {
 				searchMyPhotoItemFromServer("uploaded");
+				view.setInvisible();
 				tabRestrict = true;
 			}
 		}
