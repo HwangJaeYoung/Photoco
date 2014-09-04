@@ -138,12 +138,6 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
 				searchMarketplaceItemFromServer("bestseller");
-				if(view == null) {
-					Log.i("ssi", "null");
-				}
-				else {
-				view.setInvisible();
-				}
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("MostViewed")) {
