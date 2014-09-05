@@ -36,6 +36,5 @@ public abstract class AbstarctArrayImageAdapter <T extends IListViewItem> extend
 	
 		return abstractViewForListViewItem; // 새로 구성된 뷰를 리턴한다.
 	}
-	
 	public abstract AbstractViewForListViewItem getInstance();
 }

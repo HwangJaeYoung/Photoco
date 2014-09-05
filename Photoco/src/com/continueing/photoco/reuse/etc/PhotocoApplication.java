@@ -7,7 +7,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 
 /* Application단에서 건드리면 폰트 타입등을 전체로 적용할 수 있다.  
-     또한, */
+     또한, 모든 컴포넌트보다 빨리 실행이 되는 부분이다. */
 
 public class PhotocoApplication extends Application {
 	

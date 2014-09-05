@@ -146,8 +146,7 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 	}
 	
 	@Override
-	public void onDetach( )
-	{
+	public void onDetach( ) {
 		super.onDetach();
 		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다

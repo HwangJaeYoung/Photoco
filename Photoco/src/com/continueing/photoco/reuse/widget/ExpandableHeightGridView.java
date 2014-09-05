@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+/* MyRequest의 Detail에서 사용하는 그리드뷰 */
+
 public class ExpandableHeightGridView extends GridView {
 	boolean expanded = false;
 

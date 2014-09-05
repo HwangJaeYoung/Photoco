@@ -17,28 +17,26 @@ public class SubmitButton extends Button {
     public SubmitButton(Context context) {
         super(context);
     }
+    
     public SubmitButton(Context context, AttributeSet atts) {
         super(context, atts);
     }
 
-    public void init(ProgressBar aProgressBar)
-    {
+    public void init(ProgressBar aProgressBar) {
         this.progressBar = aProgressBar;
         aProgressBar.setVisibility(View.INVISIBLE);
         this.textToRestore = this.getText().toString();
         this.viewsToHold = new ArrayList<View>();
     }
 
-    public void addViewToHold(View aView)
-    {
+    public void addViewToHold(View aView) {
         this.viewsToHold.add(aView);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if(event.getAction() == MotionEvent.ACTION_UP && isEnabled())
-        {
+        if(event.getAction() == MotionEvent.ACTION_UP && isEnabled()) {
             lock();
             this.setEnabled(false);
             this.performClick();
@@ -46,8 +44,7 @@ public class SubmitButton extends Button {
         return super.onTouchEvent(event);
     }
 
-    private void lock()
-    {
+    private void lock() {
         this.setText("");
         progressBar.setVisibility(View.VISIBLE);
         for (View aView : this.viewsToHold) {
@@ -55,8 +52,7 @@ public class SubmitButton extends Button {
         }
     }
 
-    public void release()
-    {
+    public void release() {
         this.setText(this.textToRestore);
         this.setEnabled(true);
         progressBar.setVisibility(INVISIBLE);

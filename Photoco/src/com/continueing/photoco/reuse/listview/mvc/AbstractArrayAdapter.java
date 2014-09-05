@@ -16,8 +16,7 @@ public abstract class AbstractArrayAdapter<T extends IListViewItem> extends Arra
 	public View getView(int position, View convertView, ViewGroup parent) {
 		AbstractViewForListViewItem abstractViewForListViewItem = (AbstractViewForListViewItem) convertView;
 
-		if (abstractViewForListViewItem == null)
-		{
+		if (abstractViewForListViewItem == null) {
 			abstractViewForListViewItem = getInstance();
 		}
 
@@ -26,6 +25,5 @@ public abstract class AbstractArrayAdapter<T extends IListViewItem> extends Arra
 	
 		return abstractViewForListViewItem; // 새로 구성된 뷰를 리턴한다.
 	}
-
 	public abstract AbstractViewForListViewItem getInstance();
 }

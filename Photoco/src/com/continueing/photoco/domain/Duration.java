@@ -17,8 +17,7 @@ public class Duration implements IMyRequestDurationItem, Serializable {
 	private String hourText;
 	private String endDate;
 	
-	public Duration(JSONObject aJsonObject) throws JSONException
-	{
+	public Duration(JSONObject aJsonObject) throws JSONException {
 		hour = aJsonObject.getString(JSON_KEY_HOUR);
 		hourText = aJsonObject.getString(JSON_KEY_HOUR_TEXT);
 		endDate = aJsonObject.getString(JSON_KEY_END_DATE);

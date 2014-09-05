@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import com.continueing.photoco.reuse.page.location_page.listview.ViewForLocationListViewItem;
 
-
 public class Location implements ViewForLocationListViewItem.ILocationItem, Serializable {
 	private static final String JSON_KEY_ID = "id";
 	private static final String JSON_KEY_DESCRIPTION = "description";
@@ -15,8 +14,7 @@ public class Location implements ViewForLocationListViewItem.ILocationItem, Seri
 	private String id;
 	private String description;
 	
-	public Location(JSONObject aJsonObject) throws JSONException
-	{
+	public Location(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);
 		description = aJsonObject.getString(JSON_KEY_DESCRIPTION);
 	}

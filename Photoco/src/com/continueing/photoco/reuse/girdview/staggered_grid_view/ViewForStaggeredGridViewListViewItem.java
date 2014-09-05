@@ -42,11 +42,10 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 		tv_category.setText(iImageURL.getCategory().getName());
 		tv_size.setText(iImageURL.getSize());
 		tv_price.setText(iImageURL.getPrice());
-		csivImage.setImageUrl(iImageURL.getUrl());
+		csivImage.setImagㅇeUrl(iImageURL.getUrl());
 	}
 	
-	public CustomSmartImageView returnSmartImageView( )
-	{
+	public CustomSmartImageView returnSmartImageView( ) {
 		return csivImage;
 	}
 }

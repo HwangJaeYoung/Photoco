@@ -69,8 +69,7 @@ public class ViewForLocationActivity extends AbstractViewForActivity {
 	}
 	
 	// 기존에 리스트뷰에 보이던 아이템들을 초기화하고 다시 보여준다.
-	public void resetLocations(ArrayList<ILocationItem> aArrayList)
-	{
+	public void resetLocations(ArrayList<ILocationItem> aArrayList) {
 		arrayListAdapter.clear();
 		arrayListAdapter.addAll(aArrayList);
 	}
