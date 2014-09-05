@@ -1,13 +1,10 @@
 package com.continueing.photoco.reuse.girdview.tag_gridview;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.listview.mvc.AbstractViewForListViewItem;
 import com.continueing.photoco.reuse.listview.mvc.IListViewItem;
 

@@ -11,14 +11,12 @@ import com.continueing.photoco.ui.menu.myrequest_page.listview.ViewForMyRequestL
 public class MyRequest implements IMyRequestItem {
 	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_DESCRIPTION = "description";
-	private static final String JSON_KEY_IMAGE = "sample_image";
 	private static final String JSON_KEY_IMAGE_SET = "urlset";
 	private static final String JSON_KEY_TAG = "tags";
 	private static final String JSON_KEY_CATEGORY = "category";
 	private static final String JSON_KEY_LOCATION = "location";
 	private static final String JSON_KEY_LEFTITME = "time_left";
 	private static final String JSON_KEY_ENDTIME = "end_date_time";
-	private static final String JSON_KEY_REMAIN_MINUTES = "remained_minutes_before_expired";
 	
 	private JSONObject savedJSONObject; // 합치기 전에 저장할 JSONObject
 	private UserProfile userProfile;
@@ -28,7 +26,6 @@ public class MyRequest implements IMyRequestItem {
 	private String imageJSONArray;
 	private String tagJSONArray; // JSONArray Serializable 문제 때문에 String으로 변환
 	private String description;
-	private String remainMunutes;
 	private String leftTime;
 	private String endTime;
 	
@@ -41,7 +38,6 @@ public class MyRequest implements IMyRequestItem {
 		location = new Location(aJsonObject.getJSONObject(JSON_KEY_LOCATION));
 		leftTime = aJsonObject.getString(JSON_KEY_LEFTITME);
 		endTime = aJsonObject.getString(JSON_KEY_ENDTIME);
-		remainMunutes = aJsonObject.getString(JSON_KEY_REMAIN_MINUTES);
 		tagJSONArray = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
 		imageJSONArray = aJsonObject.getJSONArray(JSON_KEY_IMAGE_SET).toString();
 	}

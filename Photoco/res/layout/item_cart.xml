@@ -31,6 +31,7 @@
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="4dp"
                 android:background="@drawable/size_small"
+                android:focusable="false"
                 android:text="L"
                 android:textColor="#fff"
                 android:textSize="15sp" />
@@ -115,30 +116,30 @@
                 android:layout_height="21dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:background="@drawable/tag_bg"
-                android:focusable="false" />
+                android:ellipsize="end"
+                android:focusable="false"
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/bt_list_cart_tag_second"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:background="@drawable/tag_bg"
-                android:focusable="false" />
+                android:ellipsize="end"
+                android:focusable="false"
+                android:maxLines="1" />
 
             <Button
                 android:id="@+id/bt_list_cart_tag_third"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
                 android:layout_marginRight="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:background="@drawable/tag_bg"
-                android:focusable="false" />
+                android:ellipsize="end"
+                android:focusable="false"
+                android:maxLines="1" />
         </LinearLayout>
     </LinearLayout>
 

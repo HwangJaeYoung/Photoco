@@ -1,10 +1,6 @@
 package com.continueing.photoco.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 

@@ -54,8 +54,10 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 		tv_listCartCategory.setText(iCartItem.getImage().getCategory().getName());
 		tv_listCartUsername.setText(iCartItem.getImage().getUserProfile().getUserName() + "'s Request");
 		
+		// 태그의 수를 계산하여 표시의 범위를 제한한다.
 		int counting = iCartItem.getImage().getTag().size();
 
+		// 버튼의 제한
 		if(counting == 1) {
 			bt_listCartTagFirst.setVisibility(View.VISIBLE);
 			bt_listCartTagSecond.setVisibility(View.INVISIBLE);
@@ -72,6 +74,7 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 			bt_listCartTagThird.setVisibility(View.VISIBLE);
 		}
 		
+		// 표시하는 내용의 제한
 		bt_listCartTagFirst.setText((iCartItem.getImage().getTag()).get(0).getTagText());
 		
 		if(counting == 2)
@@ -80,10 +83,6 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 			bt_listCartTagSecond.setText((iCartItem.getImage().getTag()).get(1).getTagText());
 			bt_listCartTagThird.setText((iCartItem.getImage().getTag()).get(2).getTagText());
 		}
-		
-		bt_listCartTagFirst = (Button)findViewById(R.id.bt_list_cart_tag_first);
-		bt_listCartTagSecond = (Button)findViewById(R.id.bt_list_cart_tag_second);
-		bt_listCartTagThird = (Button)findViewById(R.id.bt_list_cart_tag_third);
 		
 		bt_listCartSize.setText(iCartItem.getImage().getSize());
 		tv_listCartPrice.setText(iCartItem.getImage().getPrice());

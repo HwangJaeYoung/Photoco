@@ -23,6 +23,8 @@ import com.continueing.photoco.ui.menu.joblist_page.JobListFragment;
 import com.loopj.android.image.SmartImageView;
 
 public class ViewForJobListDetailActivity extends AbstractViewForActivity {
+	private String jobId;
+	private ArrayAdapterForTagGridView arrayAdapterForTagGridView;
 	private Controller controller;
 	private TextView tv_joblistDetailUser;
 	private TextView tv_joblistDetailUserDescription;
@@ -33,9 +35,6 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 	private TextView tv_joblistDetailLeftday;
 	private TextView tv_joblistDetailCalendar;
 	private ImageButton ib_submitPhoto;
-	
-	private String jobId;
-	private ArrayAdapterForTagGridView arrayAdapterForTagGridView;
 	
 	public ViewForJobListDetailActivity(Context context, Controller aController) {
 		super(context);
@@ -77,10 +76,9 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 		
 		ArrayList<Tag> tags = new ArrayList<Tag>( );
 		tags = item.getTag();
-		Log.i("tags", tags.size()+"");
 		arrayAdapterForTagGridView.addAll(tags);	
 		
-		jobId = item.getJobId();
+		jobId = item.getJobId(); // 사진을 제출할 때 사용하는 JobItem의 PrimaryKey이다.
 		
 		tv_joblistDetailLeftday.setTextColor(Color.parseColor(ReturnDurationColor.returnColor(item.getRemainMinutes())));
 	}
@@ -90,7 +88,6 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 		ib_submitPhoto.setOnClickListener(new View.OnClickListener() {	
 			@Override
 			public void onClick(View v) {
-				Log.i("attach", jobId+"");
 				controller.onPhotoSubmit(jobId);
 			}
 		});

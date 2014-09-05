@@ -24,7 +24,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 	
 	private ViewForSettingActivity view;
 	private MyInformation myInformation;
-	public static final int REQUEST_CODE_PICK_LOCATION = 0;
+	private static final int REQUEST_CODE_PICK_LOCATION = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +65,10 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 			
 			try {
 				tempJSONObject = jsonObject.getJSONObject(JsonResponseHandler.PARM_DATA);
-				myInformation = new MyInformation(tempJSONObject);			
+				myInformation = new MyInformation(tempJSONObject); // 유저의 정보를 가진 객체를 생성한다.		
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			
 			view.setMyInformationData(myInformation);
 		}	
 		
@@ -86,7 +85,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 		}
 
 		@Override
-		public void onFail(JSONObject jsonObject, int errorCode) { 
+		public void onFail(JSONObject jsonObject, int errorCode) { // 정확한 포맷으로 오지않았을때 발생하는 에러코드
 			switch(errorCode)
 			{
 				case 0:
@@ -149,6 +148,7 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 			}
 	}
 
+	// 지역검색을 하기위해 눌렸을 때
 	@Override
 	public void onLocationSelect() {
 		Intent intent = new Intent(this, LocationActivity.class);

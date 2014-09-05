@@ -28,7 +28,7 @@ public class FindingJobDetailActivity extends ActionBarActivity implements ViewF
 
 	@Override
 	public void onParticipate(String aRequestId) {
-		submitFindingJobItemInfoToServer(aRequestId);
+		submitFindingJobItemInfoToServer(aRequestId); // Participate할 때 사용하는 Request의 PrimaryKey이다.
 	}
 	
 	public void submitFindingJobItemInfoToServer(String aRequestId) {
@@ -43,7 +43,7 @@ public class FindingJobDetailActivity extends ActionBarActivity implements ViewF
 	HttpRequester.NetworkResponseListener submitFindingJobListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) { 
-			setResult(Activity.RESULT_OK);
+			setResult(Activity.RESULT_OK); // Partticipate하였을 경우에 그냥 끄면 아무것도 안한다.
 			finish( );
 		}	
 		

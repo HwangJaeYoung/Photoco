@@ -24,7 +24,6 @@ import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MyPhotoRequest;
 import com.continueing.photoco.ui.menu.myphoto_page.myphoto_detail_page.MyPhotoDetailActivity;
-import com.continueing.photoco.ui.menu.myphoto_page.myphoto_newphoto_page.MyPhotoNewPhotoActivity;
 
 public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.Controller {
 	private ViewForMyPhotoFragment view;

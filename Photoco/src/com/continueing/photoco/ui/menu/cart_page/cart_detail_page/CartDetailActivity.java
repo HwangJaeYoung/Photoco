@@ -4,13 +4,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.continueing.photoco.domain.Cart;
 import com.continueing.photoco.reuse.network.HttpRequester;
@@ -19,7 +17,8 @@ import com.continueing.photoco.ui.menu.cart_page.CartFragment;
 
 public class CartDetailActivity extends ActionBarActivity implements ViewForCartDetailActivity.Controller {
 	
-	ViewForCartDetailActivity view;
+	private ViewForCartDetailActivity view;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +26,7 @@ public class CartDetailActivity extends ActionBarActivity implements ViewForCart
 		view = new ViewForCartDetailActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		setContentView(view.getRoot());
-		view.initViewInfos(getIntent());
+		view.initViewInfos(getIntent()); // CartFragmnet에서 받은 정보를 표시하기 위해 넘겨준다.
 	}
 	
 	@Override
@@ -39,6 +38,7 @@ public class CartDetailActivity extends ActionBarActivity implements ViewForCart
 
 	@Override
 	public void buyCartItem() {
+		// 구매 할 때 필요한 Cart의 PrimaryKey
 		Cart item = (Cart)getIntent().getSerializableExtra(CartFragment.PARAM_CART_DETAIL_ITEM_KEY);
 		PurchaseRequest purchaseRequest = new PurchaseRequest(getApplicationContext());
 		

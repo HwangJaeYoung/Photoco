@@ -123,7 +123,6 @@ public class CustomSmartImageView extends SmartImageView {
 				height-=marg;
 				setMeasuredDimension(width, height);
 			}
-
 		}
 	}
 }

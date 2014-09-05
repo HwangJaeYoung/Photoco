@@ -42,12 +42,10 @@ public class ViewForNavigationDrawerMenuListViewItem extends AbstractViewForList
 	public static class DrawerMenuItem implements IListViewItem {
 		private int imageId;
 		private String text;
-		private boolean viewRedCircleDecision;
 
-		public DrawerMenuItem(int anImageId, String aText, boolean aBoolean) {
+		public DrawerMenuItem(int anImageId, String aText) {
 			imageId = anImageId;
 			text = aText;
-			viewRedCircleDecision = aBoolean;
 		}
 
 		public String getText() {

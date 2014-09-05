@@ -28,11 +28,11 @@ import com.continueing.photoco.ui.menu.joblist_page.joblist_detail_page.JobListD
 
 public class JobListFragment extends Fragment implements ViewForJobListFragment.Controller{
 	private ViewForJobListFragment view;
+	private ArrayList<IFindingJobListItem> jobListItems;
 	private ActionBar actionBar;
 	private boolean tabRestrict = true;
 	private ActionBar.Tab actionBarTab;
 	public static final String PARAM_JOBLIST_ITEM_KEY = "joblistitem";
-	private ArrayList<IFindingJobListItem> jobListItems;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,6 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForJobListFragment(getActivity( ), inflater, container, this); // 뷰를 생성해 낸다.
         actionBar.setSelectedNavigationItem(0);
-        view.setInvisible();
         return view.getRoot();
     }
 
@@ -85,9 +84,9 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 				JSONObject jsonRequestObject = null;
 				
 				try {
+					// JobList에서는 Job의 PrimaryKey도 같이 저장한다.
 					jsonRequestObject = jsonArray.getJSONObject(i);
-					FindingJobList request 
-						= new FindingJobList(jsonRequestObject.getJSONObject("request"), jsonRequestObject.getString("id"));
+					FindingJobList request = new FindingJobList(jsonRequestObject.getJSONObject("request"), jsonRequestObject.getString("id"));
 					jobListItems.add(request);
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -132,18 +131,18 @@ public class JobListFragment extends Fragment implements ViewForJobListFragment.
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().equals("Time") && tabRestrict == true) {
+				view.setInvisible();
 				searchJobListItemFromServer("time");
-		        view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Category")) {
+				view.setInvisible();
 				searchJobListItemFromServer("category");
-		        view.setInvisible();
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Distance")) {
+				view.setInvisible();
 				searchJobListItemFromServer("distance");
-		        view.setInvisible();
 				tabRestrict = true;
 			}
 		}

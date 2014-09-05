@@ -17,8 +17,8 @@ import com.continueing.photoco.reuse.page.location_page.LocationActivity;
 
 
 public class AccountActivity extends Activity implements ViewForAccountActivity.Controller{
+	private static final int REQUEST_CODE_GET_QUERY = 0;
 	private ViewForAccountActivity view;
-	public static final int REQUEST_CODE_GET_QUERY = 0;
 	private String primaryKey;
 	
 	@Override
@@ -41,8 +41,7 @@ public class AccountActivity extends Activity implements ViewForAccountActivity.
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == REQUEST_CODE_GET_QUERY)
-			if(resultCode == Activity.RESULT_OK)
-			{
+			if(resultCode == Activity.RESULT_OK) {
 				view.selectedLocation(data.getStringExtra(LocationActivity.PARAM_LOCATIONACTIVITY_LOCATION_KEY));
 				primaryKey = data.getStringExtra(LocationActivity.PARAM_PRIMARY_KEY); // DB에서 primaryKey로 사용함.
 			}
@@ -58,16 +57,13 @@ public class AccountActivity extends Activity implements ViewForAccountActivity.
 	public void submitAccountInfo(String aUserName, String aEmail, String aPassword, String aConfirmPassword, boolean aChecked) {
 		UsersRequest signUpRequest = new UsersRequest(getApplicationContext());
 		
-		if(aChecked == true)
-		{
+		if(aChecked == true) { // 최종적으로 약관에 동의 했을시에
 			try {
 				signUpRequest.signUp(aUserName, aEmail, aPassword, aConfirmPassword, primaryKey, userSignUpRequestListener);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-		}
-		else
-		{
+		} else {
 			Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED, Toast.LENGTH_SHORT).show( );
 			view.releaseSubmitButton();
 		}
@@ -83,8 +79,7 @@ public class AccountActivity extends Activity implements ViewForAccountActivity.
 
 		@Override
 		public void onFail(JSONObject jsonObject, int errorCode) { 
-			switch(errorCode)
-			{
+			switch(errorCode) {
 				case 0:
 					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_UNKNOWN, Toast.LENGTH_SHORT).show();
 					break;

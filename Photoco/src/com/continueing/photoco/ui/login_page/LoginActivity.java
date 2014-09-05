@@ -19,12 +19,12 @@ import com.continueing.photoco.ui.MainActivity;
 import com.continueing.photoco.ui.account_page.AccountActivity;
 
 public class LoginActivity extends Activity implements ViewForLoginActivity.Controller {
+	public static final String PARAM_LOGINACTIVITY_USERNAME_KEY ="username";
+	
 	private ViewForLoginActivity view;
 	private BackPressCloseHandler backPressCloseHandler;
 	private String userName;
 	private String userPassword;
-	
-	public static final String PARAM_LOGINACTIVITY_USERNAME_KEY ="username";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +86,8 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 			view.releaseSubmitButton();
 			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 			intent.putExtra(PARAM_LOGINACTIVITY_USERNAME_KEY, userName);
-			UserPreference userPreference = new UserPreference(getApplicationContext());
-			userPreference.login(userName, userPassword);
+			//UserPreference userPreference = new UserPreference(getApplicationContext());
+			//userPreference.login(userName, userPassword);
 			startActivity(intent);
 			finish( );
 		}	

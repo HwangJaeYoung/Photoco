@@ -44,10 +44,12 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 		tv_cart_detail_location = (TextView)findViewById(R.id.tv_cart_detail_location);
 		ib_cartDetailRemove = (ImageButton)findViewById(R.id.ib_cart_detail_remove);
 		bt_cart_detail_buy= (Button)findViewById(R.id.bt_cart_detail_buy);
+		tv_cart_detail_location = (TextView)findViewById(R.id.tv_cart_detail_location);
 	}
 
 	@Override
 	protected void setEvent() {
+		// 삭제 버튼을 눌렸을 때 해당 Cart의 아이템을 삭제한다.
 		ib_cartDetailRemove.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -55,6 +57,7 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 			}
 		});
 		
+		// 구매 버튼을 눌렸을 때 해당 Cart의 아이템을 하나 구매한다.
 		bt_cart_detail_buy.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -70,6 +73,7 @@ public class ViewForCartDetailActivity extends AbstractViewForActivity{
 		bt_cart_detail_info.setText(item.getImage().getSize());
 		tv_cart_detail_price.setText(item.getImage().getPrice());
 		tv_cart_detail_size.setText(item.getImage().getWidth() + " X " + item.getImage().getHeight());
+		tv_cart_detail_location.setText(item.getImage().getUserProfile().getLocation().getDescription());
 	}
 	
 	public static interface Controller {

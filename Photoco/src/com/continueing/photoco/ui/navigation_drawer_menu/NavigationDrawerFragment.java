@@ -31,7 +31,6 @@ import com.continueing.photoco.domain.MyInformation;
 import com.continueing.photoco.reuse.network.HttpRequester;
 import com.continueing.photoco.reuse.network.JsonResponseHandler;
 import com.continueing.photoco.reuse.network.MyInformationRequest;
-import com.continueing.photoco.ui.login_page.LoginActivity;
 
 public class NavigationDrawerFragment extends Fragment {
 
@@ -51,14 +50,12 @@ public class NavigationDrawerFragment extends Fragment {
 	private TextView tv_request;
 	private TextView tv_job;
 	private TextView tv_credits;
-	private String userName;
 
 	public NavigationDrawerFragment() { }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		userName = getActivity( ).getIntent().getStringExtra(LoginActivity.PARAM_LOGINACTIVITY_USERNAME_KEY);
 		
 		if (savedInstanceState != null) // 저장되어 있던 선택된 항목의 번호를 줌. 
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -93,13 +90,13 @@ public class NavigationDrawerFragment extends Fragment {
 		
 		ArrayAdapterForNavigationDrawerMenuListView arrayAdapter = new ArrayAdapterForNavigationDrawerMenuListView(getActivity(), 0);
 
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.search_ic, "FindingJobs", false));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.request_ic, "MyRequests", true));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.job_ic, "Joblist", true));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.myphoto_ic, "MyPhoto", false));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.marketplace_ic, "Marketplace", false));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.cart_ic, "Cart", true));
-		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.account_ic, "MyAccount", false));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.search_ic, "FindingJobs"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.request_ic, "MyRequests"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.job_ic, "Joblist"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.myphoto_ic, "MyPhoto"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.marketplace_ic, "Marketplace"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.cart_ic, "Cart"));
+		arrayAdapter.add(new ViewForNavigationDrawerMenuListViewItem.DrawerMenuItem(R.drawable.account_ic, "MyAccount"));
 		mDrawerListView.setAdapter(arrayAdapter);
 		return root;
 	}
@@ -151,9 +148,6 @@ public class NavigationDrawerFragment extends Fragment {
                 	ActionBar actionBar = getActionBar();
                		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                 }
-                
-                
-                
             }
 
             // 드로워를 열었을 때 동작하는 방식
@@ -163,12 +157,10 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded())
                     return;
                 
-                searchMyInformationFromServer( ); 
+                searchMyInformationFromServer( ); // 열었을때 사용자의 아이템정보를 갱신한다.
                 
                 ActionBar actionBar = getActionBar();
-                actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-                
-                
+                actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD); 
             }
         };
 
@@ -190,6 +182,7 @@ public class NavigationDrawerFragment extends Fragment {
 		});
 	}
 	
+	// 사용자의 정보를 갱신하는 통신을 하기 위한 메소드
 	public void searchMyInformationFromServer( ) {
 		MyInformationRequest myInformationRequest = new MyInformationRequest(getActivity());
 		
@@ -212,6 +205,7 @@ public class NavigationDrawerFragment extends Fragment {
 				e.printStackTrace();
 			}
 			
+			// 사용자 아이템정보 갱신부분
 			tv_drawableName.setText(myInformation.getUserName()); // 현재 로그인한 사용자의 이름을 기입한다.
 			tv_request.setText(myInformation.getNumberOfRequests());
 			tv_job.setText(myInformation.getNumberOfJobs());

@@ -35,8 +35,7 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 	
 	@Override
 	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(
-				R.layout.activity_signup, null);
+		return LayoutInflater.from(getContext()).inflate(R.layout.activity_signup, null);
 	}
 
 	@Override
@@ -70,14 +69,12 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 						et_signEmail.getText().toString(),
 						et_signUpPassword.getText().toString(),
 						et_signUpConfirmPassword.getText().toString(),
-						cb_singnUpAgree.isChecked()
-						);
+						cb_singnUpAgree.isChecked());
 			}
 		});	
 		
 		// 지역검색 버튼(레이아웃으르 버튼으로 사용)
 		llSearchLocation.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				controller.onLocationSelect( );		
@@ -86,11 +83,9 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 		
 		// 체크버튼이 눌렸을 때, UnderLine처리
 		cb_singnUpAgree.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(buttonView.getId() == R.id.cb_signup_agree)
-				{
+				if(buttonView.getId() == R.id.cb_signup_agree) {
 					if(isChecked)
 						tv_signUpAgree.setText(Html.fromHtml("<u>" + "Agree to terms and conditions" + "</u>"));
 					else
@@ -101,13 +96,11 @@ public class ViewForAccountActivity extends AbstractViewForActivity {
 	}
 	
 	// 지역검색 후 검색한 지역을 표시하기 위한 메소드
-	public void selectedLocation(String aLocation)
-	{
+	public void selectedLocation(String aLocation) {
 		tv_signUpLocation.setText(aLocation);
 	}
 	
-	public void releaseSubmitButton()
-    {
+	public void releaseSubmitButton() {
 		
         this.bt_submit.release();
     }

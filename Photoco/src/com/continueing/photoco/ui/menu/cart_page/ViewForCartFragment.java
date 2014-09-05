@@ -43,26 +43,24 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 
 	@Override
 	protected void initViews() {
+		pb_cart = (ProgressBar)findViewById(R.id.pb_cart);
 		lv_cart = (ListView)findViewById(R.id.list_view_left);
+		bt_cartBuyItem = (Button)findViewById(R.id.bt_cart_buy_item);
+		ll_cartEmpty = (LinearLayout)findViewById(R.id.ll_cart_empty);
+		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
+
 		arrayAdapterForCartListView = new ArrayAdapterForCartListView(getContext( ), R.layout.item_cart);
 		lv_cart.setAdapter(arrayAdapterForCartListView);
-		lv_cart.setItemsCanFocus(false);
-		lv_cart.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", false).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section6);
-		
-		pb_cart = (ProgressBar)findViewById(R.id.pb_cart);
-		ib_cartRemoveItem = (ImageButton)findViewById(R.id.ib_cart_remove_item);
-		bt_cartBuyItem = (Button)findViewById(R.id.bt_cart_buy_item);
-		
-		ll_cartEmpty = (LinearLayout)findViewById(R.id.ll_cart_empty);
 	}
 
 	@Override
 	protected void setEvents() {
+		// Cart Detail로 접근
 		lv_cart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +68,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 			}
 		});
 		
+		// 모든  Cart의 아이템을 삭제
 		ib_cartRemoveItem.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {		
@@ -77,6 +76,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 			}
 		});
 		
+		// 모든 Cart의 아이템을 구매
 		bt_cartBuyItem.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -104,12 +104,9 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 		ll_cartEmpty.setVisibility(View.VISIBLE);
 	}
 	
+	// Cart의 모든 아이템을 삭제한다.
 	public void removeAllItems( ) {
 		arrayAdapterForCartListView.clear();
-	}
-	
-	public void removeSelectedItem(Cart anItem) {
-		arrayAdapterForCartListView.remove(anItem);
 	}
 	
 	public void progresOff( ) {

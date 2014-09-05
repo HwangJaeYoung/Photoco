@@ -1,6 +1,5 @@
 package com.continueing.photoco.ui;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,9 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 
 import com.continueing.photoco.R;
-import com.continueing.photoco.domain.MyInformation;
 import com.continueing.photoco.reuse.etc.BackPressCloseHandler;
-import com.continueing.photoco.ui.login_page.LoginActivity;
 import com.continueing.photoco.ui.menu.cart_page.CartFragment;
 import com.continueing.photoco.ui.menu.findingjob_page.FindingJobFragment;
 import com.continueing.photoco.ui.menu.joblist_page.JobListFragment;
@@ -25,12 +22,9 @@ import com.continueing.photoco.ui.setting_page.SettingActivity;
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 	
-	public static final String PARAM_MAINACTIVITY_USERNAME_KEY ="username";
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private BackPressCloseHandler backPressCloseHandler;
-	private int currentMenuIndex=-1;
-
-	private String userName;
+	private int currentMenuIndex = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +35,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		// 정적으로 정의된 프래그먼트이므로 여기서는 라이프사이클을 수행한 프래그먼트가 넘어오게 된다.
 		mNavigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager( ).findFragmentById(R.id.navigation_drawer);
 	    mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout)findViewById(R.id.drawer_layout));
-	    userName = getIntent( ).getStringExtra(LoginActivity.PARAM_LOGINACTIVITY_USERNAME_KEY);
 	}
 
 	@Override
@@ -85,7 +78,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 	@Override
 	public void onSettingButtonSelected() {
 		Intent intent = new Intent(this, SettingActivity.class);
-		intent.putExtra(PARAM_MAINACTIVITY_USERNAME_KEY, userName);
 		startActivity(intent);
 	}
 	
