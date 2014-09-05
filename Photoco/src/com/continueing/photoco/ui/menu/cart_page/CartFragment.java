@@ -102,6 +102,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 
 	@Override
 	public void onShowDetailCart(int aPosition) {
+		Log.i("ssi", "in");
 		itemPosition = aPosition;
 		Intent intent = new Intent(getActivity( ), CartDetailActivity.class);
 		intent.putExtra(PARAM_CART_DETAIL_ITEM_KEY, cartSet.get(aPosition));
@@ -112,7 +113,6 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	@Override
 	public void onRemoveItems() {
 		// 통신으로 해서도 지우고 arraylist의 번호를 모두 던저준다.
-
 		// 사용자가 보이는 뷰에서도 지운다.
 		view.removeAllItems();
 	}

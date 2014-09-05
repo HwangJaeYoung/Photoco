@@ -1,5 +1,7 @@
 package com.continueing.photoco.reuse.etc;
 
+/* 서버와 통신할때 그에 반하는 데이터가 없거나 동작을 수행하지 않았을시에 사용하는 에러코드 */
+
 public interface ErrorCodeList {
 	String ERROR_MESSAGE_UNKNOWN = "This error is not identified. We will fix this kind of error";
 	String ERROR_MESSAGE_USERNAME_ABSENCE = "username is absent";

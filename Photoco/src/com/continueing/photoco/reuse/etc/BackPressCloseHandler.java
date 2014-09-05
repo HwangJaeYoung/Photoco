@@ -3,6 +3,8 @@ package com.continueing.photoco.reuse.etc;
 import android.app.Activity;
 import android.widget.Toast;
 
+/* 뒤로가기 버튼을 눌렸을때 시간간격을 주어서 종료시간을 정한다. */
+
 public class BackPressCloseHandler {
 	private long backKeyPressedTime = 0;
 	private Toast toast;

@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:background="#fff" >
 
-         <RelativeLayout
+        <RelativeLayout
             android:id="@+id/layout_myphoto_bought_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,26 +60,6 @@
                     android:layout_toRightOf="@id/iv_request_new_tag"
                     android:text="Tag"
                     android:textColor="#808a99"
-                    android:textSize="18sp" />
-
-                <Button
-                    android:id="@+id/bt_request_new_tag_detail"
-                    android:layout_width="10dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/arrow_ic" />
-
-                <TextView
-                    android:id="@+id/tv_request_new_tag_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:layout_toLeftOf="@id/bt_request_new_tag_detail"
-                    android:text="Input Tag"
-                    android:textColor="#b0bac8"
                     android:textSize="18sp" />
             </RelativeLayout>
 
