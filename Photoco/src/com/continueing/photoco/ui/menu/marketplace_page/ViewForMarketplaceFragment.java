@@ -49,13 +49,10 @@ public class ViewForMarketplaceFragment extends AbstractViewForFragment implemen
 		arrayAdapterStaggeredGridView = new ArrayAdapterStaggeredGridView(getContext( ), 0);
 		gridView.setAdapter(arrayAdapterStaggeredGridView);
 		
-		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
 		prefs.edit().putBoolean("actionBar", true).apply();
 		
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section5);
-		
-		
 	}
 	
 	public void addMarketplaceImageSetArrayList(ArrayList<Image> aList){

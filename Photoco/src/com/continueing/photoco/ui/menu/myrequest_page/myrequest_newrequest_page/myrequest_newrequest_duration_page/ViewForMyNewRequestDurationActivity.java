@@ -47,12 +47,13 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				ViewForArrayAdapterForMyRequesttDuration viewItem = null;
-				for(int i = 0; i < itemLength; i++)
-				{
+				
+				for(int i = 0; i < itemLength; i++) {
 					viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(i);
 					ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 					checkImage.setVisibility(View.INVISIBLE);
 				}
+				
 				viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(position);
 				ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 				checkImage.setVisibility(View.VISIBLE);
@@ -62,21 +63,18 @@ public class ViewForMyNewRequestDurationActivity extends AbstractViewForActivity
 		});
 	}
 	
-	public void checkedDuration(int aCheckedPosition)
-	{
+	public void checkedDuration(int aCheckedPosition) {
 		ViewForArrayAdapterForMyRequesttDuration viewItem = (ViewForArrayAdapterForMyRequesttDuration)lv_requestNewDuration.getChildAt(aCheckedPosition);
 		ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_duration_twelve);
 		checkImage.setVisibility(View.VISIBLE);
 	}
 
-	public void resetDuration(ArrayList<IMyRequestDurationItem> aDurations)
-	{
+	public void resetDuration(ArrayList<IMyRequestDurationItem> aDurations) {
 		itemLength = aDurations.size();
 		arrayAdapterForMyRequestDuration.addAll(aDurations);
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void onDurationSelected(int aPosition);
 	}
 }

@@ -32,7 +32,6 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	private TextView tv_myrequestEmpty2;
 	private ImageView iv_myrequestEmptyArrow;
 	private ProgressBar progressBar;
-	
 	private ArrayAdapterForMyRequestListView arrayAdapterForMyRequestListView;
 	private ArrayList<IMyRequestItem> arrayList; 
 
@@ -52,15 +51,14 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 		tv_myrequestEmpty1 = (TextView)findViewById(R.id.tv_myrequest_empty1);
 		tv_myrequestEmpty2 = (TextView)findViewById(R.id.tv_myrequest_empty2);
 		iv_myrequestEmptyArrow = (ImageView)findViewById(R.id.iv_myrequest_empty_arrow);
-		
+		progressBar = (ProgressBar)findViewById(R.id.pb_myrequest);
 		bt_createRequest = (Button)findViewById(R.id.bt_create_request);	
 		lv_myRequest = (ListView)findViewById(R.id.lv_myrequest_info);
 		arrayAdapterForMyRequestListView = new ArrayAdapterForMyRequestListView(getContext( ), 0);
 		lv_myRequest.setAdapter(arrayAdapterForMyRequestListView);
-		
-		progressBar = (ProgressBar)findViewById(R.id.pb_myrequest);
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext( ));
+		
 		prefs.edit().putBoolean("actionBar", false).apply();
 		((FragmentActivity)getContext( )).getActionBar().setTitle(R.string.title_section2);
 	}
@@ -79,7 +77,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(ViewForMyRequestListViewItem.isDeleteButtonClicked == true){
-					arrayList.remove(position); // 삭제오류
+					arrayList.remove(position); 
 					arrayAdapterForMyRequestListView.clear();
 					arrayAdapterForMyRequestListView.addAll(arrayList);
 					ViewForMyRequestListViewItem.isDeleteButtonClicked = false;
@@ -88,8 +86,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 						setVisible( );
 				}
 				
-				else if(ViewForMyRequestListViewItem.isDeleteButtonClicked == false)
-				{
+				else if(ViewForMyRequestListViewItem.isDeleteButtonClicked == false) {
 					controller.showRequestDetail(position);
 				}
 			}
@@ -97,8 +94,7 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	}
 
 	// 사용자가 NewRequest한 모든 항목을 보여주기 위해서 만들어 놓음
-	public void addMyRequestArrayList(ArrayList<IMyRequestItem> anArrayList)
-	{
+	public void addMyRequestArrayList(ArrayList<IMyRequestItem> anArrayList) {
 		arrayList = anArrayList;
 		if(arrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );
@@ -110,16 +106,14 @@ public class ViewForMyRequestFragment extends AbstractViewForFragment {
 	}
 
 	// 추가 할 때 Empty일 때의 상태를 숨긴다.(스마일, 텍스트)
-	public void setInvisible( )
-	{
+	public void setInvisible( ) {
 		iv_myrequestEmptyFace.setVisibility(ImageView.INVISIBLE);
 		tv_myrequestEmpty1.setVisibility(TextView.INVISIBLE);
 		tv_myrequestEmpty2.setVisibility(TextView.INVISIBLE);
 		iv_myrequestEmptyArrow.setVisibility(ImageView.INVISIBLE);
 	}
 	
-	public void setVisible( )
-	{
+	public void setVisible( ) {
 		iv_myrequestEmptyFace.setVisibility(ImageView.VISIBLE);
 		tv_myrequestEmpty1.setVisibility(TextView.VISIBLE);
 		tv_myrequestEmpty2.setVisibility(TextView.VISIBLE);

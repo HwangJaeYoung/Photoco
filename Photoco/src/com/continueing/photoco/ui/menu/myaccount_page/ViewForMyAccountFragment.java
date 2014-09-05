@@ -67,6 +67,7 @@ public class ViewForMyAccountFragment extends AbstractViewForFragment {
 	
 	@Override
 	protected void setEvents() {
+		// 구매목록을 보여줄 때 사용한다.
 		btMyaccountPurchase.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

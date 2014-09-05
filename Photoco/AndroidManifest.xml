@@ -83,11 +83,6 @@
             android:theme="@style/CustomActionBarTheme" >
         </activity>
         <activity
-            android:name="com.continueing.photoco.ui.menu.myphoto_page.myphoto_newphoto_page.MyPhotoNewPhotoActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/CustomActionBarTheme" >
-        </activity>
-        <activity
             android:name="com.continueing.photoco.ui.menu.marketplace_page.marketplace_detail_page.MarketplaceDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CustomActionBarTheme" >

@@ -44,7 +44,6 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMyAccountFragment(getActivity( ), inflater, container, this);
         actionBar.setSelectedNavigationItem(0);
-        view.setInvisible();
         return view.getRoot();
 	}
 	
@@ -52,6 +51,7 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
 	public void searchPurchaseItemFromServer(String aTabName) {
 		view.progressOn();
 		view.listviewOff();
+		
 		AccountRequest accountRequest = new AccountRequest(getActivity( ));
 		try {
 			accountRequest.getPurchaseItems(aTabName, getPurchasesItemListener);
@@ -147,8 +147,7 @@ public class MyAccountFragment extends Fragment implements ViewForMyAccountFragm
 	}
 	
 	@Override
-	public void onDetach( )
-	{
+	public void onDetach( ) {
 		super.onDetach();
 		actionBar.removeAllTabs(); // 생성된 모든 탭을 지운다.
 		//removeTab(ActionBar.Tab tab)는 하나만 지운다

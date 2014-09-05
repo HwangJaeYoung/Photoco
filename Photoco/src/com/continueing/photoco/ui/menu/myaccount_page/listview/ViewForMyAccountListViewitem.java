@@ -14,10 +14,10 @@ import com.loopj.android.image.SmartImageView;
 
 public class ViewForMyAccountListViewitem extends AbstractViewForListViewItem{
 
-	SmartImageView siv_listAccount;
-	TextView tv_listAccountName;
-	TextView tv_listAccountDate;
-	Button bt_listCartUnit;
+	private SmartImageView siv_listAccount;
+	private TextView tv_listAccountName;
+	private TextView tv_listAccountDate;
+	private Button bt_listCartUnit;
 	
 	public ViewForMyAccountListViewitem(Context context) {
 		super(context);
@@ -43,19 +43,19 @@ public class ViewForMyAccountListViewitem extends AbstractViewForListViewItem{
 	protected void setData(IListViewItem aIListViewItem) {
 		IMyAccountItem iMyAccountItem = (IMyAccountItem)aIListViewItem;
 		
-		int tabIndex = iMyAccountItem.getTabIndex();
+		int tabIndex = iMyAccountItem.getTabIndex(); // Sold, Buy, All 상태를 구분하기 위한 인덱스
 		
 		BuyerSeller itemBuyerSeller = null;
 		
-		if(tabIndex == 0) {
+		if(tabIndex == 0) { // Sold
 			itemBuyerSeller = iMyAccountItem.getBuyer();
 			bt_listCartUnit.setText("Sold");
 		}
-		else if(tabIndex == 1) {
+		else if(tabIndex == 1) { // Buy
 			itemBuyerSeller = iMyAccountItem.getSeller();
 			bt_listCartUnit.setText("Buy");
 		}
-		else if(tabIndex == 3) {
+		else if(tabIndex == 2) {
 			
 		}
 		

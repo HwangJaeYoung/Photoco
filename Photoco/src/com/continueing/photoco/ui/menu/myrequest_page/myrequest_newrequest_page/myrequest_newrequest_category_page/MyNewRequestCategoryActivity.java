@@ -90,6 +90,7 @@ public class MyNewRequestCategoryActivity extends ActionBarActivity implements V
 			}	
 			view.resetCategory(categorys);
 			
+			// 액티비티를 실행하였을 때, 체크표시 때문에 Handler를 사용하였다.
 			mRunnable = new Runnable() {
 				@Override
 				public void run() {

@@ -36,6 +36,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 	private SmartImageView iv_requestPhotoRight;
 	private ImageView iv_requestRemove;
 	
+	// 내 블로그에서 Photoco기본이미지를 가지고 온다.
 	private String tempImageURL = "http://postfiles6.naver.net/20140823_5/forest62590_1408798188279givmc_PNG/textlogo_small.png?type=w2";
 	
 	public ViewForMyRequestListViewItem(Context context) {
@@ -56,6 +57,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		
 		iv_requestRemove = (ImageView)findViewById(R.id.iv_request_remove);
 		
+		// ListView와 관련한 문제 때문에 사용한다.
 		bt_listTagFirst.setFocusable(false);
 		bt_listTagSecond.setFocusable(false);
 		bt_listTagThird.setFocusable(false);
@@ -90,7 +92,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		
 		int imageURLCounting = iMyRequestItem.getImageURLSet().size(); // 내가 요청한 것들에 사용자가 제출한 image url 갯수
 		
-		Log.i("array", imageURLCounting+"");
 		tv_requestPhotoNumber.setText("Photo(" + imageURLCounting + ")");
 
 		if(imageURLCounting == 0) {
@@ -150,6 +151,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		return iv_requestPhotoRight;
 	}
 	
+	// Request Item
 	public static interface IMyRequestItem extends IListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의
 		public UserProfile getName( ); 
@@ -162,6 +164,7 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		public ArrayList<Image> getImageURLSet( ); 
 	}
 	
+	// Image Item
 	public static interface IImageURL extends IListViewItem {
 		public String getId( );
 		public String getUrl( );

@@ -61,7 +61,7 @@ public class ViewForMyPhotoFragment extends AbstractViewForFragment implements O
 		gridView.setOnItemClickListener(this);
 	}
 	
-	public void addMyPhotoImageSetArrayList(ArrayList<Image> aList){
+	public void addMyPhotoImageSetArrayList(ArrayList<Image> aList) {
 		
 		if(aList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );

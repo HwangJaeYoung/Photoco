@@ -33,7 +33,7 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 	private boolean tabRestrict = true;
 	private ArrayList<Image> imageSet;
 	private static final int REQUEST_ADD_TO_CART = 0;
-	private int clickedImagePosition;
+	private int clickedImagePosition; // 저장된 마켓포토의 Position을 저장해서, 나중에 카트에 넣었을때 이미지를 지울때 사용하는 인덱스이다.
 	public static final String PARAM_MARKETPLACE_IMAGE_ITEM ="marketplaceimageitem";
 	
 	@Override
@@ -136,18 +136,18 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
-				searchMarketplaceItemFromServer("bestseller");
 				view.setInvisible();
+				searchMarketplaceItemFromServer("bestseller");
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("MostViewed")) {
-				searchMarketplaceItemFromServer("mostviewd");
 				view.setInvisible();
+				searchMarketplaceItemFromServer("mostviewd");
 				tabRestrict = true;
 			}
 			else if(aTabName.getText().equals("Latest")) {	
-				searchMarketplaceItemFromServer("latest");
 				view.setInvisible();
+				searchMarketplaceItemFromServer("latest");
 				tabRestrict = true;
 			}
 		}

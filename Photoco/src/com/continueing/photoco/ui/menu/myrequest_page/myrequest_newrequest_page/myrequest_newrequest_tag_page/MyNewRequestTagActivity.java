@@ -35,12 +35,10 @@ public class MyNewRequestTagActivity extends ActionBarActivity implements ViewFo
 
 	@Override
 	public void addTagItem(String aTagText) {
-		if(myrequestTagArrayList.size() < 9)
-  		{
+		if(myrequestTagArrayList.size() < 9) {
   			if(aTagText.equals(""))
   				Toast.makeText(getApplicationContext(), "insert tag to the textbox", Toast.LENGTH_SHORT).show( );
-  			else
-  			{
+  			else {
   				// 태그의 생성
   				Tag tag = new Tag( );
   				tag.setTagText(aTagText);
@@ -55,18 +53,15 @@ public class MyNewRequestTagActivity extends ActionBarActivity implements ViewFo
 	}	
 	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInFlater = getMenuInflater();
 		menuInFlater.inflate(R.menu.menu_myrequest_tag, menu);
 		return true;
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		switch(item.getItemId())
-		{
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
 			case R.id.item_menu_ok:
 				Intent intent = new Intent( );
 				intent.putExtra(PARAM_TAG_ARRAYLIST_KEY, myrequestTagArrayList);

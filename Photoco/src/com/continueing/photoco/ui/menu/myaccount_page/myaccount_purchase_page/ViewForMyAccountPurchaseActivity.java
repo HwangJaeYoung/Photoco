@@ -22,18 +22,10 @@ public class ViewForMyAccountPurchaseActivity extends AbstractViewForActivity {
 	}
 
 	@Override
-	protected void initViews() {
-		
-		
-	}
+	protected void initViews() { }
 
 	@Override
-	protected void setEvent() {
-		
-	}
+	protected void setEvent() { }
 	
-	public static interface Controller
-	{
-		
-	}
+	public static interface Controller { }
 }

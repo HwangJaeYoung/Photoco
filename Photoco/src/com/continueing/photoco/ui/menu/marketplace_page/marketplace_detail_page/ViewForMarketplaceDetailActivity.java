@@ -14,7 +14,7 @@ import com.continueing.photoco.ui.menu.marketplace_page.MarketplaceFragment;
 import com.loopj.android.image.SmartImageView;
 
 public class ViewForMarketplaceDetailActivity extends AbstractViewForActivity{
-
+	private String imageId; // Image의 PrimaryKey를 저장한다.
 	private Controller controller;
 	private SmartImageView siv_marketplaceDetailImage;
 	private TextView tv_marketplace_photoDetailPrice;
@@ -22,7 +22,6 @@ public class ViewForMarketplaceDetailActivity extends AbstractViewForActivity{
 	private Button bt_marketplaceAddToCart;
 	private TextView tv_marketplacePhotoDetailSize;
 	private TextView tv_marketplacePhotoDetailLocation;
-	private String imageId;
 	
 	public ViewForMarketplaceDetailActivity(Context context, Controller aController) {
 		super(context);
@@ -46,6 +45,7 @@ public class ViewForMarketplaceDetailActivity extends AbstractViewForActivity{
 
 	@Override
 	protected void setEvent() {
+		// 카트에 사진을 저장한다.
 		bt_marketplaceAddToCart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

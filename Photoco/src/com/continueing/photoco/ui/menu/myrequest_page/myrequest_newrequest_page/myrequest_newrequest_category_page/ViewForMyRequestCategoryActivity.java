@@ -47,12 +47,13 @@ public class ViewForMyRequestCategoryActivity extends AbstractViewForActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				
 				ViewForMyNewRequestCategoryListViewItem viewItem = null;
-				for(int i = 0; i < itemLength; i++)
-				{
+				
+				for(int i = 0; i < itemLength; i++) {
 					viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(i);
 					ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
 					checkImage.setVisibility(View.INVISIBLE);
 				}
+				
 				viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(position);
 				ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
 				checkImage.setVisibility(View.VISIBLE);
@@ -62,21 +63,18 @@ public class ViewForMyRequestCategoryActivity extends AbstractViewForActivity {
 		});
 	}
 
-	public void checkedCategory(int aCheckedPosition)
-	{
+	public void checkedCategory(int aCheckedPosition) {
 		ViewForMyNewRequestCategoryListViewItem viewItem = (ViewForMyNewRequestCategoryListViewItem)lv_requestNewCategory.getChildAt(aCheckedPosition);
 		ImageView checkImage = (ImageView)viewItem.findViewById(R.id.iv_request_new_category);
 		checkImage.setVisibility(View.VISIBLE);
 	}
 	
-	public void resetCategory(ArrayList<IMyRequestCategoryItem> aCategorys)
-	{
+	public void resetCategory(ArrayList<IMyRequestCategoryItem> aCategorys) {
 		itemLength = aCategorys.size();
 		arrayAdapterForMyNewRequestCategory.addAll(aCategorys);
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void onCategorySelected(int aPosition);
 	}
 }

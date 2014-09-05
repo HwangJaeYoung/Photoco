@@ -127,13 +127,13 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
 		@Override
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("Bought") && tabRestrict == true) {
-				searchMyPhotoItemFromServer("bought");
 				view.setInvisible();
+				searchMyPhotoItemFromServer("bought");
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("Uploaded")) {
-				searchMyPhotoItemFromServer("uploaded");
 				view.setInvisible();
+				searchMyPhotoItemFromServer("uploaded");
 				tabRestrict = true;
 			}
 		}

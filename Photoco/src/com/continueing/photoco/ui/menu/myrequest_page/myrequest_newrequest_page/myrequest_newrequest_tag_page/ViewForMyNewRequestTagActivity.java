@@ -75,7 +75,7 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if(ViewForArrayAdapterForMyNewRequestTag.isDeleteButtonClicked == true){
+				if(ViewForArrayAdapterForMyNewRequestTag.isDeleteButtonClicked == true) {
 					arrayList.remove(position);
 					arrayAdapterForMyRequestTag.clear();
 					arrayAdapterForMyRequestTag.addAll(arrayList);
@@ -85,19 +85,16 @@ public class ViewForMyNewRequestTagActivity extends AbstractViewForActivity{
 		});
 	}
 	
-	public void resetEditText( )
-	{
+	public void resetEditText( ) {
 		et_requestNewTagInput.setText("");
 	}
 	
-	public void addItems(ArrayList<ITagItem> item)
-	{
+	public void addItems(ArrayList<ITagItem> item) {
 		arrayAdapterForMyRequestTag.clear();
 		arrayAdapterForMyRequestTag.addAll(item);
 	}
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void addTagItem(String aTagText);
 	}
 }

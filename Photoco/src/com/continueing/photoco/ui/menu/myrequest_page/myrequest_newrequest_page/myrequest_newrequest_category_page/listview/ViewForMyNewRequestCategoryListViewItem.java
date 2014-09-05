@@ -13,7 +13,6 @@ public class ViewForMyNewRequestCategoryListViewItem extends AbstractViewForList
 	private TextView tv_requestNewCategory;
 	public ViewForMyNewRequestCategoryListViewItem(Context context) {
 		super(context);
-		
 	}
 
 	@Override
@@ -35,8 +34,7 @@ public class ViewForMyNewRequestCategoryListViewItem extends AbstractViewForList
 		tv_requestNewCategory.setText(iMyRequestCategoryItem.getName());
 	}
 	
-	public static interface IMyRequestCategoryItem extends IListViewItem
-	{
+	public static interface IMyRequestCategoryItem extends IListViewItem {
 		public String getId( );
 		public String getName( );
 	}

@@ -178,13 +178,11 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
 		arrayAdapterForMyRequestTagGrid.addAll(items);
 	}
 	
-	public void releaseSubmitButton()
-    {
+	public void releaseSubmitButton() {
         this.sb_requestNewSubmit.release();
     }	
 	
-	public static interface Controller
-	{
+	public static interface Controller {
 		public void onSubmit( );
 		public void onLocationSelect( );
 		public void onSelectGallery( );

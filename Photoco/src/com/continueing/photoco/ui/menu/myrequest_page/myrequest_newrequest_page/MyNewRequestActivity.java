@@ -131,10 +131,8 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			}
 		}
 		
-		else if (requestCode == REQUEST_CODE_PICK_DURATION)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		else if (requestCode == REQUEST_CODE_PICK_DURATION) {
+			if(resultCode == Activity.RESULT_OK) {
 				durationHour = data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_KEY);
 				durationChcked = data.getIntExtra(PARAM_DURATION_CHECKED_KEY, 0);
 				view.selectedDuration(data.getStringExtra(MyNewRequestDurationActivity.PARAM_HOUR_TEXT_KEY),
@@ -142,10 +140,8 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 			}
 		}
 		
-		else if(requestCode == REQUEST_CODE_PICK_CATEGORY)
-		{
-			if(resultCode == Activity.RESULT_OK)
-			{
+		else if(requestCode == REQUEST_CODE_PICK_CATEGORY) {
+			if(resultCode == Activity.RESULT_OK) {
 				categoryChecked = data.getIntExtra(PARAM_CATEGORY_CHECKED_KEY, 0);
 				view.selectedCategory(data.getStringExtra(MyNewRequestCategoryActivity.PARAM_CATEGORY_ACTIVITY_KEY));
 				categoryId = (data.getStringExtra(MyNewRequestCategoryActivity.PARAM_PRIMARY_KEY));
@@ -183,8 +179,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 	    }
 	}
 	
-	private void addMyRequestItemToServer( )
-	{
+	private void addMyRequestItemToServer( ) {
 		RequestsRequest request = new RequestsRequest(getApplicationContext());
 		description = view.getDescription();
 		
@@ -206,8 +201,7 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		
 		@Override
 		public void onFail(JSONObject jsonObject, int errorCode) {
-			switch(errorCode)
-			{
+			switch(errorCode) {
 				case 5:
 					Toast.makeText(getApplicationContext(), ErrorCodeList.ERROR_MESSAGE_LOCATION_ID_ABSENCE, Toast.LENGTH_SHORT).show();
 					break;
