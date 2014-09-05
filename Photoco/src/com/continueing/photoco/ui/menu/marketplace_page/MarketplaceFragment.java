@@ -118,17 +118,17 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("BestSeller");
 		actionBarTab.setTabListener(marketplaceListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("MostViewed");
 		actionBarTab.setTabListener(marketplaceListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 		
 		actionBarTab = actionBar.newTab();
 		actionBarTab.setText("Latest");
 		actionBarTab.setTabListener(marketplaceListener);
-		actionBar.addTab(actionBarTab);
+		actionBar.addTab(actionBarTab, false);
 	}
 	
 	private class TabListener implements ActionBar.TabListener {
@@ -138,6 +138,7 @@ public class MarketplaceFragment extends Fragment implements ViewForMarketplaceF
 		public void onTabSelected(Tab aTabName, FragmentTransaction arg1) {
 			if(aTabName.getText().toString().equals("BestSeller") && tabRestrict == true) {
 				searchMarketplaceItemFromServer("bestseller");
+				view.setInvisible();
 				tabRestrict = false;
 			}
 			else if(aTabName.getText().equals("MostViewed")) {

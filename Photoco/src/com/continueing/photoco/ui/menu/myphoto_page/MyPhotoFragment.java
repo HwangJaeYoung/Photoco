@@ -44,7 +44,6 @@ public class MyPhotoFragment extends Fragment implements ViewForMyPhotoFragment.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new ViewForMyPhotoFragment(getActivity( ), inflater, container, this); 
         actionBar.setSelectedNavigationItem(0);
-        view.setInvisible();
         return view.getRoot( );
     }
 	
