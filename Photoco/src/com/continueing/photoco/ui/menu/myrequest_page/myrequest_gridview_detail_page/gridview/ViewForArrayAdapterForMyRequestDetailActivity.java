@@ -33,6 +33,6 @@ public class ViewForArrayAdapterForMyRequestDetailActivity extends AbstractViewF
 	@Override
 	protected void setData(IListViewItem aIListViewItem) {
 		IImageURL iImageURL = (IImageURL)aIListViewItem;
-		siv_myrequestDetailImage.setImageUrl(iImageURL.getUrl());
+		siv_myrequestDetailImage.setImageUrl(iImageURL.getThumnailUrl());
 	}
 }

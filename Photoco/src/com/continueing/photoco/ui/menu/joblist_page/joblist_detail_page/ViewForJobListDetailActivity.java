@@ -66,7 +66,7 @@ public class ViewForJobListDetailActivity extends AbstractViewForActivity {
 		
 		tv_joblistDetailUser.setText(item.getName().getUserName() + "'s Request");
 		tv_joblistDetailUserDescription.setText(item.getDescription());
-		siv_joblistDetailUserImage.setImageUrl(item.getImageURL().getUrl());
+		siv_joblistDetailUserImage.setImageUrl(item.getImageURL().getThumnailUrl());
 		tv_joblistDetailCategory.setText(item.getCategory().getName());
 		tv_joblistDetailLocation.setText(item.getLocation().getDescription());
 		tv_joblistDetailLeftday.setText(item.getLeftTime());

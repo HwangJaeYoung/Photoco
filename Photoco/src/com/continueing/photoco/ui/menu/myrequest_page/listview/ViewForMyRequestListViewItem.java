@@ -98,17 +98,17 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 			iv_requestPhotoMid.setImageUrl(tempImageURL);
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting == 1) { // 이미지 하나
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getThumnailUrl());
 			iv_requestPhotoMid.setImageUrl(tempImageURL);
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting == 2) { // 이미지 둘
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
-			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getUrl());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getThumnailUrl());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getThumnailUrl());
 			iv_requestPhotoRight.setImageUrl(tempImageURL);
 		} else if(imageURLCounting > 2) { // 이미지가 세개 이상일 때
-			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getUrl());
-			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getUrl());
-			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getUrl());
+			iv_requestPhotoLeft.setImageUrl((iMyRequestItem.getImageURLSet()).get(0).getThumnailUrl());
+			iv_requestPhotoMid.setImageUrl((iMyRequestItem.getImageURLSet()).get(1).getThumnailUrl());
+			iv_requestPhotoRight.setImageUrl((iMyRequestItem.getImageURLSet()).get(2).getThumnailUrl());
 		}
 		
 		int counting = iMyRequestItem.getTag().size();

@@ -59,7 +59,7 @@ public class ViewForMyAccountListViewitem extends AbstractViewForListViewItem{
 			
 		}
 		
-		siv_listAccount.setImageUrl(iMyAccountItem.getImage().getUrl());
+		siv_listAccount.setImageUrl(iMyAccountItem.getImage().getThumnailUrl());
 		tv_listAccountName.setText(itemBuyerSeller.getUserName());
 		tv_listAccountDate.setText(iMyAccountItem.getCreateTime());
 	}

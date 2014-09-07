@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+/* 통신을 할 때 버튼 릴리즈, 락 할 때 사용한다. */
+
 public class SubmitButton extends Button {
     private String textToRestore;
     private ProgressBar progressBar;
