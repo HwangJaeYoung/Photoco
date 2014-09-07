@@ -16,17 +16,21 @@ public class Image implements IImageURL, Serializable{
 	private static final String JSON_KEY_WIDTH = "width";
 	private static final String JSON_KEY_PRICE = "price";
 	private static final String JSON_KEY_SIZE = "size";
+	private static final String JSON_KEY_MIDDLE_IMAGE_URL = "middle_image_url";
+	private static final String JSON_KEY_THUMNAIL_IMAGE = "thumbnail_url";
 	
 	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_CATEGORY = "category";
 	private static final String JSON_KEY_TAG = "tags";
 	
 	private String id;
-	private String url;
 	private String height;
 	private String width;
 	private String price;
 	private String size;
+	private String url;
+	private String thumbnailUrl;
+	private String middleUrl;
 	
 	private String tagJSONArray;
 	private Category category;
@@ -35,11 +39,14 @@ public class Image implements IImageURL, Serializable{
 	
 	public Image(JSONObject aJsonObject) throws JSONException {
 		id = aJsonObject.getString(JSON_KEY_ID);
-		url = aJsonObject.getString(JSON_KEY_URL);
 		height = aJsonObject.getString(JSON_KEY_HEIGHT);
 		width = aJsonObject.getString(JSON_KEY_WIDTH);
 		price = aJsonObject.getString(JSON_KEY_PRICE);
 		size = aJsonObject.getString(JSON_KEY_SIZE);
+		
+		url = aJsonObject.getString(JSON_KEY_URL);
+		thumbnailUrl = aJsonObject.getString(JSON_KEY_THUMNAIL_IMAGE);
+		middleUrl = aJsonObject.getString(JSON_KEY_MIDDLE_IMAGE_URL);
 		
 		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
@@ -49,11 +56,6 @@ public class Image implements IImageURL, Serializable{
 	@Override
 	public String getId( ) {
 		return id;
-	}
-	
-	@Override
-	public String getUrl() {
-		return url;
 	}
 
 	@Override
@@ -84,6 +86,21 @@ public class Image implements IImageURL, Serializable{
 	@Override
 	public Category getCategory( ) {
 		return category;
+	}
+	
+	@Override
+	public String getUrl() {
+		return url;
+	}
+	
+	@Override
+	public String getThumnailUrl( ) {
+		return thumbnailUrl;
+	}
+	
+	@Override
+	public String getMiddleUrl( ) {
+		return middleUrl;
 	}
 	
 	@Override

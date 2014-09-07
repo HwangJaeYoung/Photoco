@@ -61,7 +61,7 @@ public class ViewForMarketplaceDetailActivity extends AbstractViewForActivity{
 		bt_marketplacePhotoDetailInfo.setText(item.getSize());
 		tv_marketplace_photoDetailPrice.setText(item.getPrice());
 		tv_marketplacePhotoDetailSize.setText(item.getWidth() + " X " + item.getHeight());
-		siv_marketplaceDetailImage.setImageUrl(item.getUrl());
+		siv_marketplaceDetailImage.setImageUrl(item.getMiddleUrl());
 		tv_marketplacePhotoDetailLocation.setText(item.getUserProfile().getLocation().getDescription());
 	}
 	

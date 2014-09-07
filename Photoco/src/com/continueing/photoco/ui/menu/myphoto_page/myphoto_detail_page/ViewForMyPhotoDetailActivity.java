@@ -53,7 +53,7 @@ public class ViewForMyPhotoDetailActivity extends AbstractViewForActivity {
 	public void initViewInfos(Intent anIntent) {
 		Image item = (Image)anIntent.getSerializableExtra(MyPhotoFragment.PARAM_MYPHOTO_IMAGE_ITEM);
 		
-		siv_myphoto_detail_image.setImageUrl(item.getUrl());
+		siv_myphoto_detail_image.setImageUrl(item.getMiddleUrl());
 		tv_myphoto_detail_category.setText(item.getCategory().getName());
 		iv_myphoto_detail_size.setText(item.getSize());
 		tv_myphoto_detail_location.setText(item.getUserProfile().getLocation().getDescription());

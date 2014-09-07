@@ -50,7 +50,7 @@ public class ViewForCartListViewItem extends AbstractViewForListViewItem {
 	protected void setData(IListViewItem aIListViewItem) { 
 		ICartItem iCartItem = (ICartItem)aIListViewItem;
 		
-		siv_listCartImage.setImageUrl(iCartItem.getImage().getUrl());
+		siv_listCartImage.setImageUrl(iCartItem.getImage().getThumnailUrl());
 		tv_listCartCategory.setText(iCartItem.getImage().getCategory().getName());
 		tv_listCartUsername.setText(iCartItem.getImage().getUserProfile().getUserName() + "'s Request");
 		
