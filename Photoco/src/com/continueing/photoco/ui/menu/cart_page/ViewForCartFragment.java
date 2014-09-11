@@ -30,6 +30,7 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	private Button bt_cartBuyItem;
 	private ArrayAdapterForCartListView arrayAdapterForCartListView;
 	private LinearLayout ll_cartEmpty;
+	private ArrayList<Cart> tempCartItems;
 	
 	public ViewForCartFragment(Context context, LayoutInflater layoutInflater, ViewGroup container, Controller aController) {
 		super(context, layoutInflater, container);
@@ -87,13 +88,28 @@ public class ViewForCartFragment extends AbstractViewForFragment{
 	
 	public void addCartItemArrayList(ArrayList<Cart> anArrayList) {
 		
+		tempCartItems = anArrayList;
+		
 		if(anArrayList.size() != 0) // 초기에 하나라도 아이템이 있으면
 			setInvisible( );
 		else 
 			setVisible( );
-		
+
 		arrayAdapterForCartListView.clear();
 		arrayAdapterForCartListView.addAll(anArrayList);
+		
+		modifyCartItemNumber( );
+	}
+	
+	public void modifyCartItemNumber( ) {
+		
+		int cartItemPrice = 0;
+		
+		for(Cart item : tempCartItems) { 
+			cartItemPrice += Integer.parseInt(item.getImage().getPrice());
+		}
+		
+		bt_cartBuyItem.setText("Buy(" + tempCartItems.size() + "photo, " + cartItemPrice + "P)");
 	}
 	
 	public void setInvisible( ) {

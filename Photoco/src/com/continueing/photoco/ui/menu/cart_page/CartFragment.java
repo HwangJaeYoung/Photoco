@@ -98,6 +98,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 			if(resultCode == Activity.RESULT_OK) {
 				cartSet.remove(itemPosition); // 삭제나 구매를 한후에 Cart아이템 삭제
 				view.addCartItemArrayList(cartSet);
+				view.modifyCartItemNumber();
 			}
 		}
 	}
@@ -115,7 +116,9 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 	public void onRemoveItems() {
 		// 통신으로 해서도 지우고 arraylist의 번호를 모두 던저준다.
 		// 사용자가 보이는 뷰에서도 지운다.
+		cartSet.removeAll(cartSet);
 		view.removeAllItems();
+		view.modifyCartItemNumber();
 	}
 	
 	// 카트에 있는 모든 아이템을 구매한다.
@@ -140,6 +143,7 @@ public class CartFragment extends Fragment implements ViewForCartFragment.Contro
 				cartCallCounter = 0; // 최종적으로 성공하였으므로 카운터를 초기화한다.
 				Toast.makeText(getActivity(), "To purchase items is complete", Toast.LENGTH_LONG).show();
 				view.removeAllItems( ); // CartFragment에 보인는 모든 아이템을 없앤다 모두 구매하였으므로.
+				view.modifyCartItemNumber();
 			}
 		}
 
