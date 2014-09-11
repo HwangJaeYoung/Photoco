@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tv_request_detail_price"
-                android:text="$"
+                android:text="P"
                 android:textColor="#fff"
                 android:textSize="28sp" />
 

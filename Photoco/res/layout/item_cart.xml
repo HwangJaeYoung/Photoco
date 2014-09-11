@@ -104,28 +104,32 @@
                 android:textColor="#bab0c8" />
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:orientation="horizontal" >
+            android:layout_marginTop="7dp" >
 
             <Button
                 android:id="@+id/bt_list_cart_tag_first"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/tag_bg"
                 android:ellipsize="end"
                 android:focusable="false"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="asdf"
+                android:textSize="14dp" />
 
             <Button
                 android:id="@+id/bt_list_cart_tag_second"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
-                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/bt_list_cart_tag_first"
                 android:background="@drawable/tag_bg"
                 android:ellipsize="end"
                 android:focusable="false"
@@ -135,12 +139,14 @@
                 android:id="@+id/bt_list_cart_tag_third"
                 android:layout_width="69dp"
                 android:layout_height="21dp"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
+                android:layout_toRightOf="@id/bt_list_cart_tag_second"
                 android:background="@drawable/tag_bg"
                 android:ellipsize="end"
                 android:focusable="false"
                 android:maxLines="1" />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -13,6 +13,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
+            <ListView
+                android:id="@+id/lv_myaccount_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </ListView>
+
+            <ProgressBar
+                android:id="@+id/pb_myaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
             <LinearLayout
                 android:id="@+id/ll_myaccount_empty"
                 android:layout_width="match_parent"
@@ -37,26 +51,13 @@
                     android:textColor="#afb9c1"
                     android:textSize="25sp" />
             </LinearLayout>
-
-            <ListView
-                android:id="@+id/lv_myaccount_purchase"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </ListView>
-
-            <ProgressBar
-                android:id="@+id/pb_myaccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center" />
         </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="145dp"
+        android:background="#414b59"
         android:layout_weight="0" >
 
         <LinearLayout
@@ -91,50 +92,14 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/layout_account_mid"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_above="@id/layout_account_bottom"
-            android:background="#414b59" >
-
-            <TextView
-                android:id="@+id/tv_account_exchange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="Exchangeable money :"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_account_exchange_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="P"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_account_exchange_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/tv_account_exchange_unit"
-                android:text="999"
-                android:textColor="#fff"
-                android:textSize="27sp" />
-        </RelativeLayout>
+        
 
         <LinearLayout
             android:id="@+id/layout_account_top"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_above="@id/layout_account_mid"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
             android:background="#414b59"
             android:orientation="horizontal" >
 
@@ -164,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="999"
-                        android:textColor="#fff"
+                        android:textColor="#ffade885"
                         android:textSize="20sp" />
 
                     <TextView
@@ -172,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="P"
-                        android:textColor="#fff"
+                        android:textColor="#ffade885"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -203,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="999"
-                        android:textColor="#fff"
+                        android:textColor="#ffade885"
                         android:textSize="20sp" />
 
                     <TextView
@@ -211,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="P"
-                        android:textColor="#fff"
+                        android:textColor="#ffade885"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -242,7 +207,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="999"
-                        android:textColor="#fff"
+                        android:textColor="#fff25353"
                         android:textSize="20sp" />
 
                     <TextView
@@ -250,7 +215,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="P"
-                        android:textColor="#fff"
+                        android:textColor="#fff25353"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
