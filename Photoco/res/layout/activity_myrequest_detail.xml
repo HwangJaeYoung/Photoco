@@ -25,84 +25,99 @@
         <RelativeLayout
             android:id="@+id/layout_request_detail_location"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true" >
 
-            <ImageView
-                android:id="@+id/iv_request_detail_location"
-                android:layout_width="21dp"
-                android:layout_height="20dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/gps2_ic" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="60dp" >
 
-            <TextView
-                android:id="@+id/tv_request_detail_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/iv_request_detail_location"
-                android:alpha="0.8"
-                android:text="Newyork, USA"
-                android:textColor="#fff" />
+                <ImageView
+                    android:id="@+id/iv_request_detail_location"
+                    android:layout_width="21dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/gps2_ic" />
 
-            <Button
-                android:id="@+id/bt_request_detail_add_to_cart"
+                <TextView
+                    android:id="@+id/tv_request_detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_request_detail_location"
+                    android:alpha="0.8"
+                    android:text="Newyork, USA"
+                    android:textColor="#fff" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_request_detail_location" />
-        </RelativeLayout>
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp" >
 
-        <RelativeLayout
-            android:id="@+id/layout_request_detail_info"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_above="@id/layout_request_detail_location" >
+                <Button
+                    android:id="@+id/bt_request_detail_add_to_cart"
+                    android:layout_width="330dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/tv_request_detail_location"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bt_create_account"
+                    android:text="Add to cart"
+                    android:textSize="20dp" />
+            </RelativeLayout>
 
-            <Button
-                android:id="@+id/bt_request_detail_size_info"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/size_big"
-                android:text="L"
-                android:textColor="#fff"
-                android:textSize="22sp" />
+            <RelativeLayout
+                android:id="@+id/layout_request_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" >
 
-            <TextView
-                android:id="@+id/tv_request_detail_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/bt_request_detail_size_info"
-                android:text="25"
-                android:textColor="#fff"
-                android:textSize="39sp" />
+                <Button
+                    android:id="@+id/bt_request_detail_size_info"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/size_big"
+                    android:text="L"
+                    android:textColor="#fff"
+                    android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/tv_request_detail_price_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/tv_request_detail_price"
-                android:text="P"
-                android:textColor="#fff"
-                android:textSize="28sp" />
+                <TextView
+                    android:id="@+id/tv_request_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/bt_request_detail_size_info"
+                    android:text="25"
+                    android:textColor="#fff"
+                    android:textSize="39sp" />
 
-            <TextView
-                android:id="@+id/tv_request_detail_image_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="17dp"
-                android:text="1280 x 720"
-                android:textColor="#fff"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/tv_request_detail_price_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_request_detail_price"
+                    android:text="P"
+                    android:textColor="#fff"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_request_detail_image_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="17dp"
+                    android:text="1280 x 720"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
-
 </RelativeLayout>

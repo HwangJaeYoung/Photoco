@@ -59,7 +59,7 @@ public class ViewForMarketplaceDetailActivity extends AbstractViewForActivity{
 		
 		imageId = item.getId(); // AddToCart때 사용하는 이미지의 id이다.
 		bt_marketplacePhotoDetailInfo.setText(item.getSize());
-		tv_marketplace_photoDetailPrice.setText(item.getPrice());
+		tv_marketplace_photoDetailPrice.setText(item.getPrice() +"P");
 		tv_marketplacePhotoDetailSize.setText(item.getWidth() + " X " + item.getHeight());
 		siv_marketplaceDetailImage.setImageUrl(item.getUrl());
 		tv_marketplacePhotoDetailLocation.setText(item.getUserProfile().getLocation().getDescription());

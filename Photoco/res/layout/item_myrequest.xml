@@ -194,12 +194,14 @@
 
             <TextView
                 android:id="@+id/tv_request_desc_detail"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="People Hoping out at the bar.." />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="People Hoping out at the barafjsifjasjflisflasjfasf" />
         </RelativeLayout>
 
         <!-- Photo -->

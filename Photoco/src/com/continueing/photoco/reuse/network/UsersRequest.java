@@ -17,21 +17,18 @@ public class UsersRequest {
 	private static final String PARM_CONFIRMPASSWORD = "password_confirmation";
 	private static final String PARM_PRIMARYKEY = "location_id";
 	
-	public UsersRequest(Context aContext)
-	{
+	public UsersRequest(Context aContext) {
 		this.context = aContext;
 	}
 	
-	public void login(String aUserName, String aPassword, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
-	{
+	public void login(String aUserName, String aPassword, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARM_NAME, aUserName);
 		requestParams.put(PARM_PASSWORD, aPassword);
 		HttpRequester.post(URL_BASE + "/login/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
-	public void signUp(String aUserName, String aEmail, String aPassword, String aConfirmPassword, String aPrimaryKey, final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException
-	{
+	public void signUp(String aUserName, String aEmail, String aPassword, String aConfirmPassword, String aPrimaryKey, final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARM_NAME, aUserName);
 		requestParams.put(PARM_EMAIL, aEmail);

@@ -5,22 +5,22 @@
     android:background="#fff"
     android:orientation="horizontal" >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_gridview_tag_first"
         android:layout_width="69dp"
         android:layout_height="21dp"
-        android:background="@drawable/tag_bg"
-        android:gravity="center" >
+        android:background="@drawable/tag_bg" >
 
         <TextView
             android:id="@+id/tv_gridview_tag_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Cafe"
             android:textColor="#fff" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

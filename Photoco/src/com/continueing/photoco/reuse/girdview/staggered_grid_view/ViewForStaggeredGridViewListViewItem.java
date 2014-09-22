@@ -41,8 +41,8 @@ public class ViewForStaggeredGridViewListViewItem extends AbstractViewForListVie
 		IImageURL iImageURL = (IImageURL)aIListViewItem;
 		tv_category.setText(iImageURL.getCategory().getName());
 		tv_size.setText(iImageURL.getSize());
-		tv_price.setText(iImageURL.getPrice());
-		csivImage.setImageUrl(iImageURL.getMiddleUrl());
+		tv_price.setText(iImageURL.getPrice() + "P");
+		csivImage.setImageUrl(iImageURL.getStaggeredUrl());
 	}
 	
 	public CustomSmartImageView returnSmartImageView( ) {

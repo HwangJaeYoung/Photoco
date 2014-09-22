@@ -18,6 +18,7 @@ public class Image implements IImageURL, Serializable{
 	private static final String JSON_KEY_SIZE = "size";
 	private static final String JSON_KEY_MIDDLE_IMAGE_URL = "middle_image_url";
 	private static final String JSON_KEY_THUMNAIL_IMAGE = "thumbnail_url";
+	private static final String JSON_KEY_STAGGERED_IMAGE = "staggered_image_url";
 	
 	private static final String JSON_KEY_USERPROFILE = "userProfile";
 	private static final String JSON_KEY_CATEGORY = "category";
@@ -31,6 +32,7 @@ public class Image implements IImageURL, Serializable{
 	private String url;
 	private String thumbnailUrl;
 	private String middleUrl;
+	private String staggeredUrl;
 	
 	private String tagJSONArray;
 	private Category category;
@@ -47,7 +49,7 @@ public class Image implements IImageURL, Serializable{
 		url = aJsonObject.getString(JSON_KEY_URL);
 		thumbnailUrl = aJsonObject.getString(JSON_KEY_THUMNAIL_IMAGE);
 		middleUrl = aJsonObject.getString(JSON_KEY_MIDDLE_IMAGE_URL);
-		
+		staggeredUrl = aJsonObject.getString(JSON_KEY_STAGGERED_IMAGE);
 		userProfile = new UserProfile(aJsonObject.getJSONObject(JSON_KEY_USERPROFILE));
 		category = new Category(aJsonObject.getJSONObject(JSON_KEY_CATEGORY));
 		tagJSONArray = aJsonObject.getJSONArray(JSON_KEY_TAG).toString();
@@ -101,6 +103,11 @@ public class Image implements IImageURL, Serializable{
 	@Override
 	public String getMiddleUrl( ) {
 		return middleUrl;
+	}
+	
+	@Override
+	public String getStaggeredUrl( ) {
+		return staggeredUrl;
 	}
 	
 	@Override

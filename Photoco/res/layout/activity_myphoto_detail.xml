@@ -176,7 +176,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
             android:background="@drawable/bt_job_detail_hide"
-            android:src="@drawable/remove_btn_pressed" />
+            android:src="@drawable/trash_ic" />
     </RelativeLayout>
 
 </LinearLayout>

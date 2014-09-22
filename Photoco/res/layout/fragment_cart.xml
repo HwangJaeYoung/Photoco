@@ -69,7 +69,7 @@
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_job_detail_hide"
-            android:src="@drawable/remove_btn_default"
+            android:src="@drawable/trash_ic"
             android:textSize="20sp" />
 
         <Button

@@ -39,7 +39,7 @@
                     android:layout_height="60dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/bt_job_detail_hide"
-                    android:src="@drawable/remove_btn_default"
+                    android:src="@drawable/trash_ic"
                     android:textSize="20sp" />
 
                 <Button
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/tv_cart_detail_price"
-                    android:text="$"
+                    android:text="P"
                     android:textColor="#fff"
                     android:textSize="28sp" />
 
