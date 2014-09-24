@@ -252,7 +252,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:background="#cdd8e2"
-                    android:scaleType="fitXY"
                     android:src="@drawable/thumbnail" />
 				
                 <com.loopj.android.image.SmartImageView
@@ -263,7 +262,6 @@
                     android:layout_marginRight="5dp"
                     android:layout_toLeftOf="@id/siv_request_photo_right"
                     android:background="#cdd8e2"
-                    android:scaleType="fitXY"
                     android:src="@drawable/thumbnail" />
  				
                 <com.loopj.android.image.SmartImageView
@@ -274,7 +272,6 @@
                     android:layout_marginRight="5dp"
                     android:layout_toLeftOf="@id/siv_request_photo_mid"
                     android:background="#cdd8e2"
-                    android:scaleType="fitXY"
                     android:src="@drawable/thumbnail" />
 
                 <ImageView

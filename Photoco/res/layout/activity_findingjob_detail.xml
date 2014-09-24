@@ -59,7 +59,7 @@
                     android:layout_marginTop="48dp"
                     android:background="@drawable/bt_finding_job_detail"
                     android:scaleType="fitXY"
-                    android:src="@drawable/textlogo_small" />
+                    android:src="@drawable/thumbnail" />
             </LinearLayout>
         </LinearLayout>
         <!-- 맨위 -->
