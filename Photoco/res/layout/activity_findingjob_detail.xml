@@ -58,7 +58,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="48dp"
                     android:background="@drawable/bt_finding_job_detail"
-                    android:scaleType="fitXY"
                     android:src="@drawable/thumbnail" />
             </LinearLayout>
         </LinearLayout>
