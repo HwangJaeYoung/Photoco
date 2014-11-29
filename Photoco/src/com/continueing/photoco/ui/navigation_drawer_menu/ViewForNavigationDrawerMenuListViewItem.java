@@ -35,7 +35,7 @@ public class ViewForNavigationDrawerMenuListViewItem extends AbstractViewForList
 	protected void setData(IListViewItem aIListViewItem) {
 		DrawerMenuItem drawerMenuItem = (DrawerMenuItem) aIListViewItem;
 		tv_contents.setText(drawerMenuItem.getText());
-		iv_leftIcon.setImageResource(((DrawerMenuItem) aIListViewItem).getImageId());
+		iv_leftIcon.setImageResource(drawerMenuItem.getImageId());
 	}
 
 	// 여기서의 item은 다른 것들과 다르게 데이터가 변하지 않는다.

@@ -14,9 +14,10 @@ public class ParticipateRequest {
 		this.context = aContext;
 	}
 	
-	public void submitFindingJobInfo(final HttpRequester.NetworkResponseListener aNetworkListener, String aRequestId)  throws JSONException
-	{
+	public void submitFindingJobInfo(final HttpRequester.NetworkResponseListener aNetworkListener, String aRequestId)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.post(URL_BASE + "/" + aRequestId + "/participate/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/" + aRequestId + "/participate/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

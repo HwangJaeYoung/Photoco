@@ -18,6 +18,8 @@ public class SubmitPhotoRequest {
 	
 	public void submitPhoto(File aFilePath, String aJobId, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + "/candidateJobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/candidateJobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

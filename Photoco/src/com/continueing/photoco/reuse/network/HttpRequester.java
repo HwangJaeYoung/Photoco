@@ -26,26 +26,25 @@ public class HttpRequester {
     	request(url, params, responseHandler, aContext, false);
     }
     
-    public static void request(String url, RequestParams params, JsonHttpResponseHandler responseHandler, Context aContext, boolean anIsPost)
-    {
+    public static void request(String url, RequestParams params, JsonHttpResponseHandler responseHandler, Context aContext, boolean anIsPost) {
     	Log.i("request", "Url: "+url);
         Log.i("request", "Parms: " + params.toString());
-        PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
-        client.setCookieStore(persistentCookieStore);
         
-        if(anIsPost)
-        	client.post(getAbsoluteUrl(url), params, responseHandler);
-        else
-        	client.get(getAbsoluteUrl(url), params, responseHandler);
-        
-        List<Cookie> cookieList =  persistentCookieStore.getCookies();
-        Log.i("cookie count", cookieList.size()+"");
-        for( Cookie aCookie : cookieList)
-        {
-            Log.i("name", aCookie.getName());
-            Log.i("value", aCookie.getValue());
-        }
-    }
+		PersistentCookieStore persistentCookieStore = new PersistentCookieStore(aContext);
+		client.setCookieStore(persistentCookieStore);
+
+		if (anIsPost)
+			client.post(getAbsoluteUrl(url), params, responseHandler);
+		else
+			client.get(getAbsoluteUrl(url), params, responseHandler);
+
+		List<Cookie> cookieList = persistentCookieStore.getCookies();
+		Log.i("cookie count", cookieList.size() + "");
+		for (Cookie aCookie : cookieList) {
+			Log.i("name", aCookie.getName());
+			Log.i("value", aCookie.getValue());
+		}
+	}
     
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;

@@ -18,11 +18,15 @@ public class CartRequest {
 	
 	public void addToCart(String anImageId, final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.post(URL_BASE + "/" + anImageId + PARAM_ADD_TO_CART + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/" + anImageId + PARAM_ADD_TO_CART + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void getCartItem(final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE_SECOND + "/" + "cart" + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE_SECOND + "/" + "cart" + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

@@ -36,18 +36,6 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 		searchMyInformationFromServer( );
 	}
 
-	@Override
-	public void onSettingClicked(String anUserId, String anUserName, String anEmail, String aPassword, String aConfirmPassword, String anLocationID) {
-		// 업데이트한 비밀번호 또는 지역을 업데이트하고 뷰 종료
-		UsersRequest usersRequest = new UsersRequest(getApplicationContext());
-		try {
-			usersRequest.updateUserInformation(anUserId, anUserName, anEmail,
-			aPassword, aConfirmPassword, anLocationID, userInformationUpdateListener);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void searchMyInformationFromServer( ) {
 		MyInformationRequest myInformationRequest = new MyInformationRequest(getApplicationContext());
 		
@@ -148,6 +136,18 @@ public class SettingActivity extends ActionBarActivity implements ViewForSetting
 			}
 	}
 
+	@Override
+	public void onSettingClicked(String anUserId, String anUserName, String anEmail, String aPassword, String aConfirmPassword, String anLocationID) {
+		// 업데이트한 비밀번호 또는 지역을 업데이트하고 뷰 종료
+		UsersRequest usersRequest = new UsersRequest(getApplicationContext());
+		try {
+			usersRequest.updateUserInformation(anUserId, anUserName, anEmail,
+			aPassword, aConfirmPassword, anLocationID, userInformationUpdateListener);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 지역검색을 하기위해 눌렸을 때
 	@Override
 	public void onLocationSelect() {

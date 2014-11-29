@@ -53,7 +53,7 @@ public class LocationActivity extends ActionBarActivity implements ViewForLocati
 	}
 
 	HttpRequester.NetworkResponseListener searchLocationListener = new HttpRequester.NetworkResponseListener() {
-		// Location객체를 만들고 리스트 뷰에 주기위해 합쳐놓는 과정
+		
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
 			JSONArray jsonArray = null;

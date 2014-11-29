@@ -27,6 +27,5 @@ public interface ErrorCodeList {
 	String ERROR_MESSAGE_NONEXISTENT_CATEGORY_ID = "category id does not exist. can not find from database";
 	String ERROR_MESSAGE_LOGIN_REQUIRED = "you should login if you want to use this API";
 	String ERROR_MESSAGE_INVALID_JSON_STRING = "json in post parameter is not valid. Format the data";
-
 	String ERROR_MESSAGE_CHECKBOTTUN_NOT_SELECTED = "Check button isn't selected, so you should check this 'check button' to sign up";
 }

@@ -45,13 +45,6 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 		et_settingConfrimPassword = (EditText)findViewById(R.id.et_setting_confrim_password);
 	}
 	
-	public void setMyInformationData(MyInformation aMyInformation) {
-		myInformation = aMyInformation; // onSettingClicked에서 사용자 정보를 가져오기위해 미리 저장한다.
-		tv_settingUsername.setText(myInformation.getUserName());
-		tv_settingEmail.setText(myInformation.geteMail());
-		tv_settingLocation.setText(myInformation.getLocation().getDescription());
-	}
-
 	@Override
 	protected void setEvent() {
 		// 비밀번호, 지역변경을 위해서 Update버튼을 클릭
@@ -80,6 +73,13 @@ public class ViewForSettingActivity extends AbstractViewForActivity{
 		tv_settingLocation.setText(aLocation);
 	}
 		
+	public void setMyInformationData(MyInformation aMyInformation) {
+		myInformation = aMyInformation; // onSettingClicked에서 사용자 정보를 가져오기위해 미리 저장한다.
+		tv_settingUsername.setText(myInformation.getUserName());
+		tv_settingEmail.setText(myInformation.geteMail());
+		tv_settingLocation.setText(myInformation.getLocation().getDescription());
+	}
+	
 	public static interface Controller {
 		public void onSettingClicked(String anUserId, String anUserName, String anEmail, String aPassword, String aConfirmPassword, String anLocationID);
 		public void onLocationSelect( );

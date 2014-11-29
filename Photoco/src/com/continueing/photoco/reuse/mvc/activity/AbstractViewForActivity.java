@@ -3,7 +3,7 @@ package com.continueing.photoco.reuse.mvc.activity;
 import android.content.Context;
 import android.view.View;
 
-// 모든 뷰는 이 클래스를 상속 함으로써 공통적인 규약을 지킨다고 보면된다.
+
 public abstract class AbstractViewForActivity {
 	private View root;
 	private Context context;
@@ -21,7 +21,7 @@ public abstract class AbstractViewForActivity {
 
 	abstract protected View inflate(); // inflate
 
-	abstract protected void initViews(); // findByViewId
+	abstract protected void initViews(); // findViewById
 
 	abstract protected void setEvent();  // click event etc...
 

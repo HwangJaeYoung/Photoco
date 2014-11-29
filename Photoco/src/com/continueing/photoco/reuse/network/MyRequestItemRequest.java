@@ -10,14 +10,14 @@ public class MyRequestItemRequest {
 	private Context context;
 	private static final String URL_BASE = "/me";
 	
-	public MyRequestItemRequest(Context aContext)
-	{
+	public MyRequestItemRequest(Context aContext) {
 		this.context = aContext;
 	}
 
-	public void getItems(final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
-	{
+	public void getItems(final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + "/requests/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/requests/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

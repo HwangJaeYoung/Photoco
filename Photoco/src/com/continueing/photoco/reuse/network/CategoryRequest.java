@@ -16,6 +16,8 @@ public class CategoryRequest {
 	
 	public void getCategory(final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

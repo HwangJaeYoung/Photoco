@@ -29,8 +29,7 @@ public abstract class AbstractViewForListViewItem extends LinearLayout {
     protected abstract void setEvents(); // click event etc...
     protected abstract void setData(IListViewItem aIListViewItem); // insert View info
 
-    protected View findViewById_(int aResourceId)
-    {
+    protected View findViewById_(int aResourceId) {
         return root.findViewById(aResourceId);
     }
 }

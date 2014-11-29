@@ -240,13 +240,13 @@ public class NavigationDrawerFragment extends Fragment {
 		outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
 	}
 
-	// 메뉴버튼을 생성한다.(여기에서는 "Photoco"버튼)
+	// 메뉴버튼을 생성한다.
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
 	} 
 	
-	// 메뉴버튼이 클릭 되었을 때 할 행동정의("Photoco"버튼을 눌렸을 때)
+	// 메뉴버튼이 클릭 되었을 때 할 행동정의
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item))

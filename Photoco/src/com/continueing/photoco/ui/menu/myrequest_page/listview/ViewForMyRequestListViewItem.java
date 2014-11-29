@@ -140,16 +140,6 @@ public class ViewForMyRequestListViewItem extends AbstractViewForListViewItem {
 		tv_requestTimeleftDetail.setText(iMyRequestItem.getLeftTime() +"(" + iMyRequestItem.getEndDate() + ")");
 	}
 	
-	public SmartImageView returnLeftView( ) {
-		return iv_requestPhotoLeft;	
-	}
-	public SmartImageView returnMidView( ) {
-		return iv_requestPhotoMid;
-	}
-	public SmartImageView returnRightView( ) {
-		return iv_requestPhotoRight;
-	}
-	
 	// Request Item
 	public static interface IMyRequestItem extends IListViewItem {
 		// 뽑아낼 데이터의 메소드를 정의

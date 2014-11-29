@@ -29,12 +29,6 @@ public class ViewForLocationActivity extends AbstractViewForActivity {
 	}
 
 	@Override
-	protected View inflate() {
-		return LayoutInflater.from(getContext()).inflate(
-				R.layout.activity_myrequest_new_location, null);
-	}
-
-	@Override
 	protected void initViews() {
 		et_location = (EditText)findViewById(R.id.et_request_new_location);
 		lv_location_search = (ListView)findViewById(R.id.listview_request_new_location);
@@ -42,6 +36,18 @@ public class ViewForLocationActivity extends AbstractViewForActivity {
 		lv_location_search.setAdapter(arrayListAdapter);
 	}
 
+	// 기존에 리스트뷰에 보이던 아이템들을 초기화하고 다시 보여준다.
+	public void resetLocations(ArrayList<ILocationItem> aArrayList) {
+		arrayListAdapter.clear();
+		arrayListAdapter.addAll(aArrayList);
+	}
+	
+	@Override
+	protected View inflate() {
+		return LayoutInflater.from(getContext()).inflate(
+				R.layout.activity_myrequest_new_location, null);
+	}
+	
 	@Override
 	protected void setEvent() {
 		// 변화하는 문자에 대해 반응한다.
@@ -66,12 +72,6 @@ public class ViewForLocationActivity extends AbstractViewForActivity {
 				controller.onLocationSelected(position);
 			}
 		});
-	}
-	
-	// 기존에 리스트뷰에 보이던 아이템들을 초기화하고 다시 보여준다.
-	public void resetLocations(ArrayList<ILocationItem> aArrayList) {
-		arrayListAdapter.clear();
-		arrayListAdapter.addAll(aArrayList);
 	}
 	
 	public static interface Controller {

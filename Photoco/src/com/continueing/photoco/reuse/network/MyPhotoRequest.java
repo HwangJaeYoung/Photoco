@@ -19,11 +19,15 @@ public class MyPhotoRequest {
 
 	public void getMyPhotoUploadedImageItems(final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + PARAM_IMAGES + PARAM_UPLOADED + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + PARAM_IMAGES + PARAM_UPLOADED + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void getMyPhotoBoughtImageItems(final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + PARAM_IMAGES + PARAM_BOUGHT + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + PARAM_IMAGES + PARAM_BOUGHT + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

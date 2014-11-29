@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.loopj.android.http.RequestParams;
 
@@ -36,12 +37,15 @@ public class RequestsRequest {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void getImageURL(final HttpRequester.NetworkResponseListener aNetworkListener, String aRequestId) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.get(URL_BASE + "/" + aRequestId + "/attachments/", requestParams, new JsonResponseHandler(aNetworkListener), context);
-	
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/" + aRequestId + "/attachments/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

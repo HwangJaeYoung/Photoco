@@ -25,7 +25,9 @@ public class UsersRequest {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARM_NAME, aUserName);
 		requestParams.put(PARM_PASSWORD, aPassword);
-		HttpRequester.post(URL_BASE + "/login/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/login/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void signUp(String aUserName, String aEmail, String aPassword, String aConfirmPassword, String aPrimaryKey, final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
@@ -35,7 +37,9 @@ public class UsersRequest {
 		requestParams.put(PARM_PASSWORD, aPassword);
 		requestParams.put(PARM_CONFIRMPASSWORD, aConfirmPassword);
 		requestParams.put(PARM_PRIMARYKEY, aPrimaryKey);
-		HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void updateUserInformation(String userId, String aUserName, String anEmail, String aPassword, String aConfirmPassword, String aLocationId, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
@@ -45,6 +49,8 @@ public class UsersRequest {
 		requestParams.put(PARM_PASSWORD, aPassword);
 		requestParams.put(PARM_CONFIRMPASSWORD, aConfirmPassword);
 		requestParams.put(PARM_PRIMARYKEY, aLocationId);
-		HttpRequester.post(URL_BASE + "/" + userId + "/" + PARM_UPDATE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/" + userId + "/" + PARM_UPDATE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

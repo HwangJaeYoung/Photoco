@@ -18,6 +18,8 @@ public class PurchaseRequest {
 	
 	public void purchaseItemFormCart(String anCartId, final HttpRequester.NetworkResponseListener aNetworkListener)  throws JSONException {
 		RequestParams requestParams = new RequestParams( );
-		HttpRequester.post(URL_BASE + PARAM_CART + "/" + anCartId + PARAM_PURCHASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + PARAM_CART + "/" + anCartId + PARAM_PURCHASE + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

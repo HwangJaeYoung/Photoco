@@ -37,7 +37,7 @@ public class SplashActivity extends Activity {
 				
 				startActivity(i);
 				finish();
-				// Splash에 애니메이션을 적용하여 동적이로 보이게 한다.
+				// Splash에 애니메이션을 적용하여 동적으로 보이게 한다.
 				SplashActivity.this.overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
 			}
 

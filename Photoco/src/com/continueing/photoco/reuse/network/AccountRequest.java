@@ -19,6 +19,8 @@ public class AccountRequest {
 	public void getPurchaseItems(String aTabName, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_TABNAME, aTabName);
-		HttpRequester.get(URL_BASE + PARAM_PURCHASES + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + PARAM_PURCHASES + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

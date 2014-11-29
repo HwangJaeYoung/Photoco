@@ -22,13 +22,17 @@ public class FindingJobListRequest {
 	public void getFindingJobItem(String aTabName, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_TABNAME, aTabName);
-		HttpRequester.get(URL_BASE + "/candidateJobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/candidateJobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void getJobListItem(String aTabName, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_TABNAME, aTabName);
-		HttpRequester.get(URL_BASE + "/jobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE + "/jobs/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 	
 	public void submitPhoto(File aFilePath, String aJobId, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
@@ -38,6 +42,8 @@ public class FindingJobListRequest {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		HttpRequester.post(URL_BASE + "/jobs/" + aJobId + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.post(URL_BASE + "/jobs/" + aJobId + "/", requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }

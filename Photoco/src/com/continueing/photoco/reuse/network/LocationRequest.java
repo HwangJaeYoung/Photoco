@@ -11,15 +11,15 @@ public class LocationRequest {
 	private static final String URL_BASE = "/location";
 	private static final String PARAM_LOCATION = "str";
 	
-	public LocationRequest(Context aContext)
-	{
+	public LocationRequest(Context aContext) {
 		this.context = aContext;
 	}
 	
-	public void searchLocation(String aLocation, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException
-	{
+	public void searchLocation(String aLocation, final HttpRequester.NetworkResponseListener aNetworkListener) throws JSONException {
 		RequestParams requestParams = new RequestParams( );
 		requestParams.put(PARAM_LOCATION, aLocation); // ?str=aLocation
-		HttpRequester.get(URL_BASE, requestParams, new JsonResponseHandler(aNetworkListener), context);
+		
+		if(context != null)
+			HttpRequester.get(URL_BASE, requestParams, new JsonResponseHandler(aNetworkListener), context);
 	}
 }
