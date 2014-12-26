@@ -23,6 +23,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.continueing.photoco.domain.Tag;
 import com.continueing.photoco.reuse.etc.ErrorCodeList;
 import com.continueing.photoco.reuse.girdview.tag_gridview.ViewForArrayAdapterForTagGridView.ITagItem;
 import com.continueing.photoco.reuse.network.HttpRequester;
@@ -61,9 +62,53 @@ public class MyNewRequestActivity extends ActionBarActivity implements ViewForMy
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getSupportActionBar( ).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#323a45")));
 		view = new ViewForMyNewRequestActivity(getApplicationContext(), this); // 뷰를 생성해 낸다.
+		setTestData( );
 		setContentView(view.getRoot());
 	}
 
+	public void setTestData( ) {
+		
+		// request.setMyRequestItem(locationId, categoryId, durationHour, tagJSONArray, description, filePath, submitListener);
+		
+		// location
+		locationId = "27";
+		view.selectedLocation("Paris, France");
+		
+		// category
+		categoryId = "4";
+		view.selectedCategory("Buildings/Landmarks");		
+		
+		// duration
+		//durationHour = "10";
+		//view.selectedDuration("12Hours", "14/12/02", durationHour);
+		
+		// tag -> paris, epell, trip
+		tagJSONArray = new JSONArray( );
+		
+		ArrayList<ITagItem> tagArrayList = new ArrayList<ITagItem>( );
+		
+		Tag tag1 = new Tag();	
+		tag1.setTagText("paris");
+		tagArrayList.add(tag1);
+		
+		Tag tag2 = new Tag();
+		tag2.setTagText("epell");
+		tagArrayList.add(tag2);
+		
+		Tag tag3 = new Tag();
+		tag3.setTagText("trip");
+		tagArrayList.add(tag3);
+		
+		for(int i = 0; i < tagArrayList.size(); i++)
+			tagJSONArray.put(tagArrayList.get(i).getTagText());
+		
+		view.selectedTag(tagArrayList);
+		
+		// description
+		description = "I want to get a picture containing the front side of eiffel tower.";
+		view.editTextModify(description);
+	}
+	
 	@Override
 	public void onSubmit() {
 		addMyRequestItemToServer( );

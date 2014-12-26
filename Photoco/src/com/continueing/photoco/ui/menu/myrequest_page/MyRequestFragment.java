@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +34,6 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	public static final int REQUEST_CODE_GET_REQUEST_ITEM = 0;
 	public static final String PARAM_REQUESTID_KEY ="requestID";
 	
-	int count1 = 0;
-	int count2 = 0;
-	
 	/* 다른 방법이 있을 수 있겠으나 searchImageURLFromServer를 여러번 통신할 때 생기는
 	    문제를 해결하기 위해서 Handler를 사용하여 통신할 때 생기는 동기화 문제를 해결 하였다.
 	    그러지 않으면 데이터가 이상하게 들어가거나 오류가 난다. */
@@ -48,7 +44,6 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 			if(msg.what == 1) {
 				
 				if(itemCounter < requestIdSet.size()) {
-					Log.i("search", "image" + ++count1);
 					searchImageURLFromServer(requestIdSet.get(itemCounter));
 				}
 				else if(itemCounter == requestIdSet.size()) {
@@ -130,7 +125,6 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	
 	// 내가 요청한 것들에서 다른 사용자가 등록한 이미지를 가져오기 위한 통신
 	public void searchImageURLFromServer(String aRequestId) {
-		Log.i("search", "searchimage" + ++count2);
 		RequestsRequest requestsRequest = new RequestsRequest(getActivity( ));
 		try {
 			requestsRequest.getImageURL(getImageURLListener, aRequestId);
@@ -142,7 +136,6 @@ public class MyRequestFragment extends Fragment implements ViewForMyRequestFragm
 	HttpRequester.NetworkResponseListener getMyrequestItemListener = new HttpRequester.NetworkResponseListener() {
 		@Override
 		public void onSuccess(JSONObject jsonObject) {
-			Log.i("search", "success");
 			JSONArray jsonArray = null;
 			Message message = new Message( );
 			

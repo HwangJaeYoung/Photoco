@@ -24,18 +24,20 @@ public class SplashActivity extends Activity {
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				Intent i = null;
+				Intent intent = null;
 				
-				// 유저의 사용정보를 가져온다.
+				/*
+				// 유저의 사용정s보를 가져온다.
 				UserPreference userPreference = new UserPreference(getApplicationContext());
 				
 				if (userPreference.isLoggedIn() == false) { // 유저가 로그인을 한 번도 하지 않았으면
 					i = new Intent(SplashActivity.this, LoginActivity.class); // 로그인 페이지로 이동한다.
 				} else { // 로그인을 한 번이라도 수행하였다면
 					i = new Intent(SplashActivity.this, MainActivity.class); // 메인액티비티로 이동한다.
-				}
+				} */
 				
-				startActivity(i);
+				intent = new Intent(SplashActivity.this, LoginActivity.class);
+				startActivity(intent);
 				finish();
 				// Splash에 애니메이션을 적용하여 동적으로 보이게 한다.
 				SplashActivity.this.overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);

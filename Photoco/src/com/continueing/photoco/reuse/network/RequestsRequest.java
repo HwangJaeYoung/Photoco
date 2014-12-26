@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.loopj.android.http.RequestParams;
 

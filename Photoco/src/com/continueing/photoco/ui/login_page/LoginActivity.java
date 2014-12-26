@@ -38,6 +38,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 		// 최종적인 match_parent 요청은 윈도우에게 한다.(안드로이드 정복 P.808 참고)
 	}
 	
+	/*
 	// 자동로그인 할 때 Login Activity를 종료한다.
 	@Override
 	protected void onResume( ) {
@@ -52,7 +53,7 @@ public class LoginActivity extends Activity implements ViewForLoginActivity.Cont
 			startActivity(intent);
 			finish( ); // 자동로그인이므로 바로 종료한다.
 		}
-	}
+	}*/
 
 	@Override
 	public void onEditTextsLengthChanged(int aUserNameLength, int aPasswordLength) {

@@ -182,6 +182,10 @@ public class ViewForMyNewRequestActivity extends AbstractViewForActivity {
         this.sb_requestNewSubmit.release();
     }	
 	
+	public void editTextModify(String aText) {
+		et_requestNew.setText(aText);
+	}
+	
 	public static interface Controller {
 		public void onSubmit( );
 		public void onLocationSelect( );
